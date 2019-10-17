@@ -1,5 +1,7 @@
 {
   "name": "BolsaTrabajoApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
