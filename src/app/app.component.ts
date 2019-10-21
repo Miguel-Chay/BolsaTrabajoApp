@@ -17,15 +17,26 @@ export class AppComponent {
       icon: 'person'
     },
     {
-      title: 'Oportunidades',
+      title: 'Mis Oportunidades',
       url: '/oportunidades',
-      icon: 'shuffle'
+      icon: 'git-network'
     },
     {
-      title: 'Postulaciones',
+      title: 'Mis Postulaciones',
       url: '/postulaciones',
       icon: 'paper-plane'
+    },
+    {
+      title: 'Mis Vacantes',
+      url: '/vacantes',
+      icon: 'paper'
+    },
+    {
+      title: 'Cerrar Sesion',
+      url: '/login',
+      icon: 'walk'
     }
+
   ];
 
   constructor(

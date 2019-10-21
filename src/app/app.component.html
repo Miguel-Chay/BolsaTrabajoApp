@@ -1,11 +1,31 @@
 <ion-app>
   <ion-split-pane>
     <ion-menu type="overlay">
-      <ion-header>
+      
+
+      <ion-header >
         <ion-toolbar>
-          <ion-title>Menu</ion-title>
+
+
+
+      <ion-item color="gold" routerLink='/inicio-perfil-basico'>
+        <ion-avatar slot="start">
+          <img src="./assets/image/side-menu.png">
+        </ion-avatar>
+        <ion-label color = "light">Nombre de usuario</ion-label>
+      </ion-item>
+<!--
+  imagen cuadrada 
+          <ion-thumbnail>
+            <ion-img src= "./assets/image/side-menu.png"></ion-img>            
+          </ion-thumbnail>
+-->
         </ion-toolbar>
       </ion-header>
+
+
+
+
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
