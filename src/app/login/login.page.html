@@ -1,8 +1,9 @@
 <ion-header>
-
+<ion-img src= "./assets/image/Login_Edificio_Central.jpg"></ion-img>
 </ion-header>
 
-<ion-content color="primary" padding>
+<ion-content color="light" padding>
+
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
@@ -21,13 +22,16 @@
               <ion-input name="contraseña" type="password" placeholder="contraseña" ngModel required></ion-input>
             </ion-item>
           </div>
-
-
+ 
           <div padding>
             <ion-button size="large" [disabled]="form.invalid" expand="block" routerLink='/miperfil'>Ingresar 
             </ion-button>
           </div>
 
+          <div text-center>
+           <a mode="ios" routerLink='/olvido-contrasenia' >
+             Olvidé mi contraseña</a>
+          </div>
 <!--
 		  <div padding>
             <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login 
@@ -39,14 +43,30 @@
 
         </ion-col>
       </ion-row>
-<!--
-      	<ion-row>
-          	<div text-center>
-        		If you don't have an account, please <a routerLink='/register'>
-          		register</a> first!
-          	</div>
-      	</ion-row>
--->
+
     </ion-grid>
   </form>
 </ion-content>
+
+
+<ion-footer >
+  <ion-toolbar color ="gold" >
+ 
+<ion-buttons slot="start">
+   <ion-text color="light"  >
+      <H5>
+          siguenos: 
+      </H5>
+    </ion-text>
+
+    <ion-button href="https://www.facebook.com/BolsadeTrabajoUADY/" >
+      <ion-icon slot="icon-only" name="logo-facebook" color = "primary"></ion-icon>
+    </ion-button>
+
+    <ion-button href="https://twitter.com/BT_UADY" >
+      <ion-icon slot="icon-only" name="logo-twitter" color = "primary"></ion-icon>
+    </ion-button>
+    
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

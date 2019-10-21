@@ -74,4 +74,20 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+/** amarillo uady **/
+  --ion-color-gold: #c1950e;
+  --ion-color-gold-rgb: 193,149,14;
+  --ion-color-gold-contrast: #000000;
+  --ion-color-gold-contrast-rgb: 0,0,0;
+  --ion-color-gold-shade: #aa830c;
+  --ion-color-gold-tint: #c7a026;
+}
+.ion-color-gold {
+    --ion-color-base: var(--ion-color-gold) !important;
+    --ion-color-base-rgb: var(--ion-color-gold-rgb) !important;
+    --ion-color-contrast: var(--ion-color-gold-contrast) !important;
+    --ion-color-contrast-rgb: var(--ion-color-gold-contrast-rgb) !important;
+    --ion-color-shade: var(--ion-color-gold-shade) !important;
+    --ion-color-tint: var(--ion-color-gold-tint) !important;
 }
