@@ -1,25 +1,19 @@
 <ion-app>
-  <ion-split-pane>
+  <ion-split-pane >
+
     <ion-menu type="overlay">
       
 
       <ion-header >
         <ion-toolbar>
-
-
-
-      <ion-item color="gold" routerLink='/inicio-perfil-basico'>
-        <ion-avatar slot="start">
-          <img src="./assets/image/side-menu.png">
-        </ion-avatar>
-        <ion-label color = "light">Nombre de usuario</ion-label>
-      </ion-item>
-<!--
-  imagen cuadrada 
-          <ion-thumbnail>
-            <ion-img src= "./assets/image/side-menu.png"></ion-img>            
-          </ion-thumbnail>
--->
+          <ion-menu-toggle auto-hide="false" >
+            <ion-item color="gold" routerLink='/inicio-perfil-basico'>
+              <ion-avatar slot="start">
+                <img src="./assets/image/side-menu.png">
+              </ion-avatar>
+              <ion-label color = "light">Nombre de usuario</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
         </ion-toolbar>
       </ion-header>
 
@@ -38,7 +32,10 @@
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
+
+
     </ion-menu>
+    
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

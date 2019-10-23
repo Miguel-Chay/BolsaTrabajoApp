@@ -2,18 +2,18 @@
 <ion-img src= "./assets/image/Login_Edificio_Central.jpg"></ion-img>
 </ion-header>
 
-<ion-content color="light" padding>
+<ion-content color="goldlow" class="ion-padding">
 
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
-      <ion-row color="primary" justify-content-center>
+      <ion-row color="primary" class="ion-justify-content-center">
 
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3>Login</h3>
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-text-center">
+            <h3>Iniciar sesión</h3> 
           </div>
 
-          <div padding>
+          <div class="ion-padding">
             <ion-item>
               <ion-input name="usuario" type="usuario" placeholder="Usuario" ngModel required></ion-input>
             </ion-item>
@@ -23,12 +23,12 @@
             </ion-item>
           </div>
  
-          <div padding>
-            <ion-button size="large" [disabled]="form.invalid" expand="block" routerLink='/inicio-perfil-basico'>Ingresar 
+          <div class="ion-padding" >
+            <ion-button color="blue" size="large" [disabled]="form.invalid" expand="block" routerLink='/inicio-perfil-basico'>Ingresar 
             </ion-button>
           </div>
 
-          <div text-center>
+          <div class="ion-text-center">
            <a mode="ios" routerLink='/olvido-contrasenia' >
              Olvidé mi contraseña</a>
           </div>
@@ -55,7 +55,7 @@
 <ion-buttons slot="start">
    <ion-text color="light"  >
       <H5>
-          siguenos: 
+          Contáctanos también por:
       </H5>
     </ion-text>
 
