@@ -1,79 +1,253 @@
-<ion-header>
-  <ion-toolbar>
-  	<ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+<ion-header >
+  <ion-toolbar color="blue">
+    <ion-buttons slot="start" >
+      <ion-menu-button color ="light"></ion-menu-button>
     </ion-buttons>
-          <ion-item >
+
+
+  <div [ngSwitch]="opcion">
+ 
+    <div *ngSwitchCase="'Experiencia laboral'">
+       <ion-title color="light">Experiencia laboral</ion-title> 
+    </div>
+ 
+    <div *ngSwitchCase="'Formación académica'">
+        <ion-title color="light">Formación académica</ion-title>
+    </div>
+
+    <div *ngSwitchCase="'Cursos'">
+        <ion-title color="light">Cursos</ion-title> 
+    </div>
+ 
+    <div *ngSwitchCase="'Certificaciones'">
+        <ion-title color="light">Certificaciones</ion-title>
+    </div>
+
+    <div *ngSwitchCase="'Idiomas'">
+        <ion-title color="light">Idiomas</ion-title>
+    </div>
+ 
+    <div *ngSwitchCase="'Aptitudes'">
+        <ion-title color="light">Aptitudes</ion-title>
+    </div>
+  </div>
+  </ion-toolbar>
+
+<ion-toolbar>
+<ion-segment  scrollable [(ngModel)]="opcion" >
+    <ion-segment-button class="segment-item" value="Experiencia laboral" >
+        <ion-icon name="briefcase"></ion-icon>
+        <ion-label ><font size= 1>Experiencia <br> laboral</font></ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button class="segment-item" value="Formación académica">
+        <ion-icon name="school"></ion-icon>
+        <ion-label><font size= 1>Formación <br> académica</font></ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button class="segment-item" value="Cursos">
+        <ion-icon name="bookmarks"></ion-icon>
+        <ion-label><font size= 1>Cursos</font></ion-label>
+    </ion-segment-button>
+
+   <ion-segment-button class="segment-item" value="Certificaciones">
+        <ion-icon name= "ribbon" ></ion-icon>
+        <ion-label><font size= 1>Certificacion</font></ion-label>
+    </ion-segment-button>
+   
+    <ion-segment-button class="segment-item" value="Idiomas">
+        <ion-icon name="globe"></ion-icon>
+        <ion-label><font size= 1>Idiomas</font></ion-label>
+    </ion-segment-button>
+
+   <ion-segment-button class="segment-item" value="Aptitudes">
+        <ion-icon name="happy"></ion-icon>
+        <ion-label><font size= 1>Aptitudes</font></ion-label>
+    </ion-segment-button>
+</ion-segment>
+
+</ion-toolbar>
+</ion-header>
+
+ 
+ 
+<!--##########################################################################################-->
+
+
+<ion-content color="goldlow" >
+      <ion-item >
         <ion-thumbnail slot="start">
           <img src="./assets/image/side-menu.png">
         </ion-thumbnail>
         <ion-label >
-        	 <h2>Maria Jose Pinto Suarez</h2>
+           <h2>Maria Jose Pinto Suarez</h2>
             <h3>Matricula: 17017292</h3>
             <p>Dependencia: Facultad de Matematicas</p>
-      	</ion-label>
+        </ion-label>
       </ion-item>
-  </ion-toolbar>
-</ion-header>
+ 
+ 
+  <div [ngSwitch]="opcion"  >
 
-<ion-content>
- 	<ion-title>RESUMEN CURRICULUM VITAE</ion-title>
-      
-      <ion-item >
-        <ion-label >
-            <ion-textarea expand="block">
-            Nombre y apellidos. José Manuel Azaña Contreras
-Lugar y fecha de nacimiento Arroyo de la Luz, 30 de abril de 1983
-Estado civil Soltero
-Calle, nº, piso Carlos Barriga nº 13
-Código postal – Ciudad 10900 Arroyo de la Luz (Cáceres)
-Teléfono de contacto 927 123 456
-Teléfono móvil 669 987 654
-e-mail jm_azaña@extrem.com
-			</ion-textarea>
-      	</ion-label>
+    <div *ngSwitchCase="'Experiencia laboral'">
+
+      <ion-card color ="light">
+        
+        <ion-card-header>
+          <ion-card-title>Ejemplo Card 1</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    
+    <ion-card color="light">
+      <ion-card-header>
+          <ion-card-title>Ejemplo Card 2</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink='/agregar-exp-laboral'>
+        <ion-icon  name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+       
+    </div>
+ 
+    <div *ngSwitchCase="'Formación académica'">
+      <ion-card color ="light">
+        
+        <ion-card-header>
+          <ion-card-title>Ejemplo Card 1</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    
+    <ion-card color="light">
+      <ion-card-header>
+          <ion-card-title>Ejemplo Card 2</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink='/agregar-form-academica'>
+        <ion-icon  name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    </div>
+
+    <div *ngSwitchCase="'Cursos'">
+            <ion-card color ="light">
+        
+        <ion-card-header>
+          <ion-card-title>Ejemplo Card 1</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    
+    <ion-card color="light">
+      <ion-card-header>
+          <ion-card-title>Ejemplo Card 2</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink='/agregar-curso'>
+        <ion-icon  name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    </div>
+ 
+    <div *ngSwitchCase="'Certificaciones'">
+            <ion-card color ="light">
+        
+        <ion-card-header>
+          <ion-card-title>Ejemplo Card 1</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    
+    <ion-card color="light">
+      <ion-card-header>
+          <ion-card-title>Ejemplo Card 2</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink='/agregar-certificacion'>
+        <ion-icon  name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>     
+    </div>
+
+    <div *ngSwitchCase="'Idiomas'">
+      <ion-item>
+        <ion-textarea>Experiencia laboral</ion-textarea> 
       </ion-item>
+    </div>
+ 
+    <div *ngSwitchCase="'Aptitudes'">
 
-      <ion-item >
-        <ion-label >
-        	<h1>
-        		FORMACION ACADEMICA
-        	</h1>
-            <h2>
-            	grado de estudio 1, plan
-			</h2>
-			<h2>
-            	grado de estudio 2, plan
-			</h2>
-      	</ion-label>
-      </ion-item>
+        <ion-chip >
+          <ion-label >
+            <font size=5 >
+              trabajo en equipo    
+            </font>
+          </ion-label>
+          <ion-icon name="close-circle" (click)=EliminarAptitud()> </ion-icon>
+        </ion-chip>
 
-      <ion-item >
-        <ion-label >
-        	<h1>
-        		EXPERIENCIA LABORAL
-        	</h1>
-            <h2>
-            	Empleo 1
-			</h2>
-			<h2>
-            	Empleo 2
-			</h2>
-      	</ion-label>
-      </ion-item>
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button (click)=agregarAptitud()>
+            <ion-icon  name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab> 
 
-      <ion-item >
-        <ion-label >
-        	<h1>
-        		CERTIFICACIONES
-        	</h1>
-            <h2>
-            	nombre certificacion 1
-			</h2>
-			<h2>
-            	nombre certificacion 2
-			</h2>
-      	</ion-label>
-      </ion-item>
+    </div>
 
+  </div>
 </ion-content>

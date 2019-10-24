@@ -12,7 +12,11 @@ const routes: Routes = [
   { path: 'oportunidades', loadChildren: './oportunidades/oportunidades.module#OportunidadesPageModule' },
   { path: 'postulaciones', loadChildren: './postulaciones/postulaciones.module#PostulacionesPageModule' },  { path: 'olvido-contrasenia', loadChildren: './olvido-contrasenia/olvido-contrasenia.module#OlvidoContraseniaPageModule' },
   { path: 'vacantes', loadChildren: './vacantes/vacantes.module#VacantesPageModule' },
-  { path: 'inicio-perfil-basico', loadChildren: './inicio-perfil-basico/inicio-perfil-basico.module#InicioPerfilBasicoPageModule' }
+  { path: 'inicio-perfil-basico', loadChildren: './inicio-perfil-basico/inicio-perfil-basico.module#InicioPerfilBasicoPageModule' },
+  { path: 'agregar-exp-laboral', loadChildren: './agregar-exp-laboral/agregar-exp-laboral.module#AgregarExpLaboralPageModule' },
+  { path: 'agregar-form-academica', loadChildren: './agregar-form-academica/agregar-form-academica.module#AgregarFormAcademicaPageModule' },
+  { path: 'agregar-curso', loadChildren: './agregar-curso/agregar-curso.module#AgregarCursoPageModule' },
+  { path: 'agregar-certificacion', loadChildren: './agregar-certificacion/agregar-certificacion.module#AgregarCertificacionPageModule' }
 
 ];
 
