@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 //import { IonSegment } from '@ionic/angular';
-//import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
 
 
 @Component({
@@ -13,9 +13,38 @@ export class MiperfilPage implements OnInit {
 
   //@ViewChild(IonSegment) segment:IonSegment;
 
-  constructor(public alertController: AlertController) {}
+  constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) {}
 
- 
+async opcionesIdioma() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Albums',
+      buttons: [{
+        text: 'Eliminar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Editar',
+        icon: 'Create',
+        handler: () => {
+          console.log('Editar clicked');
+        }
+      },{
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+
+
+
 async EliminarAptitud() {
     const alert = await this.alertController.create({
       header: 'Eliminar',
@@ -42,12 +71,91 @@ async EliminarAptitud() {
 
 async agregarAptitud() {
     const alert = await this.alertController.create({
-      header: 'Agregar aptitud',
+      header: 'Añadir aptitud',
       inputs: [
         {
           name: 'aptitud',
           type: 'text',
-          placeholder: 'ejemplo: trabajo en equipo'
+          placeholder: 'Aptitud'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Crear',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+ 
+  /*
+async agregarIdioma()  {
+    const alert = await this.alertController.create({
+      header: 'Idioma',
+      inputs: [
+        {
+          name: 'radio1',
+          type: 'radio',
+          label: 'Español',
+          value: 'value1',
+          checked: true
+        },
+        {
+          name: 'radio2',
+          type: 'radio',
+          label: 'Ingles',
+          value: 'value2'
+        },
+        {
+          name: 'radio3',
+          type: 'radio',
+          label: 'Frances',
+          value: 'value3'
+        },
+        {
+          name: 'radio4',
+          type: 'radio',
+          label: 'Maya',
+          value: 'value4'
+        }
+      ],
+      header: 'Nivel',
+      inputs: [
+        {
+          name: 'radio1',
+          type: 'radio',
+          label: 'Basico',
+          value: 'value1',
+          checked: true
+        },
+        {
+          name: 'radio2',
+          type: 'radio',
+          label: 'Intermedio',
+          value: 'value2'
+        },
+        {
+          name: 'radio3',
+          type: 'radio',
+          label: 'Avanzado',
+          value: 'value3'
+        },
+        {
+          name: 'radio4',
+          type: 'radio',
+          label: 'Nativo',
+          value: 'value4'
         }
       ],
       buttons: [
@@ -68,8 +176,9 @@ async agregarAptitud() {
     });
 
     await alert.present();
-  }
+}
 
+*/
   ngOnInit() {
   //	this.segment.value='Experiencia laboral';
 

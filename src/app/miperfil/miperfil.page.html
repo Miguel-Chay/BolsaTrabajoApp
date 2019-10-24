@@ -225,10 +225,26 @@
     </div>
 
     <div *ngSwitchCase="'Idiomas'">
-      <ion-item>
-        <ion-textarea>Experiencia laboral</ion-textarea> 
-      </ion-item>
-    </div>
+
+      <ion-card (click)=opcionesIdioma()>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="./assets/image/bandera-estados-unidos.jpg">
+          </ion-avatar>
+          <ion-label>
+            <b>Ingles</b>
+            <p>Intermedio</p>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+      
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)=agregarIdioma()>
+          <ion-icon  name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      </div>
  
     <div *ngSwitchCase="'Aptitudes'">
 
