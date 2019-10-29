@@ -103,4 +103,6 @@
 .ion-color-blue {
     --ion-color-base: var(--ion-color-blue) !important;
     }
- 
+ .ion-slide {
+  height: calc(100vh - 140px);
+}

@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarExpLaboralPage implements OnInit {
 
+  public checked : boolean = false;//variable para saber si el checkbox esta marcado
+
   constructor() { }
 
+  
   ngOnInit() {
   }
+ 
+clickbox(): void {
+  	this.checked = !this.checked;
+  	console.log("checked: " + this.checked);//it is working !!!
+	}
+
+ 
+
 
 }

@@ -1,9 +1,136 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>agregarExpLaboral</ion-title>
+    <ion-title mode ="ios">Añadir Experiencia Laboral</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+<div class="ion-padding" >
+	<ion-item>
+            <ion-label  position="stacked"><font size=5>Empleador</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="Ingrese el nombre de la empresa"></ion-input>
+    </ion-item>
+
+	<ion-item>
+      	<ion-label><font >Giro del negocio</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar"  ><!--<ion-select ok-text="Okay" cancel-text="Nah">-->
+        		<ion-select-option value="dos">elemento 1</ion-select-option>
+        		<ion-select-option value="lunix">elemento 2</ion-select-option>
+        		<ion-select-option value="mac7">elemento 3</ion-select-option>
+        		<ion-select-option value="mac8">elemento 4</ion-select-option>
+       	 		<ion-select-option value="win3.1">elemento 5</ion-select-option>
+        		<ion-select-option value="win95">elemento 6</ion-select-option>
+        		<ion-select-option value="win98" selected>selecciona el giro del negocio</ion-select-option>
+      	</ion-select>
+    </ion-item>
+
+    <ion-item>
+            <ion-label position="stacked"><font size=5>Puesto</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="Ingrese el nombre de tu puesto"></ion-input>
+    </ion-item>
+
+ 
+	<ion-item>
+  		<ion-label position="floating">Descripción</ion-label>
+  		<ion-textarea rows="4"  ></ion-textarea>
+	</ion-item>
+
+ <ion-text>
+ 	<h4>De</h4>
+ </ion-text>	
+ <ion-item>
+          <ion-label>Mes de inicio</ion-label>
+          <ion-select>
+            <ion-select-option value="01" selected>Enero</ion-select-option>
+            <ion-select-option value="02">Febrero</ion-select-option>
+            <ion-select-option value="03">Marzo</ion-select-option>
+            <ion-select-option value="04">Abril</ion-select-option>
+            <ion-select-option value="05">Mayo</ion-select-option>
+            <ion-select-option value="06">Junio</ion-select-option>
+            <ion-select-option value="07">Julio</ion-select-option>
+            <ion-select-option value="08">Agosto</ion-select-option>
+            <ion-select-option value="09">Septiembre</ion-select-option>
+            <ion-select-option value="10">Octubre</ion-select-option>
+            <ion-select-option value="11">Noviembre</ion-select-option>
+            <ion-select-option value="12" >Diciembre</ion-select-option>
+          </ion-select>
+ </ion-item>
+
+<ion-item>
+          <ion-label>Año de inicio</ion-label>
+          <ion-select>
+            <ion-select-option>1989</ion-select-option>
+            <ion-select-option>1990</ion-select-option>
+            <ion-select-option>1991</ion-select-option>
+            <ion-select-option>1992</ion-select-option>
+            <ion-select-option>1993</ion-select-option>
+            <ion-select-option selected>1994</ion-select-option>
+            <ion-select-option>1995</ion-select-option>
+            <ion-select-option>1996</ion-select-option>
+            <ion-select-option>1997</ion-select-option>
+            <ion-select-option>1998</ion-select-option>
+            <ion-select-option>1999</ion-select-option>
+          </ion-select>
+        </ion-item>
+<!--
+  <ion-item>
+    <ion-label>Users</ion-label>
+    <ion-select [compareWith]="compareWith">
+      <ion-select-option *ngFor="let user of users">{{user.first + ' ' + user.last}}</ion-select-option>
+    </ion-select>
+  </ion-item>-->
+ <ion-text>
+ 	<h4>Hasta</h4>
+ </ion-text>	
+<ion-item>
+<ion-label>Es mi empleo actual</ion-label><ion-checkbox checked="false" (click)="clickbox($event)"></ion-checkbox>
+</ion-item> 
+ 
+</div  >
+
+ <div *ngIf = "!checked">
+ <ion-item >
+          <ion-label>Mes de inicio</ion-label>
+          <ion-select>
+            <ion-select-option value="01" selected>Enero</ion-select-option>
+            <ion-select-option value="02">Febrero</ion-select-option>
+            <ion-select-option value="03">Marzo</ion-select-option>
+            <ion-select-option value="04">Abril</ion-select-option>
+            <ion-select-option value="05">Mayo</ion-select-option>
+            <ion-select-option value="06">Junio</ion-select-option>
+            <ion-select-option value="07">Julio</ion-select-option>
+            <ion-select-option value="08">Agosto</ion-select-option>
+            <ion-select-option value="09">Septiembre</ion-select-option>
+            <ion-select-option value="10">Octubre</ion-select-option>
+            <ion-select-option value="11">Noviembre</ion-select-option>
+            <ion-select-option value="12" >Diciembre</ion-select-option>
+          </ion-select>
+ </ion-item>
+ <ion-item>
+          <ion-label>Año de inicio</ion-label>
+          <ion-select>
+            <ion-select-option>1989</ion-select-option>
+            <ion-select-option>1990</ion-select-option>
+            <ion-select-option>1991</ion-select-option>
+            <ion-select-option>1992</ion-select-option>
+            <ion-select-option>1993</ion-select-option>
+            <ion-select-option selected>1994</ion-select-option>
+            <ion-select-option>1995</ion-select-option>
+            <ion-select-option>1996</ion-select-option>
+            <ion-select-option>1997</ion-select-option>
+            <ion-select-option>1998</ion-select-option>
+            <ion-select-option>1999</ion-select-option>
+          </ion-select>
+
+</ion-item>
+
+</div>
+
+
+
 </ion-content>
+

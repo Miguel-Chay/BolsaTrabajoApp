@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 //import { IonSegment } from '@ionic/angular';
 import { ActionSheetController } from '@ionic/angular';
-
+//import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-miperfil',
@@ -12,9 +12,19 @@ import { ActionSheetController } from '@ionic/angular';
 export class MiperfilPage implements OnInit {
 
   //@ViewChild(IonSegment) segment:IonSegment;
+//   @ViewChild("slides", { static: true }) slider: IonSlides;
+ //   segment = 0;
 
   constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) {}
+/*
+async segmentChanged() {
+    await this.slider.slideTo(this.segment);
+  }
 
+  async slideChanged() {
+    this.segment = await this.slider.getActiveIndex();
+  }
+*/
 async opcionesIdioma() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Albums',
@@ -30,6 +40,7 @@ async opcionesIdioma() {
         icon: 'Create',
         handler: () => {
           console.log('Editar clicked');
+          this.agregarIdioma();
         }
       },{
         text: 'Cancelar',
@@ -99,7 +110,8 @@ async agregarAptitud() {
     await alert.present();
   }
  
-  /*
+
+
 async agregarIdioma()  {
     const alert = await this.alertController.create({
       header: 'Idioma',
@@ -129,33 +141,56 @@ async agregarIdioma()  {
           label: 'Maya',
           value: 'value4'
         }
-      ],
+      ], 
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Ok');
+          this.agregarNivel();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+}
+
+async agregarNivel()  {
+    const alert = await this.alertController.create({
       header: 'Nivel',
       inputs: [
         {
-          name: 'radio1',
+          name: 'radio11',
           type: 'radio',
           label: 'Basico',
-          value: 'value1',
+          value: 'value11',
           checked: true
         },
         {
-          name: 'radio2',
+          name: 'radio22',
           type: 'radio',
           label: 'Intermedio',
-          value: 'value2'
+          value: 'value22'
         },
         {
-          name: 'radio3',
+          name: 'radio33',
           type: 'radio',
           label: 'Avanzado',
-          value: 'value3'
+          value: 'value33'
         },
         {
-          name: 'radio4',
+          name: 'radio44',
           type: 'radio',
           label: 'Nativo',
-          value: 'value4'
+          value: 'value44'
         }
       ],
       buttons: [
@@ -178,7 +213,7 @@ async agregarIdioma()  {
     await alert.present();
 }
 
-*/
+
   ngOnInit() {
   //	this.segment.value='Experiencia laboral';
 
