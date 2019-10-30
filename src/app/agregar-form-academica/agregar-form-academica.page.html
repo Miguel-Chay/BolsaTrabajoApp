@@ -1,9 +1,210 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>agregarFormAcademica</ion-title>
+    <ion-title mode ="ios">Añadir Formacion Academica</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+<div class="ion-padding" >
+
+	<ion-item>
+      	<ion-label><font >Grado de estudio</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar"  ><!--<ion-select ok-text="Okay" cancel-text="Nah">-->
+        		<ion-select-option value="seleccionar" selected>Seleccionar</ion-select-option>
+        		<ion-select-option value="Doctorado">Doctorado</ion-select-option>
+        		<ion-select-option value="Maestría">Maestría</ion-select-option>
+        		<ion-select-option value="Especialización">Especialización</ion-select-option>
+       	 		<ion-select-option value="Licenciatura">Licenciatura</ion-select-option>
+        		<ion-select-option value="Bachillerato">Bachillerato</ion-select-option>
+      	</ion-select>
+    </ion-item>
+
+	<ion-list>
+	  <ion-radio-group>
+
+	    <ion-list-header>
+	      <ion-label>Instituto</ion-label>
+	    </ion-list-header>
+
+	    <ion-item>
+	      <ion-label>UADY</ion-label>
+	      <ion-radio slot="start" value="UADY" checked="false" (click)="clickbox(1)"></ion-radio>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label>Otro</ion-label>
+	      <ion-radio slot="start" value="Otro" checked="true" (click)="clickbox(2)"></ion-radio>
+	    </ion-item>
+
+	  </ion-radio-group>
+	</ion-list>
+
+</div>
+<div *ngIf="checked; then thenTemplateName else elseTemplateName">
+  
+</div>
+<div class="ion-padding">
+<ng-template #thenTemplateName>
+    <ion-item>
+      	<ion-label><font >Dependencia</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar"  ><!--<ion-select ok-text="Okay" cancel-text="Nah">-->
+        		<ion-select-option selected value="1">seleccionar</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="6">elemento 6</ion-select-option>
+      	</ion-select>
+    </ion-item>
+
+    <ion-item>
+      	<ion-label><font >Plan de estudios</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar"  ><!--<ion-select ok-text="Okay" cancel-text="Nah">-->
+        		<ion-select-option selected value="1">seleccionar</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="6">elemento 6</ion-select-option>
+      	</ion-select>
+    </ion-item>
+
+    <ion-item>
+      	<ion-label><font >Estado</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar"  ><!--<ion-select ok-text="Okay" cancel-text="Nah">-->
+        		<ion-select-option selected value="1">seleccionar</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="6">elemento 6</ion-select-option>
+      	</ion-select>
+    </ion-item>
+</ng-template>
+
+<ng-template #elseTemplateName>
+
+	<ion-item>
+        <ion-label  position="stacked"><font size=5>Nombre del instituto</font><ion-text color="danger">*<br></ion-text></ion-label>
+        <ion-input placeholder="Ingrese el nombre del instituto"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label  position="stacked"><font size=5>Nombre del plan de estudio</font><ion-text color="danger">*<br></ion-text></ion-label>
+        <ion-input placeholder="Ingrese el nombre del plan de estudio"></ion-input>
+    </ion-item>
+    <ion-item>
+      	<ion-label><font >Área de estudios</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar"  ><!--<ion-select ok-text="Okay" cancel-text="Nah">-->
+        		<ion-select-option selected value="1">seleccionar</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="6">elemento 6</ion-select-option>
+      	</ion-select>
+    </ion-item>
+
+    <ion-item>
+      	<ion-label><font >Estado</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar"  ><!--<ion-select ok-text="Okay" cancel-text="Nah">-->
+        		<ion-select-option selected value="1">seleccionar</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="6">elemento 6</ion-select-option>
+      	</ion-select>
+    </ion-item>
+</ng-template>
+
+
+  
+
+    
+ <ion-text>
+ 	<h4>De</h4>
+ </ion-text>	
+ <ion-item>
+          <ion-label>Mes de inicio</ion-label>
+          <ion-select>
+            <ion-select-option value="01" selected>Enero</ion-select-option>
+            <ion-select-option value="02">Febrero</ion-select-option>
+            <ion-select-option value="03">Marzo</ion-select-option>
+            <ion-select-option value="04">Abril</ion-select-option>
+            <ion-select-option value="05">Mayo</ion-select-option>
+            <ion-select-option value="06">Junio</ion-select-option>
+            <ion-select-option value="07">Julio</ion-select-option>
+            <ion-select-option value="08">Agosto</ion-select-option>
+            <ion-select-option value="09">Septiembre</ion-select-option>
+            <ion-select-option value="10">Octubre</ion-select-option>
+            <ion-select-option value="11">Noviembre</ion-select-option>
+            <ion-select-option value="12" >Diciembre</ion-select-option>
+          </ion-select>
+ </ion-item>
+
+<ion-item>
+          <ion-label>Año de inicio</ion-label>
+          <ion-select>
+            <ion-select-option>1989</ion-select-option>
+            <ion-select-option>1990</ion-select-option>
+            <ion-select-option>1991</ion-select-option>
+            <ion-select-option>1992</ion-select-option>
+            <ion-select-option>1993</ion-select-option>
+            <ion-select-option selected>1994</ion-select-option>
+            <ion-select-option>1995</ion-select-option>
+            <ion-select-option>1996</ion-select-option>
+            <ion-select-option>1997</ion-select-option>
+            <ion-select-option>1998</ion-select-option>
+            <ion-select-option>1999</ion-select-option>
+          </ion-select>
+        </ion-item>
+ 
+ <ion-text>
+ 	<h4>Hasta</h4>
+ </ion-text>	
+ 
+ <ion-item >
+          <ion-label>Mes de inicio</ion-label>
+          <ion-select>
+            <ion-select-option value="01" selected>Enero</ion-select-option>
+            <ion-select-option value="02">Febrero</ion-select-option>
+            <ion-select-option value="03">Marzo</ion-select-option>
+            <ion-select-option value="04">Abril</ion-select-option>
+            <ion-select-option value="05">Mayo</ion-select-option>
+            <ion-select-option value="06">Junio</ion-select-option>
+            <ion-select-option value="07">Julio</ion-select-option>
+            <ion-select-option value="08">Agosto</ion-select-option>
+            <ion-select-option value="09">Septiembre</ion-select-option>
+            <ion-select-option value="10">Octubre</ion-select-option>
+            <ion-select-option value="11">Noviembre</ion-select-option>
+            <ion-select-option value="12" >Diciembre</ion-select-option>
+          </ion-select>
+ </ion-item>
+ <ion-item>
+          <ion-label>Año de inicio</ion-label>
+          <ion-select>
+            <ion-select-option>1989</ion-select-option>
+            <ion-select-option>1990</ion-select-option>
+            <ion-select-option>1991</ion-select-option>
+            <ion-select-option>1992</ion-select-option>
+            <ion-select-option>1993</ion-select-option>
+            <ion-select-option selected>1994</ion-select-option>
+            <ion-select-option>1995</ion-select-option>
+            <ion-select-option>1996</ion-select-option>
+            <ion-select-option>1997</ion-select-option>
+            <ion-select-option>1998</ion-select-option>
+            <ion-select-option>1999</ion-select-option>
+          </ion-select>
+
+</ion-item>
+
+ 
+</div>
+
+
 </ion-content>
+

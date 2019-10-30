@@ -1,9 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>agregarCertificacion</ion-title>
+    <ion-title mode ="ios">Añadir Certificación</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+	<div class="ion-padding">
+	    <ion-item>
+	        <ion-label  position="stacked"><font size=5>Nombre de la certificación</font><ion-text color="danger">*<br></ion-text></ion-label>
+	        <ion-input placeholder="Ingrese el nombre de la certificación"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	        <ion-label  position="stacked"><font size=5>Organización</font><ion-text color="danger">*<br></ion-text></ion-label>
+	        <ion-input placeholder="Ingrese el nombre de la organización"></ion-input>
+	    </ion-item>
+
+	  	<ion-item>
+      		<ion-label><font >Área de estudio</font></ion-label>
+      			<ion-select ok-text="seleccionar" cancel-text="cancelar"  ><!--<ion-select ok-text="Okay" cancel-text="Nah">-->
+        		<ion-select-option selected value="1">seleccionar</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="6">elemento 6</ion-select-option>
+	      	</ion-select>
+    	</ion-item>
+    	<ion-item>
+	        <ion-label  position="stacked"><font size=5>Fecha de inicio</font></ion-label>
+	        <ion-input type="date"></ion-input>
+	    </ion-item>    
+
+	    <ion-item>
+	        <ion-label  position="stacked"><font size=5>Fecha de término</font></ion-label>
+	        <ion-input type="date"></ion-input>
+	    </ion-item>    
+	</div>
 </ion-content>

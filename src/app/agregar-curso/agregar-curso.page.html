@@ -1,9 +1,63 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>agregarCurso</ion-title>
+    <ion-title mode ="ios">Añadir Curso</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+	<div class="ion-padding">
+	    <ion-item>
+	        <ion-label  position="stacked"><font size=5>Nombre del curso</font><ion-text color="danger">*<br></ion-text></ion-label>
+	        <ion-input placeholder="Ingrese el nombre del curso"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	        <ion-label  position="stacked"><font size=5>Horas</font><ion-text color="danger">*<br></ion-text></ion-label>
+	        <ion-input placeholder="Ingrese la duracion del curso en horas"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	        <ion-label  position="stacked"><font size=5>Instituto</font><ion-text color="danger">*<br></ion-text></ion-label>
+	        <ion-input placeholder="Ingrese el nombre de la institución"></ion-input>
+	    </ion-item>
+	
+
+	<ion-list>
+	  <ion-radio-group>
+
+	    <ion-list-header>
+	      <ion-label>Modo</ion-label>
+	    </ion-list-header>
+
+	    <ion-item>
+	      <ion-label>En linea</ion-label>
+	      <ion-radio slot="start" value="1" checked="false" ></ion-radio>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label>Presencial</ion-label>
+	      <ion-radio slot="start" value="2" checked="false" ></ion-radio>
+	    </ion-item>
+	    
+	    <ion-item>
+	      <ion-label>Semipresencial</ion-label>
+	      <ion-radio slot="start" value="3" checked="false" ></ion-radio>
+	    </ion-item>
+
+	  </ion-radio-group>
+	</ion-list>
+
+		<ion-item>
+	        <ion-label  position="stacked"><font size=5>Fecha de inicio</font></ion-label>
+	        <ion-input type="date"></ion-input>
+	    </ion-item>    
+
+	    <ion-item>
+	        <ion-label  position="stacked"><font size=5>Fecha de término</font></ion-label>
+	        <ion-input type="date"></ion-input>
+	    </ion-item>    
+	</div>
+
 
 </ion-content>

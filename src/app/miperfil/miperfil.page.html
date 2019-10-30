@@ -9,27 +9,27 @@
 
   <div [ngSwitch]="segment">
  
-    <div *ngSwitchCase="0">
+    <div *ngSwitchDefault >
        <ion-title color="light">Experiencia laboral</ion-title> 
     </div>
  
-    <div *ngSwitchCase="1">
+    <div *ngSwitchCase="'1'">
         <ion-title color="light">Formación académica</ion-title>
     </div>
 
-    <div *ngSwitchCase="2">
+    <div *ngSwitchCase="'2'">
         <ion-title color="light">Cursos</ion-title> 
     </div>
  
-    <div *ngSwitchCase="3">
+    <div *ngSwitchCase="'3'">
         <ion-title color="light">Certificaciones</ion-title>
     </div>
 
-    <div *ngSwitchCase="4">
+    <div *ngSwitchCase="'4'">
         <ion-title color="light">Idiomas</ion-title>
     </div>
  
-    <div *ngSwitchCase="5">
+    <div *ngSwitchCase="'5'">
         <ion-title color="light">Aptitudes</ion-title>
     </div>
   </div>
@@ -40,7 +40,7 @@
 
 <!--(ionChange)="segmentChanged()"-->
 <ion-segment   [(ngModel)]="segment" color="primary" scrollable >
-    <ion-segment-button class="segment-item" value="0" >
+    <ion-segment-button class="segment-item" value="0">
         <font size= 2><ion-icon size=5 name="briefcase"></ion-icon></font>
         <font size= 1>Experiencia <br> laboral</font>
     </ion-segment-button>
@@ -80,6 +80,7 @@
 
 
 <ion-content color="goldlow" fullscreen padding  >
+      <!--
       <ion-item >
         <ion-thumbnail slot="start">
           <img src="./assets/image/side-menu.png">
@@ -90,200 +91,16 @@
             <p>Dependencia: Facultad de Matematicas</p>
         </ion-label>
       </ion-item>
- 
-<!--
-  <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true" [ngSwitch]="segment">
-    -======================================================================--
-    <ion-slide fullscreen>
-<div *ngSwitchCase="0">
-
-      <ion-card color ="light">
-        
-        <ion-card-header>
-          <ion-card-title>Ejemplo Card 1</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-    
-    <ion-card color="light">
-      <ion-card-header>
-          <ion-card-title>Ejemplo Card 2</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button routerLink='/agregar-exp-laboral'>
-        <ion-icon  name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-       
-    </div>
-    </ion-slide>
-    <--======================================================================--
-    <ion-slide>
-          <div >
-      <ion-card color ="light">
-        
-        <ion-card-header>
-          <ion-card-title>Ejemplo Card 1</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-    
-    <ion-card color="light">
-      <ion-card-header>
-          <ion-card-title>Ejemplo Card 2</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button routerLink='/agregar-form-academica'>
-        <ion-icon  name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-
-    </div>
-    </ion-slide>
-    <--======================================================================--
-    <ion-slide>
-       <ion-card color ="light">
-        
-        <ion-card-header>
-          <ion-card-title>Ejemplo Card 1</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-    
-    <ion-card color="light">
-      <ion-card-header>
-          <ion-card-title>Ejemplo Card 2</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button routerLink='/agregar-curso'>
-        <ion-icon  name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-
-    </ion-slide>
-    <--======================================================================--
-    <ion-slide>
-      <ion-card color ="light">
-        
-        <ion-card-header>
-          <ion-card-title>Ejemplo Card 1</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-    
-    <ion-card color="light">
-      <ion-card-header>
-          <ion-card-title>Ejemplo Card 2</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button routerLink='/agregar-certificacion'>
-        <ion-icon  name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>     
-
-    </ion-slide>
-    <--======================================================================--
-    <ion-slide>
-      <ion-card (click)=opcionesIdioma()>
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./assets/image/bandera-estados-unidos.jpg">
-          </ion-avatar>
-          <ion-label>
-            <b>Ingles</b>
-            <p>Intermedio</p>
-          </ion-label>
-        </ion-item>
-      </ion-card>
-      
-      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)=agregarIdioma()>
-          <ion-icon  name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
-
-    </ion-slide>
-    <--======================================================================--
-    <ion-slide>
-      <ion-chip >
-          <ion-label >
-            <font size=5 >
-              trabajo en equipo    
-            </font>
-          </ion-label>
-          <ion-icon name="close-circle" (click)=EliminarAptitud()> </ion-icon>
-        </ion-chip>
-
-        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-          <ion-fab-button (click)=agregarAptitud()>
-            <ion-icon  name="add"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
-    </ion-slide>
-  </ion-slides>
-  //====================================================================//
--->
+      -->
  
   <div [ngSwitch]="segment"  >
 
-    <div *ngSwitchCase="0">
+    <div  *ngSwitchDefault >
 
       <ion-card color ="light">
         
         <ion-card-header>
-          <ion-card-title>Ejemplo Card 1</ion-card-title>
+          <ion-card-title>Ejemplo Card 1 exp lab</ion-card-title>
           <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
         </ion-card-header>
 
@@ -313,7 +130,7 @@
        
     </div>
  
-    <div *ngSwitchCase="1">
+    <div *ngSwitchCase="'1'">
       <ion-card color ="light">
         
         <ion-card-header>
@@ -347,7 +164,7 @@
 
     </div>
 
-    <div *ngSwitchCase="2">
+    <div *ngSwitchCase="'2'">
             <ion-card color ="light">
         
         <ion-card-header>
@@ -380,7 +197,7 @@
     </ion-fab>
     </div>
  
-    <div *ngSwitchCase="3">
+    <div *ngSwitchCase="'3'">
             <ion-card color ="light">
         
         <ion-card-header>
@@ -413,7 +230,7 @@
     </ion-fab>     
     </div>
 
-    <div *ngSwitchCase="4">
+    <div *ngSwitchCase="'4'">
 
       <ion-card (click)=opcionesIdioma()>
         <ion-item>
@@ -435,7 +252,7 @@
 
       </div>
  
-    <div *ngSwitchCase="5">
+    <div *ngSwitchCase="'5'">
 
         <ion-chip >
           <ion-label >

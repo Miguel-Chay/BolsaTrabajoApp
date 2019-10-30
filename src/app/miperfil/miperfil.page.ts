@@ -1,30 +1,17 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-//import { IonSegment } from '@ionic/angular';
-import { ActionSheetController } from '@ionic/angular';
-//import { IonSlides } from '@ionic/angular';
+import { AlertController } from '@ionic/angular'; 
+import { ActionSheetController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-miperfil',
   templateUrl: './miperfil.page.html',
   styleUrls: ['./miperfil.page.scss'],
 })
-export class MiperfilPage implements OnInit {
-
-  //@ViewChild(IonSegment) segment:IonSegment;
-//   @ViewChild("slides", { static: true }) slider: IonSlides;
- //   segment = 0;
-
+export class MiperfilPage implements OnInit { 
+  
   constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) {}
-/*
-async segmentChanged() {
-    await this.slider.slideTo(this.segment);
-  }
+ 
 
-  async slideChanged() {
-    this.segment = await this.slider.getActiveIndex();
-  }
-*/
 async opcionesIdioma() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Albums',
@@ -214,9 +201,7 @@ async agregarNivel()  {
 }
 
 
-  ngOnInit() {
-  //	this.segment.value='Experiencia laboral';
-
+  ngOnInit() { 
   }
 
 }
