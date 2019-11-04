@@ -7,14 +7,36 @@ import { ActionSheetController } from '@ionic/angular';
   templateUrl: './miperfil.page.html',
   styleUrls: ['./miperfil.page.scss'],
 })
-export class MiperfilPage implements OnInit { 
-  
-  constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) {}
- 
 
+//let expLab: string[] = ['PREDECO S.A. DE C.V.', 'Auxiliar de transporte', '2014-08-01','2015-08-01','Programación de entrada de materia prima desde planta de trituración a planta de fabricación, control y monitoreo de rendimiento de combustible a toda la flotilla, monitoreo de la flotilla de transporte por medio de GPS, registros de mantenimiento de todas las unidades, elaboración de nóminas para pago de choferes y ayudantes.'];
+/*class expLab{
+    company:string;
+    job_tittle:string;
+    start:string;
+    end:Date;
+    description:string;
+
+    constructor(company1:string,job_tittle1:string,start1:string,end1:Date,description1:string)
+    {
+      this.company=company1;
+      this.job_tittle=job_tittle1;
+      this.start=start1;
+      this.end=end1;
+      this.description=description1;
+    }
+}
+
+let exp= new expLab('PREDECO S.A. DE C.V.', 'Auxiliar de transporte', '2014-08-01','2015-08-01','Programación de entrada de materia prima desde planta de trituración a planta de fabricación, control y monitoreo de rendimiento de combustible a toda la flotilla, monitoreo de la flotilla de transporte por medio de GPS, registros de mantenimiento de todas las unidades, elaboración de nóminas para pago de choferes y ayudantes.')
+ */
+
+
+export class MiperfilPage implements OnInit { 
+  public segmento: any[];
+  constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) {}
+  
 async opcionesIdioma() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Albums',
+      header: 'Opciones',
       buttons: [{
         text: 'Eliminar',
         role: 'destructive',
@@ -40,9 +62,116 @@ async opcionesIdioma() {
     });
     await actionSheet.present();
   }
+async opcionesExpLab() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Eliminar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Editar',
+        icon: 'Create',
+        handler: () => {
+          console.log('Editar clicked');
+        }
+      },{
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  } 
 
+  async opcionesFormAcademica() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Eliminar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Editar',
+        icon: 'Create',
+        handler: () => {
+          console.log('Editar clicked');
+        }
+      },{
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  } 
 
-
+  async opcionesCursos() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Eliminar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Editar',
+        icon: 'Create',
+        handler: () => {
+          console.log('Editar clicked');
+        }
+      },{
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  } 
+async opcionesCertificaciones() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Eliminar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Editar',
+        icon: 'Create',
+        handler: () => {
+          console.log('Editar clicked');
+        }
+      },{
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  } 
 async EliminarAptitud() {
     const alert = await this.alertController.create({
       header: 'Eliminar',
