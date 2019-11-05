@@ -3,50 +3,147 @@
   	<ion-buttons slot="start" color="light">
       <ion-back-button color="light"></ion-back-button>
     </ion-buttons> 
-    <ion-title color="light">Editar Perfil Basico</ion-title>
+    <ion-title color="light">Actualizacion de perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-		<ion-list>
 
-			<ion-item>
-				<b>Hombre, soltero, 27 años, Lugar de residencia: Merida, Yucatan, Mexico</b><br>
-			</ion-item>
-			<ion-item>
-				<b>CURP: </b> CARM920625HGRMDD06<br>
-			</ion-item>
-			<ion-item>
-				<b>Correo electronico: </b> camachomedardo@gmail.com<br>
-			</ion-item>
-			<ion-item lines="none">
-				<b>Telefono: </b> 9992342633<br>
-			</ion-item>
-			<ion-item >
-				<b>Telefono celular: </b> 9992344567<br>
-			</ion-item>
-			<ion-item>
-				<b>Dependencia: </b>Facultad de Ingenieria Quimica<br>
-			</ion-item>
-			<ion-item>
-				<b>Matrícula: </b> 11215709<br>
-			</ion-item>
-			<ion-item lines="none">
-				<b>Nombre de usuario: </b> Medardo.Camacho<br>
-			</ion-item>
+	<ion-list>
 
-		</ion-list>
+		<ion-list-header  >
+			<font size =4> DATOS DE ACCESO</font>
+        </ion-list-header>
+
+		<ion-item  lines="none">
+            <ion-label position="stacked"><font size=5>Nombre de Usuario</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="p. ej. nombre.apellido"></ion-input>
+	    </ion-item>
+
+		<ion-item lines="none">
+            <ion-label position="stacked"><font size=5>Contraseña</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="Ingresa una contraseña"></ion-input>
+  
+	    </ion-item>
+        <!--
+        <ion-text color="danger"> La contraseña debe contener 3 de las 4 siguientes categorías de caracteres: 1.) al menos 1 mayúscula, 2.) al menos 1 minúscula, 3.) al menos un carácter numérico, 4.) al menos un carácter especial.
+		</ion-text>
+		-->
+		<ion-item lines ="none">
+            <ion-label position="stacked"><font size=5>Confirmar contraseña</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="Vuelve a ingresar la contraseña"></ion-input>
+	    </ion-item>
+
+	</ion-list>
  
- 
- 		<ion-card color="light">
-	        <ion-card-header>
-	          <ion-card-title>Currículum Vítae</ion-card-title>
+ 	<ion-list>
 
-	          <ion-card-subtitle>(Visible)</ion-card-subtitle>
-	        </ion-card-header>
+		<ion-list-header  >
+			<font size =4> DATOS DEL CANDIDATO</font>
+        </ion-list-header>
 
-	        <ion-card-content>
-				Como Ingeniero Industrial Logístico recién egresado, busco adquirir experiencia y nuevos conocimientos en las áreas de producción y logística, usando las metodologías adquiridas durante la universidad para aplicarlos a una organización, adecuándolos a las necesidades de la empresa para la resolución de problemas. A pesar de haber egresado en Junio de 2016 tengo experiencia profesional desde el año 2014, por lo que han sido dos años en los que he estado involucrado en actividades de logística y producción.
-	        </ion-card-content>
-      </ion-card>
+		<ion-item  lines="none">
+            <ion-label position="stacked"><font size=5>Nombres</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="Escribe tu(s) nombre(s)"></ion-input>
+	    </ion-item>
+
+		<ion-item lines="none">
+            <ion-label position="stacked"><font size=5>Apellidos</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="Escribe tu(s) apellido(s)"></ion-input>
+  
+	    </ion-item>
+
+	    <ion-item>
+		    <ion-label>Sexo</ion-label>
+		    <ion-select placeholder="Seleccione tu Sexo">
+		      	<ion-select-option value="female">mujer</ion-select-option>
+		      	<ion-select-option value="male">hombre</ion-select-option>
+		    </ion-select>
+  		</ion-item>
+       
+
+		<ion-item>
+			<ion-label  >Fecha de Nacimiento</ion-label>
+			<ion-datetime displayFormat="YYYY-MM-DD" min="1954-01-01" max="2001-12-31" value="2001-12-31"></ion-datetime>
+		</ion-item>
+ 		
+ 		<ion-item>
+		    <ion-label>Estado civil</ion-label>
+		    <ion-select placeholder="Seleciona tu estado civil">
+		      	<ion-select-option value="soltero">Soltero(a)</ion-select-option>
+		      	<ion-select-option value="casado">Casado(a)</ion-select-option>
+		    </ion-select>
+  		</ion-item>
+
+  		<ion-item lines="none">
+            <ion-label position="stacked"><font size=5>Correo Electronico</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="Escribe tu correo electronico"></ion-input>
+	    </ion-item>
+
+	    <ion-item lines="none">
+            <ion-label position="stacked"><font size=5>Teléfono</font><ion-text color="danger">*<br></ion-text></ion-label>
+            <ion-input placeholder="p. ej. (999) 999 9999"></ion-input>
+	    </ion-item>
+
+	    <ion-item lines="none">
+            <ion-label position="stacked"><font size=5>Teléfono Celular</font></ion-label>
+            <ion-input></ion-input>
+	    </ion-item>
+
+	    <ion-item>
+      	<ion-label><font >País</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar" placeholder="seleccionar País"  >
+        		<ion-select-option value="1">México</ion-select-option>
+        		<ion-select-option value="2">Estados Unidos</ion-select-option>
+        		<ion-select-option value="3">Canadá</ion-select-option>
+      		</ion-select>
+    	</ion-item>
+    	
+    	<ion-item>
+    	<ion-label><font >Estado</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar" placeholder="seleccionar estado"  >
+        		<ion-select-option value="1">elemento 1</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="5">elemento 6</ion-select-option>
+      		</ion-select>
+    	</ion-item>
+
+    	<ion-item>
+    		<ion-label><font >Ciudad</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar" placeholder="seleccionar ciudad"  >
+        		<ion-select-option value="1">elemento 1</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="5">elemento 6</ion-select-option>
+      		</ion-select>
+    	</ion-item>
+
+    	<ion-item>
+    		<ion-label><font >CURP</font></ion-label>
+    		<ion-input value="AF8SDFS9DFSF88" disabled></ion-input>
+    	</ion-item>
+
+    	<ion-item>
+    		<ion-label><font >Matricula</font></ion-label>
+    		<ion-input value="12353221" disabled></ion-input>
+    	</ion-item>
+
+    	<ion-item>
+    		<ion-label><font >Dependencia</font></ion-label>
+      		<ion-select ok-text="seleccionar" cancel-text="cancelar" placeholder="Selecciona tu facultad"  >
+        		<ion-select-option value="1">elemento 1</ion-select-option>
+        		<ion-select-option value="2">elemento 2</ion-select-option>
+        		<ion-select-option value="3">elemento 3</ion-select-option>
+        		<ion-select-option value="4">elemento 4</ion-select-option>
+       	 		<ion-select-option value="5">elemento 5</ion-select-option>
+        		<ion-select-option value="5">elemento 6</ion-select-option>
+      		</ion-select>
+    	</ion-item>
+	</ion-list>
+ 		
 </ion-content>
