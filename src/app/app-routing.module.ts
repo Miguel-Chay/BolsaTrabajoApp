@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'agregar-exp-laboral', loadChildren: './agregar-exp-laboral/agregar-exp-laboral.module#AgregarExpLaboralPageModule' },
   { path: 'agregar-form-academica', loadChildren: './agregar-form-academica/agregar-form-academica.module#AgregarFormAcademicaPageModule' },
   { path: 'agregar-curso', loadChildren: './agregar-curso/agregar-curso.module#AgregarCursoPageModule' },
-  { path: 'agregar-certificacion', loadChildren: './agregar-certificacion/agregar-certificacion.module#AgregarCertificacionPageModule' }
+  { path: 'agregar-certificacion', loadChildren: './agregar-certificacion/agregar-certificacion.module#AgregarCertificacionPageModule' },
+  { path: 'editar-perfil-basico', loadChildren: './editar-perfil-basico/editar-perfil-basico.module#EditarPerfilBasicoPageModule' }
 
 ];
 
