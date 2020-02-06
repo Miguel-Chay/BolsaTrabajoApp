@@ -7,17 +7,18 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'miperfil', loadChildren: './miperfil/miperfil.module#MiperfilPageModule' },
-  { path: 'oportunidades', loadChildren: './oportunidades/oportunidades.module#OportunidadesPageModule' },
-  { path: 'postulaciones', loadChildren: './postulaciones/postulaciones.module#PostulacionesPageModule' },  { path: 'olvido-contrasenia', loadChildren: './olvido-contrasenia/olvido-contrasenia.module#OlvidoContraseniaPageModule' },
-  { path: 'vacantes', loadChildren: './vacantes/vacantes.module#VacantesPageModule' },
-  { path: 'inicio-perfil-basico', loadChildren: './inicio-perfil-basico/inicio-perfil-basico.module#InicioPerfilBasicoPageModule' },
-  { path: 'agregar-exp-laboral', loadChildren: './agregar-exp-laboral/agregar-exp-laboral.module#AgregarExpLaboralPageModule' },
-  { path: 'agregar-form-academica', loadChildren: './agregar-form-academica/agregar-form-academica.module#AgregarFormAcademicaPageModule' },
-  { path: 'agregar-curso', loadChildren: './agregar-curso/agregar-curso.module#AgregarCursoPageModule' },
-  { path: 'agregar-certificacion', loadChildren: './agregar-certificacion/agregar-certificacion.module#AgregarCertificacionPageModule' },
-  { path: 'editar-perfil-basico', loadChildren: './editar-perfil-basico/editar-perfil-basico.module#EditarPerfilBasicoPageModule' }
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'miperfil', loadChildren: './pages/miperfil/miperfil.module#MiperfilPageModule' },
+  { path: 'oportunidades', loadChildren: './pages/oportunidades/oportunidades.module#OportunidadesPageModule' },
+  { path: 'postulaciones', loadChildren: './pages/postulaciones/postulaciones.module#PostulacionesPageModule' },
+  { path: 'olvido-contrasenia', loadChildren: './pages/olvido-contrasenia/olvido-contrasenia.module#OlvidoContraseniaPageModule' },
+  { path: 'vacantes', loadChildren: './pages/vacantes/vacantes.module#VacantesPageModule' },
+  { path: 'inicio-perfil-basico', loadChildren: './pages/inicio-perfil-basico/inicio-perfil-basico.module#InicioPerfilBasicoPageModule' },
+  { path: 'agregar-exp-laboral', loadChildren: './pages/agregar-exp-laboral/agregar-exp-laboral.module#AgregarExpLaboralPageModule' },
+  { path: 'agregar-form-academica', loadChildren: './pages/agregar-form-academica/agregar-form-academica.module#AgregarFormAcademicaPageModule' },
+  { path: 'agregar-curso', loadChildren: './pages/agregar-curso/agregar-curso.module#AgregarCursoPageModule' },
+  { path: 'agregar-certificacion', loadChildren: './pages/agregar-certificacion/agregar-certificacion.module#AgregarCertificacionPageModule' },
+  { path: 'editar-perfil-basico', loadChildren: './pages/editar-perfil-basico/editar-perfil-basico.module#EditarPerfilBasicoPageModule' }
 
 ];
 

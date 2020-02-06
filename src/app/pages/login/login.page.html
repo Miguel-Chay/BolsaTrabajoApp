@@ -4,7 +4,7 @@
 
 <ion-content color="goldlow" class="ion-padding">
 
-  <form #form="ngForm"   >
+  <form (ngSubmit)="login(form)" #form="ngForm"    >
     <ion-grid>
       <ion-row color="primary" class="ion-justify-content-center">
 
@@ -15,16 +15,16 @@
 
           <div class="ion-padding">
             <ion-item>
-              <ion-input name="usuario" type="usuario" placeholder="Usuario" ngModel required></ion-input>
+              <ion-input name="usuario" type="username" placeholder="Usuario" [(ngModel)]="loginUser.username" required></ion-input>
             </ion-item>
             <ion-item>
 
-              <ion-input name="contraseña" type="password" placeholder="contraseña" ngModel required></ion-input>
+              <ion-input name="contraseña" type="password" placeholder="contraseña" [(ngModel)]="loginUser.password" required></ion-input>
             </ion-item>
           </div>
  
           <div class="ion-padding" >
-            <ion-button color="blue" size="large" [disabled]="form.invalid" expand="block" routerLink='/inicio-perfil-basico'>Ingresar 
+            <ion-button color="blue" size="large" (click)="login(form)" expand="block" routerLink='/inicio-perfil-basico'>Ingresar 
             </ion-button>
           </div>
 
