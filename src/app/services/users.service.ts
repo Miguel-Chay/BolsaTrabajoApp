@@ -9,6 +9,7 @@ import { resolve } from 'url';
 })
 export class UsersService {
   token: string = null;
+  id: string = null;
   constructor(private http: HttpClient, private storage: Storage) { }
 
   login(username: string, password: string) {
@@ -22,6 +23,7 @@ export class UsersService {
         if (resp['login'] ) {
           this.guardarToken(resp['token']);
           resolve(true);
+          this.guardarId(resp['id']);
         } else {
           this.token = null;
           this.storage.clear();
@@ -35,5 +37,10 @@ export class UsersService {
   async guardarToken(token: string) {
     this.token = token;
     await this.storage.set('token', token);
+  }
+
+  async guardarId(id: string) {
+    this.id = id;
+    await this.storage.set('id', id);
   }
 }
