@@ -17,37 +17,52 @@
 	<div class="row">
 	    <div class="col">
 	        <div class="text-center">
-	            <h3 style="text-align: center;"><b>Medardo Junior Camacho Rueda</b></h3>
+	            <h3 style="text-align: center;"><b> {{candidate.firstname}} {{candidate.lastname}}</b></h3>
 	        </div>
 	    </div>
 	</div>
-
+<!--   user_id :'',
+    firstname :'',
+    lastname :'',
+    sex :'',
+    birth_date : null,
+     :'',
+    curp :'',
+    phone :'',
+    cellphone :'',
+    city_id :'',
+    :'',
+    organization_unit_id :'',
+    photo :'',
+    work_status : null,
+    work_status_date : null,-->
 
 		<ion-list>
 
 			<ion-item>
-				<b>Hombre, soltero, 27 años, Lugar de residencia: Merida, Yucatan, Mexico</b><br>
+				<b > {{candidate.sex}}, {{candidate.marital_status}}, {{candidate.birth_date |date: 'dd-MM-yyyy'}}   Lugar de residencia: "ciudad", "estado", "pais" </b>
+				<!-- Lugar de residencia: Merida, Yucatan, Mexico</b><br> -->
 			</ion-item>
 			<ion-item>
-				<b>CURP: </b> CARM920625HGRMDD06<br>
+				<b>CURP: </b>{{candidate.curp}}<br>
 			</ion-item>
 			<ion-item>
-				<b>Correo electronico: </b> camachomedardo@gmail.com<br>
+				<b>Correo electronico: </b> "pendiente" <br>
 			</ion-item>
 			<ion-item lines="none">
-				<b>Telefono: </b> 9992342633<br>
+				<b>Telefono: </b> {{candidate.phone}}<br>
 			</ion-item>
 			<ion-item >
-				<b>Telefono celular: </b> 9992344567<br>
+				<b>Telefono celular: </b> {{candidate.cellphone}}<br>
 			</ion-item>
 			<ion-item>
-				<b>Dependencia: </b>Facultad de Ingenieria Quimica<br>
+				<b>Dependencia: </b>"pendiente"<br>
 			</ion-item>
 			<ion-item>
-				<b>Matrícula: </b> 11215709<br>
+				<b>Matrícula: </b> {{candidate.student_id_number}}<br>
 			</ion-item>
 			<ion-item lines="none">
-				<b>Nombre de usuario: </b> Medardo.Camacho<br>
+				<b>Nombre de usuario: </b> "pendiente"<br>
 			</ion-item>
 
 		</ion-list>
