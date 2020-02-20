@@ -41,3 +41,9 @@ export interface City{
   name : string;
   state_id : string;
 }
+
+
+export interface Country{
+   id: string;
+   name: string;
+   }
