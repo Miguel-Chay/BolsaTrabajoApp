@@ -16,7 +16,7 @@ export class UsersService {
     const data = {username, password};
 
     return new Promise(resolve => {
-      this.http.post(`http://localhost:8080/user/login`, data)
+      this.http.post(`http://localhost:8080/api/user/login`, data)
       .subscribe(resp => {
         console.log(resp);
 
@@ -24,6 +24,7 @@ export class UsersService {
           this.guardarToken(resp['token']);
           resolve(true);
           this.guardarId(resp['id']);
+          resolve(true);
         } else {
           this.token = null;
           this.storage.clear();
@@ -42,5 +43,6 @@ export class UsersService {
   async guardarId(id: string) {
     this.id = id;
     await this.storage.set('id', id);
+    console.log(id);
   }
 }

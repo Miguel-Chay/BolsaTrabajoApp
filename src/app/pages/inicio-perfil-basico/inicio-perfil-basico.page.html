@@ -13,7 +13,7 @@
 
 
 <ion-content   >
-  <img src="./assets/image/side-menu.png"  style="width: 40%;   margin-left:auto;  margin-right:auto;  display:block;">
+  <img src= {{photoRout}}  style="width: 40%;   margin-left:auto;  margin-right:auto;  display:block;">
 	<div class="row">
 	    <div class="col">
 	        <div class="text-center">
@@ -21,27 +21,13 @@
 	        </div>
 	    </div>
 	</div>
-<!--   user_id :'',
-    firstname :'',
-    lastname :'',
-    sex :'',
-    birth_date : null,
-     :'',
-    curp :'',
-    phone :'',
-    cellphone :'',
-    city_id :'',
-    :'',
-    organization_unit_id :'',
-    photo :'',
-    work_status : null,
-    work_status_date : null,-->
+
 
 		<ion-list>
 
 			<ion-item>
-				<b > {{candidate.sex}}, {{candidate.marital_status}}, {{candidate.birth_date |date: 'dd-MM-yyyy'}}   Lugar de residencia: "ciudad", "estado", "pais" </b>
-				<!-- Lugar de residencia: Merida, Yucatan, Mexico</b><br> -->
+				<b > {{candidate.sex}}, {{candidate.marital_status}}, {{edad}} años,   Lugar de residencia: {{city.name}}, "estado", "pais" </b>
+				<!-- Lugar de residencia: Merida, Yucatan, Mexico</b><br> ,  {{candidate.birth_date |date: 'dd-MM-yyyy'}-->
 			</ion-item>
 			<ion-item>
 				<b>CURP: </b>{{candidate.curp}}<br>

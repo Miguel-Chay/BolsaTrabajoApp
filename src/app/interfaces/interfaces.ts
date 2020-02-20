@@ -35,3 +35,9 @@ work_status : boolean;
 work_status_date : Date;
 token: string;
 }
+
+export interface City{
+  id : string;
+  name : string;
+  state_id : string;
+}

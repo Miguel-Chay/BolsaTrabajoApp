@@ -14,9 +14,12 @@ export class CandidateService {
   constructor(private http: HttpClient) { }
 
   getCandidate(id : string){
-
-  	return this.http.get<Candidate>(`http://localhost:8080/candidates/${id}`);
-
+  	return this.http.get<Candidate>(`http://localhost:8080/api/candidates/${id}`);
   }
 //Irving.peniche    	123
+
+
+  getPhoto(id : string){
+  	return this.http.get<Candidate>(`http://localhost:8080/api/candidates/?id=${id}`);
+  }
 }
