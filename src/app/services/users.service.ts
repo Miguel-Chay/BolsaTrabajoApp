@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Login } from '../interfaces/interfaces';
+import { Login, User } from '../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
 import { resolve } from 'url';
 
@@ -11,6 +11,12 @@ export class UsersService {
   token: string = null;
   id: string = null;
   constructor(private http: HttpClient, private storage: Storage) { }
+
+
+  getUser(id : string){
+    return this.http.get<User>(`http://localhost:8080/api/users/${id}`);
+  }
+
 
   login(username: string, password: string) {
     const data = {username, password};

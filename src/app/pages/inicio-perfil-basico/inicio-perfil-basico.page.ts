@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+
 import { CandidateService } from '../../services/candidate.service';
 import { CityService } from '../../services/city.service';
-import { Candidate,City } from '../../interfaces/interfaces';
+import { CountryService } from '../../services/country.service';
+import { StateService } from '../../services/state.service';
+import { UsersService } from '../../services/users.service';
+
+import { Candidate,City,State,Country,User } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-inicio-perfil-basico',
@@ -13,37 +18,23 @@ import { Candidate,City } from '../../interfaces/interfaces';
 export class InicioPerfilBasicoPage implements OnInit {
 
   val: string = null;
+  val1: string = null;
   photoRout: string = "http://localhost/btuady/public_html/files/photo/";
   edad: string = null;
+  ciudad: string = null;
+  estado: string= null;
+  pais: string = null;
   
-	candidate : Candidate = {
-    user_id :'',
-    firstname :'',
-    lastname :'',
-    sex :'',
-    birth_date : null,
-    marital_status :'',
-    curp :'',
-    phone :'',
-    cellphone :'',
-    city_id :'',
-    student_id_number :'',
-    organization_unit_id :'',
-    photo :'',
-    work_status : null,
-    work_status_date : null,
-    token : ''
-  }
 
-	city: City = {
-    id : '',
-    name : '',
-    state_id : ''
-  }
+  candidate : Candidate = {}
+	city: City = {}
+  state: State= {}
+  country: Country= {}  
+  user: User={}
 
   constructor( public menuCtrl: MenuController, private storage: Storage, private candService : CandidateService,
-  private cityService : CityService ) {}
-
+  private cityService : CityService,private stateService : StateService,private countryService : CountryService, 
+  userService : UsersService ) {}
   
   translateInfo()
   {
@@ -73,10 +64,16 @@ export class InicioPerfilBasicoPage implements OnInit {
       this.photoRout= this.photoRout + this.candidate.photo;
     }
 
-    //console.log(this.calculateAge(this.candidate.birth_date));
+
     this.edad = this.calculateAge(this.candidate.birth_date).toString() ;
-    this.cityService.getCity(this.candidate.city_id).subscribe( city=>{this.city=city})
-    
+
+    this.cityService.getCity(this.candidate.city_id).subscribe( city=>{this.city=city
+      this.stateService.getState(this.city.state_id).subscribe( state=>{this.state=state
+        this.countryService.getCountry(this.state.country_id).subscribe( country=>{this.country=country
+
+        })
+      })
+    })
   }
 
 
@@ -85,18 +82,18 @@ export class InicioPerfilBasicoPage implements OnInit {
   	this.menuCtrl.enable(true);
 
     this.storage.get('id').then((val) => { 
-      this.candService.getCandidate(val).subscribe(
-        candidato=>{ 
-          this.candidate=candidato; 
-          //console.log(this.candidate);  
-          this.translateInfo();
+      this.candService.getCandidate(val).subscribe(candidato=>{this.candidate=candidato
 
+          this.translateInfo();
+          console.log("dentro")
+          this.imprime()  
 
 
         })
 
     })
-
+    console.log("fuera")
+    this.imprime()
 
   }
   
@@ -109,14 +106,22 @@ export class InicioPerfilBasicoPage implements OnInit {
 
   calculateAge(birthday) {
     var birthday_arr = birthday.split("-");
-    //console.log(birthday_arr);
     var birthday_date = new Date(birthday_arr[0], birthday_arr[1] - 1, birthday_arr[2]);
-    //console.log(birthday_date);
     var ageDifMs = Date.now() - birthday_date.getTime();
-    //console.log(ageDifMs);
     var ageDate = new Date(ageDifMs);
-    //console.log(ageDate);
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
+
+  imprime(){
+
+    console.log(this.candidate)
+    console.log(this.country)
+    console.log(this.state)
+    console.log(this.city)
+
+  }
+
+
+
 }
  

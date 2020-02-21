@@ -16,9 +16,7 @@ export class CandidateService {
   getCandidate(id : string){
   	return this.http.get<Candidate>(`http://localhost:8080/api/candidates/${id}`);
   }
-//Irving.peniche    	123
-
-
+  
   getPhoto(id : string){
   	return this.http.get<Candidate>(`http://localhost:8080/api/candidates/?id=${id}`);
   }
