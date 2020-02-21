@@ -18,32 +18,32 @@ export interface User {
 }
 
 export interface Candidate{
-user_id : string;
-firstname : string;
-lastname : string;
-sex : string;
-birth_date : Date;
+user_id: string;
+firstname: string;
+lastname: string;
+sex: string;
+birth_date: Date;
 marital_status: string;
-curp : string;
+curp: string;
 phone : string;
 cellphone : string;
-city_id : string;
-student_id_number : string;
-organization_unit_id : string;
-photo : string;
-work_status : boolean;
-work_status_date : Date;
+city_id: string;
+student_id_number: string;
+organization_unit_id: string;
+photo: string;
+work_status: boolean;
+work_status_date: Date;
 token: string;
 }
 
-export interface City{
-  id : string;
-  name : string;
-  state_id : string;
+export interface City {
+  id: string;
+  name: string;
+  state_id: string;
 }
 
 
-export interface Country{
+export interface Country {
    id: string;
    name: string;
-   }
+}
