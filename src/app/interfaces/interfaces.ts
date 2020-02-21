@@ -52,3 +52,21 @@ export interface Country{
   id? : string;
   name? : string;
 }
+
+
+export interface OrganizationUnit{
+  id? : string;
+  name? : string;
+  address? : string;
+  email? : string;
+  url? : string;
+  phone? : string;
+  logo? : string;
+}
+
+
+export interface Cv{
+  candidate_id? : string;
+  summary? : string; 
+  status? : string;
+}

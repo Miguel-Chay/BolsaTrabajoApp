@@ -33,7 +33,7 @@
 				<b>CURP: </b>{{candidate.curp}}<br>
 			</ion-item>
 			<ion-item>
-				<b>Correo electronico: </b> "pendiente" <br>
+				<b>email: </b> {{user.email}}   <br>
 			</ion-item>
 			<ion-item lines="none">
 				<b>Telefono: </b> {{candidate.phone}}<br>
@@ -42,13 +42,13 @@
 				<b>Telefono celular: </b> {{candidate.cellphone}}<br>
 			</ion-item>
 			<ion-item>
-				<b>Dependencia: </b>"pendiente"<br>
+				<b>Dependencia: </b>{{organizationunit.name}}<br>
 			</ion-item>
 			<ion-item>
 				<b>Matrícula: </b> {{candidate.student_id_number}}<br>
 			</ion-item>
 			<ion-item lines="none">
-				<b>Nombre de usuario: </b> "pendiente"<br>
+				<b>Nombre de usuario: </b> {{user.username}}<br>
 			</ion-item>
 
 		</ion-list>
@@ -57,11 +57,11 @@
 	        <ion-card-header>
 	          <ion-card-title>Currículum Vítae</ion-card-title>
 
-	          <ion-card-subtitle>(Visible)</ion-card-subtitle>
+	          <ion-card-subtitle>({{cv.status}})</ion-card-subtitle>
 	        </ion-card-header>
 
 	        <ion-card-content>
-				Como Ingeniero Industrial Logístico recién egresado, busco adquirir experiencia y nuevos conocimientos en las áreas de producción y logística, usando las metodologías adquiridas durante la universidad para aplicarlos a una organización, adecuándolos a las necesidades de la empresa para la resolución de problemas. A pesar de haber egresado en Junio de 2016 tengo experiencia profesional desde el año 2014, por lo que han sido dos años en los que he estado involucrado en actividades de logística y producción.
+				{{cv.summary}}
 	        </ion-card-content>
       </ion-card>
 </ion-content>

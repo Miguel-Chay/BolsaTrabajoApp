@@ -7,8 +7,10 @@ import { CityService } from '../../services/city.service';
 import { CountryService } from '../../services/country.service';
 import { StateService } from '../../services/state.service';
 import { UsersService } from '../../services/users.service';
+import { OrganizationUnitService } from '../../services/organization-unit.service';
+import { CvService } from '../../services/Cv.service';
 
-import { Candidate,City,State,Country,User } from '../../interfaces/interfaces';
+import { Candidate,City,State,Country,User,OrganizationUnit,Cv } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-inicio-perfil-basico',
@@ -18,23 +20,25 @@ import { Candidate,City,State,Country,User } from '../../interfaces/interfaces';
 export class InicioPerfilBasicoPage implements OnInit {
 
   val: string = null;
-  val1: string = null;
   photoRout: string = "http://localhost/btuady/public_html/files/photo/";
   edad: string = null;
   ciudad: string = null;
   estado: string= null;
   pais: string = null;
-  
 
+
+  organizationunit: OrganizationUnit={}
   candidate : Candidate = {}
 	city: City = {}
   state: State= {}
   country: Country= {}  
   user: User={}
+  cv: Cv={}
 
   constructor( public menuCtrl: MenuController, private storage: Storage, private candService : CandidateService,
   private cityService : CityService,private stateService : StateService,private countryService : CountryService, 
-  userService : UsersService ) {}
+  private userService : UsersService, private organizationunitService : OrganizationUnitService,
+  private cvService : CvService ) {}
   
   translateInfo()
   {
@@ -66,11 +70,14 @@ export class InicioPerfilBasicoPage implements OnInit {
 
 
     this.edad = this.calculateAge(this.candidate.birth_date).toString() ;
+    this.organizationunitService.getOrganizationUnit(this.candidate.organization_unit_id).subscribe(organizationunit=>{this.organizationunit=organizationunit
+    })
+    this.cvService.getCv(this.candidate.user_id).subscribe( cv=>{this.cv=cv})
 
     this.cityService.getCity(this.candidate.city_id).subscribe( city=>{this.city=city
       this.stateService.getState(this.city.state_id).subscribe( state=>{this.state=state
         this.countryService.getCountry(this.state.country_id).subscribe( country=>{this.country=country
-
+          this.imprime()  
         })
       })
     })
@@ -82,19 +89,15 @@ export class InicioPerfilBasicoPage implements OnInit {
   	this.menuCtrl.enable(true);
 
     this.storage.get('id').then((val) => { 
-      this.candService.getCandidate(val).subscribe(candidato=>{this.candidate=candidato
-
+      this.userService.getUser(val).subscribe(user=>{this.user=user
+        this.candService.getCandidate(val).subscribe(candidato=>{this.candidate=candidato
           this.translateInfo();
-          console.log("dentro")
-          this.imprime()  
-
-
+          
         })
 
-    })
-    console.log("fuera")
-    this.imprime()
+      })
 
+    })
   }
   
 
@@ -113,12 +116,11 @@ export class InicioPerfilBasicoPage implements OnInit {
   }
 
   imprime(){
-
+    console.log(this.user)
     console.log(this.candidate)
     console.log(this.country)
     console.log(this.state)
     console.log(this.city)
-
   }
 
 
