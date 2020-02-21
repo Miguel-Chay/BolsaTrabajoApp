@@ -3,7 +3,7 @@
   	<ion-buttons slot="start" color="light">
       <ion-back-button color="light"></ion-back-button>
     </ion-buttons> 
-    <ion-title color="light">Actualizacion de perfil</ion-title>
+    <ion-title color="light"> <strong> Actualizacion de perfil</strong></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,12 +12,13 @@
 	<ion-list>
 
 		<ion-list-header  >
-			<font size =4> DATOS DE ACCESO</font>
+			<font size =4> <strong>DATOS DE ACCESO</strong> </font>
         </ion-list-header>
 
 		<ion-item  lines="none">
             <ion-label position="stacked"><font size=5>Nombre de Usuario</font><ion-text color="danger">*<br></ion-text></ion-label>
-            <ion-input placeholder="p. ej. nombre.apellido"></ion-input>
+			<ion-input  placeholder="p. ej. nombre.apellido"
+						[(ngModel)]="user.username"></ion-input>
 	    </ion-item>
 
 		<ion-item lines="none">
@@ -39,55 +40,67 @@
  	<ion-list>
 
 		<ion-list-header  >
-			<font size =4> DATOS DEL CANDIDATO</font>
+			<font size =4> <strong>DATOS DEL CANDIDATO</strong> </font>
         </ion-list-header>
 
 		<ion-item  lines="none">
             <ion-label position="stacked"><font size=5>Nombres</font><ion-text color="danger">*<br></ion-text></ion-label>
-            <ion-input placeholder="Escribe tu(s) nombre(s)"></ion-input>
+			<ion-input 	placeholder="Escribe tu(s) nombre(s)"
+						[(ngModel)]="candidate.firstname"
+						required></ion-input>
 	    </ion-item>
 
 		<ion-item lines="none">
             <ion-label position="stacked"><font size=5>Apellidos</font><ion-text color="danger">*<br></ion-text></ion-label>
-            <ion-input placeholder="Escribe tu(s) apellido(s)"></ion-input>
+			<ion-input  placeholder="Escribe tu(s) apellido(s)"
+						[(ngModel)]="candidate.lastname"></ion-input>
   
 	    </ion-item>
 
 	    <ion-item>
 		    <ion-label>Sexo</ion-label>
-		    <ion-select placeholder="Seleccione tu Sexo">
-		      	<ion-select-option value="female">mujer</ion-select-option>
-		      	<ion-select-option value="male">hombre</ion-select-option>
+			<ion-select placeholder="Seleccione tu Sexo"
+				interface="popover"
+				[(ngModel)]="candidate.sex">
+		      	<ion-select-option value="female">Mujer</ion-select-option>
+		      	<ion-select-option value="male">Hombre</ion-select-option>
 		    </ion-select>
   		</ion-item>
        
 
 		<ion-item>
 			<ion-label  >Fecha de Nacimiento</ion-label>
-			<ion-datetime displayFormat="YYYY-MM-DD" min="1954-01-01" max="2001-12-31" value="2001-12-31"></ion-datetime>
+			<ion-datetime 	displayFormat="YYYY-MM-DD" min="1954-01-01" max="2001-12-31" value="2001-12-31"
+							[(ngModel)]="candidate.birth_date"></ion-datetime>
 		</ion-item>
  		
  		<ion-item>
 		    <ion-label>Estado civil</ion-label>
-		    <ion-select placeholder="Seleciona tu estado civil">
-		      	<ion-select-option value="soltero">Soltero(a)</ion-select-option>
-		      	<ion-select-option value="casado">Casado(a)</ion-select-option>
+			<ion-select placeholder="Seleciona tu estado civil"
+				interface="popover"
+				[(ngModel)]="candidate.marital_status">
+				<ion-select-option  value="married">Casado(a)</ion-select-option>
+		      	<ion-select-option  value="unmarried">Soltero(a)</ion-select-option>
+		      	
 		    </ion-select>
   		</ion-item>
 
   		<ion-item lines="none">
             <ion-label position="stacked"><font size=5>Correo Electronico</font><ion-text color="danger">*<br></ion-text></ion-label>
-            <ion-input placeholder="Escribe tu correo electronico"></ion-input>
+			<ion-input  placeholder="Escribe tu correo electronico"
+						[(ngModel)]="user.email"></ion-input>
 	    </ion-item>
 
 	    <ion-item lines="none">
             <ion-label position="stacked"><font size=5>Teléfono</font><ion-text color="danger">*<br></ion-text></ion-label>
-            <ion-input placeholder="p. ej. (999) 999 9999"></ion-input>
+			<ion-input  placeholder="p. ej. (999) 999 9999"
+						[(ngModel)]="candidate.phone"></ion-input>
 	    </ion-item>
 
 	    <ion-item lines="none">
             <ion-label position="stacked"><font size=5>Teléfono Celular</font></ion-label>
-            <ion-input></ion-input>
+			<ion-input 	placeholder="p. ej. (+52) 999 999 99 99"
+						[(ngModel)]="candidate.cellphone"></ion-input>
 	    </ion-item>
 
 	    <ion-item>
