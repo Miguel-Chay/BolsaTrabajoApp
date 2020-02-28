@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { AlertController } from '@ionic/angular'; 
+import { ActionSheetController } from '@ionic/angular'; 
 
 import { CandidateService } from '../../services/candidate.service';
 import { CityService } from '../../services/city.service';
@@ -20,12 +22,12 @@ import { Candidate,City,State,Country,User,OrganizationUnit,Cv } from '../../int
 export class InicioPerfilBasicoPage implements OnInit {
 
   val: string = null;
-  photoRout: string = "http://localhost/btuady/public_html/files/photo/";
+  photoRoutbase: string = "http://localhost/btuady/public_html/files/photo/";
   edad: string = null;
   ciudad: string = null;
   estado: string= null;
   pais: string = null;
-
+  photoRout: string='';
 
   organizationunit: OrganizationUnit={}
   candidate : Candidate = {}
@@ -37,8 +39,8 @@ export class InicioPerfilBasicoPage implements OnInit {
 
   constructor( public menuCtrl: MenuController, private storage: Storage, private candService : CandidateService,
   private cityService : CityService,private stateService : StateService,private countryService : CountryService, 
-  private userService : UsersService, private organizationunitService : OrganizationUnitService,
-  private cvService : CvService ) {}
+  private userService : UsersService, private organizationunitService : OrganizationUnitService,private cvService : CvService,
+  public alertController: AlertController, public actionSheetController: ActionSheetController,private navCtrl: NavController ) {}
   
   translateInfo()
   {
@@ -65,14 +67,16 @@ export class InicioPerfilBasicoPage implements OnInit {
     }
     else
     {
-      this.photoRout= this.photoRout + this.candidate.photo;
+      this.photoRout= this.photoRoutbase + this.candidate.photo;
     }
 
 
     this.edad = this.calculateAge(this.candidate.birth_date).toString() ;
     this.organizationunitService.getOrganizationUnit(this.candidate.organization_unit_id).subscribe(organizationunit=>{this.organizationunit=organizationunit
     })
-    this.cvService.getCv(this.candidate.user_id).subscribe( cv=>{this.cv=cv})
+    this.cvService.getCv(this.candidate.user_id).subscribe( cv=>{this.cv=cv
+      console.log(this.cv)
+    })
 
     this.cityService.getCity(this.candidate.city_id).subscribe( city=>{this.city=city
       this.stateService.getState(this.city.state_id).subscribe( state=>{this.state=state
@@ -123,6 +127,30 @@ export class InicioPerfilBasicoPage implements OnInit {
     console.log(this.city)
   }
 
+
+
+
+  async opcionesCv() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Editar',
+        icon: 'Create',
+        handler: () => {
+          this.navCtrl.navigateRoot('/editar-cv');
+          console.log('Editar clicked');
+        }
+      },{
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  } 
 
 
 }

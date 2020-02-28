@@ -17,4 +17,15 @@ export class CvService {
   getCv(id : string){
   	return this.http.get<Cv>(`http://localhost:8080/api/cvs/${id}`);
   }
+
+
+
+  updateCv(id : string,status: string, summary: string) {
+    const data = {id, status, summary };
+
+    return this.http.put<Cv>(`http://localhost:8080/api/cv/update/?id=${id}`, data)
+    };
+
+
+
 }

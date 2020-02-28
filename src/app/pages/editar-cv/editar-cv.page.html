@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="blue">
+  	<ion-buttons slot="start" color="light">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons> 
+    <ion-title color="light"> <strong> Editar Currículum</strong></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-item>
+	    <ion-label>Estado </ion-label>
+		<ion-select placeholder="Mostrar currículum?"
+			interface="popover"
+			[(ngModel)]="cv.status">
+			<ion-select-option  value="visible">Visible</ion-select-option>
+		   	<ion-select-option  value="hidden">Oculto</ion-select-option>
+	    </ion-select>
+  	</ion-item>
+
+	<ion-item>
+  		<ion-textarea  position="floating" placeholder="Escriba su currículum aqui..." auto-grow="true" [(ngModel)]="cv.summary"></ion-textarea>
+	</ion-item>
+
+
+    <ion-button color="light" (click)="imprimir()" > imprimir</ion-button>
+
+    <ion-button  (click)="UpdateCv()" > Guardar</ion-button>
+
+</ion-content>
