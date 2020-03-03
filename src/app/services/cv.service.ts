@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Cv } from '../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
 import { resolve } from 'url';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,12 @@ import { resolve } from 'url';
 export class CvService {
 
   id: string = null;
-
+  URL = environment.url;
 
   constructor(private http: HttpClient) { }
 
   getCv(id : string){
-  	return this.http.get<Cv>(`http://localhost:8080/api/cvs/${id}`);
+  	return this.http.get<Cv>(`${this.URL}/api/cvs/${id}`);
   }
 
 
@@ -23,7 +24,7 @@ export class CvService {
   updateCv(id : string,status: string, summary: string) {
     const data = {id, status, summary };
 
-    return this.http.put<Cv>(`http://localhost:8080/api/cv/update/?id=${id}`, data)
+    return this.http.put<Cv>(`${this.URL}/api/cvs/${id}`, data)
     };
 
 

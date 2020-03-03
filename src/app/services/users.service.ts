@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Login, User } from '../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
 import { resolve } from 'url';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,12 @@ import { resolve } from 'url';
 export class UsersService {
   token: string = null;
   id: string = null;
+  URL = environment.url;
   constructor(private http: HttpClient, private storage: Storage) { }
 
 
   getUser(id : string){
-    return this.http.get<User>(`http://localhost:8080/api/users/${id}`);
+    return this.http.get<User>(`${this.URL}/api/users/${id}`);
   }
 
 
@@ -22,7 +24,7 @@ export class UsersService {
     const data = {username, password};
 
     return new Promise(resolve => {
-      this.http.post(`http://localhost:8080/api/user/login`, data)
+      this.http.post(`${this.URL}/api/user/login`, data)
       .subscribe(resp => {
         console.log(resp);
 

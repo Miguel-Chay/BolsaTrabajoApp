@@ -22,7 +22,7 @@ import { Candidate,City,State,Country,User,OrganizationUnit,Cv } from '../../int
 export class InicioPerfilBasicoPage implements OnInit {
 
   val: string = null;
-  photoRoutbase: string = "http://localhost/btuady/public_html/files/photo/";
+  photoRoutbase: string = "https://localhost/btuady/public_html/files/photo/";
   edad: string = null;
   ciudad: string = null;
   estado: string= null;
