@@ -18,6 +18,6 @@ export class CandidateService {
   }
   
   getPhoto(id : string){
-  	return this.http.get<Candidate>(`http://localhost:8080/api/candidates/?id=${id}`);
+  	return this.http.get<Candidate>(`http://localhost:8080/api/candidate/view-photo/?id=${id}`);
   }
 }
