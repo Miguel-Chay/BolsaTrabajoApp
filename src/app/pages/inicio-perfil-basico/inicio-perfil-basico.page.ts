@@ -22,7 +22,7 @@ import { Candidate,City,State,Country,User,OrganizationUnit,Cv } from '../../int
 export class InicioPerfilBasicoPage implements OnInit {
 
   val: string = null;
-  photoRoutbase: string = "https://localhost/btuady/public_html/files/photo/";
+  photoRoutbase: string = "http://localhost/btuady/public_html/files/photo/";
   edad: string = null;
   ciudad: string = null;
   estado: string= null;
@@ -80,8 +80,7 @@ export class InicioPerfilBasicoPage implements OnInit {
 
     this.cityService.getCity(this.candidate.city_id).subscribe( city=>{this.city=city
       this.stateService.getState(this.city.state_id).subscribe( state=>{this.state=state
-        this.countryService.getCountry(this.state.country_id).subscribe( country=>{this.country=country
-          this.imprime()  
+        this.countryService.getCountry(this.state.country_id).subscribe( country=>{this.country=country  
         })
       })
     })
@@ -90,7 +89,14 @@ export class InicioPerfilBasicoPage implements OnInit {
 
   ionViewWillEnter() //carga antes de entrar
   {
-  	this.menuCtrl.enable(true);
+  	
+  }
+  
+
+
+  ngOnInit()//carga al entrar 
+  {
+    this.menuCtrl.enable(true);
 
     this.storage.get('id').then((val) => { 
       this.userService.getUser(val).subscribe(user=>{this.user=user
@@ -103,11 +109,6 @@ export class InicioPerfilBasicoPage implements OnInit {
 
     })
   }
-  
-
-
-  ngOnInit()//carga al entrar 
-  {}
 
   
 
@@ -119,13 +120,13 @@ export class InicioPerfilBasicoPage implements OnInit {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
-  imprime(){
-    console.log(this.user)
-    console.log(this.candidate)
-    console.log(this.country)
-    console.log(this.state)
-    console.log(this.city)
-  }
+  // imprime(){
+  //   console.log(this.user)
+  //   console.log(this.candidate)
+  //   console.log(this.country)
+  //   console.log(this.state)
+  //   console.log(this.city)
+  // }
 
 
 
@@ -138,14 +139,12 @@ export class InicioPerfilBasicoPage implements OnInit {
         icon: 'Create',
         handler: () => {
           this.navCtrl.navigateRoot('/editar-cv');
-          console.log('Editar clicked');
         }
       },{
         text: 'Cancelar',
         icon: 'close',
         role: 'cancel',
         handler: () => {
-          console.log('Cancel clicked');
         }
       }]
     });

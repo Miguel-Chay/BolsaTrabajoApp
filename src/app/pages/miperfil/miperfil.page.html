@@ -97,20 +97,20 @@
 <!--===================================================EXPERIENCIA LABORAL===================================================-->
     <div  *ngSwitchDefault >
 
-      <ion-card color="light" (click)=opcionesExpLab()>
+      <ion-card *ngFor="let i of workexperience" color="light" (click)=opcionesExpLab()>
         <ion-card-header>
-          <ion-card-title>PREDECO S.A. DE C.V.</ion-card-title>
-          <ion-card-subtitle>Auxiliar de transporte</ion-card-subtitle>
+          <ion-card-title>{{i.company}}</ion-card-title>
+          <ion-card-subtitle>{{i.job_title}}</ion-card-subtitle>
         </ion-card-header>
 
-        <ion-card-content>
-          Programación de entrada de materia prima desde planta de trituración a planta de fabricación, control y monitoreo de rendimiento de combustible a toda la flotilla, monitoreo de la flotilla de transporte por medio de GPS, registros de mantenimiento de todas las unidades, elaboración de nóminas para pago de choferes y ayudantes.
+        <ion-card-content style="text-align: justify;">
+          {{i.description}}
           <br>
-          <b>Periodo:</b> De 2014-08-01 a 2015-08-01
+          <b>Periodo:</b><p> De {{i.start}} a  <span  *ngIf=" i.end == null">la fecha</span > <span  *ngIf=" i.end != null">{{i.end}}</span ></p>
           <br>
-          <b>Giro del negocio:</b> Ingeniería, arquitectura y construcción
+          <b>Giro del negocio:</b> {{i.name}}
         </ion-card-content>
-        
+        <!-- line busines giro del negocio -->
       </ion-card>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">

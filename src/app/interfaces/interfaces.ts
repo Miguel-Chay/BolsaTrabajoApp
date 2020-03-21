@@ -70,3 +70,20 @@ export interface Cv{
   summary? : string; 
   status? : string;
 }
+
+export interface WorkExperience{
+  id? : string;
+  cv_id? : string;
+  company? : string;
+  line_business_id? : string;
+  job_title? : string;
+  start? : Date;
+  end? : Date;
+  description? : string;
+  name? : string;
+}
+
+export interface LineBusiness{
+id? : string;
+name? : string;
+}

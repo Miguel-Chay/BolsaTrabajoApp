@@ -1,6 +1,12 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { AlertController } from '@ionic/angular'; 
 import { ActionSheetController } from '@ionic/angular'; 
+import { Storage } from '@ionic/storage';
+
+import { WorkExperienceService } from '../../services/work-experience.Service';
+import { LineBusinessService } from '../../services/line-business.service';
+
+import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-miperfil',
@@ -8,32 +14,73 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['./miperfil.page.scss'],
 })
 
-//let expLab: string[] = ['PREDECO S.A. DE C.V.', 'Auxiliar de transporte', '2014-08-01','2015-08-01','Programación de entrada de materia prima desde planta de trituración a planta de fabricación, control y monitoreo de rendimiento de combustible a toda la flotilla, monitoreo de la flotilla de transporte por medio de GPS, registros de mantenimiento de todas las unidades, elaboración de nóminas para pago de choferes y ayudantes.'];
-/*class expLab{
-    company:string;
-    job_tittle:string;
-    start:string;
-    end:Date;
-    description:string;
-
-    constructor(company1:string,job_tittle1:string,start1:string,end1:Date,description1:string)
-    {
-      this.company=company1;
-      this.job_tittle=job_tittle1;
-      this.start=start1;
-      this.end=end1;
-      this.description=description1;
-    }
-}
-
-let exp= new expLab('PREDECO S.A. DE C.V.', 'Auxiliar de transporte', '2014-08-01','2015-08-01','Programación de entrada de materia prima desde planta de trituración a planta de fabricación, control y monitoreo de rendimiento de combustible a toda la flotilla, monitoreo de la flotilla de transporte por medio de GPS, registros de mantenimiento de todas las unidades, elaboración de nóminas para pago de choferes y ayudantes.')
- */
-
-
 export class MiperfilPage implements OnInit { 
   public segmento: any[];
-  constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) {}
+
+  val: string = null;
+
+  workexperience: WorkExperience;
+  linebusiness : LineBusiness = {}
+
+  constructor(public alertController: AlertController, public actionSheetController: ActionSheetController,
+    private workexperienceService : WorkExperienceService, private linebusinessService : LineBusinessService,  
+    private storage: Storage) {}
+
+
+  ngOnInit() { 
+    this.storage.get('id').then((val) => { 
+      this.workexperienceService.getWorkExperiences (val).subscribe( workexperience=>{this.workexperience=workexperience[0]
+
+        var tam = workexperience[1]
+        console.log("tamaño = "+tam)
+      
+        var lineid :string
+        for (var i = 0; i < tam; ++i) {
+          lineid=this.workexperience[i].line_business_id
+
+          this.linebusinessService.getLineBusiness(lineid).subscribe( linebusiness=>{ this.linebusiness=linebusiness
+            this.workexperience[i].name=linebusiness.name
+            console.log(this.workexperience[i].name)
+            // console.log(this.linebusiness.name)
+            // console.log(this.workexperience[i].name)
+          })
+          console.log("ciclo "+i)
+          console.log(this.workexperience[i].name)
+        }
+
+        // this.linebusinessService.getLineBusiness(this.linebusiness[0].line_business_id).subscribe( linebusiness=>{ this.linebusiness=linebusiness
+        // console.log(this.linebusiness.name);
+        // })
+
+
+      })
+    })
+
+    
+  }
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 async opcionesIdioma() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Opciones',
@@ -330,7 +377,5 @@ async agregarNivel()  {
 }
 
 
-  ngOnInit() { 
-  }
 
 }

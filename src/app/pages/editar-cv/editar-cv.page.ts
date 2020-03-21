@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NgForm } from '@angular/forms';
+import { NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { UiServiceService } from '../../services/ui-service.service';
 
 import { CvService } from '../../services/Cv.service';
-
 
 import { Cv } from '../../interfaces/interfaces';
 
@@ -15,9 +17,12 @@ import { Cv } from '../../interfaces/interfaces';
 export class EditarCvPage implements OnInit {
 
   val: string = null;
-  cv: Cv={}
+  conf: boolean= null;
+  cv: Cv={};
+  re = /[a-z0-9._%+-]/;
 
-  constructor(private cvService : CvService,private storage: Storage) { }
+  constructor(private cvService : CvService,private storage: Storage,private uiService: UiServiceService,
+    private navCtrl: NavController, private alertController: AlertController) { }
 
   ngOnInit() {
 
@@ -29,12 +34,18 @@ export class EditarCvPage implements OnInit {
   }
 
 
-  UpdateCv(form: NgForm) {
-    this.cvService.updateCv(this.cv.candidate_id,this.cv.status, this.cv.summary).subscribe( cv=>{});
+  async discardchanges(){
+    await this.uiService.alertaConfirmar('Desea descartar los cambios','/inicio-perfil-basico')
   }
+  async savechanges(form: NgForm) {
 
-  imprimir(){
-  	console.log(this.cv)
+    if(!this.re.test(this.cv.summary))
+      this.uiService.alertaInformativa("Resumen no puede estar vacío. Por favor use caracteres [A-z][0-9]")
+    else{
+    const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/inicio-perfil-basico')
+    if(confirm)
+      this.cvService.updateCv(this.cv.candidate_id,this.cv.status, this.cv.summary).subscribe( cv=>{});
+   }
   }
 
 

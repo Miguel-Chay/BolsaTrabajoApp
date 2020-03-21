@@ -1,13 +1,16 @@
 <ion-header>
   <ion-toolbar color="blue">
-  	<ion-buttons slot="start" color="light">
-      <ion-back-button color="light"></ion-back-button>
-    </ion-buttons> 
-    <ion-title color="light"> <strong> Editar Currículum</strong></ion-title>
+  	<ion-title color="light"> <strong> Editar Currículum</strong></ion-title>
+    <ion-buttons slot="start">
+    	<ion-button (click)="discardchanges()" >
+      		<ion-icon slot="icon-only" name="arrow-back" color="light"></ion-icon>
+    	</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+
+<ion-content color="goldlow">
 
 	<ion-item>
 	    <ion-label>Estado </ion-label>
@@ -18,14 +21,18 @@
 		   	<ion-select-option  value="hidden">Oculto</ion-select-option>
 	    </ion-select>
   	</ion-item>
+	<ion-card>
+		<ion-item>
+  			<ion-textarea  position="floating"  placeholder="Escriba su currículum aqui..." auto-grow="true" [(ngModel)]="cv.summary"></ion-textarea>
+		</ion-item>
+	</ion-card>
+	
+ <!-- (keyup.enter)="UpdateCv()" -->
 
-	<ion-item>
-  		<ion-textarea  position="floating" placeholder="Escriba su currículum aqui..." auto-grow="true" [(ngModel)]="cv.summary"></ion-textarea>
-	</ion-item>
+    <div class="ion-padding">
+    	<ion-button  color="blue" size="large" (click)="savechanges()" > Guardar</ion-button>
 
+    </div>
 
-    <ion-button color="light" (click)="imprimir()" > imprimir</ion-button>
-
-    <ion-button  (click)="UpdateCv()" > Guardar</ion-button>
 
 </ion-content>
