@@ -12,8 +12,10 @@ import { CandidateService } from './candidate.service';
 export class UsersService {
   token: string = null;
   id: string = null;
+  user: User;
   URL = environment.url;
-  constructor(private http: HttpClient, private storage: Storage, private candidateService: CandidateService ) { }
+  constructor(private http: HttpClient, private storage: Storage, private candidateService: CandidateService ) {
+   }
 
 
   getUser(id: string) {
@@ -29,7 +31,7 @@ export class UsersService {
         console.log(resp);
 
         if (resp['login'] ) {
-          this.getUser(resp['id']).subscribe( user => { 
+          this.getUser(resp['id']).subscribe( user => {
             this.guardarUsuario(user);
             resolve(true);
            });
@@ -50,7 +52,15 @@ export class UsersService {
     });
 
   }
-
+  updateUser(id: string, data: any) {
+    return new Promise((resolve, reject) => {
+      this.http.put(`${this.URL}/api/users/${id}`, data).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
   async guardarToken(token: string) {
     this.token = token;
     await this.storage.set('token', token);

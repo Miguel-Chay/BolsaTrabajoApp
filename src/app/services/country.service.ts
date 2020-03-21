@@ -14,7 +14,10 @@ URL = environment.url;
 
   constructor(private http: HttpClient) { }
 
-  getCountry(id : string){
-  	return this.http.get<Country>(`${this.URL}/api/countries/${id}`);
+  getCountry(id: string){
+    return this.http.get<Country>(`${this.URL}/api/countries/${id}`);
+  }
+  getCountries() {
+    return this.http.get<Country>(`${this.URL}/api/country`);
   }
 }

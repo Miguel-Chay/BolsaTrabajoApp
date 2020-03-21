@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'agregar-curso', loadChildren: './pages/agregar-curso/agregar-curso.module#AgregarCursoPageModule' },
   { path: 'agregar-certificacion', loadChildren: './pages/agregar-certificacion/agregar-certificacion.module#AgregarCertificacionPageModule' },
   { path: 'editar-perfil-basico', loadChildren: './pages/editar-perfil-basico/editar-perfil-basico.module#EditarPerfilBasicoPageModule' },
-  { path: 'editar-cv', loadChildren: './pages/editar-cv/editar-cv.module#EditarCvPageModule' }
+  { path: 'editar-cv', loadChildren: './pages/editar-cv/editar-cv.module#EditarCvPageModule' },  { path: 'prueb', loadChildren: './pages/prueb/prueb.module#PruebPageModule' }
+
 
 
 ];

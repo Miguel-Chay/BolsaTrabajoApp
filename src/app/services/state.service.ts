@@ -16,6 +16,11 @@ export class StateService {
   constructor(private http: HttpClient) { }
 
   getState(id : string){
-  	return this.http.get<State>(`${this.URL}/api/states/${id}`);
+    return this.http.get<State>(`${this.URL}/api/states/${id}`);
+  }
+
+  // regresa una lista de estados que tienen la id del pais
+  getStateByCountry(id: string) {
+    return this.http.get<State>(`${this.URL}/api/state/lists/?id=${id}`);
   }
 }

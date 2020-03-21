@@ -17,4 +17,8 @@ export class OrganizationUnitService {
   getOrganizationUnit(id : string){
   	return this.http.get<OrganizationUnit>(`${this.URL}/api/organization-units/${id}`);
   }
+
+  getOrganizationUnits() {
+    return this.http.get<OrganizationUnit>(`${this.URL}/api/organization-units`);
+  }
 }
