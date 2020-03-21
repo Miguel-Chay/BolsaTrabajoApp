@@ -12,7 +12,7 @@ export class CandidateService {
   id: string = null;
   URL = environment.url;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storage: Storage) { }
 
   getCandidate(id : string){
   	return this.http.get<Candidate>(`${this.URL}/api/candidates/${id}`);
@@ -21,4 +21,6 @@ export class CandidateService {
   getPhoto(id : string){
   	return this.http.get<Candidate>(`${this.URL}/api/candidate/view-photo/?id=${id}`);
   }
+
+ 
 }

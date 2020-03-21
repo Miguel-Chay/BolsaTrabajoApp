@@ -21,19 +21,19 @@ export class EditarPerfilBasicoPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.storage.get('id').then((val) => {
-    //   this.candidateService.getCandidate(val).subscribe(candidato => {
-    //     this.candidate = candidato;
-    //     });
-    //   this.userService.getUser(val).subscribe(user => {
-    //     this.user = user;
-    //   });
-    // });
+    this.storage.get('id').then((val) => {
+      this.candidateService.getCandidate(val).subscribe(candidato => {
+        this.candidate = candidato;
+        });
+      this.userService.getUser(val).subscribe(user => {
+        this.user = user;
+      });
 
+    });
     this.updateData = new FormGroup(  {
-      username: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(128), Validators.pattern('[a-zA-Z.-]+[a-zA-Z]')] ),
-      email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$') ]),
-      password: new FormControl('', Validators.required),
+      username: new FormControl(this.user.username, [Validators.required, Validators.minLength(4), Validators.maxLength(128), Validators.pattern('[a-zA-Z.-]+[a-zA-Z]')] ),
+      email: new FormControl(this.user.email, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$') ]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       repeatPassword: new FormControl(),
 
       firstname: new FormControl(Validators.required),
@@ -54,6 +54,11 @@ export class EditarPerfilBasicoPage implements OnInit {
     ]);
   }
 
+  ionViewWillEnter() {
+
+  }
+  llenarForm() {
+  }
   update() {
     console.log(this.updateData.value);
   }

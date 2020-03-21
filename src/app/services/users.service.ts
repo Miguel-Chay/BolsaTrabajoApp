@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Login, User } from '../interfaces/interfaces';
+import { Login, User, Candidate } from '../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
 import { resolve } from 'url';
 import { environment } from 'src/environments/environment';
+import { CandidateService } from './candidate.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,12 @@ export class UsersService {
   token: string = null;
   id: string = null;
   URL = environment.url;
-  constructor(private http: HttpClient, private storage: Storage) { }
+  constructor(private http: HttpClient, private storage: Storage, private candidateService: CandidateService ) { }
 
 
-  getUser(id : string){
+  getUser(id: string) {
     return this.http.get<User>(`${this.URL}/api/users/${id}`);
   }
-
 
   login(username: string, password: string) {
     const data = {username, password};
@@ -29,6 +29,14 @@ export class UsersService {
         console.log(resp);
 
         if (resp['login'] ) {
+          this.getUser(resp['id']).subscribe( user => { 
+            this.guardarUsuario(user);
+            resolve(true);
+           });
+          this.candidateService.getCandidate(resp['id']).subscribe(candidate => {
+              this.guardarCandidato(candidate);
+              resolve(true);
+           });
           this.guardarToken(resp['token']);
           resolve(true);
           this.guardarId(resp['id']);
@@ -52,5 +60,11 @@ export class UsersService {
     this.id = id;
     await this.storage.set('id', id);
     console.log(id);
+  }
+  async guardarUsuario(user: User) {
+    await this.storage.set('user', JSON.stringify(user));
+  }
+  async guardarCandidato(candidate: Candidate) {
+    await this.storage.set('candidate', JSON.stringify(candidate));
   }
 }
