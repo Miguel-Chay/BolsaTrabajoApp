@@ -97,7 +97,7 @@
 <!--===================================================EXPERIENCIA LABORAL===================================================-->
     <div  *ngSwitchDefault >
 
-      <ion-card *ngFor="let i of workexperience" color="light" (click)=opcionesExpLab()>
+      <ion-card *ngFor="let i of workexperience" color="light" (click)=opcionesExpLab(i.id)>
         <ion-card-header>
           <ion-card-title>{{i.company}}</ion-card-title>
           <ion-card-subtitle>{{i.job_title}}</ion-card-subtitle>
@@ -110,7 +110,6 @@
           <br>
           <b>Giro del negocio:</b> {{i.name}}
         </ion-card-content>
-        <!-- line busines giro del negocio -->
       </ion-card>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">

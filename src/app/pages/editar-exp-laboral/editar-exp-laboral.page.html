@@ -74,33 +74,34 @@
  <ion-text>
  	<h4>Hasta<ion-text color="danger">*<br></ion-text></h4>
  </ion-text>	
-<ion-item>
-<ion-label>Es mi empleo actual</ion-label><ion-checkbox checked="false" (click)="clickbox()"></ion-checkbox>
-</ion-item> 
- 
-</div  >
 
- <div *ngIf = "!checked">
-
-
-<ion-list formGroupName="wexperienceData">
-    <ion-item>
-      <ion-label>Año de término</ion-label>
-        <ion-datetime  min={{minDate}} max={{maxDate}} displayFormat='YYYY-MMMM' placeholder="Seleccione el año" formControlName="date_end"
-        month-names="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiempre, Octubre, Noviembre, Diciembre"
-        (ionChange)=" onChangeEnd($event)" value={{maxDate}}>  </ion-datetime>
-    </ion-item>
-</ion-list>
 </div>
 
+<ion-list formGroupName="wexperienceData">
+  <ion-item>
+    <ion-label>Es mi empleo actual</ion-label>
+    <ion-checkbox  formControlName="is_current_job" slot="start" (click)="clickbox()" ></ion-checkbox>    
+  </ion-item>
 
-  <!-- <div class="ion-padding">
+  <div *ngIf = "!updateData.get('wexperienceData').get('is_current_job').value">
+    <ion-item>
+        <ion-label>Año de término</ion-label>
+          <ion-datetime  min={{minDate}} max={{maxDate}} displayFormat='YYYY-MMMM' placeholder="Seleccione el año" 
+          formControlName="date_end" month-names="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiempre, Octubre, Noviembre, Diciembre" (ionChange)=" onChangeEnd($event)" value={{maxDate}}>  </ion-datetime>
+    </ion-item>  
+  </div>
+</ion-list>
+<!-- NUEVO -->
+
+
+<!--   <div class="ion-padding">
     <ion-button  color="blue" size="large" (click)="imprimir()" > imprimir</ion-button>
   </div> -->
+
    <ion-button [ngClass]="{'button-disabled': updateData.invalid}" color="primary" type="submit" expand="block" shape="round" 
-   (click)= "addWorkExperience()">
-                        Aceptar
-                    </ion-button>
+   (click)= "updateWorkExperience()">
+     Actualizar
+    </ion-button>
 </form>
 </ion-content>
 

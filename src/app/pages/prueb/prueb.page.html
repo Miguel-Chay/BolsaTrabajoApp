@@ -4,9 +4,15 @@
     </ion-toolbar>
 </ion-header>
 
+
+
+
 <ion-content>
-    <ion-item>
-        <ion-label>Date</ion-label>
-        <ion-datetime display-format="DD-MMMM-YYYY"></ion-datetime>
-    </ion-item>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    	
+    	mensaje
+    </ion-refresher-content>
+  </ion-refresher>
 </ion-content>
+

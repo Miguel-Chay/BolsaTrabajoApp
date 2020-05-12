@@ -37,15 +37,17 @@ export class EditarCvPage implements OnInit {
   async discardchanges(){
     await this.uiService.alertaConfirmar('Desea descartar los cambios','/inicio-perfil-basico')
   }
+
   async savechanges(form: NgForm) {
 
     if(!this.re.test(this.cv.summary))
       this.uiService.alertaInformativa("Resumen no puede estar vacío. Por favor use caracteres [A-z][0-9]")
     else{
-    const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/inicio-perfil-basico')
-    if(confirm)
-      this.cvService.updateCv(this.cv.candidate_id,this.cv.status, this.cv.summary).subscribe( cv=>{});
-   }
+      const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/inicio-perfil-basico')
+      if(confirm)
+        this.cvService.updateCv(this.cv.candidate_id,this.cv.status, this.cv.summary).subscribe( cv=>{});
+    }
+
   }
 
 

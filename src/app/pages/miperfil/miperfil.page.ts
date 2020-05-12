@@ -2,9 +2,12 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { AlertController } from '@ionic/angular'; 
 import { ActionSheetController } from '@ionic/angular'; 
 import { Storage } from '@ionic/storage';
+// import { NavController,NavParams  } from '@ionic/angular';
+// import { Router } from '@angular/router';
 
 import { WorkExperienceService } from '../../services/work-experience.Service';
 import { LineBusinessService } from '../../services/line-business.service';
+import { UiServiceService } from '../../services/ui-service.service';
 
 import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
 
@@ -14,49 +17,33 @@ import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
   styleUrls: ['./miperfil.page.scss'],
 })
 
+
+
+
 export class MiperfilPage implements OnInit { 
   public segmento: any[];
 
   val: string = null;
+  confirm:string ;
 
   workexperience: WorkExperience;
   linebusiness : LineBusiness = {}
 
   constructor(public alertController: AlertController, public actionSheetController: ActionSheetController,
     private workexperienceService : WorkExperienceService, private linebusinessService : LineBusinessService,  
-    private storage: Storage) {}
+    private storage: Storage,private uiService: UiServiceService) {}
 
 
-  ngOnInit() { 
+  ngOnInit(){}
+
+  ionViewWillEnter() { 
+
     this.storage.get('id').then((val) => { 
-      this.workexperienceService.getWorkExperiences (val).subscribe( workexperience=>{this.workexperience=workexperience[0]
-
-        var tam = workexperience[1]
-        console.log("tamaño = "+tam)
-      
-        var lineid :string
-        for (var i = 0; i < tam; ++i) {
-          lineid=this.workexperience[i].line_business_id
-
-          this.linebusinessService.getLineBusiness(lineid).subscribe( linebusiness=>{ this.linebusiness=linebusiness
-            this.workexperience[i].name=linebusiness.name
-            console.log(this.workexperience[i].name)
-            // console.log(this.linebusiness.name)
-            // console.log(this.workexperience[i].name)
-          })
-          console.log("ciclo "+i)
-          console.log(this.workexperience[i].name)
-        }
-
-        // this.linebusinessService.getLineBusiness(this.linebusiness[0].line_business_id).subscribe( linebusiness=>{ this.linebusiness=linebusiness
-        // console.log(this.linebusiness.name);
-        // })
-
-
+      this.workexperienceService.getWorkExComplete (val).subscribe( workexperience=>{this.workexperience=workexperience
       })
     })
 
-    
+
   }
   
 
@@ -95,7 +82,7 @@ async opcionesIdioma() {
         text: 'Editar',
         icon: 'Create',
         handler: () => {
-          console.log('Editar clicked');
+          console.log('Editar clicked'); 
           this.agregarIdioma();
         }
       },{
@@ -109,32 +96,14 @@ async opcionesIdioma() {
     });
     await actionSheet.present();
   }
-async opcionesExpLab() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Opciones',
-      buttons: [{
-        text: 'Eliminar',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          console.log('Delete clicked');
-        }
-      }, {
-        text: 'Editar',
-        icon: 'Create',
-        handler: () => {
-          console.log('Editar clicked');
-        }
-      },{
-        text: 'Cancelar',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
-    });
-    await actionSheet.present();
+
+  async opcionesExpLab(id: string) {
+    this.confirm = await this.uiService.opcionesMiperfil('/editar-exp-laboral/'+id)//manda la ruta mas el parametro id 
+     if(this.confirm== "delete"){
+      this.workexperienceService.deleteWorkExperience(id).subscribe(Response => {this.ionViewWillEnter()});
+
+    }
+    //pronlema
   } 
 
   async opcionesFormAcademica() {

@@ -77,10 +77,15 @@ export interface WorkExperience{
   company? : string;
   line_business_id? : string;
   job_title? : string;
-  start? : Date;
-  end? : Date;
+  start? : string;
+  end? : string ;
+  month_start? : string;
+  year_start? : string;
+  month_end? : string;
+  year_end? : string;
   description? : string;
   name? : string;
+  is_current_job? : boolean; 
 }
 
 export interface LineBusiness{

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +20,11 @@ const routes: Routes = [
   { path: 'agregar-curso', loadChildren: './pages/agregar-curso/agregar-curso.module#AgregarCursoPageModule' },
   { path: 'agregar-certificacion', loadChildren: './pages/agregar-certificacion/agregar-certificacion.module#AgregarCertificacionPageModule' },
   { path: 'editar-perfil-basico', loadChildren: './pages/editar-perfil-basico/editar-perfil-basico.module#EditarPerfilBasicoPageModule' },
-  { path: 'editar-cv', loadChildren: './pages/editar-cv/editar-cv.module#EditarCvPageModule' },  { path: 'prueb', loadChildren: './pages/prueb/prueb.module#PruebPageModule' }
+  { path: 'editar-cv', loadChildren: './pages/editar-cv/editar-cv.module#EditarCvPageModule' },
+  { path: 'prueb', loadChildren: './pages/prueb/prueb.module#PruebPageModule' },
+  { path: 'editar-exp-laboral/:id', loadChildren: './pages/editar-exp-laboral/editar-exp-laboral.module#EditarExpLaboralPageModule' },//pasa parametro id 
+  
+
 
 
 

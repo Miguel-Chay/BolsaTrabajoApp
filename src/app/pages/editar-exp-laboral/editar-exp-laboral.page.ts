@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Storage } from '@ionic/storage';
-
+import { ActivatedRoute } from '@angular/router';
 import {FormGroup, FormControl, Validators ,FormBuilder } from '@angular/forms';
 
 import { WorkExperienceService } from '../../services/work-experience.Service';
@@ -11,72 +11,86 @@ import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
 
 
 @Component({
-  selector: 'app-agregar-exp-laboral',
-  templateUrl: './agregar-exp-laboral.page.html',
-  styleUrls: ['./agregar-exp-laboral.page.scss'],
+  selector: 'app-editar-exp-laboral',
+  templateUrl: './editar-exp-laboral.page.html',
+  styleUrls: ['./editar-exp-laboral.page.scss'],
 })
-export class AgregarExpLaboralPage implements OnInit {
+export class EditarExpLaboralPage implements OnInit {
 
-  public checked : boolean = false;//variable para saber si el checkbox esta marcado
+  
 
    // Datos necesarios
-
-   now = new Date();
-   minDate: string;
+   id :string; //id del workExperience a modificar
+   now = new Date(); //calcula la fecha actual
+   minDate: string; // pone los datos de las fechas en minimos
    maxDate: string;
    workExperience : WorkExperience;
    lineBusiness : LineBusiness;
-   is_current_job='';
+
+
+
    // ----- formato para almacenar la informacion a actualizar------
-  updateData: FormGroup;
+   updateData: FormGroup;
+   
    // --------------------------------------------------------------
 
+
+
   constructor( private storage: Storage, private workExperienceService: WorkExperienceService,  
-    private lineBusinessService: LineBusinessService, private uiService: UiServiceService) { 
-   
+    private lineBusinessService: LineBusinessService ,private route: ActivatedRoute, 
+    private uiService: UiServiceService ) { 
+
     this.initForm();
     
-
-
     if (this.now.getMonth()<10)
       this.minDate=this.maxDate= this.now.getFullYear()+"-0"+this.now.getMonth();  
     else
       this.minDate=this.maxDate= this.now.getFullYear()+"-"+this.now.getMonth();
   }
+
   
   ngOnInit() {
+    // recupera la id enviada como parametro (app-routing) 
+    this.id = this.route.snapshot.paramMap.get('id');
 
+    this.workExperienceService.getWorkExperience(this.id).subscribe( workexperience=>{this.workExperience=workexperience
+
+      //si el workexperience es su trabajo actual is is_current_job se pone en true y se le asigna una fecha maxDate por si 
+      //decide cambiar la fecha de termino
+      if (this.workExperience.end==null){
+        this.workExperience.is_current_job=true; 
+        this.workExperience.end=this.maxDate
+        this.workExperience.month_end=this.maxDate.substr(5,2)
+        this.workExperience.year_end= this.maxDate.substr(0,4)
+      }
+      else{
+        this.workExperience.is_current_job=false;
+      }
+
+      console.log(workexperience)
+        this.updateData = new FormGroup({
+          wexperienceData: new FormGroup({
+              id: new FormControl(this.workExperience.id, Validators.required),
+              company: new FormControl(this.workExperience.company,[ Validators.required, Validators.maxLength(175)]),
+              line_business_id:  new FormControl(this.workExperience.line_business_id, ),
+              date_start: new FormControl(this.workExperience.start, Validators.required),
+              date_end: new FormControl(this.workExperience.end, ),
+              job_title: new FormControl(this.workExperience.job_title, [ Validators.required, Validators.maxLength(175)]),
+              month_start : new FormControl(this.workExperience.month_start, Validators.required),
+              year_start : new FormControl(this.workExperience.year_start, Validators.required),
+              month_end :new FormControl(this.workExperience.month_end, Validators.required),
+              year_end : new FormControl(this.workExperience.year_end, Validators.required),
+              description: new FormControl(this.workExperience.description,),
+              is_current_job : new FormControl(this.workExperience.is_current_job,),
+          }),
+           name: new FormControl('', ),
+        })
+
+    })
 
     this.lineBusinessService.getLineBusinesslist().subscribe(lineBusiness=>{
       this.lineBusiness=lineBusiness
     })
-    this.storage.get('id').then((val) => {
-      this.updateData.get('wexperienceData').get('cv_id').setValue(val);  
-    })
-
-
-    // this.updateData.get('wexperienceData').get('line_business_id').setValue("NULL"); 
-    
-    this.updateData = new FormGroup({
-           wexperienceData: new FormGroup({
-              cv_id: new FormControl('', Validators.required),
-              company: new FormControl('',[ Validators.required, Validators.maxLength(175)]),
-              line_business_id:  new FormControl('', ),
-              date_start: new FormControl('', Validators.required),
-              date_end: new FormControl('', ),
-              job_title: new FormControl('', [ Validators.required, Validators.maxLength(175)]),
-              month_start : new FormControl('', Validators.required),
-              year_start : new FormControl('', Validators.required),
-              month_end :new FormControl('', Validators.required),
-              year_end : new FormControl('', Validators.required),
-              description: new FormControl('',),
-      }),
-           name: new FormControl('', ),
-    })
-
-
-
-
 
   }
  
@@ -86,7 +100,7 @@ export class AgregarExpLaboralPage implements OnInit {
  initForm() {
     this.updateData = new FormGroup(  {
       wexperienceData: new FormGroup({
-        cv_id: new FormControl( ),
+        id: new FormControl( ),
         company : new FormControl( ), //empleador
         line_business_id : new FormControl( ),//id LineBusiness
         job_title : new FormControl( ), //puesto
@@ -97,6 +111,7 @@ export class AgregarExpLaboralPage implements OnInit {
         month_end :new FormControl( ),
         year_end : new FormControl( ),
         description : new FormControl( ),
+        is_current_job  : new FormControl( ),
       }),
       name : new FormControl( ),
     });
@@ -116,20 +131,13 @@ export class AgregarExpLaboralPage implements OnInit {
 
 
 
-//si esta marcado pone month_endy year_end en null
+//si se desmarca el checkbox la fecha se pone como maxDate por si lo desmarca esa sera la fecha por defecto
   clickbox(): void {
-    this.checked = !this.checked;
 
-    if (this.checked) {
-      this.is_current_job="1";
-      this.updateData.get('wexperienceData').get('year_end').setValue("null");  
-      this.updateData.get('wexperienceData').get('month_end').setValue("null");  
-    }
-    else{
-      this.is_current_job="0"
-      this.updateData.get('wexperienceData').get('date_end').setValue('');
-      this.updateData.get('wexperienceData').get('year_end').setValue('');    
-      this.updateData.get('wexperienceData').get('month_end').setValue('');
+    if (!this.updateData.get('wexperienceData').get('is_current_job').value) {
+      this.updateData.get('wexperienceData').get('date_end').setValue(this.maxDate);
+      this.updateData.get('wexperienceData').get('year_end').setValue(this.maxDate.substr(0,4));    
+      this.updateData.get('wexperienceData').get('month_end').setValue(this.maxDate.substr(5,2));
     }
     
   }
@@ -147,10 +155,14 @@ export class AgregarExpLaboralPage implements OnInit {
   }
 
 
-  async addWorkExperience(){
-    const confirm = await this.uiService.alertaConfirmar('¿Desea guardar la nueva experiencia de trabajo?','/miperfil')
+
+
+  async updateWorkExperience(){
+    
+    const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/miperfil')
     if(confirm){
-      this.workExperienceService.addWorkExperience(this.updateData.get('wexperienceData').get('cv_id').value, 
+      this.workExperienceService.updateWorkExperience(
+        this.id, 
         this.updateData.get('wexperienceData').get('company').value,
         this.updateData.get('wexperienceData').get('line_business_id').value , 
         this.updateData.get('wexperienceData').get('job_title').value ,
@@ -159,8 +171,9 @@ export class AgregarExpLaboralPage implements OnInit {
         this.updateData.get('wexperienceData').get('month_end').value ,
         this.updateData.get('wexperienceData').get('year_end').value , 
         this.updateData.get('wexperienceData').get('description').value,
-        this.is_current_job ).subscribe( workExperience=>{});
+        this.updateData.get('wexperienceData').get('is_current_job').value 
+        ).subscribe( workExperience=>{});
     }
-
   }
+
 }

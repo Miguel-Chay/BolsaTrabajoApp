@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import {  NavController } from '@ionic/angular';
+import {  NavController,ActionSheetController } from '@ionic/angular';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UiServiceService {
 
-  constructor(private alertController: AlertController, private navCtrl: NavController) { }
+  constructor(private alertController: AlertController, private navCtrl: NavController,
+   public actionSheetController: ActionSheetController) { }
 
   async alertaInformativa(message: string) {
     const alert = await this.alertController.create({
@@ -17,6 +19,8 @@ export class UiServiceService {
     await alert.present();
   }
 
+
+  //sirve para confirmar el abandonar una ventana
   async alertaConfirmar(message: string, aceptar: string): Promise<boolean> {
     let resolveFunction: (confirm: boolean) => void;
     const promise = new Promise<boolean>(resolve => {
@@ -47,6 +51,42 @@ export class UiServiceService {
     await alert.present();
     return promise;
   }
+
+  //opciones de de editar o eliminar una 
+  async opcionesMiperfil(page :string): Promise<string> {
+
+    let resolveFunction: (confirm: string) => void;
+     const promise = new Promise<string>(resolve => {resolveFunction = resolve;});
+
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Eliminar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          resolveFunction("delete")
+        }
+      }, {
+        text: 'Editar',
+        icon: 'Create',
+        handler: () => {
+          resolveFunction("edit")
+          // this.navCtrl.navigateRoot(page);
+          this.navCtrl.navigateForward(page);// cambia de pagina con un parametro id
+        }
+      },{
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          resolveFunction("cancel");
+        }
+      }]
+    });
+    await actionSheet.present();
+    return promise;
+  } 
 
 
 }
