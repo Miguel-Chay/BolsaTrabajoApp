@@ -11,6 +11,7 @@
  
     <div *ngSwitchDefault >
        <ion-title color="light">Experiencia laboral</ion-title> 
+
     </div>
  
     <div *ngSwitchCase="'1'">
@@ -43,6 +44,13 @@
     <ion-segment-button class="segment-item" value="0">
         <font size= 2><ion-icon size=5 name="briefcase"></ion-icon></font>
         <font size= 1>Experiencia <br> laboral</font>
+
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink='/agregar-exp-laboral'>
+        <ion-icon  name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    
     </ion-segment-button>
 
     <ion-segment-button class="segment-item" value="1">

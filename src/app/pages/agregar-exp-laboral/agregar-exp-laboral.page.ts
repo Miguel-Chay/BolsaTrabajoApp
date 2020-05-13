@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { NavController} from '@ionic/angular'
 
 import {FormGroup, FormControl, Validators ,FormBuilder } from '@angular/forms';
 
@@ -32,7 +33,8 @@ export class AgregarExpLaboralPage implements OnInit {
    // --------------------------------------------------------------
 
   constructor( private storage: Storage, private workExperienceService: WorkExperienceService,  
-    private lineBusinessService: LineBusinessService, private uiService: UiServiceService) { 
+    private lineBusinessService: LineBusinessService, private uiService: UiServiceService,
+    private navCtrl: NavController) { 
    
     this.initForm();
     
@@ -148,7 +150,7 @@ export class AgregarExpLaboralPage implements OnInit {
 
 
   async addWorkExperience(){
-    const confirm = await this.uiService.alertaConfirmar('¿Desea guardar la nueva experiencia de trabajo?','/miperfil')
+    const confirm = await this.uiService.alertaConfirmar('¿Desea guardar la nueva experiencia de trabajo?','/agregar-exp-laboral')
     if(confirm){
       this.workExperienceService.addWorkExperience(this.updateData.get('wexperienceData').get('cv_id').value, 
         this.updateData.get('wexperienceData').get('company').value,
@@ -161,6 +163,12 @@ export class AgregarExpLaboralPage implements OnInit {
         this.updateData.get('wexperienceData').get('description').value,
         this.is_current_job ).subscribe( workExperience=>{});
     }
+    this.uiService.loading("Guardando",3000);
+    this.navCtrl.navigateForward("/mi-perfil/mp-exp-laboral");
 
   }
+
+
+
+
 }

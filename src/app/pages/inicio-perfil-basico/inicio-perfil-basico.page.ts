@@ -11,6 +11,7 @@ import { StateService } from '../../services/state.service';
 import { UsersService } from '../../services/users.service';
 import { OrganizationUnitService } from '../../services/organization-unit.service';
 import { CvService } from '../../services/Cv.service';
+import { UiServiceService } from '../../services/ui-service.service';
 
 import { Candidate,City,State,Country,User,OrganizationUnit,Cv } from '../../interfaces/interfaces';
 
@@ -40,7 +41,8 @@ export class InicioPerfilBasicoPage implements OnInit {
   constructor( public menuCtrl: MenuController, private storage: Storage, private candService : CandidateService,
   private cityService : CityService,private stateService : StateService,private countryService : CountryService, 
   private userService : UsersService, private organizationunitService : OrganizationUnitService,private cvService : CvService,
-  public alertController: AlertController, public actionSheetController: ActionSheetController,private navCtrl: NavController ) {}
+  public alertController: AlertController, public actionSheetController: ActionSheetController,private navCtrl: NavController,
+  public uiService: UiServiceService ) {}
   
   translateInfo()
   {
@@ -89,7 +91,8 @@ export class InicioPerfilBasicoPage implements OnInit {
 
   ionViewWillEnter() //carga antes de entrar
   {
-  	
+  
+    
   }
   
 
@@ -97,7 +100,6 @@ export class InicioPerfilBasicoPage implements OnInit {
   ngOnInit()//carga al entrar 
   {
     this.menuCtrl.enable(true);
-
     this.storage.get('id').then((val) => { 
       this.userService.getUser(val).subscribe(user=>{this.user=user
         this.candService.getCandidate(val).subscribe(candidato=>{this.candidate=candidato
@@ -107,7 +109,9 @@ export class InicioPerfilBasicoPage implements OnInit {
 
       })
 
-    })
+    })  
+    this.uiService.loading("Cargando",2000)
+
   }
 
   

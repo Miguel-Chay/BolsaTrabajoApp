@@ -22,8 +22,17 @@ const routes: Routes = [
   { path: 'editar-perfil-basico', loadChildren: './pages/editar-perfil-basico/editar-perfil-basico.module#EditarPerfilBasicoPageModule' },
   { path: 'editar-cv', loadChildren: './pages/editar-cv/editar-cv.module#EditarCvPageModule' },
   { path: 'prueb', loadChildren: './pages/prueb/prueb.module#PruebPageModule' },
-  { path: 'editar-exp-laboral/:id', loadChildren: './pages/editar-exp-laboral/editar-exp-laboral.module#EditarExpLaboralPageModule' },//pasa parametro id 
+  { path: 'editar-exp-laboral/:id', loadChildren: './pages/editar-exp-laboral/editar-exp-laboral.module#EditarExpLaboralPageModule' },//pasa parametro id,  
   
+  { path: 'mi-perfil', loadChildren: './pages/mi-perfil/mi-perfil.module#MiPerfilPageModule' },  { path: 'loading', loadChildren: './pages/loading/loading.module#LoadingPageModule' },
+
+  // { path: 'mp-certificaciones', loadChildren: './pages/mp-certificaciones/mp-certificaciones.module#MpCertificacionesPageModule' },
+  // { path: 'mp-idiomas', loadChildren: './pages/mp-idiomas/mp-idiomas.module#MpIdiomasPageModule' },
+  // { path: 'mp-aptitudes', loadChildren: './pages/mp-aptitudes/mp-aptitudes.module#MpAptitudesPageModule' },
+
+  // { path: 'mp-exp-laboral', loadChildren: './pages/mp-exp-laboral/mp-exp-laboral.module#MpExpLaboralPageModule' },
+  // { path: 'mp-form-academica', loadChildren: './pages/mp-form-academica/mp-form-academica.module#MpFormAcademicaPageModule' },
+  // { path: 'mp-cursos', loadChildren: './pages/mp-cursos/mp-cursos.module#MpCursosPageModule' }
 
 
 

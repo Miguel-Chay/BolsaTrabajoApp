@@ -98,10 +98,10 @@
     <ion-button  color="blue" size="large" (click)="imprimir()" > imprimir</ion-button>
   </div> -->
 
-   <ion-button [ngClass]="{'button-disabled': updateData.invalid}" color="primary" type="submit" expand="block" shape="round" 
-   (click)= "updateWorkExperience()">
-     Actualizar
-    </ion-button>
+   <ion-button [ngClass]="{'button-disabled': updateData.invalid}" color="primary" type="submit" expand="block" shape="round" (click)= "updateWorkExperience()" > Actualizar </ion-button>
+
+   <ion-button routerLink="/mi-perfil/mp-exp-laboral" >prueba</ion-button>
+
 </form>
 </ion-content>
 

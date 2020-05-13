@@ -159,7 +159,7 @@ export class EditarExpLaboralPage implements OnInit {
 
   async updateWorkExperience(){
     
-    const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/miperfil')
+    const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/mi-perfil/mp-exp-laboral')
     if(confirm){
       this.workExperienceService.updateWorkExperience(
         this.id, 

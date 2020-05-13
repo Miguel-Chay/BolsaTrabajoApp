@@ -1,0 +1,34 @@
+<ion-header slot="top">
+  <ion-toolbar color="blue" slot="top">
+    <ion-buttons slot="start" >
+      <ion-menu-button color ="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">Experiencia Laboral</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="goldlow" fullscreen padding>
+
+
+      <ion-card *ngFor="let i of workexperience" color="light" (click)=opcionesExpLab(i.id)>
+        <ion-card-header>
+          <ion-card-title>{{i.company}}</ion-card-title>
+          <ion-card-subtitle>{{i.job_title}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content style="text-align: justify;">
+          {{i.description}}
+          <br>
+          <b>Periodo:</b><p> De {{i.start}} a  <span  *ngIf=" i.end == null">la fecha</span > <span  *ngIf=" i.end != null">{{i.end}}</span ></p>
+          <br>
+          <b>Giro del negocio:</b> {{i.name}}
+        </ion-card-content>
+      </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink='/agregar-exp-laboral'>
+        <ion-icon  name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+</ion-content>

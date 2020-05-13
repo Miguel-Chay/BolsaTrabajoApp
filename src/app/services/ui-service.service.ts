@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import {  NavController,ActionSheetController } from '@ionic/angular';
 
+import {Platform,LoadingController} from '@ionic/angular'
+
 @Injectable({
   providedIn: 'root'
 })
 export class UiServiceService {
 
   constructor(private alertController: AlertController, private navCtrl: NavController,
-   public actionSheetController: ActionSheetController) { }
+   public actionSheetController: ActionSheetController,public platform : Platform, 
+   public loadingController :LoadingController) { }
 
   async alertaInformativa(message: string) {
     const alert = await this.alertController.create({
@@ -87,6 +90,23 @@ export class UiServiceService {
     await actionSheet.present();
     return promise;
   } 
+
+
+  loading(message:string,time : number){
+    this.platform.ready().then(()=>{
+      this.loadingController.create({
+        message
+      }).then((loadingElement)=>{
+        loadingElement.present();
+        var ref = this;
+        setTimeout(function()
+        {
+          ref.loadingController.dismiss();
+        },time)
+      })
+    })
+  }
+
 
 
 }

@@ -13,7 +13,7 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Mi perfil',
-      url: '/miperfil',
+      url: '/mi-perfil/mp-exp-laboral',
       icon: 'person'
     },
     {
