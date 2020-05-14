@@ -17,26 +17,42 @@ import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
 
 export class PruebPage implements OnInit {
 
-
+  addData: FormGroup;
   constructor(){ 
  }
 
   ngOnInit() {
+    
+    this.addData = new FormGroup({
+      id1 : new FormControl(''),
+      id2 : new FormControl(''),
+      id3 : new FormControl(''),
+      id4 : new FormControl(''),
+      id5 : new FormControl(''),
+      id6 : new FormControl(''),
+      id7: new FormControl(''),
+      id8 : new FormControl(''),
+      id9 : new FormControl(''),
+      id10 : new FormControl(''),
+      id11 : new FormControl(''),
+      id12 : new FormControl(''),
+      id13 : new FormControl(''),
+      id14 : new FormControl(''),
+      id15 : new FormControl(''),
+      
+    });
+
+
+
   }
  
 
    
- initForm() {
+ imprimir() {
+   console.log(this.addData.value)
 	}	
 
 
-doRefresh(event) {
-    console.log('Begin async operation');
 
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
-  }
   
 }

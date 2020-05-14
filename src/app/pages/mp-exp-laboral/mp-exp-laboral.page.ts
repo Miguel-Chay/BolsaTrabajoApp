@@ -29,13 +29,15 @@ export class MpExpLaboralPage implements OnInit {
     private storage: Storage,private uiService: UiServiceService,public platform : Platform, public loadingController :LoadingController) {}
 
   ngOnInit() {
+
+
   }
 
-   ionViewDidEnter() { 
+   ionViewWillEnter() { 
    	this.saving()
     this.storage.get('id').then((val) => { 
       this.workexperienceService.getWorkExComplete (val).subscribe( workexperience=>{this.workexperience=workexperience
-      console.log("consulta")
+      console.log(this.workexperience)
       })
     })
    }
@@ -45,7 +47,7 @@ export class MpExpLaboralPage implements OnInit {
   async opcionesExpLab(id: string) {
     this.confirm = await this.uiService.opcionesMiperfil('/editar-exp-laboral/'+id)//manda la ruta mas el parametro id 
     if(this.confirm== "delete"){
-      this.workexperienceService.deleteWorkExperience(id).subscribe(Response => {this.ionViewDidEnter()});
+      this.workexperienceService.deleteWorkExperience(id).subscribe(Response => {this.ionViewWillEnter()});
     }
    }
 

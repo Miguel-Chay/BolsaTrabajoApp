@@ -7,6 +7,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="goldlow" fullscreen padding>
+
+
+ 	<ion-card *ngFor="let i of course" color="light" (click)=opcionesExpLab(i.id)>
+        
+    	<ion-card-header>
+        	<ion-card-title><b>{{i.name}} </b>
+        		<font size=2> 
+        			<span  *ngIf=" i.institution != ''"> en {{i.institution}}</span >
+        		</font>
+        	</ion-card-title>
+	   	</ion-card-header>
+
+    	<ion-card-content>
+        	<span  *ngIf=" i.hours != null">  {{i.hours}} horas</span ><br>
+        	<span  *ngIf=" i.mode != null"><b>Modo:</b> 
+        		<span *ngIf=" i.mode == 1"> En línea</span> 
+        		<span *ngIf=" i.mode == 2"> Presencial</span>
+        		<span *ngIf=" i.mode == 3"> Semipresencial</span>
+        	</span ><br>
+        	<span  *ngIf=" i.start != null"><b>Fecha de inicio: </b>{{i.start}} </span><br>
+        	<span  *ngIf=" i.end != null"><b>Fecha de término: </b>{{i.end}}</span><br>
+    	</ion-card-content>
+    </ion-card>
+     
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink='/agregar-curso'>
+        <ion-icon  name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 
 </ion-content>

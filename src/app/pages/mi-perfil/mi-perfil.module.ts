@@ -9,6 +9,11 @@ import { MiPerfilPage } from './mi-perfil.page';
 
 const routes: Routes = [
   {
+    path:'',
+    redirectTo:'/mi-perfil/mp-exp-laboral',
+    pathMatch: 'full'
+  },
+  {
     path: '',
     component: MiPerfilPage,
     children:[
@@ -38,12 +43,8 @@ const routes: Routes = [
       },
 
     ]
-  },
-  {
-    path:'',
-    redirectTo:'/mi-perfil/mp-exp-laboral',
-    pathMatch: 'full'
   }
+  
 ];
 
 @NgModule({

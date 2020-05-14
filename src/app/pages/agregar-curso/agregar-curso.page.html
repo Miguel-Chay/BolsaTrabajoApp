@@ -7,24 +7,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-	<div class="ion-padding">
+<ion-content  fullscreen padding>
+
+	<form [formGroup]="addData"  >
 	    <ion-item>
-	        <ion-label  position="stacked"><font size=5>Nombre del curso</font><ion-text color="danger">*<br></ion-text></ion-label>
-	        <ion-input placeholder="Ingrese el nombre del curso"></ion-input>
+	        <ion-label  position="stacked"><font size=5>Nombre del curso </font><ion-text color="danger">*<br></ion-text></ion-label>
+	        <ion-input placeholder="Ingrese el nombre del curso" formControlName="name"></ion-input>
 	    </ion-item>
 	    <ion-item>
-	        <ion-label  position="stacked"><font size=5>Horas</font><ion-text color="danger">*<br></ion-text></ion-label>
-	        <ion-input placeholder="Ingrese la duracion del curso en horas"></ion-input>
+	        <ion-label  position="stacked"><font size=5>Horas</font></ion-label>
+	        <ion-input placeholder="Ingrese la duracion del curso en horas" formControlName="hours"></ion-input>
 	    </ion-item>
 	    <ion-item>
-	        <ion-label  position="stacked"><font size=5>Instituto</font><ion-text color="danger">*<br></ion-text></ion-label>
-	        <ion-input placeholder="Ingrese el nombre de la institución"></ion-input>
+	        <ion-label  position="stacked"><font size=5>Instituto</font></ion-label>
+	        <ion-input placeholder="Ingrese el nombre de la institución" formControlName="institution"></ion-input>
 	    </ion-item>
 	
 
-	<ion-list>
-	  <ion-radio-group>
+	<ion-list >
+	  <ion-radio-group formControlName="mode">
 
 	    <ion-list-header>
 	      <ion-label>Modo</ion-label>
@@ -50,14 +51,27 @@
 
 		<ion-item>
 	        <ion-label  position="stacked"><font size=5>Fecha de inicio</font></ion-label>
-	        <ion-input type="date"></ion-input>
+	        
+	        <ion-datetime  min="1970" max={{maxDate1}} displayFormat='YYYY-MMMM-DD' placeholder="Seleccione el año" 
+	        formControlName="start" month-names="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiempre, Octubre, Noviembre, Diciembre" (ionChange)=" onChangeStart($event)" >	  </ion-datetime>
 	    </ion-item>    
 
 	    <ion-item>
 	        <ion-label  position="stacked"><font size=5>Fecha de término</font></ion-label>
-	        <ion-input type="date"></ion-input>
+	       	<ion-datetime  min={{minDate2}} max={{maxDate2}} displayFormat='YYYY-MMMM-DD' placeholder="Seleccione el año" formControlName="end" month-names="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiempre, Octubre, Noviembre, Diciembre" (ionChange)=" onChangeEnd($event)"  >  
+        	</ion-datetime>
 	    </ion-item>    
-	</div>
-
+	    
+	    <ion-row>
+    		<ion-col width-50 style="text-align: center">
+	    		<ion-button  [ngClass]="{'button-disabled': addData.invalid}" color="primary" type="submit" 
+	    	 		(click)= "addCourse()" size="large">Aceptar</ion-button>		
+			</ion-col>
+		</ion-row>
+		
+	</form>
+	<ion-button (click)= "imprimir()">
+        imprimir
+    </ion-button>
 
 </ion-content>

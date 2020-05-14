@@ -92,3 +92,15 @@ export interface LineBusiness{
 id? : string;
 name? : string;
 }
+
+export interface Course{
+
+  id? : string,
+  cv_id? : string,
+  name? : string,
+  hours? : string,
+  institution? : string,
+  mode? : string,
+  start? : string,
+  end? : string
+}

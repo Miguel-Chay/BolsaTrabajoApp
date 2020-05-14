@@ -28,7 +28,7 @@ export class AgregarExpLaboralPage implements OnInit {
    workExperience : WorkExperience;
    lineBusiness : LineBusiness;
    is_current_job='';
-   // ----- formato para almacenar la informacion a actualizar------
+   // ----- formato para almacenar la informacion a agregar------
   updateData: FormGroup;
    // --------------------------------------------------------------
 
@@ -164,7 +164,7 @@ export class AgregarExpLaboralPage implements OnInit {
         this.is_current_job ).subscribe( workExperience=>{});
     }
     this.uiService.loading("Guardando",3000);
-    this.navCtrl.navigateForward("/mi-perfil/mp-exp-laboral");
+    this.navCtrl.navigateForward("/mi-perfil");
 
   }
 
