@@ -104,3 +104,41 @@ export interface Course{
   start? : string,
   end? : string
 }
+
+export interface Education {
+  cv_id?: string;
+  degree_id?: string;
+  institution_name?: string;
+  study_programme_id?: string;
+  study_programme_name: string;
+  subject_area_id?: string;
+  status_education_id: string;
+  start?: Date;
+  end?: Date;
+}
+export interface StudyPrograme {
+  id?: string;
+  organization_unit_id?: string;
+  subject_area_id?: string;
+  name?: string;
+  degree_id?: string;
+}
+export interface Degree {
+  id?: string;
+  title: string;
+}
+export interface StatusEducation {
+  id?: string;
+  name?: string;
+}
+export interface SubjectArea {
+  id?: string;
+  name?: string;
+}
+export interface AcademicTraining {
+  studyProgrameName?: string;
+  start?: string;
+  institutionName?: string;
+  end?: string;
+  degree?: string;
+}

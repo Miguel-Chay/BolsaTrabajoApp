@@ -1,11 +1,30 @@
 <ion-header slot="top">
-  <ion-toolbar color="blue" slot="top">
-    <ion-buttons slot="start" >
-      <ion-menu-button color ="light"></ion-menu-button>
-    </ion-buttons>
-    <ion-title color="light">Formación Academica</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="blue" slot="top">
+        <ion-buttons slot="start">
+            <ion-menu-button color="light"></ion-menu-button>
+        </ion-buttons>
+        <ion-title color="light">Formación Academica</ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
+    <ion-card color="light" (click)=opcionesAcademic() *ngFor="let edc of academicTraining">
+        <ion-card-header>
+            <ion-card-title>
+                <ion-text color="dark">
+                    <strong>{{edc.studyProgrameName}}</strong>
+                </ion-text>
+            </ion-card-title>
+            <ion-card-subtitle>en {{edc.institutionName}} </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <b>Grado de estudio:</b> {{edc.degree}} <br>
+            <b>Ingreso: </b> {{edc.start}} <br><b>Egreso: </b> {{edc.end}}
+        </ion-card-content>
+    </ion-card>
 
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink='/agregar-form-academica'>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
