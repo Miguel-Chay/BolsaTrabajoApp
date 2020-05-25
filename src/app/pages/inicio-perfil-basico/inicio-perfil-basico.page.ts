@@ -13,6 +13,9 @@ import { OrganizationUnitService } from '../../services/organization-unit.servic
 import { CvService } from '../../services/Cv.service';
 import { UiServiceService } from '../../services/ui-service.service';
 
+import {AppComponent}from '../../app.component' ;
+
+
 import { Candidate,City,State,Country,User,OrganizationUnit,Cv } from '../../interfaces/interfaces';
 
 @Component({
@@ -42,7 +45,7 @@ export class InicioPerfilBasicoPage implements OnInit {
   private cityService : CityService,private stateService : StateService,private countryService : CountryService, 
   private userService : UsersService, private organizationunitService : OrganizationUnitService,private cvService : CvService,
   public alertController: AlertController, public actionSheetController: ActionSheetController,private navCtrl: NavController,
-  public uiService: UiServiceService ) {}
+  public uiService: UiServiceService, private appComponent:AppComponent ) {}
   
   translateInfo()
   {
@@ -71,7 +74,7 @@ export class InicioPerfilBasicoPage implements OnInit {
     {
       this.photoRout= this.photoRoutbase + this.candidate.photo;
     }
-
+    
 
     this.edad = this.calculateAge(this.candidate.birth_date).toString() ;
     this.organizationunitService.getOrganizationUnit(this.candidate.organization_unit_id).subscribe(organizationunit=>{this.organizationunit=organizationunit
@@ -83,6 +86,9 @@ export class InicioPerfilBasicoPage implements OnInit {
     this.cityService.getCity(this.candidate.city_id).subscribe( city=>{this.city=city
       this.stateService.getState(this.city.state_id).subscribe( state=>{this.state=state
         this.countryService.getCountry(this.state.country_id).subscribe( country=>{this.country=country  
+          //prueba
+              this.appComponent.loadInformation();
+          //
         })
       })
     })
@@ -110,7 +116,8 @@ export class InicioPerfilBasicoPage implements OnInit {
       })
 
     })  
-    this.uiService.loading("Cargando",2000)
+    //this.uiService.loading("Cargando",2000)
+    
 
   }
 

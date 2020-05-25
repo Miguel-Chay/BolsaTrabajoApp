@@ -34,7 +34,7 @@ export class MpExpLaboralPage implements OnInit {
   }
 
    ionViewWillEnter() { 
-   	this.saving()
+   	//this.saving()
     this.storage.get('id').then((val) => { 
       this.workexperienceService.getWorkExComplete (val).subscribe( workexperience=>{this.workexperience=workexperience
       console.log(this.workexperience)

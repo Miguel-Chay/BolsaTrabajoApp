@@ -1,27 +1,15 @@
 <ion-app>
   <ion-split-pane >
 
-    <ion-menu type="overlay">
-      
-
-      <ion-header style="height:160px" >
-        <ion-toolbar  style="height:170px">
-          <ion-menu-toggle auto-hide="false" >
-            <ion-item color="gold" routerLink='/inicio-perfil-basico'  >
-              <div>
-              <ion-avatar slot="start"  style="height:110px;width:110px">
-                <img src="./assets/image/side-menu.png">
-              </ion-avatar>
-              <ion-text color="light">
-              <h4>Nombre de usuario</h4>
-             </ion-text>
-              </div>
-            </ion-item>         
-          </ion-menu-toggle>
-        </ion-toolbar>
-
-      </ion-header>
-
+    <ion-menu > <!-- <ion-menu type="overlay"> -->
+      <ion-menu-toggle auto-hide="false" >
+      <div class="logo-section" color="gold" routerLink='/inicio-perfil-basico'>
+          <div class="logo-section__wrapper">
+            <img class="logo-section__logo" src={{photoRout}}>
+            <h3 class="logo-section__title">{{candidate.firstname}} {{candidate.lastname}}</h3>
+          </div>
+      </div>
+    </ion-menu-toggle>
 
 
 
@@ -38,8 +26,15 @@
         </ion-list>
       </ion-content>
 
+    <ion-button (click)="clear()" color="blue">Cerrar Sesión</ion-button>
+<!--     <ion-row>
+        <ion-col width-50 style="text-align: center">
+          <ion-button  color="blue" (click)= "clear()" >Cerrar Sesión</ion-button>    
+        </ion-col>
+    </ion-row> -->
 
     </ion-menu>
+    
     
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>

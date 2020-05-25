@@ -39,17 +39,15 @@ export class AgregarCursoPage implements OnInit {
   }
 
   initForm() {
-  	this.storage.get('id').then((val) => {
-      this.addData.get('cv_id').setValue(val);  
-    })
+  	this.storage.get('id').then((val) => {this.addData.get('cv_id').setValue(val);})
 
-  this.addData = new FormGroup({
+    this.addData = new FormGroup({
     	//id : new FormControl(''),
   		cv_id: new FormControl(''),
   		name: new FormControl('',[ Validators.required, Validators.maxLength(175)]),
-  		hours: new FormControl(''),
+  		hours: new FormControl('',[ Validators.pattern("^[0-9]*$"),Validators.maxLength(3)]),
   		institution: new FormControl(''),
-		mode: new FormControl(''),
+		  mode: new FormControl(''),
   		start: new FormControl(''),
   		end: new FormControl(''),
     });
@@ -77,10 +75,12 @@ export class AgregarCursoPage implements OnInit {
   	//le asigna las fechas correspondientes a year_start y month_start
   	onChangeStart($event) {
     	this.minDate2=this.addData.get('start').value
+      this.addData.get('start').setValue(this.addData.get('start').value.substr(0,10))
   	}
 	//le asigna las fechas correspondientes a year_end y month_end
   	onChangeEnd($event) {
     	this.maxDate1=this.addData.get('end').value
+      this.addData.get('end').setValue(this.addData.get('end').value.substr(0,10))
 	}
 
 

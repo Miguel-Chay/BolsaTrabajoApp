@@ -12,7 +12,107 @@
 </ion-header>
 
 
-<ion-content   >
+<ion-content  padding  >
+
+
+
+	<ion-list  *ngIf="country.name == null">
+ 
+	
+	<h3 style="text-align: center;"><ion-skeleton-text  style="width: 160px; height: 160px;margin-left:auto;  margin-right:auto;  display:block; "></ion-skeleton-text></h3>
+ 	<h3 style="text-align: center;"><ion-skeleton-text animated style="width: 90%; height: 20px; margin-left:auto;  margin-right:auto;  display:block;"></ion-skeleton-text></h3>
+	
+ 
+	<ion-list>
+		<ion-item  >
+			<ion-label>
+				<ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+				<ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>	
+				<ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+ 			</ion-label>
+		</ion-item>
+	</ion-list>
+	<ion-list >
+		<ion-skeleton-text animated style="width: 40%; height: 20px"></ion-skeleton-text>
+		<ion-item >
+              <ion-skeleton-text  slot="start" style="width: 25px; height: 25px"></ion-skeleton-text>
+              <ion-label>
+                <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+              </ion-label>
+        </ion-item>
+        <ion-item >
+              <ion-skeleton-text  slot="start" style="width: 25px; height: 25px"></ion-skeleton-text>
+              <ion-label>
+               	<ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+              </ion-label>
+        </ion-item>
+        <ion-item >
+              <ion-skeleton-text  slot="start" style="width: 25px; height: 25px"></ion-skeleton-text>
+              <ion-label>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </ion-label>
+        </ion-item>
+	</ion-list>
+
+	<ion-list >
+		<ion-skeleton-text animated style="width: 40%; height: 20px"></ion-skeleton-text>
+		<ion-item >
+              <ion-skeleton-text  slot="start" style="width: 25px; height: 25px"></ion-skeleton-text>
+              <ion-label>
+                <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+              </ion-label>
+        </ion-item>
+        <ion-item >
+              <ion-skeleton-text  slot="start" style="width: 25px; height: 25px"></ion-skeleton-text>
+              <ion-label>
+               	<ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </ion-label>
+        </ion-item>
+        <ion-item >
+              <ion-skeleton-text  slot="start" style="width: 25px; height: 25px"></ion-skeleton-text>
+              <ion-label>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </ion-label>
+        </ion-item>
+	</ion-list>
+
+
+ 
+ 		<ion-card color="light" >
+	        <ion-card-header>
+	          <ion-card-title><ion-skeleton-text animated style="width: 60%"> </ion-skeleton-text> </ion-card-title>
+	          <ion-card-subtitle><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></ion-card-subtitle>
+	        </ion-card-header>
+
+	        <ion-card-content>
+				<ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+				<ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+				<ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+				<ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+	        </ion-card-content>
+      </ion-card>
+      </ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<ion-list  *ngIf="country.name != null">
   <img src= {{photoRout}}  style="width: 40%;   margin-left:auto;  margin-right:auto;  display:block;">
 	<div class="row">
 	    <div class="col">
@@ -21,38 +121,62 @@
 	        </div>
 	    </div>
 	</div>
+ 
+	<ion-list>
+		<ion-item  >
+			<ion-text>
+				<b>   Nombre de usuario: </b> {{user.username}}<br>
+				<b>   Matrícula: </b> {{candidate.student_id_number}}<br>			
+				<b>   Dependencia: </b>{{organizationunit.name}}
+ 			</ion-text>
+		</ion-item>
+	</ion-list>
+	<ion-list >
+		<h2>  GENERALES</h2>
+		<ion-item >
+              <ion-icon slot="start" name="md-contact" color="blue"></ion-icon>
+              <ion-label>
+                {{candidate.sex}}, {{candidate.marital_status}}, {{edad}} años
+              </ion-label>
+        </ion-item>
+        <ion-item >
+              <ion-icon slot="start" name="globe" color="blue"></ion-icon>
+              <ion-label>
+                {{city.name}}, {{state.name}}, {{country.name}}
+              </ion-label>
+        </ion-item>
+        <ion-item >
+              <ion-icon slot="start" name="card" color="blue"></ion-icon>
+              <ion-label>
+                <b>CURP:</b> {{candidate.curp}}
+              </ion-label>
+        </ion-item>
+	</ion-list>
+
+	<ion-list  >
+		<h2>  CONTACTO</h2>
+		<ion-item >
+              <ion-icon slot="start" name="mail" color="blue"></ion-icon>
+              <ion-label>
+                <b>email: </b> {{user.email}}   <br>
+              </ion-label>
+        </ion-item>
+        <ion-item >
+              <ion-icon slot="start" name="call" color="blue"></ion-icon>
+              <ion-label>
+                <b>Telefono: </b> {{candidate.phone}}<br>
+              </ion-label>
+        </ion-item>
+        <ion-item >
+              <ion-icon  slot="start" name="phone-portrait" color="blue"></ion-icon>
+              <ion-label>
+                <b>Telefono celular: </b> {{candidate.cellphone}}<br>
+              </ion-label>
+        </ion-item>
+	</ion-list>
 
 
-		<ion-list>
-
-			<ion-item>
-				<b > {{candidate.sex}}, {{candidate.marital_status}}, {{edad}} años,   Lugar de residencia: {{city.name}}, {{state.name}}, {{country.name}} </b>
-				<!-- Lugar de residencia: Merida, Yucatan, Mexico</b><br> ,  {{candidate.birth_date |date: 'dd-MM-yyyy'}-->
-			</ion-item>
-			<ion-item>
-				<b>CURP: </b>{{candidate.curp}}<br>
-			</ion-item>
-			<ion-item>
-				<b>email: </b> {{user.email}}   <br>
-			</ion-item>
-			<ion-item lines="none">
-				<b>Telefono: </b> {{candidate.phone}}<br>
-			</ion-item>
-			<ion-item >
-				<b>Telefono celular: </b> {{candidate.cellphone}}<br>
-			</ion-item>
-			<ion-item>
-				<b>Dependencia: </b>{{organizationunit.name}}<br>
-			</ion-item>
-			<ion-item>
-				<b>Matrícula: </b> {{candidate.student_id_number}}<br>
-			</ion-item>
-			<ion-item lines="none">
-				<b>Nombre de usuario: </b> {{user.username}}<br>
-			</ion-item>
-
-		</ion-list>
-
+ 
  		<ion-card color="light" (click)=opcionesCv()>
 	        <ion-card-header>
 	          <ion-card-title>Currículum Vítae <ion-icon  name="create"></ion-icon></ion-card-title>
@@ -64,4 +188,5 @@
 				{{cv.summary}}
 	        </ion-card-content>
       </ion-card>
+      </ion-list>
 </ion-content>

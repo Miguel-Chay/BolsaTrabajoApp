@@ -4,7 +4,7 @@ import { ActionSheetController } from '@ionic/angular';
 import { Platform,LoadingController} from '@ionic/angular'
 import { Storage } from '@ionic/storage';
 
-import { CourseService } from '../../services/course.Service';
+import { CourseService } from '../../services/course.service';
 
 import { UiServiceService } from '../../services/ui-service.service';
 
@@ -36,36 +36,17 @@ export class MpCursosPage implements OnInit {
       })
     })
   }
+  
 
 
+  async opcionesCursos(id: string) {
+    this.confirm = await this.uiService.opcionesMiperfil('/editar-curso/'+id)//manda la ruta mas el parametro id 
+    if(this.confirm== "delete"){
+      console.log("se elimino el curso "+id )
+      this.courseService.deleteCourse(id).subscribe(Response => {this.ionViewWillEnter()})
 
+    }
+   }
 
-  async opcionesCursos() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Opciones',
-      buttons: [{
-        text: 'Eliminar',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          console.log('Delete clicked');
-        }
-      }, {
-        text: 'Editar',
-        icon: 'Create',
-        handler: () => {
-          console.log('Editar clicked');
-        }
-      },{
-        text: 'Cancelar',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
-    });
-    await actionSheet.present();
-  } 
 
 }

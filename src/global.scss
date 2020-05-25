@@ -36,3 +36,50 @@
 .rojo .sc-ion-action-sheet-md {
     color: red !important;
 }
+
+/* menu styling */
+ion-menu{
+    ion-item,
+    ion-list, .list-md,
+    ion-content{
+        --background: var(--dark-color); /*color de fondo*/
+        --ion-background-color: var(--dark-color);
+    }
+    ion-item{
+        color: var(--text-color); /*color de los nombres de las listas*/
+    }
+    ion-icon{
+        color: #042b59; /*color de los iconos*/
+    }
+}
+
+.logo-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--ion-color-gold);
+    padding: 2em 0;
+    min-height: 200px;
+    .logo-section__wrapper{
+        text-align: center;
+        .logo-section__logo{
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin:auto;
+            border-radius: 100%;
+        }
+        .logo-section__title{
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: var(--ion-color-light);
+        }
+    }
+}
+
+ion-tab-button{
+--color-selected: #042b59
+}
+
+
+/*ctrl + shift + c  = elegir tabla de colores*/

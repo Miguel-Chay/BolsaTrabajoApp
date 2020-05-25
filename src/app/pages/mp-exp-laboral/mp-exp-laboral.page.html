@@ -9,7 +9,35 @@
 
 <ion-content color="goldlow" fullscreen padding>
 
+    <div *ngIf = "workexperience == null">
+      <ion-card *ngFor="let i of [1,1,1,1]" color="light" >
+        <ion-card-header>
+          <ion-card-title>
+            <ion-skeleton-text animated style="width: 60%; height: 20px"></ion-skeleton-text>
+          </ion-card-title>
+          <ion-card-subtitle>
+            <ion-skeleton-text animated style="width: 45%"></ion-skeleton-text>
+          </ion-card-subtitle>
+        </ion-card-header>
 
+        <ion-card-content style="text-align: justify;">
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 45%"></ion-skeleton-text>
+          
+          <br>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </ion-card-content>
+      </ion-card>
+
+    
+    </div>
+
+    <div  *ngIf = "workexperience != null">
       <ion-card *ngFor="let i of workexperience" color="light" (click)=opcionesExpLab(i.id)>
         <ion-card-header>
           <ion-card-title>{{i.company}}</ion-card-title>
@@ -24,11 +52,12 @@
           <b>Giro del negocio:</b> {{i.name}}
         </ion-card-content>
       </ion-card>
+    </div>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button routerLink='/agregar-exp-laboral'>
         <ion-icon  name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
-
+    
 </ion-content>

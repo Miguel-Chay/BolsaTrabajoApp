@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar idioma</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding fullscreen>
+	<form [formGroup]="addData"  >
+	<ion-list>
+  		<ion-list-header>Datos del nuevo idioma</ion-list-header>
+
+  		<ion-item >
+    		<ion-label>Idioma</ion-label>
+    		<ion-select placeholder="Seleccione su idioma" formControlName="language_list_id" value= "1">
+      		<ion-select-option *ngFor="let i of list" color="light" [value]="i.id">{{i.language}} </ion-select-option>
+    		</ion-select>
+  		</ion-item>
+
+  		
+
+  		<ion-item >
+    		<ion-label>Nivel</ion-label>
+    		<ion-select placeholder="Seleccione el nivel" formControlName="level_list_id" value="1">
+      		<ion-select-option *ngFor="let x of level" color="light" [value]="x.id">{{x.level}}</ion-select-option>
+    		</ion-select>
+  		</ion-item>
+	</ion-list>
+	</form>
+
+	<ion-row>
+    		<ion-col width-50 style="text-align: center">
+	    		<ion-button  [ngClass]="{'button-disabled': addData.invalid}" color="primary" type="submit" 
+	    	 		(click)= "addLanguage()" size="large">Aceptar</ion-button>		
+			</ion-col>
+	</ion-row>
+	<ion-button (click)= "imprimir()">
+        imprimir
+    </ion-button>
+
+</ion-content>
