@@ -105,7 +105,6 @@ export interface Course{
   end? : string
 }
 
-<<<<<<< HEAD
 
 export interface Language{
   id? : string,
@@ -148,8 +147,6 @@ export interface Skill{
   skill? : string ,
 }
 
-=======
->>>>>>> 1e270f2b2702217a61c14d89ca22a17be6407a30
 export interface Education {
   cv_id?: string;
   degree_id?: string;
@@ -186,8 +183,4 @@ export interface AcademicTraining {
   institutionName?: string;
   end?: string;
   degree?: string;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1e270f2b2702217a61c14d89ca22a17be6407a30
