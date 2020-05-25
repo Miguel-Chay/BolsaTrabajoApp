@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { AcademicTraining } from '../interfaces/interfaces';
-import { resolve } from 'url';
 import { DegreeService } from 'src/app/services/degree.service';
 
 @Injectable({
@@ -14,6 +13,10 @@ export class EducationService {
 
   getEducation(id: string) {
     return this.http.get<AcademicTraining[]>(`${this.URL}/api/education/search/?id=${id}`);
+  }
+
+  createEducation(data: any) {
+    return this.http.post(`${this.URL}/api/educations`, data);
   }
 
 }

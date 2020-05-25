@@ -247,6 +247,7 @@ export class AgregarFormAcademicaPage implements OnInit {
     console.log(this.createEducation.valid);
     const x = + this.createEducation.controls.year_start.value;
     console.log('si', isNumber(x) );
+    this.educationService.createEducation(this.createEducation.value).subscribe(() => {});
   }
   // status education -- se utiliza para mostrar u ocultar la fecha final. en caso de que sea uno se muestra la fecha de finalizacion en el html
   statusEducation($event) {
