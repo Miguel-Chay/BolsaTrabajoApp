@@ -1,18 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>agregar-aptitud</ion-title>
-  </ion-toolbar>
+  <ion-toolbar color="blue">
+        <ion-buttons slot="start" color="light">
+            <ion-back-button color="light"></ion-back-button>
+        </ion-buttons>
+        <ion-title color="light"> <strong> Añadir Aptitud</strong></ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
 
-	<ion-button (click)="imprimir()"></ion-button>
+	 
 
-	
-   <ion-searchbar type="text" debounce="500" (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list *ngIf="isItemAvailable">
-      <ion-item *ngFor="let item of items">{{ item }}</ion-item>
+	<ion-item >
+   <ion-textarea  (ionChange)="find($event)" value={{textFinder}}  placeholder="Ingrese su aptitud
+   "  auto-grow=true></ion-textarea>
+	</ion-item>
+
+  <ion-list *ngIf="textFinder!=''">
+  	<ion-item *ngFor=" let i of skills| filtro : textFinder : 'skill'|slice:0:valend" (click)="asignar(i.skill)">
+  		{{i.skill}}
+  	</ion-item>
   </ion-list>
+
+
+  <ion-row  class="ion-align-items-end" fixed=true>
+    	<ion-col width-50 style="text-align: center">
+	   		<ion-button  [ngClass]="{'button-disabled': addData.invalid}" color="blue" type="submit"
+	   	 		(click)= "add()" size="large">Aceptar</ion-button>		
+		</ion-col>
+	</ion-row>
 
 </ion-content>

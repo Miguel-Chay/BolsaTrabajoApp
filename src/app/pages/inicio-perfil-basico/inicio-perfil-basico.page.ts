@@ -13,6 +13,8 @@ import { OrganizationUnitService } from '../../services/organization-unit.servic
 import { CvService } from '../../services/Cv.service';
 import { UiServiceService } from '../../services/ui-service.service';
 
+import { environment } from 'src/environments/environment';
+
 import {AppComponent}from '../../app.component' ;
 
 
@@ -26,7 +28,8 @@ import { Candidate,City,State,Country,User,OrganizationUnit,Cv } from '../../int
 export class InicioPerfilBasicoPage implements OnInit {
 
   val: string = null;
-  photoRoutbase: string = "http://localhost/btuady/public_html/files/photo/";
+  URL = environment.urlPhotos;
+  photoRoutbase: string = this.URL+"/btuady/public_html/files/photo/";
   edad: string = null;
   ciudad: string = null;
   estado: string= null;

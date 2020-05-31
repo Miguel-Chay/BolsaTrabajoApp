@@ -5,6 +5,8 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UiServiceService } from './services/ui-service.service';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,7 +15,8 @@ import { UiServiceService } from './services/ui-service.service';
 export class AppComponent {
 
   candidate: Candidate={firstname:"",lastname:"",photo:""};
-  photoRoutbase: string = "http://localhost/btuady/public_html/files/photo/";
+  URL = environment.urlPhotos;
+  photoRoutbase: string = this.URL+"/btuady/public_html/files/photo/";
   photoRout: string='';
   confirm: boolean=false;
 

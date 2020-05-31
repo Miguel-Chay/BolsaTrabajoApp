@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+import { ComponentsModule } from '../../components/components.module';
+import { PopfilterComponent } from '../../components/popfilter/popfilter.component';
+import { PipesModule } from '../../pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
 
 import { VacantesPage } from './vacantes.page';
@@ -15,11 +18,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents:[
+    PopfilterComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    PipesModule,
+    ComponentsModule
   ],
   declarations: [VacantesPage]
 })

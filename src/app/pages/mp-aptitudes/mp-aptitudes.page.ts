@@ -21,7 +21,11 @@ export class MpAptitudesPage implements OnInit {
   constructor( private cvSkillService : CvSkillService,
    private storage: Storage) { }
 
-  ngOnInit() {
+
+
+
+  ngOnInit() {}
+  ionViewWillEnter() {
 
 
 this.storage.get('id').then((val) => { 
@@ -35,6 +39,12 @@ this.storage.get('id').then((val) => {
 
 
   }
+
+
+  Delete(id:string ,skill_list_id: string){
+    this.cvSkillService.deleteCvSkill(id,skill_list_id).subscribe(Response => {this.ionViewWillEnter()});    
+  }
+
 
 
   getRandomColor(cant:number) {

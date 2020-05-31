@@ -17,4 +17,13 @@ export class SkillListService {
   	getSkillListComplete(){
 	    return this.http.get<Skill>(`${this.URL}/api/skill-list/view-list-complete`);
   	}
+  	getSkillExist(skill:string){
+	    return this.http.get<Skill>(`${this.URL}/api/skill-list/skill-exist/?t=${skill}`);
+  	}
+
+    //agrega un Skilla un usuario
+    addSkill(  skill: string) {
+      const data = {  skill };
+      return this.http.post<Skill>(`${this.URL}/api/skill-lists`, data)
+    }
 }

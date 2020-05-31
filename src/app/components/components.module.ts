@@ -3,20 +3,23 @@ import { CommonModule } from '@angular/common';
 import { FabComponent } from './fab/fab.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-
-
+import { PopfilterComponent } from './popfilter/popfilter.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    FabComponent
+    FabComponent,
+    PopfilterComponent
   ],
   exports: [
-    FabComponent
+    FabComponent,
+    PopfilterComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class ComponentsModule { }

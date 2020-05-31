@@ -83,6 +83,8 @@
   --ion-color-gold-shade: #aa830c;
   --ion-color-gold-tint: #c7a026;
 
+
+
 /** amarillo debil **/
 --ion-color-goldlow: #f2e2b3;
 
@@ -105,4 +107,23 @@
     }
  .ion-slide {
   height: calc(100vh - 140px);
+}
+
+/** color de los cards de vacantes **/
+:root {
+  --ion-color-vacant: #3378b1;
+  --ion-color-vacant-rgb: 51,120,177;
+  --ion-color-vacant-contrast: #ffffff;
+  --ion-color-vacant-contrast-rgb: 255,255,255;
+  --ion-color-vacant-shade: #2d6a9c;
+  --ion-color-vacant-tint: #4786b9;
+}
+
+.ion-color-vacant {
+  --ion-color-base: var(--ion-color-vacant);
+  --ion-color-base-rgb: var(--ion-color-vacant-rgb);
+  --ion-color-contrast: var(--ion-color-vacant-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-vacant-contrast-rgb);
+  --ion-color-shade: var(--ion-color-vacant-shade);
+  --ion-color-tint: var(--ion-color-vacant-tint);
 }

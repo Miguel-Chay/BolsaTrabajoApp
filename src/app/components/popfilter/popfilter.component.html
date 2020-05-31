@@ -1,0 +1,60 @@
+	<ion-toolbar>
+		<ion-title>Filtros
+		</ion-title>
+	</ion-toolbar>
+<ion-list>
+
+	<form [formGroup]="findData">
+	<ion-item>
+    	<ion-label>Años de experiencia</ion-label>
+    	<ion-select placeholder="Select One" formControlName="year_Experience">
+    		<ion-select-option value="" >0</ion-select-option>
+    		<ion-select-option *ngFor="let i of years" [value]="i">{{i}}</ion-select-option>
+	   	</ion-select>
+  	</ion-item>
+
+  	<ion-item>
+    	<ion-label>Tipo de trabajo</ion-label>
+    	<ion-select placeholder="Seleccionar" formControlName="job_Type">
+    		<ion-select-option value="" >Cualquier tipo</ion-select-option>
+    		<ion-select-option *ngFor="let type of jobType " >{{type.type}}</ion-select-option>
+	   	</ion-select>
+  	</ion-item>
+
+	<ion-item >
+		<ion-label>Ciudad: </ion-label>
+  		<ion-input placeholder="ejemplo: Mérida" formControlName="city"></ion-input>
+	</ion-item>
+	<ion-item>
+    	<ion-label>Área de estudios</ion-label>
+    	<ion-select placeholder="Seleccionar" formControlName="subjectArea">
+    		<ion-select-option value="" >Cualquier tipo</ion-select-option>
+    		<ion-select-option *ngFor="let area of subjectArea " >{{area.name}}</ion-select-option>
+	   	</ion-select>
+  	</ion-item>
+  	<ion-item>
+    	<ion-label>Plan de estudios</ion-label>
+    	<ion-select placeholder="Seleccionar" formControlName="studyPrograme">
+    		<ion-select-option value="" >Cualquier tipo</ion-select-option>
+    		<ion-select-option *ngFor="let area of subjectArea " >{{area.name}}</ion-select-option>
+	   	</ion-select>
+  	</ion-item>
+  	<ion-item >
+		<ion-label>Sueldo Mensual: </ion-label>
+  		<ion-input placeholder="Cantidad igual o mayor" formControlName="sueldo"></ion-input>
+	</ion-item>
+	<ion-item *ngIf="findData.get('sueldo').errors && findData.get('sueldo').dirty">
+        <p color="danger" ion-text *ngIf="findData.get('sueldo').hasError('pattern')">el dato debe de ser numerico</p>
+    </ion-item>
+		
+		<ion-row>
+    		<ion-col width-50 style="text-align: center">
+	    		<ion-button  [ngClass]="{'button-disabled': findData.invalid}" color="primary" type="submit" 
+	    	 		(click)= "find()" size="large">Buscar</ion-button>		
+			</ion-col>
+		</ion-row>
+
+	</form>
+
+ 
+</ion-list>

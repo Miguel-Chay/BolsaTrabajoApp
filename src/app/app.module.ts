@@ -11,6 +11,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { PipesModule } from './pipes/pipes.module'
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     IonicStorageModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ],
   providers: [
     StatusBar,

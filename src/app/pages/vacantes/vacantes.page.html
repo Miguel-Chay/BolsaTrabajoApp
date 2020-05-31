@@ -1,12 +1,153 @@
-<ion-header>
-  <ion-toolbar>
-  	<ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+<ion-header slot="top" >
+  <ion-toolbar color="blue" slot="top">
+    <ion-buttons slot="start" >
+      <ion-menu-button color ="light"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Mis Vacantes</ion-title>
+    <ion-title color="light">Vacantes</ion-title>
+    <!-- <div class="ion-text-justify"> -->
+    <!-- <ion-searchbar  *ngIf="buscar != true" animated (ionChange)="find($event)" color="light" placeholder="nombre del trabajo"  > </ion-searchbar> -->
+     <!-- </div > -->
+      <!-- <ion-icon *ngIf="(buscar)"     style="width: 28px; height: 28px;" slot="end" color="light" name="search" (click)="showSearchBar()"></ion-icon> -->
+      <!-- <ion-icon name="close" *ngIf="buscar !=true"   style="width: 28px; height: 28px;" slot="end" color="light"  (click)="showSearchBar()">></ion-icon> -->
+    
+    <!-- <ion-searchbar ></ion-searchbar> -->
   </ion-toolbar>
+
+  <ion-toolbar color="gold"  > 
+	<ion-searchbar animated (ionChange)="find($event)" color="light" placeholder="nombre del trabajo"  > </ion-searchbar><ion-icon  (click)="showpop($event)" color="light" name="ios-funnel" slot="end" size="large">Filtros</ion-icon>
+<!-- 	<ion-searchbar animated (ionChange)="find($event)" placeholder="nombre de la ciudad" ></ion-searchbar>
+	<ion-searchbar animated (ionChange)="find($event)" placeholder="nombre del trabajo" ></ion-searchbar>
+	<ion-searchbar animated (ionChange)="find($event)" placeholder="nombre del trabajo" ></ion-searchbar>
+	 -->
+	</ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="goldlow" fullscreen class="ion-padding">
 
+	<ion-card *ngFor="let i of jobsOpening|filtro : textFinder : 'job_title'|slice:0:end"color="vacant">
+        <img *ngIf="i.logo != null" src={{logo}}{{i.logo}} />
+        <ion-card-header>
+          	<ion-card-title>{{i.job_title}}</ion-card-title>
+          	<ion-card-subtitle>en {{i.commercial_name}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content >
+        	<p *ngIf="fun(i.skills) != 0">
+          		Aptitudes: 
+          		<ion-text *ngFor="let j of i.skills">
+          			<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
+          			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>
+          
+      			</ion-text> 
+
+			</p>
+		
+        </ion-card-content>
+    </ion-card>
+
+
+
+
+
+
+	<!-- <ion-grid>
+      <ion-row>
+        <ion-col >
+
+<div *ngFor="let i of jobsOpening|filtro : textFinder : 'job_title'|slice:0:end;let impar=odd;let indice=index">
+	<ion-card  *ngIf="impar == false" color="vacant">
+        <img *ngIf="i.logo != null" src={{logo}}{{i.logo}} />
+        <ion-card-header>
+          	<ion-card-title>{{i.job_title}} inice: {{indice}}</ion-card-title>
+          	<ion-card-subtitle>en {{i.commercial_name}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content >
+        	<p *ngIf="fun(i.skills) != 0">
+          		Aptitudes: 
+          		<ion-text *ngFor="let j of i.skills">
+          			<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
+          			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>
+          
+      			</ion-text> 
+
+			</p>
+		
+        </ion-card-content>
+    </ion-card>
+    </div>
+</ion-col>
+<ion-col>
+        <div *ngFor="let i of jobsOpening|filtro : textFinder : 'job_title'|slice:0:end;let impar=odd;let indice=index">
+	<ion-card  *ngIf="impar == true" color="vacant">
+        <img *ngIf="i.logo != null" src={{logo}}{{i.logo}} />
+        <ion-card-header>
+          	<ion-card-title>{{i.job_title}}</ion-card-title>
+          	<ion-card-subtitle>en {{i.commercial_name}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content >
+        	<p *ngIf="fun(i.skills) != 0">
+          		Aptitudes: 
+          		<ion-text *ngFor="let j of i.skills">
+          			<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
+          			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>
+          
+      			</ion-text> 
+
+			</p>
+		
+        </ion-card-content>
+    </ion-card>
+    </div>
+
+
+        </ion-col>
+</ion-row>
+</ion-grid>
+ -->
 </ion-content>
+
+<ion-footer >
+	 
+        <ion-range style=" height: 60px" min="0" max={{total}} pin  step="10" color="blue" value={{end}} (ionChange)="show($event)">
+            <ion-icon slot="start" size="small" name="ios-browsers"></ion-icon>
+    	    <ion-icon slot="end" name="ios-browsers"></ion-icon>
+        </ion-range>
+</ion-footer>
+	<!-- <ion-tabs >
+  <ion-tab-bar slot="bottom" color="primary">
+
+		<ion-tab-button   >
+			<ion-icon name="ios-arrow-back" ></ion-icon>
+		</ion-tab-button>
+
+		<ion-tab-button  >
+			<ion-icon name="ios-browsers" *ngIf="now!=0" (click)="change(-2)"></ion-icon>
+			<ion-label> {{page1}}</ion-label>
+		</ion-tab-button>
+
+		<ion-tab-button   >
+			<ion-icon name="ios-browsers"  *ngIf="now!=0" (click)="change(-1)"></ion-icon>
+			<ion-label> {{page2}}</ion-label>
+		</ion-tab-button>
+		
+		<ion-tab-button   >
+			<ion-icon name="ios-browsers"></ion-icon>
+			<ion-label> {{page3}}</ion-label>
+		</ion-tab-button>
+		
+		<ion-tab-button  >
+			<ion-icon name="ios-browsers" (click)="change(1)"></ion-icon>
+			<ion-label> {{page4}}</ion-label>
+		</ion-tab-button>
+
+		<ion-tab-button   >
+			<ion-icon name="ios-browsers"(click)="change(2)"></ion-icon>
+			<ion-label> {{page5}}</ion-label>
+		</ion-tab-button>
+
+		<ion-tab-button   >
+			<ion-icon name="ios-arrow-forward"></ion-icon>
+		</ion-tab-button>
+
+	</ion-tab-bar>
+</ion-tabs>
+  -->

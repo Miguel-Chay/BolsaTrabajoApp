@@ -96,7 +96,7 @@ export class AgregarCursoPage implements OnInit {
           this.addData.get('mode').value,
           this.addData.get('start').value,
           this.addData.get('end').value,
-        ).subscribe( workExperience=>{});
+        ).subscribe( course=>{});
     }
 	}
 

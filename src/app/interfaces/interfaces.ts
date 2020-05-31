@@ -144,7 +144,7 @@ export interface CvSkillComplete{
 
 export interface Skill{
   id ? : string,
-  skill? : string ,
+  skill? : string 
 }
 
 export interface Education {
@@ -183,4 +183,40 @@ export interface AcademicTraining {
   institutionName?: string;
   end?: string;
   degree?: string;
+}
+export interface Vacant {
+  id?: string;
+  job_title?: string;
+  years_experience?: string;
+  job_type_id?: string;
+  city_id?: string;
+  subject_area_id?: string;
+  commercial_name?: string;
+  logo?: string;
+  type?: string;
+}
+
+
+export interface JobsOpening {
+  id?: string;
+  contact_id?: string;
+  job_title?: string;
+  description?: string;
+  subject_area_id?: string;
+  years_experience?: string;
+  job_type_id?: string;
+  city_id?: string;
+  openings?: string;
+  social_benefits?: string;
+  comments?: string;
+  salary?: string;
+  date_post?: string;
+  date_expire?: string;
+  status_id?: string;
+  close_reminder?: string;
+}
+
+export interface JobType{
+  id? : string;
+  type? : string;
 }
