@@ -17,7 +17,7 @@
     	<ion-label>Tipo de trabajo</ion-label>
     	<ion-select placeholder="Seleccionar" formControlName="job_Type">
     		<ion-select-option value="" >Cualquier tipo</ion-select-option>
-    		<ion-select-option *ngFor="let type of jobType " >{{type.type}}</ion-select-option>
+    		<ion-select-option *ngFor="let type of jobType " [value]="type.id">{{type.type}}</ion-select-option>
 	   	</ion-select>
   	</ion-item>
 
@@ -25,20 +25,24 @@
 		<ion-label>Ciudad: </ion-label>
   		<ion-input placeholder="ejemplo: Mérida" formControlName="city"></ion-input>
 	</ion-item>
-	<ion-item>
-    	<ion-label>Área de estudios</ion-label>
-    	<ion-select placeholder="Seleccionar" formControlName="subjectArea">
-    		<ion-select-option value="" >Cualquier tipo</ion-select-option>
-    		<ion-select-option *ngFor="let area of subjectArea " >{{area.name}}</ion-select-option>
-	   	</ion-select>
-  	</ion-item>
-  	<ion-item>
-    	<ion-label>Plan de estudios</ion-label>
-    	<ion-select placeholder="Seleccionar" formControlName="studyPrograme">
-    		<ion-select-option value="" >Cualquier tipo</ion-select-option>
-    		<ion-select-option *ngFor="let area of subjectArea " >{{area.name}}</ion-select-option>
-	   	</ion-select>
-  	</ion-item>
+
+
+  <ion-item >
+    <ion-label>Área de estudios</ion-label>
+    <ion-select placeholder="Seleccionar" formControlName="subject_Area">
+      <ion-select-option value="" >Cualquier tipo</ion-select-option>
+      <ion-select-option *ngFor="let subjet of subjectArea" [value]="subjet.id">{{subjet.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Plan de estudios</ion-label>
+    <ion-select placeholder="Seleccionar" formControlName="study_Programe">
+        <ion-select-option value="" >Cualquier plan</ion-select-option>
+        <ion-select-option *ngFor="let programe of studyPrograme " [value]="programe.id" >{{programe.name}}</ion-select-option>
+    </ion-select>
+  </ion-item> 
+	 
   	<ion-item >
 		<ion-label>Sueldo Mensual: </ion-label>
   		<ion-input placeholder="Cantidad igual o mayor" formControlName="sueldo"></ion-input>

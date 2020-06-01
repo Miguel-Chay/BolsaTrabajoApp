@@ -4,13 +4,6 @@
       <ion-menu-button color ="light"></ion-menu-button>
     </ion-buttons>
     <ion-title color="light">Vacantes</ion-title>
-    <!-- <div class="ion-text-justify"> -->
-    <!-- <ion-searchbar  *ngIf="buscar != true" animated (ionChange)="find($event)" color="light" placeholder="nombre del trabajo"  > </ion-searchbar> -->
-     <!-- </div > -->
-      <!-- <ion-icon *ngIf="(buscar)"     style="width: 28px; height: 28px;" slot="end" color="light" name="search" (click)="showSearchBar()"></ion-icon> -->
-      <!-- <ion-icon name="close" *ngIf="buscar !=true"   style="width: 28px; height: 28px;" slot="end" color="light"  (click)="showSearchBar()">></ion-icon> -->
-    
-    <!-- <ion-searchbar ></ion-searchbar> -->
   </ion-toolbar>
 
   <ion-toolbar color="gold"  > 
@@ -24,7 +17,7 @@
 
 <ion-content color="goldlow" fullscreen class="ion-padding">
 
-	<ion-card *ngFor="let i of jobsOpening|filtro : textFinder : 'job_title'|slice:0:end"color="vacant">
+	<ion-card *ngFor="let i of jobsOpening|filtrosVacant : textFinder : findData.get('year_Experience').value : findData.get('job_Type').value :        findData.get('city').value : findData.get('study_Programe').value : findData.get('subject_Area').value : findData.get('sueldo').value|slice:0:end"color="vacant">
         <img *ngIf="i.logo != null" src={{logo}}{{i.logo}} />
         <ion-card-header>
           	<ion-card-title>{{i.job_title}}</ion-card-title>

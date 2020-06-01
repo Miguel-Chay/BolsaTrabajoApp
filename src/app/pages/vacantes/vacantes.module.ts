@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ComponentsModule } from '../../components/components.module';
@@ -27,7 +27,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     PipesModule,
-    ComponentsModule
+    ComponentsModule,
+    ReactiveFormsModule
   ],
   declarations: [VacantesPage]
 })
