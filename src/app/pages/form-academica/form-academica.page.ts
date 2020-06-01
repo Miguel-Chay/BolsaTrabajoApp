@@ -170,7 +170,7 @@ export class FormAcademicaPage implements OnInit {
     const x = + this.createEducation.controls.year_start.value;
     console.log('si', isNumber(x) );
     if (this.isUpdate) {
-      this.educationService.updateCandidate(this.idParam, this.createEducation.value).subscribe(() => {});
+      this.educationService.updateEducation(this.idParam, this.createEducation.value).subscribe(() => {});
     } else {
       this.educationService.createEducation(this.createEducation.value).subscribe(() => {});
     }

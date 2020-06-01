@@ -21,8 +21,11 @@ export class EducationService {
   createEducation(data: any) {
     return this.http.post(`${this.URL}/api/educations`, data);
   }
-  updateCandidate(id: string, data: any) {
+  updateEducation(id: string, data: any) {
     return this.http.put(`${this.URL}/api/educations/${id}`, data);
+  }
+  DeleteEducation(id: string) {
+    return this.http.delete(`${this.URL}/api/educations/${id}`);
   }
 
 }

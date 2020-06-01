@@ -11,10 +11,10 @@ import { flush } from '@angular/core/testing';
 // import { AgregarFormAcademicaPageModule } from '../agregar-form-academica/agregar-form-academica.module';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MpFormAcademicaPage,
-  },
+  // {
+  //   path: '',
+  //   component: MpFormAcademicaPage,
+  // }
   {
     path: '',
     redirectTo: '',

@@ -1,4 +1,4 @@
-<ion-tabs >
+<ion-tabs  (ionTabsWillChange)="hidenTabs(false,tabs)" #tabs>
 	<ion-tab-bar slot="bottom" >
 
 		<ion-tab-button tab="mp-exp-laboral" selected="true">
@@ -6,7 +6,7 @@
 			<ion-label>Experiencia Laboral</ion-label>
 		</ion-tab-button>
 
-		<ion-tab-button tab="mp-form-academica" >
+		<ion-tab-button  tab="mp-form-academica" >
 			<ion-icon name="school"></ion-icon>
 			<ion-label>Formación Academica</ion-label>
 		</ion-tab-button>
