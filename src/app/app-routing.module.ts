@@ -29,12 +29,9 @@ const routes: Routes = [
   
   { path: 'mi-perfil', loadChildren: './pages/mi-perfil/mi-perfil.module#MiPerfilPageModule' },
   { path: 'loading', loadChildren: './pages/loading/loading.module#LoadingPageModule' },
-  { path: 'agregar-idioma', loadChildren: './pages/agregar-idioma/agregar-idioma.module#AgregarIdiomaPageModule' },  { path: 'agregar-aptitud', loadChildren: './pages/agregar-aptitud/agregar-aptitud.module#AgregarAptitudPageModule' },
-
-  
-
-  
-
+  { path: 'agregar-idioma', loadChildren: './pages/agregar-idioma/agregar-idioma.module#AgregarIdiomaPageModule' },
+  { path: 'agregar-aptitud', loadChildren: './pages/agregar-aptitud/agregar-aptitud.module#AgregarAptitudPageModule' },
+  // { path: 'form-academica', loadChildren: './pages/form-academica/form-academica.module#FormAcademicaPageModule' },
   // { path: 'mp-certificaciones', loadChildren: './pages/mp-certificaciones/mp-certificaciones.module#MpCertificacionesPageModule' },
   // { path: 'mp-idiomas', loadChildren: './pages/mp-idiomas/mp-idiomas.module#MpIdiomasPageModule' },
   // { path: 'mp-aptitudes', loadChildren: './pages/mp-aptitudes/mp-aptitudes.module#MpAptitudesPageModule' },

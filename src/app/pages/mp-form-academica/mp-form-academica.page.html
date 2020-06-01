@@ -7,7 +7,7 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-card color="light" (click)=opcionesAcademic() *ngFor="let edc of academicTraining">
+    <ion-card color="light" (click)=opcionesformAcademic(edc.education_id) *ngFor="let edc of academicTraining; let i=index">
         <ion-card-header>
             <ion-card-title>
                 <ion-text color="dark">
@@ -18,13 +18,14 @@
         </ion-card-header>
         <ion-card-content>
             <b>Grado de estudio:</b> {{edc.degree}} <br>
-            <b>Ingreso: </b> {{edc.start}} <br><b>Egreso: </b> {{edc.end}}
+            <b>Ingreso: </b> {{edc.start}} <br><b *ngIf="edc.end != null">Egreso: </b> {{edc.end}}
         </ion-card-content>
     </ion-card>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button routerLink='/agregar-form-academica'>
+        <ion-fab-button (click)="hideTabsfunc()" [routerLink]="[ '/mi-perfil/mp-form-academica/form-academica/agregar']" #myfab>
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>
+
 </ion-content>

@@ -148,6 +148,7 @@ export interface Skill{
 }
 
 export interface Education {
+  id?: string;
   cv_id?: string;
   degree_id?: string;
   institution_name?: string;
@@ -155,8 +156,8 @@ export interface Education {
   study_programme_name: string;
   subject_area_id?: string;
   status_education_id: string;
-  start?: Date;
-  end?: Date;
+  start?: string;
+  end?: string;
 }
 export interface StudyPrograme {
   id?: string;
@@ -178,6 +179,7 @@ export interface SubjectArea {
   name?: string;
 }
 export interface AcademicTraining {
+  education_id?: string;
   studyProgrameName?: string;
   start?: string;
   institutionName?: string;

@@ -1,3 +1,4 @@
+import { Education } from './../interfaces/interfaces';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -14,9 +15,14 @@ export class EducationService {
   getEducation(id: string) {
     return this.http.get<AcademicTraining[]>(`${this.URL}/api/education/search/?id=${id}`);
   }
-
+  getEducationById(id: string) {
+    return this.http.get<Education>(`${this.URL}/api/educations/${id}`);
+  }
   createEducation(data: any) {
     return this.http.post(`${this.URL}/api/educations`, data);
+  }
+  updateCandidate(id: string, data: any) {
+    return this.http.put(`${this.URL}/api/educations/${id}`, data);
   }
 
 }

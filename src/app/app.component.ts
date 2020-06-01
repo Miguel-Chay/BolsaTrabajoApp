@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Candidate } from './interfaces/interfaces';
 import { Platform } from '@ionic/angular';
@@ -14,11 +14,11 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
 
-  candidate: Candidate={firstname:"",lastname:"",photo:""};
+  candidate: Candidate = {firstname: '', lastname: '', photo: ''};
   URL = environment.urlPhotos;
-  photoRoutbase: string = this.URL+"/btuady/public_html/files/photo/";
-  photoRout: string='';
-  confirm: boolean=false;
+  photoRoutbase: string = this.URL + '/btuady/public_html/files/photo/';
+  photoRout= '';
+  confirm= false;
 
   public appPages = [
     {
@@ -41,7 +41,7 @@ export class AppComponent {
       url: '/vacantes',
       icon: 'paper'
     }
-  
+
 
   ];
 
@@ -55,34 +55,34 @@ export class AppComponent {
     this.initializeApp();
     this.loadInformation();
   }
-  
-    
-//ionViewWillEnter  para mostrar foto y nombre
- 
-
-  loadInformation() //carga antes de entrar
-  {
-    this.storage.get('candidate').then((val) => { 
-      this.candidate = JSON.parse(val);
-
-      console.log(this.candidate.sex)
-      console.log(this.candidate.photo)
-
-    if(this.candidate.photo == null)
-    {
-      if(this.candidate.sex=="female")
-        this.photoRout="./assets/image/Mujer.png";
-      else
-        this.photoRout="./assets/image/Hombre.png";
-    }
-    else
-    {
-      this.photoRout= this.photoRoutbase + this.candidate.photo;
-    }
 
 
-    })
-    console.log("carga desde la pagina de mi  perfil basico")
+// ionViewWillEnter  para mostrar foto y nombre
+
+
+  loadInformation() {
+    this.storage.get('candidate').then((candidate) => {
+      if (candidate != null) {
+        this.candidate = JSON.parse(candidate);
+
+        console.log(this.candidate.sex);
+        console.log(this.candidate.photo);
+
+        if (this.candidate.photo == null) {
+          if (this.candidate.sex === 'female') {
+            this.photoRout = './assets/image/Mujer.png';
+          } else {
+            this.photoRout = './assets/image/Hombre.png';
+          }
+        } else {
+          this.photoRout = this.photoRoutbase + this.candidate.photo;
+        }
+      }
+
+
+
+    });
+    console.log('carga desde la pagina de mi  perfil basico');
   }
 
 
@@ -93,14 +93,14 @@ export class AppComponent {
     });
   }
 
-  async clear(){
-    this.confirm = await this.uiService.alertaConfirmar("¿Desea cerrar su sesión?","/login")//manda la ruta mas el parametro id 
-    if(confirm){
-      this.storage.clear()
-      this.candidate.firstname="";
-      this.candidate.lastname="";
-      this.candidate.photo="";
-      this.photoRout="";
+  async clear() {
+    this.confirm = await this.uiService.alertaConfirmar('¿Desea cerrar su sesión?', '/login');// manda la ruta mas el parametro id
+    if (confirm) {
+      this.storage.clear();
+      this.candidate.firstname = '';
+      this.candidate.lastname = '';
+      this.candidate.photo = '';
+      this.photoRout = '';
 
 
 
