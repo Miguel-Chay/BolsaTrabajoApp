@@ -28,7 +28,7 @@ export class PopfilterComponent implements OnInit {
   ngOnInit() {
   	this.jobTypeService.getJobsListType().subscribe( jobType=>{this.jobType=jobType})
   	this.subjectAreaService.getSubjectAreas().subscribe( subjectArea=>{this.subjectArea=subjectArea})
-    this.studyProgrammeService.getallStudyProgrammes().subscribe( studyPrograme=>{this.studyPrograme=studyPrograme})
+    this.studyProgrammeService.getallStudyProgramme().subscribe( studyPrograme=>{this.studyPrograme=studyPrograme})
 
 
 
@@ -42,16 +42,15 @@ export class PopfilterComponent implements OnInit {
       study_Programe: new FormControl(this.navParams.get('study_Programe')),
       sueldo: new FormControl(this.navParams.get('sueldo'),[ Validators.pattern("^[0-9]*$")])
     });
-      // this.findData.get('year_Experience').setValue(this.navParams.get('year_Experience'))
-      // this.findData.get('job_Type').setValue(this.navParams.get('job_Type'))
-      // this.findData.get('city').setValue(this.navParams.get('city'))
-      // this.findData.get('studyPrograme').setValue(this.navParams.get('studyPrograme'))
-      // this.findData.get('subjectArea').setValue(this.navParams.get('subjectArea'))
-      // this.findData.get('sueldo').setValue(this.navParams.get('sueldo'))      
-
-      // console.log("hijo", this.findData.value )
 
 
+  }
+
+  changeProgramme(event){
+    this.studyProgrammeService.getStudyProgrammeBySubjectArea(event.detail.value).subscribe( studyPrograme=>{
+      this.studyPrograme=studyPrograme
+      this.findData.get('study_Programe').setValue('')
+    })
   }
 
   find(){
@@ -66,6 +65,27 @@ export class PopfilterComponent implements OnInit {
   		sueldo:this.findData.get('sueldo').value,
   	})
   }
+
+  cancel(){
+    this.findData.get('year_Experience').setValue('')
+    this.findData.get('job_Type').setValue('')
+    this.findData.get('city').setValue('')
+    this.findData.get('subject_Area').setValue('')
+    this.findData.get('study_Programe').setValue('')
+    this.findData.get('sueldo').setValue('')
+    
+
+    // this.popoverCtrl.dismiss({
+    //   year_Experience:"",
+    //   job_Type:"",
+    //   city:"",
+    //   subject_Area:"",
+    //   study_Programe:"",
+    //   sueldo:""
+    // })
+  }
+
+
   initForm() {
   	 
 

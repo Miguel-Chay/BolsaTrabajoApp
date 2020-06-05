@@ -31,6 +31,7 @@ export class VacantesPage implements OnInit {
   			this.jobsOpening=jobs
   			 
   			this.total=Object.keys(jobs).length
+        // console.log(this.jobsOpening)
   			 
   		})
   	}
@@ -52,15 +53,22 @@ export class VacantesPage implements OnInit {
   		});
   		await popover.present();
       const{data}=await popover.onWillDismiss();
-
+      // console.log(data)
+      if (data!=null && data.year_Experience!=undefined && 
+        data.job_Type!=undefined && data.city!=undefined && 
+        data.study_Programe!=undefined && data.subject_Area!=undefined && 
+        data.sueldo!=undefined)
+      {
       this.findData.get('year_Experience').setValue(data.year_Experience),
       this.findData.get('job_Type').setValue(data.job_Type),
       this.findData.get('city').setValue(data.city),
       this.findData.get('study_Programe').setValue(data.study_Programe),
       this.findData.get('subject_Area').setValue(data.subject_Area),
       this.findData.get('sueldo').setValue(data.sueldo)      
-      console.log("padre",this.findData.value)
-  	}
+      // console.log("padre",this.findData.value)
+      }
+    }
+    
 
     initForm() {
       this.findData = new FormGroup({
