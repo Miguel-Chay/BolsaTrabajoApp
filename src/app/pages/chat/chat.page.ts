@@ -1,13 +1,15 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from '../../services/message.service';
 import { OrganizationService } from '../../services/organization.service';
 import { environment } from 'src/environments/environment';
 
+import { IonContent } from '@ionic/angular';
+
 import { Message, Organization } from '../../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
-// import {ViewChild} from 'angular2/core';
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -24,6 +26,9 @@ export class ChatPage implements OnInit {
 	newMessage="";
 
 	// @ViewChild(IonContent) content:IonContent;
+	@ViewChild(IonContent, {static: false}) content: IonContent;
+
+
 
 
   	constructor(private storage: Storage,
@@ -45,22 +50,24 @@ export class ChatPage implements OnInit {
 						if (logo!=null)
 						{
 							this.logo=this.URL+"/btuady/public_html/"+logo
-							console.log(this.logo )
+							// console.log(this.logo )
 						}
+						this.baja();
 					})
 				})
 				this.seeMessage();
-				console.log(this.messages)
   			})
   		})
 
   	 
-  		console.log(this.contact_id)
+  		// console.log(this.contact_id)
   	}
 
   	sendMessage(){
 
-  		// this.messageService.addMessage(this.cv_id,this.contact_id,this.newMessage,"",this.getNowDate())
+  		this.messageService.addMessage(this.cv_id,this.contact_id,this.newMessage,"",this.getNowDate()).subscribe(message=>{
+  			this.ngOnInit()
+  		})
   		console.log(this.cv_id,this.contact_id,this.newMessage,this.getNowDate())
   		this.newMessage=""
   		
@@ -75,12 +82,16 @@ export class ChatPage implements OnInit {
 				this.messageService.seeMessages(this.messages[i].id,this.getNowDate()).subscribe(message=>{})
 
 			}
-			else{
-				console.log("no actualiza el mensaje: "+i)
-			}
+			// else{
+			// 	console.log("no actualiza el mensaje: "+i)
+			// }
 		}
   	}
 
+  	baja(){
+  		this.content.scrollToBottom(10);
+  		// console.log("se ejecuta baja")
+  	}
 
 
   getNowDate(){

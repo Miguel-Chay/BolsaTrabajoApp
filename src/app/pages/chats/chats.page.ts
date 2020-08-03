@@ -29,21 +29,21 @@ export class ChatsPage implements OnInit {
   		this.storage.get('id').then((val) => { 
   		this.jobApplicationStatusLogService.getContacts(val).subscribe(chats=>{
   			this.chats=chats;
-  			console.log(this.chats)
+  			// console.log(this.chats)
   			})
   		})
   	
   	}
 
   	gotoChat(id:string,read:string){
-      if (read=="1")
-      {
-        console.log("tiene un menssage sin leer")
-      }
-      else{
-        console.log("todos los mensajes estan leidos")
+      // if (read=="1")
+      // {
+      //   console.log("tiene un menssage sin leer")
+      // }
+      // else{
+      //   console.log("todos los mensajes estan leidos")
 
-      }
+      // }
       // console.log(id)
       this.navCtrl.navigateForward('/chat/'+id);
 
