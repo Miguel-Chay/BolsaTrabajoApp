@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'oportunidades', loadChildren: './pages/oportunidades/oportunidades.module#OportunidadesPageModule' },
   { path: 'postulaciones', loadChildren: './pages/postulaciones/postulaciones.module#PostulacionesPageModule' },
   { path: 'olvido-contrasenia', loadChildren: './pages/olvido-contrasenia/olvido-contrasenia.module#OlvidoContraseniaPageModule' },
-  { path: 'vacantes', loadChildren: './pages/vacantes/vacantes.module#VacantesPageModule' },
   { path: 'inicio-perfil-basico', loadChildren: './pages/inicio-perfil-basico/inicio-perfil-basico.module#InicioPerfilBasicoPageModule' },
   { path: 'agregar-exp-laboral', loadChildren: './pages/agregar-exp-laboral/agregar-exp-laboral.module#AgregarExpLaboralPageModule' },
   { path: 'agregar-form-academica', loadChildren: './pages/agregar-form-academica/agregar-form-academica.module#AgregarFormAcademicaPageModule' },
@@ -26,11 +25,19 @@ const routes: Routes = [
   { path: 'editar-curso/:id', loadChildren: './pages/editar-curso/editar-curso.module#EditarCursoPageModule' },
   { path: 'editar-idioma/:id', loadChildren: './pages/editar-idioma/editar-idioma.module#EditarIdiomaPageModule' },
 
+  { path: 'vacantes', loadChildren: './pages/vacantes/vacantes.module#VacantesPageModule' },
+  { path: 'vacante/:id', loadChildren: './pages/vacante/vacante.module#VacantePageModule' },
   
   { path: 'mi-perfil', loadChildren: './pages/mi-perfil/mi-perfil.module#MiPerfilPageModule' },
   { path: 'loading', loadChildren: './pages/loading/loading.module#LoadingPageModule' },
   { path: 'agregar-idioma', loadChildren: './pages/agregar-idioma/agregar-idioma.module#AgregarIdiomaPageModule' },
   { path: 'agregar-aptitud', loadChildren: './pages/agregar-aptitud/agregar-aptitud.module#AgregarAptitudPageModule' },
+  { path: 'mensajes', loadChildren: './pages/mensajes/mensajes.module#MensajesPageModule' },
+  { path: 'chats', loadChildren: './pages/chats/chats.module#ChatsPageModule' },
+  { path: 'chat/:id', loadChildren: './pages/chat/chat.module#ChatPageModule' },
+
+
+
   // { path: 'form-academica', loadChildren: './pages/form-academica/form-academica.module#FormAcademicaPageModule' },
   // { path: 'mp-certificaciones', loadChildren: './pages/mp-certificaciones/mp-certificaciones.module#MpCertificacionesPageModule' },
   // { path: 'mp-idiomas', loadChildren: './pages/mp-idiomas/mp-idiomas.module#MpIdiomasPageModule' },

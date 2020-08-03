@@ -127,3 +127,40 @@
   --ion-color-shade: var(--ion-color-vacant-shade);
   --ion-color-tint: var(--ion-color-vacant-tint);
 }
+
+/** colores de los mensajes del chat **/
+:root {
+  --ion-color-msg-send: #264466;
+  --ion-color-msg-send-rgb: 38,68,102;
+  --ion-color-msg-send-contrast: #ffffff;
+  --ion-color-msg-send-contrast-rgb: 255,255,255;
+  --ion-color-msg-send-shade: #213c5a;
+  --ion-color-msg-send-tint: #3c5775;
+}
+
+.ion-color-msg-send {
+  --ion-color-base: var(--ion-color-msg-send);
+  --ion-color-base-rgb: var(--ion-color-msg-send-rgb);
+  --ion-color-contrast: var(--ion-color-msg-send-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-msg-send-contrast-rgb);
+  --ion-color-shade: var(--ion-color-msg-send-shade);
+  --ion-color-tint: var(--ion-color-msg-send-tint);
+}
+
+:root {
+  --ion-color-msg-received: #918d8d;
+  --ion-color-msg-received-rgb: 145,141,141;
+  --ion-color-msg-received-contrast: #000000;
+  --ion-color-msg-received-contrast-rgb: 0,0,0;
+  --ion-color-msg-received-shade: #807c7c;
+  --ion-color-msg-received-tint: #9c9898;
+}
+
+.ion-color-msg-received {
+  --ion-color-base: var(--ion-color-msg-received);
+  --ion-color-base-rgb: var(--ion-color-msg-received-rgb);
+  --ion-color-contrast: var(--ion-color-msg-received-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-msg-received-contrast-rgb);
+  --ion-color-shade: var(--ion-color-msg-received-shade);
+  --ion-color-tint: var(--ion-color-msg-received-tint);
+}

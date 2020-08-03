@@ -5,19 +5,59 @@
     </ion-buttons>
     <ion-title color="light">Vacantes</ion-title>
   </ion-toolbar>
-
-  <ion-toolbar color="gold"  > 
-	<ion-searchbar animated (ionChange)="find($event)" color="light" placeholder="nombre del trabajo"  > </ion-searchbar><ion-icon  (click)="showpop($event)" color="light" name="options" slot="end" size="large">Filtros</ion-icon>
-<!-- 	<ion-searchbar animated (ionChange)="find($event)" placeholder="nombre de la ciudad" ></ion-searchbar>
-	<ion-searchbar animated (ionChange)="find($event)" placeholder="nombre del trabajo" ></ion-searchbar>
-	<ion-searchbar animated (ionChange)="find($event)" placeholder="nombre del trabajo" ></ion-searchbar>
-	 -->
-	</ion-toolbar>
+  <div  *ngIf = "jobsOpening!=null && showVacants != false">
+    <ion-toolbar color="gold"  > 
+	    <ion-searchbar animated (ionChange)="find($event)" color="light" placeholder="nombre del trabajo"  > </ion-searchbar><ion-icon  (click)="showpop($event)" color="light" name="options" slot="end" size="large">Filtros de búsqueda</ion-icon>
+	  </ion-toolbar>
+  </div>
 </ion-header>
 
 <ion-content color="goldlow" fullscreen class="ion-padding">
 
-	<ion-card *ngFor="let i of jobsOpening|filtrosVacant : textFinder : findData.get('year_Experience').value : findData.get('job_Type').value :        findData.get('city').value : findData.get('study_Programe').value : findData.get('subject_Area').value : findData.get('sueldo').value|slice:0:end"color="vacant">
+
+
+  <div  *ngIf = "jobsOpening==null && showVacants == true">
+    <ion-card *ngFor="let i of [1,1,1]" color="light" >
+      <ion-card-header>
+        <h3 style="text-align: center;"><ion-skeleton-text  style="width: 95%; height: 120px;margin-left:auto;  margin-right:auto;"></ion-skeleton-text></h3>
+        <ion-card-title>
+          <ion-skeleton-text animated style="width: 80%; height: 80%"></ion-skeleton-text>
+        </ion-card-title>
+        <ion-card-subtitle>
+          <ion-skeleton-text animated style="width: 45%"></ion-skeleton-text>
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content style="text-align: justify;">
+        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+         
+      </ion-card-content>
+    </ion-card>
+
+    
+  </div>
+
+<!-- //Para poder visualizar las vacantes disponibles debes completar el perfil y CV. -->
+<div *ngIf = "showVacants == false  "> 
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title>
+        Para poder visualizar las vacantes disponibles debes completar el perfil y CV.
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Agrega información sobre tu formación académica
+    </ion-card-content>
+  </ion-card>
+  
+</div>
+
+
+<div  *ngIf = "jobsOpening!=null && showVacants != false ">
+	<ion-card *ngFor="let i of jobsOpening|filtrosVacant : textFinder : findData.get('year_Experience').value : findData.get('job_Type').value :        findData.get('city').value : findData.get('study_Programe').value : findData.get('subject_Area').value : findData.get('sueldo').value|slice:0:end" color="vacant" (click)=goSeeVacant(i.id)>
         <img *ngIf="i.logo != null" src={{logo}}{{i.logo}} />
         <ion-card-header>
           	<ion-card-title>{{i.job_title}}</ion-card-title>
@@ -36,7 +76,7 @@
 		
         </ion-card-content>
     </ion-card>
-
+</div>
 
 
 
@@ -99,48 +139,11 @@
 </ion-content>
 
 <ion-footer >
-	 
+   
+  <div  *ngIf = "jobsOpening!=null">
         <ion-range style=" height: 60px" min="0" max={{total}} pin  step="10" color="blue" value={{end}} (ionChange)="show($event)">
             <ion-icon slot="start" size="small" name="ios-browsers"></ion-icon>
     	    <ion-icon slot="end" name="ios-browsers"></ion-icon>
         </ion-range>
+      </div>
 </ion-footer>
-	<!-- <ion-tabs >
-  <ion-tab-bar slot="bottom" color="primary">
-
-		<ion-tab-button   >
-			<ion-icon name="ios-arrow-back" ></ion-icon>
-		</ion-tab-button>
-
-		<ion-tab-button  >
-			<ion-icon name="ios-browsers" *ngIf="now!=0" (click)="change(-2)"></ion-icon>
-			<ion-label> {{page1}}</ion-label>
-		</ion-tab-button>
-
-		<ion-tab-button   >
-			<ion-icon name="ios-browsers"  *ngIf="now!=0" (click)="change(-1)"></ion-icon>
-			<ion-label> {{page2}}</ion-label>
-		</ion-tab-button>
-		
-		<ion-tab-button   >
-			<ion-icon name="ios-browsers"></ion-icon>
-			<ion-label> {{page3}}</ion-label>
-		</ion-tab-button>
-		
-		<ion-tab-button  >
-			<ion-icon name="ios-browsers" (click)="change(1)"></ion-icon>
-			<ion-label> {{page4}}</ion-label>
-		</ion-tab-button>
-
-		<ion-tab-button   >
-			<ion-icon name="ios-browsers"(click)="change(2)"></ion-icon>
-			<ion-label> {{page5}}</ion-label>
-		</ion-tab-button>
-
-		<ion-tab-button   >
-			<ion-icon name="ios-arrow-forward"></ion-icon>
-		</ion-tab-button>
-
-	</ion-tab-bar>
-</ion-tabs>
-  -->

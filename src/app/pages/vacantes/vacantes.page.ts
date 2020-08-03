@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { JobOpeningService } from '../../services/job-opening.service';
+import { EducationService } from 'src/app/services/education.service';
+import { Storage } from '@ionic/storage';
+
 import { environment } from 'src/environments/environment';
-import { Vacant } from '../../interfaces/interfaces';
+import { Vacant, AcademicTraining } from '../../interfaces/interfaces';
+import { ActivatedRoute } from '@angular/router';
 import {FormGroup, FormControl, Validators ,FormBuilder } from '@angular/forms';
 import { PopfilterComponent } from '../../components/popfilter/popfilter.component';
-import { PopoverController,NavParams } from '@ionic/angular';
-
+import { PopoverController,NavParams,NavController } from '@ionic/angular';
+// import {  NavController,ActionSheetController } from '@ionic/angular';
 @Component({
   selector: 'app-vacantes',
   templateUrl: './vacantes.page.html',
@@ -19,21 +23,49 @@ export class VacantesPage implements OnInit {
   findData: FormGroup;
 	end=10;
 	total:any;
+  academicTraining : AcademicTraining[];
 	textFinder="";
 	buscar=true;
-  
+  showVacants :  boolean ;
+
+
   	constructor(
   		private jobOpeningService : JobOpeningService,
-  		private popoverCtrl:PopoverController) {this.initForm() }
+      private educationService: EducationService,
+      private storage: Storage,
+  		private popoverCtrl:PopoverController,
+      private route: ActivatedRoute,
+      private navCtrl: NavController) {this.initForm() }
 
   	ngOnInit() {
-  		this.jobOpeningService.getJobsListOpen().subscribe (jobs=>{
-  			this.jobsOpening=jobs
-  			 
-  			this.total=Object.keys(jobs).length
-        // console.log(this.jobsOpening)
-  			 
-  		})
+    }
+
+    
+    ionViewWillEnter(){
+      // this.load = this.route.snapshot.paramMap.get('load');
+
+      this.storage.get('id').then((id) => {
+
+      this.educationService.getEducationVacants(id).subscribe(academicTraining => {
+        this.academicTraining = academicTraining;
+        // console.log(Object.keys(this.academicTraining).length)
+        if(Object.keys(this.academicTraining).length > 0){
+          this.showVacants=true
+          this.jobOpeningService.getJobsListOpen().subscribe (jobs=>{
+            this.jobsOpening=jobs 
+            this.total=Object.keys(jobs).length
+            // console.log(this.jobsOpening)         
+          })
+        }
+        else{
+          this.showVacants=false
+          // console.log(this.showVacants)
+        }
+        // console.log(academicTraining);
+      });
+    });
+
+  		
   	}
 
   	async showpop(event){
@@ -95,19 +127,13 @@ export class VacantesPage implements OnInit {
   		}
   	}
 
-  	// find(event){
-  // 	if(this.valstart==0){
-  // 		this.valstart=1
-  // 		console.log("cambio de valores = " +this.valstart)
-  // 	}
-  // 	else{
-  // 	// this.value=event.detail.value
-  // 	this.valend=5
-  // 	console.log("execut teh finder")
-  // 	this.textFinder=event.detail.value
-  // 	this.addData.get('skill').setValue(this.textFinder)
-  // 	}
-  // }
+    goSeeVacant(id:string){
+      // console.log(id)
+      this.navCtrl.navigateForward('/vacante/'+id);
+
+    }
+
+
 
   	//da la opcion de elementos para mostrar en la pagina 
   	show(event:any){

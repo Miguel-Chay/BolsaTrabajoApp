@@ -15,7 +15,7 @@ export class CvSkillService {
 
 
 
-  //returna una lista de todos los giros de negocio
+  //returna una lista de todos los skills 
   getCvSkillComplete(id : string){
     return this.http.get<CvSkillComplete>(`${this.URL}/api/cv-skill/cv-skill-complete/?id=${id}`);
   }

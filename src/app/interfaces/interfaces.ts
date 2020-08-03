@@ -142,6 +142,7 @@ export interface CvSkillComplete{
   color?: string
 }
 
+
 export interface Skill{
   id ? : string,
   skill? : string 
@@ -189,6 +190,7 @@ export interface AcademicTraining {
 export interface Vacant {
   id?: string;
   job_title?: string;
+  contact_id?: string;
   years_experience?: string;
   job_type_id?: string;
   city_id?: string;
@@ -221,4 +223,75 @@ export interface JobsOpening {
 export interface JobType{
   id? : string;
   type? : string;
+}
+
+export interface Organization{
+  contact_id?: string;
+  commercial_name?: string;
+  social_reason?: string;
+  rfc?: string;
+  description?: string;
+  line_business_id?: string;
+  number_employees_id?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  city_id?: string;
+  url?: string;
+  logo?: string;
+}
+
+export interface OpeningSkill{
+  opening_id?: string;
+  skill_id?: string;
+  skill?: string;
+}
+
+export interface OpeningProgramme{
+  id?:string;
+  name?:string;
+}
+
+export interface OpeningLanguage{
+  language_id?:string,
+  level_id?:string,
+  language?:string,
+  level?:string
+}
+
+export interface JobOpeningStatus{
+  id?:string,
+  status?:string
+}
+
+export interface Message{
+  id?:string;
+  from_user_id?:string,
+  to_user_id?:string,
+  text?:string,
+  html_text?:string,
+  date_sent?:string,
+  date_read?:string,
+}
+
+export interface JobApplicationStatusLogs{
+  id?:string;
+  cv_id?:string;
+  opening_id?:string;
+  message_id?:string;
+  date?:string;
+  type?:string;
+}
+//mi interface para ontener los chats
+export interface contactsChat{
+  id?:string;
+  cv_id?:string;
+  opening_id?:string;
+  message_id?:string;
+  date?:string;
+  type?:string;
+  contact_id?:string;
+  commercial_name?:string;
+  logo?:string;
+  read?:string;
 }

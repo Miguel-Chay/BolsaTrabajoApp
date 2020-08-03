@@ -37,9 +37,14 @@ export class AppComponent {
       icon: 'paper-plane'
     },
     {
-      title: 'Mis Vacantes',
+      title: 'Buscar Vacantes',
       url: '/vacantes',
-      icon: 'paper'
+      icon: 'search'
+    },
+    {
+      title: 'Mensajes',
+      url: '/chats',
+      icon: 'chatboxes'
     }
 
 
@@ -65,8 +70,8 @@ export class AppComponent {
       if (candidate != null) {
         this.candidate = JSON.parse(candidate);
 
-        console.log(this.candidate.sex);
-        console.log(this.candidate.photo);
+        // console.log(this.candidate.sex);
+        // console.log(this.candidate.photo);
 
         if (this.candidate.photo == null) {
           if (this.candidate.sex === 'female') {
@@ -82,7 +87,7 @@ export class AppComponent {
 
 
     });
-    console.log('carga desde la pagina de mi  perfil basico');
+    // console.log('carga desde la pagina de mi  perfil basico');
   }
 
 

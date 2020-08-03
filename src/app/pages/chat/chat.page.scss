@@ -1,0 +1,46 @@
+.message{
+	padding:10px;
+	border-radius:10px;
+	margin-bottom:4px;
+	white-space: pre-wrap;
+}
+
+.other-message{
+	background: var(--ion-color-msg-received);
+	color: #FFF;
+	
+}
+
+.my-message{
+	background: var(--ion-color-msg-send);
+	color: #FFF;
+}
+
+.time{
+	color: #dfdfdf;
+	float:right;
+	font-size:small;	
+}
+
+.message-input{
+	width: 100%;
+	max-rows: auto;
+	border: 1px solid var(--ion-color-medium);
+	border-radius: 20px;
+	background: #fff;
+	resize : none;
+	padding-left: 10px;
+	padding-right: 10 px;
+
+}
+
+.msg-btn{
+	--border-radius: 30px;
+	--padding-start : 0.5 em;
+	--padding-end : 0.5 em;
+}
+
+.ion-textarea {
+  max-height: 100px;
+  max-width: 300px;
+}

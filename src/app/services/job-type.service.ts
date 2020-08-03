@@ -18,4 +18,8 @@ export class JobTypeService {
   getJobsListType(){
     return this.http.get<JobType>(`${this.URL}/api/job-types`);
   }
+
+  getJobType(id:string){
+    return this.http.get<JobType>(`${this.URL}/api/job-types/${id}`);
+  }
 }

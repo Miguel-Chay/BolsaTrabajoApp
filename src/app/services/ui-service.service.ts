@@ -92,6 +92,56 @@ export class UiServiceService {
   } 
 
 
+
+
+
+  //sirve para informar y al presionar aceptar envia a otra pagina
+  async alertaLeave(message: string, aceptar: string): Promise<boolean> {
+    let resolveFunction: (confirm: boolean) => void;
+    const promise = new Promise<boolean>(resolve => {
+    resolveFunction = resolve;
+  });
+
+    const alert = await this.alertController.create({
+      message,
+      buttons: [{
+          text: 'Aceptar',
+          //cssClass: 'secondary',
+          handler: () => {
+            this.navCtrl.navigateForward(aceptar);
+            console.log('Confirm aceptar');
+            resolveFunction(true)
+          }
+        }]
+    });
+
+    await alert.present();
+    return promise;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   loading(message:string,time : number){
     this.platform.ready().then(()=>{
       this.loadingController.create({

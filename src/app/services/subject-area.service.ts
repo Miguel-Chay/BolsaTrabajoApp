@@ -13,4 +13,8 @@ export class SubjectAreaService {
   getSubjectAreas() {
     return this.http.get<SubjectArea>(`${this.URL}/api/subject-area`);
   }
+
+  getSubjectArea(id: string) {
+    return this.http.get<SubjectArea>(`${this.URL}/api/subject-areas/${id}`);
+  }
 }

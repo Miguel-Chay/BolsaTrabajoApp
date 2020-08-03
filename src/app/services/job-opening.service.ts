@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class JobOpeningService {
-	id: string = null;
+	  id: string = null;
   	URL = environment.url;
   	constructor(private http: HttpClient) { }
 
@@ -17,4 +17,13 @@ export class JobOpeningService {
     return this.http.get<JobsOpening>(`${this.URL}/api/job-opening/jobs-list-open`);
   }
 
-}
+  getJobOpening(id:string){
+    return this.http.get<JobsOpening>(`${this.URL}/api/job-openings/${id}`);
+  }
+
+  //http://localhost:8080/api/job-opening/is-open/?id=64
+  getIsOpen(id:string){
+    return this.http.get<JobsOpening>(`${this.URL}/api/job-opening/is-open/?id=${id}`);
+  }
+
+}	
