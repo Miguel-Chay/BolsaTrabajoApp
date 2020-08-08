@@ -43,13 +43,13 @@ export class MpFormAcademicaPage implements OnInit {
   }
 
   async opcionesformAcademic(id: string) {
-    this.confirm = await this.uiService.opcionesMiperfil(`/mi-perfil/mp-form-academica/form-academica/${id}/editar`) //manda la ruta mas el parametro id 
-    if(this.confirm== "delete"){
+    this.confirm = await this.uiService.opcionesMiperfil(`/mi-perfil/mp-form-academica/form-academica/${id}/editar`); // manda la ruta mas el parametro id
+    if (this.confirm === 'delete') {
       this.educationService.DeleteEducation(id).subscribe( resp => {
         this.ionViewWillEnter();
       });
     }
-   }
+  }
 
   hideTabsfunc() {
     // this.pageForm.tabs.tabBar.el.hidden = true;

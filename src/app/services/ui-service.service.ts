@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import {  NavController,ActionSheetController } from '@ionic/angular';
+import {  NavController, ActionSheetController } from '@ionic/angular';
 
-import {Platform,LoadingController} from '@ionic/angular'
+import {Platform, LoadingController} from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,8 @@ import {Platform,LoadingController} from '@ionic/angular'
 export class UiServiceService {
 
   constructor(private alertController: AlertController, private navCtrl: NavController,
-   public actionSheetController: ActionSheetController,public platform : Platform, 
-   public loadingController :LoadingController) { }
+              public actionSheetController: ActionSheetController, public platform: Platform,
+              public loadingController: LoadingController) { }
 
   async alertaInformativa(message: string) {
     const alert = await this.alertController.create({
@@ -23,7 +23,7 @@ export class UiServiceService {
   }
 
 
-  //sirve para confirmar el abandonar una ventana
+  // sirve para confirmar el abandonar una ventana
   async alertaConfirmar(message: string, aceptar: string): Promise<boolean> {
     let resolveFunction: (confirm: boolean) => void;
     const promise = new Promise<boolean>(resolve => {
@@ -35,18 +35,18 @@ export class UiServiceService {
       buttons: [{
           text: 'Cancelar',
           role: 'cancel',
-          //cssClass: 'secondary',
+          // cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
-            resolveFunction(false)
+            resolveFunction(false);
           }
-        },{
+        }, {
           text: 'Aceptar',
-          //cssClass: 'secondary',
+          // cssClass: 'secondary',
           handler: () => {
             this.navCtrl.navigateRoot(aceptar);
             console.log('Confirm aceptar');
-            resolveFunction(true)
+            resolveFunction(true);
           }
         }]
     });
@@ -55,11 +55,11 @@ export class UiServiceService {
     return promise;
   }
 
-  //opciones de de editar o eliminar una 
-  async opcionesMiperfil(page :string): Promise<string> {
+  // opciones de de editar o eliminar una
+  async opcionesMiperfil(page: string): Promise<string> {
 
     let resolveFunction: (confirm: string) => void;
-     const promise = new Promise<string>(resolve => {resolveFunction = resolve;});
+    const promise = new Promise<string>(resolve => {resolveFunction = resolve; });
 
     const actionSheet = await this.actionSheetController.create({
       header: 'Opciones',
@@ -68,34 +68,34 @@ export class UiServiceService {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          resolveFunction("delete")
+          resolveFunction('delete');
         }
       }, {
         text: 'Editar',
         icon: 'Create',
         handler: () => {
-          resolveFunction("edit")
+          resolveFunction('edit');
           // this.navCtrl.navigateRoot(page);
-          this.navCtrl.navigateForward(page);// cambia de pagina con un parametro id
+          this.navCtrl.navigateForward(page); // cambia de pagina con un parametro id
         }
-      },{
+      }, {
         text: 'Cancelar',
         icon: 'close',
         role: 'cancel',
         handler: () => {
-          resolveFunction("cancel");
+          resolveFunction('cancel');
         }
       }]
     });
     await actionSheet.present();
     return promise;
-  } 
+  }
 
 
 
 
 
-  //sirve para informar y al presionar aceptar envia a otra pagina
+  // sirve para informar y al presionar aceptar envia a otra pagina
   async alertaLeave(message: string, aceptar: string): Promise<boolean> {
     let resolveFunction: (confirm: boolean) => void;
     const promise = new Promise<boolean>(resolve => {
@@ -106,11 +106,11 @@ export class UiServiceService {
       message,
       buttons: [{
           text: 'Aceptar',
-          //cssClass: 'secondary',
+          // cssClass: 'secondary',
           handler: () => {
             this.navCtrl.navigateForward(aceptar);
             console.log('Confirm aceptar');
-            resolveFunction(true)
+            resolveFunction(true);
           }
         }]
     });
@@ -142,19 +142,18 @@ export class UiServiceService {
 
 
 
-  loading(message:string,time : number){
-    this.platform.ready().then(()=>{
+  loading(message: string, time: number) {
+    this.platform.ready().then(() => {
       this.loadingController.create({
         message
-      }).then((loadingElement)=>{
+      }).then((loadingElement) => {
         loadingElement.present();
-        var ref = this;
-        setTimeout(function()
-        {
+        let ref = this;
+        setTimeout(function() {
           ref.loadingController.dismiss();
-        },time)
-      })
-    })
+        }, time);
+      });
+    });
   }
 
 

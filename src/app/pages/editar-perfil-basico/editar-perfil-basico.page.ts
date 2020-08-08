@@ -62,7 +62,7 @@ export class EditarPerfilBasicoPage implements OnInit {
             this.stateService.getStateByCountry(this.countryId).subscribe(states => {
               this.states = states[0];
             });
-            this.cityService.getCitiesByState(this.stateId).subscribe(cities =>{
+            this.cityService.getCitiesByState(this.stateId).subscribe(cities => {
               this.cities = cities[0];
             });
         });
@@ -169,6 +169,7 @@ export class EditarPerfilBasicoPage implements OnInit {
     console.log('country',  this.countryId);
     this.stateService.getStateByCountry($event.target.value).subscribe(states => {
       this.states = states[0];
+      console.log(states);
     });
     this.cities = null;
   }

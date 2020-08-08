@@ -27,11 +27,11 @@ const routes: Routes = [
   },
   {
     path: 'form-academica/agregar',
-    loadChildren: '../form-academica/form-academica.module#FormAcademicaPageModule' 
+    loadChildren: '../form-academica/form-academica.module#FormAcademicaPageModule'
   },
   {
     path: 'form-academica/:id/editar',
-    loadChildren: '../form-academica/form-academica.module#FormAcademicaPageModule' 
+    loadChildren: '../form-academica/form-academica.module#FormAcademicaPageModule'
   }
 
 ];

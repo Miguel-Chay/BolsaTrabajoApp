@@ -16,11 +16,11 @@ export class EducationService {
     return this.http.get<AcademicTraining[]>(`${this.URL}/api/education/search/?id=${id}`);
   }
 
-  //http://localhost:8080/api/education/get-form-academic/?id=76
-  //funcion de miguel {es la misma que getEducation pero cuando no existe nada en la base de datos regresa un arreglo vacio}
+  // http://localhost:8080/api/education/get-form-academic/?id=76
+  // funcion de miguel {es la misma que getEducation pero cuando no existe nada en la base de datos regresa un arreglo vacio}
   getEducationVacants(id: string) {
     return this.http.get<AcademicTraining[]>(`${this.URL}/api/education/get-form-academic/?id=${id}`);
-  }  
+  }
 
 
   getEducationById(id: string) {
