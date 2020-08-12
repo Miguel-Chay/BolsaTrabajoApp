@@ -4,7 +4,7 @@ import { NavController} from '@ionic/angular'
 
 import {FormGroup, FormControl, Validators ,FormBuilder } from '@angular/forms';
 
-import { WorkExperienceService } from '../../services/work-experience.Service';
+import { WorkExperienceService } from '../../services/work-experience.service';
 import { LineBusinessService } from '../../services/line-business.service';
 import { UiServiceService } from '../../services/ui-service.service';
 

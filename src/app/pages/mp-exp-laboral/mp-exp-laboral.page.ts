@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
 // import { NavController,NavParams  } from '@ionic/angular';
 // import { Router } from '@angular/router';
 
-import { WorkExperienceService } from '../../services/work-experience.Service';
+import { WorkExperienceService } from '../../services/work-experience.service';
 import { LineBusinessService } from '../../services/line-business.service';
 import { UiServiceService } from '../../services/ui-service.service';
 
