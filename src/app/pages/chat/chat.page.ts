@@ -50,12 +50,17 @@ export class ChatPage implements OnInit {
 						if (logo!=null)
 						{
 							this.logo=this.URL+"/btuady/public_html/"+logo
+<<<<<<< HEAD
 							 console.log(this.logo )
+=======
+							console.log(this.logo )
+>>>>>>> 66137a5804491fe8ae108935d5bc461051d05f39
 						}
 						this.baja();
 					})
 				})
 				this.seeMessage();
+				console.log(this.messages)
   			})
   		})
 

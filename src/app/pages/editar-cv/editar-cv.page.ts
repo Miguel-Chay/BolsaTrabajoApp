@@ -5,7 +5,7 @@ import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { UiServiceService } from '../../services/ui-service.service';
 
-import { CvService } from '../../services/Cv.service';
+import { CvService } from '../../services/cv.service';
 
 import { Cv } from '../../interfaces/interfaces';
 

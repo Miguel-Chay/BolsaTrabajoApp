@@ -10,7 +10,7 @@ import { CountryService } from '../../services/country.service';
 import { StateService } from '../../services/state.service';
 import { UsersService } from '../../services/users.service';
 import { OrganizationUnitService } from '../../services/organization-unit.service';
-import { CvService } from '../../services/Cv.service';
+import { CvService } from '../../services/cv.service';
 import { UiServiceService } from '../../services/ui-service.service';
 
 import { environment } from 'src/environments/environment';
