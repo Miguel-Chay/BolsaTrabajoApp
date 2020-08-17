@@ -305,3 +305,17 @@ export interface Certification {
   date_received?: string;
   date_expire?: string;
 }
+
+export interface Applications{
+  id?: string;
+  cv_id?: string;
+  opening_id?: string;
+  message_id?: string;
+  date?: string;
+  type?: string;
+  job_status?: string;
+  job_title?: string;
+  commercial_name?: string;
+  logo?: string;
+  skills?: string;
+}

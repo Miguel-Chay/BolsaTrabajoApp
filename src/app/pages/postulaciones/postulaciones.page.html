@@ -1,12 +1,62 @@
-<ion-header>
-  <ion-toolbar>
-  	<ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>  	
-    <ion-title>postulaciones</ion-title>
-  </ion-toolbar>
+<ion-header slot="top">
+  <ion-toolbar color="blue">
+        <ion-buttons slot="start" color="light">
+            <ion-menu-button  color="light"></ion-menu-button>
+        </ion-buttons>
+        <ion-title color="light"> <strong> postulaciones</strong></ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+
+<ion-content  color="goldlow" fullscreen >
+	<div>
+	
+        <ion-item tappable color="light"> <strong color="blue" > Postulado</strong></ion-item>
+    
+	
+
  
+
+	<!-- <div  *ngIf = "applications!=null" -->
+	<div *ngFor="let i of applications">
+		<ion-card  *ngIf="i.type=='application'" color="vacant" (click)=goSeeVacant(i.id_vacant) >
+        	<img *ngIf="i.logo != null" src={{logo}}{{i.logo}} />
+        	<ion-card-header>
+          		<ion-card-title>{{i.job_title}}</ion-card-title>
+	          	<ion-card-subtitle>en {{i.commercial_name}}</ion-card-subtitle>
+        	</ion-card-header>
+        	<ion-card-content >
+        		<p *ngIf="fun(i.skills) != 0">
+          			Aptitudes: 
+          			<ion-text *ngFor="let j of i.skills">
+          				<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
+	          			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>
+      				</ion-text> 
+				</p>
+        	</ion-card-content>
+	    </ion-card>
+	    
+	</div>
+	<ion-toolbar color="light">
+        <ion-title color="blue"> <strong> Invitado</strong></ion-title>
+    </ion-toolbar>
+	<div *ngFor="let i of applications">
+		<ion-card  *ngIf="i.type!='application'" color="vacant" (click)=goSeeVacant(i.id_vacant) >
+        	<img *ngIf="i.logo != null" src={{logo}}{{i.logo}} />
+        	<ion-card-header>
+          		<ion-card-title>{{i.job_title}}</ion-card-title>
+	          	<ion-card-subtitle>en {{i.commercial_name}}</ion-card-subtitle>
+        	</ion-card-header>
+        	<ion-card-content >
+        		<p *ngIf="fun(i.skills) != 0">
+          			Aptitudes: 
+          			<ion-text *ngFor="let j of i.skills">
+          				<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
+	          			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>
+      				</ion-text> 
+				</p>
+        	</ion-card-content>
+	    </ion-card>
+	</div>
+ </div>
 </ion-content>
