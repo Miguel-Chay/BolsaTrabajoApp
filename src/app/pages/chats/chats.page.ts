@@ -29,7 +29,7 @@ export class ChatsPage implements OnInit {
   		this.storage.get('id').then((val) => { 
   		this.jobApplicationStatusLogService.getContacts(val).subscribe(chats=>{
   			this.chats=chats;
-  			// console.log(this.chats)
+  			console.log(this.chats)
   			})
   		})
   	

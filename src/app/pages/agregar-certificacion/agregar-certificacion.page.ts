@@ -17,6 +17,10 @@ export class AgregarCertificacionPage implements OnInit {
 
   subjectAreas: SubjectArea;
   createCertication: FormGroup;
+
+  // variables auxiliares para el ion-input date
+  DateMin: Date;
+  readOnly = true;
   constructor(private subjectAreaService: SubjectAreaService, private storage: Storage, private navCtrl: NavController ,
               private uiService: UiServiceService, private certificationService: CertificationService) {
     this.initForm();
@@ -48,7 +52,7 @@ export class AgregarCertificacionPage implements OnInit {
     if (confirm) {
       this.certificationService.createCertification(this.createCertication.value).subscribe(() => {});
       this.navCtrl.navigateForward('/mi-perfil/mp-certificaciones');
-      console.log(this.createCertication.value);
+      // console.log(this.createCertication.value);
     }
   }
   initForm() {
@@ -60,5 +64,11 @@ export class AgregarCertificacionPage implements OnInit {
       date_received: new FormControl(),
       date_expire: new FormControl(),
     });
+  }
+
+  minDate($event, dateExpire: any) {
+    this.DateMin = $event.target.value;
+    dateExpire.value = '';
+    this.readOnly = false;
   }
 }

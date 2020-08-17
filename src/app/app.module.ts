@@ -11,7 +11,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { PipesModule } from './pipes/pipes.module'
+import { PipesModule } from './pipes/pipes.module';
+
 
 
 @NgModule({

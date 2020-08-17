@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content  >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card color="light"  *ngFor="let certifications of certifications " (click)=opcionesCertifications(certifications.id)  >
     <ion-card-header>
       <ion-card-title>

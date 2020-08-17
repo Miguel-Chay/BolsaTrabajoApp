@@ -13,12 +13,18 @@ export class CertificationService {
   getCertifications(id: string) {
     return this.http.get<Certification>(`${this.URL}/api/certification/search/?id=${id}`);
   }
-
+  getCertificationByIdCertification(id: string) {
+    return this.http.get<Certification>(`${this.URL}/api/certifications/${id}`);
+  }
   createCertification(data: any) {
     return this.http.post(`${this.URL}/api/certifications`, data);
   }
 
   DeleteCertification(id: string) {
     return this.http.delete(`${this.URL}/api/certifications/${id}`);
+  }
+
+  updateCertification(id: string, data: any) {
+    return this.http.put(`${this.URL}/api/certifications/${id}`, data);
   }
 }

@@ -26,7 +26,7 @@ export class MpFormAcademicaPage implements OnInit {
 
       this.educationService.getEducation(id).subscribe(academicTraining => {
         this.academicTraining = academicTraining;
-        console.log(academicTraining);
+        // console.log(academicTraining);
       });
 
     });
@@ -36,7 +36,7 @@ export class MpFormAcademicaPage implements OnInit {
 
       this.educationService.getEducation(id).subscribe(academicTraining => {
         this.academicTraining = academicTraining;
-        console.log(academicTraining);
+        // console.log(academicTraining);
       });
 
     });
@@ -50,7 +50,18 @@ export class MpFormAcademicaPage implements OnInit {
       });
     }
   }
+  doRefresh(event) {
+    setTimeout(() => {
+      this.storage.get('id').then((id) => {
 
+        this.educationService.getEducation(id).subscribe(academicTraining => {
+          this.academicTraining = academicTraining;
+          // console.log(academicTraining);
+        });
+        event.target.complete();
+      });
+    }, 1500);
+  }
   hideTabsfunc() {
     // this.pageForm.tabs.tabBar.el.hidden = true;
     // this.pageForm.hidenTabs(true);

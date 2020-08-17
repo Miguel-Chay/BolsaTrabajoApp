@@ -50,7 +50,7 @@ export class ChatPage implements OnInit {
 						if (logo!=null)
 						{
 							this.logo=this.URL+"/btuady/public_html/"+logo
-							// console.log(this.logo )
+							 console.log(this.logo )
 						}
 						this.baja();
 					})

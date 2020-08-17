@@ -35,6 +35,8 @@ const routes: Routes = [
   { path: 'mensajes', loadChildren: './pages/mensajes/mensajes.module#MensajesPageModule' },
   { path: 'chats', loadChildren: './pages/chats/chats.module#ChatsPageModule' },
   { path: 'chat/:id', loadChildren: './pages/chat/chat.module#ChatPageModule' },
+  { path: 'editar-certificacion/:id', loadChildren: './pages/editar-certificacion/editar-certificacion.module#EditarCertificacionPageModule' },
+
 
 
 

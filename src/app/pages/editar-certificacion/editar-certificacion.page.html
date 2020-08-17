@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <form class="ion-padding" [formGroup]=" createCertication" (ngSubmit)="add()">
+  <form class="ion-padding" [formGroup]=" createCertication" (ngSubmit)="update()">
     <ion-grid class="ion-padding-top">
       <ion-row>
         <ion-col size="12">
@@ -61,7 +61,7 @@
             <ion-label position="stacked"
               ><font size="5">Fecha de inicio</font></ion-label
             >
-            <ion-input  formControlName="date_received" type="date" (ionChange)=" minDate($event, date_Expire)" ></ion-input>
+            <ion-input formControlName="date_received" (ionChange)=" minDate($event, date_Expire)" type="date"></ion-input>
           </ion-item>
 
           <ion-item>

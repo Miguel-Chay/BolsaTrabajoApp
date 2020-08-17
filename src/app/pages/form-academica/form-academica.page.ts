@@ -66,6 +66,7 @@ export class FormAcademicaPage implements OnInit {
       // llena el objeto subjectAreas  - consulta tabla subject_area
     this.subjectAreaService.getSubjectAreas().subscribe(subjectAreas => {
       this.subjectAreas = subjectAreas;
+      // console.log(subjectAreas, 'areas');
     });
 
     // ==================================================================================================
@@ -82,18 +83,18 @@ export class FormAcademicaPage implements OnInit {
             this.checkedUady = false;
             this.checkedOtro = true;
             this.dataEdit('2', education, null);
-            console.log(this.createEducation.value);
+            // console.log(this.createEducation.value);
           } else {
             this.checkedUady = true;
             this.checkedOtro = false;
             this.studyProgrammeService.getStufyProgramme(education.study_programme_id).subscribe(studyProgramme => {
               this.dataEdit('1', education, studyProgramme.organization_unit_id);
               this.studyProgrammeService.getStudyProgrammeByOrgDegree( studyProgramme.organization_unit_id , education.degree_id).subscribe(studyProgrammes => {
-                console.log('entra');
+                // console.log('entra');
                 this.studyProgrammes = studyProgrammes;
 
               });
-              console.log(this.createEducation.value);
+              // console.log(this.createEducation.value);
             });
           }
         });
@@ -129,7 +130,7 @@ export class FormAcademicaPage implements OnInit {
       this.createEducation.controls.institution_name.setValue(null);
       this.createEducation.controls.study_programme_name.setValue(null);
       this.createEducation.controls.subject_area_id.setValue(null);
-      console.log(this.createEducation.controls);
+      // console.log(this.createEducation.controls);
     } else {
       // en caso de que sea de otra institucion
       this.createEducation.controls.institution.setValue(x);
@@ -164,11 +165,11 @@ export class FormAcademicaPage implements OnInit {
     }
   }
   update() {
-    console.log(this.createEducation.value);
-    console.log(this.createEducation.controls);
-    console.log(this.createEducation.valid);
+    // console.log(this.createEducation.value);
+    // console.log(this.createEducation.controls);
+    // console.log(this.createEducation.valid);
     const x = + this.createEducation.controls.year_start.value;
-    console.log('si', isNumber(x) );
+    // console.log('si', isNumber(x) );
     if (this.isUpdate) {
       this.educationService.updateEducation(this.idParam, this.createEducation.value).subscribe(() => {});
     } else {
@@ -202,14 +203,14 @@ export class FormAcademicaPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         },
         {
           text: 'ok',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Boton ok');
+            // console.log('Boton ok');
           }
         }
       ]
@@ -334,7 +335,7 @@ export class FormAcademicaPage implements OnInit {
               if (this.startYear > this.endYear && this.statEducation.toString().match('1')) {
                 this.presentAlert('El año de finalización debe ser mayor que el de inicio.');
               } else {
-                console.log('entra anio');
+                // console.log('entra anio');
                 // this.createEducation.controls.year_end.clearValidators();
                 this.createEducation.controls.year_end.updateValueAndValidity();
               }

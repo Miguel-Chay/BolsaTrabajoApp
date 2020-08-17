@@ -26,7 +26,7 @@ export class MpCertificacionesPage implements OnInit {
     this.storage.get('id').then(cvId => {
       this.certificationService.getCertifications(cvId).subscribe(certifications => {
         this.certifications = certifications;
-        console.log(this.certifications.subject_area_id);
+        // console.log(this.certifications.subject_area_id);
       });
     });
   }
@@ -34,17 +34,28 @@ export class MpCertificacionesPage implements OnInit {
     this.storage.get('id').then(cvId => {
       this.certificationService.getCertifications(cvId).subscribe(certifications => {
         this.certifications = certifications;
-        console.log(this.certifications.subject_area_id);
+        // console.log(this.certifications.subject_area_id);
       });
     });
   }
   async opcionesCertifications(id: string) {
-    this.confirm = await this.uiService.opcionesMiperfil(`/mi-perfil/mp-form-academica/form-academica/${id}/editar`); // manda la ruta mas el parametro id
+    this.confirm = await this.uiService.opcionesMiperfil(`/editar-certificacion/${id}`); // manda la ruta mas el parametro id
     if (this.confirm === 'delete') {
       this.certificationService.DeleteCertification(id).subscribe( resp => {
         this.ionViewWillEnter();
       });
     }
+  }
+  doRefresh(event) {
+    setTimeout(() => {
+      this.storage.get('id').then(cvId => {
+        this.certificationService.getCertifications(cvId).subscribe(certifications => {
+          this.certifications = certifications;
+          // console.log(this.certifications.subject_area_id);
+        });
+        event.target.complete();
+      });
+    }, 1500);
   }
 
 }

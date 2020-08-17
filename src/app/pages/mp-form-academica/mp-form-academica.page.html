@@ -7,6 +7,9 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
     <ion-card color="light" (click)=opcionesformAcademic(edc.education_id) *ngFor="let edc of academicTraining; let i=index">
         <ion-card-header>
             <ion-card-title>
