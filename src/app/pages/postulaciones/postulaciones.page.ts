@@ -17,7 +17,12 @@ export class PostulacionesPage implements OnInit {
 	URL = environment.urlPhotos;
 	logo=this.URL+"/btuady/public_html/"
 	applications: Applications;
-
+	open0:boolean=false;
+	color0="gold";
+	open1:boolean=false;
+	color1="gold";
+	open2:boolean=false;
+	color2="gold";
   	constructor(private jobApplicationStatusLogService : JobApplicationStatusLogService,
     		    private storage: Storage,private navCtrl: NavController
 			  	) { }
@@ -27,6 +32,9 @@ export class PostulacionesPage implements OnInit {
     		this.jobApplicationStatusLogService.getApplications(id).subscribe(applications=>{
     			this.applications=applications;
 	    		console.log(applications)
+	    		this.open0=true
+	    		this.open1=true
+	    		this.open2=true
     		})
     	})
   	}
@@ -48,6 +56,34 @@ export class PostulacionesPage implements OnInit {
   		else{
   			return false	
   		}
+  	}
+
+  	expand(number){
+  		if (number==1) {
+  			this.open1=!this.open1
+  			if(this.open1==true)
+  				this.color1="gold"
+  			else
+  				this.color1="light"
+  			// code...
+  		}
+  		if (number==2) {
+  			this.open2=!this.open2
+  			if(this.open2==true)
+  				this.color2="gold"
+  			else
+  				this.color2="light"
+  			// code...
+  		}
+  		if (number==0) {
+  			this.open0=!this.open0
+  			if(this.open0==true)
+  				this.color0="gold"
+  			else
+  				this.color0="light"
+  			// code...
+  		}
+  		console.log(number)
   	}
 
 }

@@ -6,7 +6,9 @@ export const environment = {
   production: false,
   url: 'http://localhost:8080',
   // url: 'http://localhost:8080'
-  urlPhotos:'https://localhost'
+  urlPhotos:'http://localhost'  //miguel
+  //urlPhotos:'https://localhost' //efrain
+
 };
 
 /*

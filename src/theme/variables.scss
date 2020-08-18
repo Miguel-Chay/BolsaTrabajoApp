@@ -164,3 +164,21 @@
   --ion-color-shade: var(--ion-color-msg-received-shade);
   --ion-color-tint: var(--ion-color-msg-received-tint);
 }
+
+:root {
+  --ion-color-hiring: #eda644;
+  --ion-color-hiring-rgb: 237,166,68;
+  --ion-color-hiring-contrast: #000000;
+  --ion-color-hiring-contrast-rgb: 0,0,0;
+  --ion-color-hiring-shade: #d1923c;
+  --ion-color-hiring-tint: #efaf57;
+}
+
+.ion-color-hiring {
+  --ion-color-base: var(--ion-color-hiring);
+  --ion-color-base-rgb: var(--ion-color-hiring-rgb);
+  --ion-color-contrast: var(--ion-color-hiring-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-hiring-contrast-rgb);
+  --ion-color-shade: var(--ion-color-hiring-shade);
+  --ion-color-tint: var(--ion-color-hiring-tint);
+}
