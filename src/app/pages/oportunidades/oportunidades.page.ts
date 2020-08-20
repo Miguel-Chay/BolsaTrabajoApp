@@ -8,7 +8,6 @@ import { NavController } from '@ionic/angular';
 
 
 
-
 @Component({
   selector: 'app-oportunidades',
   templateUrl: './oportunidades.page.html',
@@ -17,20 +16,27 @@ import { NavController } from '@ionic/angular';
 export class OportunidadesPage implements OnInit {
   URL = environment.urlPhotos;
   Match: Match;
+  ismatch = false;
   logo = this.URL + '/btuady/public_html/files/logo/organization/';
-  constructor(private storage: Storage, private cvService: CvService, private jobOpeningService: JobOpeningService,
-              private navCtrl: NavController) { }
+  constructor(
+    private storage: Storage,
+    private cvService: CvService,
+    private jobOpeningService: JobOpeningService,
+    private navCtrl: NavController
+  ) {}
 
   ngOnInit() {
     this.storage.get('id').then((id) => {
-      this.cvService.matchCv(id).subscribe(cvMatch => {
-        // console.log(this.match);
-        if (cvMatch) {
-          this.jobOpeningService.jobsMatch(cvMatch).subscribe(match => {
+      this.cvService.matchCv(id).subscribe((response) => {
+
+
+          if (response.ok === true) {
+            this.ismatch = true;
+            this.jobOpeningService.jobsMatch(response.match).subscribe((match) => {
             this.Match = match;
-            console.log(this.Match);
           });
-        }
+          } else { this.ismatch = false; }
+
       });
     });
   }
@@ -45,8 +51,6 @@ export class OportunidadesPage implements OnInit {
 
   goSeeVacant(id: string) {
     // console.log(id)
-    this.navCtrl.navigateForward('/vacante/' + id, {animated: true} );
-
+    this.navCtrl.navigateForward('/vacante/' + id, { animated: true });
   }
-
 }

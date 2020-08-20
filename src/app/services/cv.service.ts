@@ -28,7 +28,7 @@ export class CvService {
   };
 
   matchCv(id: string) {
-    return this.http.get<CvMatch>(`${this.URL}/api/cv/match/?id=${id}`);
+    return this.http.get<any>(`${this.URL}/api/cv/match/?id=${id}`);
   }
   
 
