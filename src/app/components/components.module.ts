@@ -4,7 +4,7 @@ import { FabComponent } from './fab/fab.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { PopfilterComponent } from './popfilter/popfilter.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

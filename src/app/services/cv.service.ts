@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Cv } from '../interfaces/interfaces';
+import { Cv, CvMatch } from '../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
 import { resolve } from 'url';
 import { environment } from 'src/environments/environment';
@@ -25,8 +25,11 @@ export class CvService {
     const data = {id, status, summary };
 
     return this.http.put<Cv>(`${this.URL}/api/cvs/${id}`, data)
-    };
+  };
 
-
+  matchCv(id: string) {
+    return this.http.get<CvMatch>(`${this.URL}/api/cv/match/?id=${id}`);
+  }
+  
 
 }

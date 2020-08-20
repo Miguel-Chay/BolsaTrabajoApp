@@ -319,3 +319,35 @@ export interface Applications{
   logo?: string;
   skills?: string;
 }
+
+// 20-08-2020
+
+export interface Match {
+  city_id?: string;
+  city_name?: string;
+  commercial_name?: string;
+  id?: string;
+  job_title?: string;
+  job_type_id?: string;
+  logo?: string;
+  salary?: string;
+  score?: number;
+  skills?: Skill[];
+  studyprogramme?: Studyprogramme[];
+  subject_area_id?: string;
+  type?: string;
+  years_experience?: number;
+}
+
+export interface Studyprogramme {
+  id?: string;
+  name?: string;
+}
+
+export interface CvMatch {
+  job_opening_id?: string;
+  cv_id?: string;
+  score?: number;
+  modified?: string;
+  notified?: string;
+}

@@ -1,3 +1,4 @@
+import { Match } from './../interfaces/interfaces';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JobsOpening } from '../interfaces/interfaces';
@@ -26,4 +27,7 @@ export class JobOpeningService {
     return this.http.get<JobsOpening>(`${this.URL}/api/job-opening/is-open/?id=${id}`);
   }
 
-}	
+  jobsMatch(data: any) {
+    return this.http.post<Match>(`${this.URL}/api/job-opening/jobs-match`, data);
+  }
+}

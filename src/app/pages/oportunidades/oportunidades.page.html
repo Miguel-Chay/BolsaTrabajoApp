@@ -9,5 +9,25 @@
 </ion-header>
 
 <ion-content>
-    
+  <ion-grid >
+    <ion-row>
+      <ion-col >
+        <ion-card class="fade-in" button *ngFor="let Match of Match" (click)=" goSeeVacant(Match.id)" >
+          <ion-img style="width: 70%;" *ngIf="Match.logo != null" src={{logo}}{{Match.logo}}  ></ion-img>
+          <ion-card-header>
+            <ion-card-subtitle> <strong> Puntuación: {{ Match.score }} </strong> </ion-card-subtitle>
+            <ion-card-title>{{Match.job_title}}</ion-card-title>
+          	<ion-card-subtitle>en {{Match.commercial_name}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <strong>Aptitudes: </strong>
+            <ion-text *ngFor="let skills of Match.skills "  >
+              <ion-text *ngIf="islast(Match.skills,skills)==false">{{skills.skill}}, </ion-text>
+          		<ion-text  *ngIf="islast(Match.skills,skills)==true">{{skills.skill}}. </ion-text>
+          </ion-text> 
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
