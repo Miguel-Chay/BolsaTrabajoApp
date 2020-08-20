@@ -65,7 +65,6 @@ export class PostulacionesPage implements OnInit {
   				this.color1="gold"
   			else
   				this.color1="light"
-  			// code...
   		}
   		if (number==2) {
   			this.open2=!this.open2
@@ -73,7 +72,6 @@ export class PostulacionesPage implements OnInit {
   				this.color2="gold"
   			else
   				this.color2="light"
-  			// code...
   		}
   		if (number==0) {
   			this.open0=!this.open0
@@ -81,9 +79,9 @@ export class PostulacionesPage implements OnInit {
   				this.color0="gold"
   			else
   				this.color0="light"
-  			// code...
   		}
-  		console.log(number)
+  		// console.log(number)
   	}
+
 
 }

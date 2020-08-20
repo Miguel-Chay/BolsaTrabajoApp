@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+//este filtro se usa en 
 @Pipe({
   name: 'filtro'
 })
@@ -16,8 +16,8 @@ export class FiltroPipe implements PipeTransform {
   	text=text.toLowerCase()
   	
 
+  	 // console.log(array.filter(item=>{return item[column].toLowerCase().includes(text)  }), array.filter(item=>{return item[column].toLowerCase().includes(text)  }).length )
   	return array.filter(item=>{return item[column].toLowerCase().includes(text)	})
-  	 // console.log("entra")
   }
 
 }
