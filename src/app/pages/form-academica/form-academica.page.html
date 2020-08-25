@@ -1,9 +1,9 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title *ngIf=" !isUpdate ">Añadir Formación Académica</ion-title>
-    <ion-title *ngIf=" isUpdate ">Editar Formación Académica</ion-title>
+  <ion-toolbar color="blue">
+    <ion-title *ngIf=" !isUpdate " color="light">Añadir Formación Académica</ion-title>
+    <ion-title *ngIf=" isUpdate " color="light">Editar Formación Académica</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button color="light"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -304,7 +304,7 @@
           <ion-button
             [ngClass]="{'button-disabled ': createEducation.invalid}"
             routerLink="/mi-perfil/mp-form-academica"
-            color="primary"
+            color="boton"
             type="submit"
             expand="block"
             shape="round"

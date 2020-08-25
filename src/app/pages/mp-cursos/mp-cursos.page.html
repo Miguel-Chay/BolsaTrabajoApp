@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="goldlow" fullscreen padding>
+<ion-content color="goldlow" >
 
     <div  *ngIf = "course==null">
       <ion-card *ngFor="let i of [1,1,1,1]" color="light" >
@@ -56,8 +56,8 @@
     </ion-card>
      </div>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button routerLink='/agregar-curso'>
-        <ion-icon  name="add"></ion-icon>
+      <ion-fab-button routerLink='/agregar-curso' color ="boton">
+        <ion-icon  name="add" color ="light"></ion-icon>
       </ion-fab-button>
     </ion-fab>
 

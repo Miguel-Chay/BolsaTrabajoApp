@@ -15,10 +15,12 @@ import { CvSkillComplete } from '../../interfaces/interfaces';
 export class MpAptitudesPage implements OnInit {
 
   cvSkill: CvSkillComplete;
+  confirm  : string;
   
   colors = ["primary", "secondary", "tertiary", "success", "warning", "danger",  "gold","dark"];
   color: Array<string> = []; 
-  constructor( private cvSkillService : CvSkillService,
+  constructor( 
+    private uiService: UiServiceService,private cvSkillService : CvSkillService,
    private storage: Storage) { }
 
 
@@ -41,9 +43,18 @@ this.storage.get('id').then((val) => {
   }
 
 
-  Delete(id:string ,skill_list_id: string){
-    this.cvSkillService.deleteCvSkill(id,skill_list_id).subscribe(Response => {this.ionViewWillEnter()});    
-  }
+  // Delete(id:string ,skill_list_id: string){
+  //   this.cvSkillService.deleteCvSkill(id,skill_list_id).subscribe(Response => {this.ionViewWillEnter()});    
+  // }
+
+  async opcionesAptitud(id: string,skill_list_id: string) {
+    this.confirm = await this.uiService.opcionesMiperfilAptitud('/editar-idioma/'+id)//manda la ruta mas el parametro id 
+    if(this.confirm == "delete"){
+       this.cvSkillService.deleteCvSkill(id,skill_list_id).subscribe(Response => {this.ionViewWillEnter()});
+    }
+   }
+
+
 
 
 

@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title mode ="ios">Editar Curso</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-toolbar color="blue">
+        <ion-buttons slot="start" color="light">
+            <ion-back-button color="light"></ion-back-button>
+        </ion-buttons>
+        <ion-title color="light"> <strong> Editar curso </strong></ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content  fullscreen padding>
@@ -77,8 +77,8 @@
 	    
 	    <ion-row>
     		<ion-col width-50 style="text-align: center">
-	    		<ion-button  [ngClass]="{'button-disabled': addData.invalid}" color="primary" type="submit" 
-	    	 		(click)= "addCourse()" size="large">Aceptar</ion-button>		
+	    		<ion-button  [ngClass]="{'button-disabled': addData.invalid}" color="boton" type="submit" 
+	    	 		(click)= "addCourse()" size="large">Actualizar</ion-button>		
 			</ion-col>
 		</ion-row>
 		

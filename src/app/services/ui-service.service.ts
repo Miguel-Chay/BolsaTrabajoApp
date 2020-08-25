@@ -55,7 +55,7 @@ export class UiServiceService {
     return promise;
   }
 
-  // opciones de de editar o eliminar una
+  // opciones de de editar o eliminar una ___________
   async opcionesMiperfil(page: string): Promise<string> {
 
     let resolveFunction: (confirm: string) => void;
@@ -63,20 +63,21 @@ export class UiServiceService {
 
     const actionSheet = await this.actionSheetController.create({
       header: 'Opciones',
-      buttons: [{
-        text: 'Eliminar',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          resolveFunction('delete');
-        }
-      }, {
+      buttons: [
+       {
         text: 'Editar',
         icon: 'Create',
         handler: () => {
           resolveFunction('edit');
           // this.navCtrl.navigateRoot(page);
           this.navCtrl.navigateForward(page); // cambia de pagina con un parametro id
+        }
+      },{
+        text: 'Eliminar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          resolveFunction('delete');
         }
       }, {
         text: 'Cancelar',
@@ -90,6 +91,36 @@ export class UiServiceService {
     await actionSheet.present();
     return promise;
   }
+
+  //funcion especial para opciones de aptitudes
+  async opcionesMiperfilAptitud(page: string): Promise<string> {
+
+    let resolveFunction: (confirm: string) => void;
+    const promise = new Promise<string>(resolve => {resolveFunction = resolve; });
+
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Opciones',
+      buttons: [
+       {
+        text: 'Eliminar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          resolveFunction('delete');
+        }
+      }, {
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          resolveFunction('cancel');
+        }
+      }]
+    });
+    await actionSheet.present();
+    return promise;
+  }
+
 
 
 

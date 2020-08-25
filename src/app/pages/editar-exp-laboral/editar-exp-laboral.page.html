@@ -1,11 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title mode ="ios">Añadir Experiencia Laboral</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-toolbar color="blue">
+        <ion-buttons slot="start" color="light">
+            <ion-back-button color="light"></ion-back-button>
+        </ion-buttons>
+        <ion-title color="light"> <strong> Editar experiencia laboral</strong></ion-title>
+    </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <form [formGroup]="updateData" (ngSubmit)="imprimir()">
@@ -98,9 +99,13 @@
     <ion-button  color="blue" size="large" (click)="imprimir()" > imprimir</ion-button>
   </div> -->
 
-   <ion-button [ngClass]="{'button-disabled': updateData.invalid}" color="primary" type="submit" expand="block" shape="round" (click)= "updateWorkExperience()" > Actualizar </ion-button>
-
-   <ion-button routerLink="/mi-perfil/mp-exp-laboral" >prueba</ion-button>
+  
+  <ion-row>
+    <ion-col width-50 style="text-align: center">
+           <ion-button [ngClass]="{'button-disabled': updateData.invalid}" color="boton" type="submit" (click)= "updateWorkExperience()"  size="large" > Actualizar </ion-button>
+    </ion-col>
+  </ion-row>
+   <!-- <ion-button routerLink="/mi-perfil/mp-exp-laboral" >prueba</ion-button> -->
 
 </form>
 </ion-content>

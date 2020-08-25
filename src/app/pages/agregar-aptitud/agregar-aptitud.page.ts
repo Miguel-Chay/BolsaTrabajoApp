@@ -86,7 +86,7 @@ export class AgregarAptitudPage implements OnInit {
 
   	this.skillListService.getSkillExist(this.addData.get('skill').value).subscribe( skill=>{ 
   			this.skill=skill
-  			// console.log( skill)
+  			console.log( skill)
   			// console.log( skill.skill)
   			// this.addData.get('skill').setValue(skill.skill)
   			
@@ -121,7 +121,7 @@ export class AgregarAptitudPage implements OnInit {
   				});
 
   			}
-  			this.imprimir()
+  			// this.imprimir()
   		 })
 
 

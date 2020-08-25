@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="goldlow" fullscreen class="ion-padding">
+<ion-content color="goldlow"  >
 
     <div *ngIf = "workexperience == null">
       <ion-card *ngFor="let i of [1,1,1,1]" color="light" >
@@ -40,7 +40,9 @@
     <div  *ngIf = "workexperience != null">
       <ion-card *ngFor="let i of workexperience" color="light" (click)=opcionesExpLab(i.id)>
         <ion-card-header>
-          <ion-card-title>{{i.company}}</ion-card-title>
+          <ion-card-title>
+           <strong>{{i.company}}</strong>
+         </ion-card-title>
           <ion-card-subtitle>{{i.job_title}}</ion-card-subtitle>
         </ion-card-header>
 
@@ -54,9 +56,9 @@
       </ion-card>
     </div>
 
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button routerLink='/agregar-exp-laboral'>
-        <ion-icon  name="add"></ion-icon>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+      <ion-fab-button routerLink='/agregar-exp-laboral' color ="boton">
+        <ion-icon  name="add" color ="light"></ion-icon>
       </ion-fab-button>
     </ion-fab>
     

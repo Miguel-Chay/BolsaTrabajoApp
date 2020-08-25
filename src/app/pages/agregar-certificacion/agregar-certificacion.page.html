@@ -1,11 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title mode="ios">Añadir Certificación</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-toolbar color="blue">
+        <ion-buttons slot="start" color="light">
+            <ion-back-button color="light"></ion-back-button>
+        </ion-buttons>
+        <ion-title color="light"> <strong> Añadir certificación</strong></ion-title>
+    </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <form class="ion-padding" [formGroup]=" createCertication" (ngSubmit)="add()">
@@ -75,7 +76,7 @@
 			
 			<ion-row>
 				<ion-col size="6">
-						<ion-button [ngClass]="{'button-disabled': createCertication.invalid}" color="primary" type="submit" expand="block" shape="round">
+						<ion-button [ngClass]="{'button-disabled': createCertication.invalid}" color="boton" type="submit" expand="block" shape="round">
               Aceptar
 						</ion-button>
 				</ion-col>

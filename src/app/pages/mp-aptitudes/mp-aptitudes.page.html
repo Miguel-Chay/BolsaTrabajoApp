@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="goldlow" fullscreen padding>
+<ion-content color="goldlow"  >
 	<!-- <p  *ngFor="let i of cvSkill">
 		<ion-chip   color={{i.color}} outline>
           	<ion-label >
@@ -22,26 +22,22 @@
     
  -->
 
+ 
 
-
-
-
-
- 	<ion-item-sliding *ngFor="let i of cvSkill">
+ 	<ion-item *ngFor="let i of cvSkill" (click)=opcionesAptitud(i.cv_id,i.skill_list_id)>
         <ion-item>
             <p>{{i.skill}}  </p>
         </ion-item>
 
-          
-        <ion-item-options side="start">
-            <ion-item-option color="danger" (click)="Delete(i.cv_id,i.skill_list_id)">Delete</ion-item-option>
-        </ion-item-options>
-    </ion-item-sliding>
+    </ion-item>
      
+     <!-- <ion-item-options side="start">
+            <ion-item-option color="danger" (click)="Delete(i.cv_id,i.skill_list_id)">Delete</ion-item-option>
+        </ion-item-options> -->
 
 	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button routerLink='/agregar-aptitud'>
-            <ion-icon  name="add"></ion-icon>
+        <ion-fab-button routerLink='/agregar-aptitud'color ="boton">
+        <ion-icon  name="add" color ="light"></ion-icon>
         </ion-fab-button>
     </ion-fab>
 

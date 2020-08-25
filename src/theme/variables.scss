@@ -89,6 +89,9 @@
 --ion-color-goldlow: #f2e2b3;
 
 /** azul fuerte **/
+--ion-color-boton: #042b59;
+
+/** azul fuerte **/
 --ion-color-blue: #042b59;
 }
 .ion-color-gold {
@@ -102,12 +105,22 @@
 .ion-color-goldlow {
     --ion-color-base: var(--ion-color-goldlow) !important;
     }
+
+/** color de los botones **/
+.ion-color-boton {
+  --ion-color-base: var(--ion-color-boton) !important;
+}
+/**color de las cabeceras**/
 .ion-color-blue {
     --ion-color-base: var(--ion-color-blue) !important;
-    }
- .ion-slide {
+}
+.ion-slide {
   height: calc(100vh - 140px);
 }
+
+
+
+
 
 /** color de los cards de vacantes **/
 :root {
@@ -173,7 +186,7 @@
   --ion-color-hiring-shade: #d1923c;
   --ion-color-hiring-tint: #efaf57;
 }
-
+/**color de contratado (naranja)**/
 .ion-color-hiring {
   --ion-color-base: var(--ion-color-hiring);
   --ion-color-base-rgb: var(--ion-color-hiring-rgb);

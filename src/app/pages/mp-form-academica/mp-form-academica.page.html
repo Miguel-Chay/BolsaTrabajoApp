@@ -6,7 +6,7 @@
         <ion-title color="light">Formación Academica</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content color="goldlow"  >
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
@@ -26,8 +26,8 @@
     </ion-card>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="hideTabsfunc()" [routerLink]="[ '/mi-perfil/mp-form-academica/form-academica/agregar']" #myfab>
-            <ion-icon name="add"></ion-icon>
+        <ion-fab-button (click)="hideTabsfunc()" [routerLink]="[ '/mi-perfil/mp-form-academica/form-academica/agregar']" #myfab color ="boton">
+        <ion-icon  name="add" color ="light"></ion-icon>
         </ion-fab-button>
     </ion-fab>
 
