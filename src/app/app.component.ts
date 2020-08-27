@@ -100,7 +100,8 @@ export class AppComponent {
 
   async clear() {
     this.confirm = await this.uiService.alertaConfirmar('¿Desea cerrar su sesión?', '/login');// manda la ruta mas el parametro id
-    if (confirm) {
+    // console.log(this.confirm)
+    if (this.confirm) {
       this.storage.clear();
       this.candidate.firstname = '';
       this.candidate.lastname = '';
