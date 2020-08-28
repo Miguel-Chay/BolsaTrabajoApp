@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {FormGroup, FormControl, Validators  } from '@angular/forms';
 
-import { WorkExperienceService } from '../../services/work-experience.Service';
+import { WorkExperienceService } from '../../services/work-experience.service';
 import { LineBusinessService } from '../../services/line-business.service';
 
 import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
