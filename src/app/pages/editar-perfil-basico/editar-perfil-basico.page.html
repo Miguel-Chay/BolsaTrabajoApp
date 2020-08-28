@@ -10,13 +10,13 @@
 <ion-content>
 
     <form [formGroup]=" updateData" (ngSubmit)="update()">
-        <ion-grid class="backgroundgrid">
+        <ion-grid class="background-uady">
             <ion-row>
                 <ion-col size="12">
                     <ion-card style="background-color: white;">
                         <ion-card-header>
                             <ion-card-title>
-                                <ion-text color="primary">
+                                <ion-text color="dark">
                                     <strong>Datos Generales</strong>
                                 </ion-text>
                             </ion-card-title>
@@ -31,8 +31,17 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-input inputmode="text" placeholder="p. ej. nombre.apellido" formControlName="username"></ion-input>
+                                    <ion-input inputmode="text" (ionChange)="advertenciaUserData()" placeholder="p. ej. nombre.apellido" formControlName="username" #username></ion-input>
                                 </ion-item>
+                                <ion-text color="danger" *ngIf="userNameminlength ">
+                                    <small>Nombre de Usuario debería contener al menos 4 letras.</small>
+                                </ion-text>
+                                <ion-text color="danger" *ngIf="userNamePattern ">
+                                    <small>El nombre de usuario sólo puede contener caracteres alfanuméricos, guiones y punto. El nombre de usuario no puede iniciar con guion o punto. Los guiones y el punto no se pueden usar varias veces de forma seguida.</small>
+                                </ion-text>
+                                <!-- <ion-text colo *ngIf="!updateData.controls.userData['controls']['username'].valid">
+                                    <small>Nombre de Usuario debería contener al menos 4 letras.</small>
+                                </ion-text> -->
 
                                 <ion-item>
                                     <ion-label position="stacked">
@@ -44,6 +53,9 @@
                                     </ion-label>
                                     <ion-input placeholder="Escribe tu correo electronico" formControlName="email"></ion-input>
                                 </ion-item>
+                                <ion-text color="danger" *ngIf="!updateData.controls.userData['controls']['email'].valid">
+                                    <small>Correo Electrónico no es una dirección de correo válida.</small>
+                                </ion-text>
 
                                 <ion-item>
                                     <ion-label position="stacked">
@@ -53,8 +65,18 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-input formControlName="password" type="password" placeholder="Ingrese una contraseña"></ion-input>
+                                    <ion-input formControlName="password" type="password" (ionChange)="changePassword()" placeholder="Ingrese una contraseña"></ion-input>
+
                                 </ion-item>
+                                <ion-text color="danger" *ngIf="!updateData.controls.userData['controls']['password'].valid">
+                                    <small>La contraseña debe contener 3 de las 4 siguientes categorías de caracteres: <br>
+                                            1) al menos 1 mayúscula, <br>
+                                            2) al menos 1 minúscula, <br>
+                                            3) al menos un carácter numérico, <br>
+                                            4) 6 caracteres como mínimo, <br>
+                                            4) al menos un carácter especial.</small>
+                                </ion-text>
+
                                 <ion-item>
                                     <ion-label position="stacked">
                                         <ion-text color="Dark">
@@ -65,6 +87,9 @@
                                     </ion-label>
                                     <ion-input formControlName="password_confirm" type="password" placeholder="Ingrese una contraseña"></ion-input>
                                 </ion-item>
+                                <ion-text color="danger" *ngIf="!updateData.controls.userData['controls']['password_confirm'].valid">
+                                    <small>Confirmar contraseña debe ser igual a "Contraseña".</small>
+                                </ion-text>
                             </ion-list>
                         </ion-card-content>
                     </ion-card>
@@ -87,6 +112,9 @@
                                     </ion-label>
                                     <ion-input formControlName="firstname" inputmode="text" placeholder="Escribe tu(s) nombre(s)"></ion-input>
                                 </ion-item>
+                                <ion-text color="danger" *ngIf="!updateData.controls['firstname'].valid">
+                                    <small>Nombres no puede estar vacío.</small>
+                                </ion-text>
 
                                 <ion-item>
                                     <ion-label position="stacked">
@@ -98,6 +126,9 @@
                                     </ion-label>
                                     <ion-input formControlName="lastname" inputmode="email" placeholder="Escribe tu(s) apellidos(s)"></ion-input>
                                 </ion-item>
+                                <ion-text color="danger" *ngIf="!updateData.controls['lastname'].valid">
+                                    <small>Apellidos no puede estar vacío.</small>
+                                </ion-text>
 
                                 <ion-item>
                                     <ion-label position="stacked">
@@ -107,7 +138,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-select formControlName="sex" placeholder="Seleccione tu Sexo" interface="popover">
+                                    <ion-select mode="ios" formControlName="sex" placeholder="Seleccione tu Sexo" interface="popover">
                                         <ion-select-option value="female">Mujer</ion-select-option>
                                         <ion-select-option value="male">Hombre</ion-select-option>
                                     </ion-select>
@@ -130,7 +161,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-select formControlName="marital_status" placeholder="Seleciona tu estado civil" interface="popover">
+                                    <ion-select mode="ios" formControlName="marital_status" placeholder="Seleciona tu estado civil" interface="popover">
                                         <ion-select-option value="married">Casado(a)</ion-select-option>
                                         <ion-select-option value="unmarried">Soltero(a)</ion-select-option>
                                     </ion-select>
@@ -165,7 +196,7 @@
                                         </ion-text>
                                     </ion-label>
                                     <ion-select [value]="countryId" (ionChange)=" onChangeCountry($event)" interface="action-sheet" placeholder="seleccionar Pais">
-                                        <ion-select-option value=""> Seleccione un pais </ion-select-option>
+
                                         <ion-select-option *ngFor="let country of countries" [value]="country.id"> {{country.name}} </ion-select-option>
                                     </ion-select>
                                 </ion-item>
@@ -179,7 +210,7 @@
                                         </ion-text>
                                     </ion-label>
                                     <ion-select [value]="stateId" interface="action-sheet" (ionChange)=" onChangeState($event)" placeholder="seleccionar Estado">
-                                        <ion-select-option value=""> Seleccione un Estado </ion-select-option>
+
                                         <ion-select-option *ngFor="let state of states" [value]="state.id"> {{state.name}} </ion-select-option>
                                     </ion-select>
                                 </ion-item>
@@ -192,7 +223,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-select formControlName="city_id" interface="action-sheet" (ionChange)=" onChangeCity($event)" placeholder="seleccionar la ciudad">
+                                    <ion-select formControlName="city_id" interface="action-sheet" placeholder="seleccionar la ciudad">
                                         <ion-select-option *ngFor="let city of cities" [value]="city.id"> {{city.name}} </ion-select-option>
                                     </ion-select>
                                 </ion-item>
@@ -239,12 +270,12 @@
             </ion-row>
             <ion-row>
                 <ion-col size="6">
-                    <ion-button [ngClass]="{'button-disabled': updateData.invalid}" color="primary" type="submit" expand="block" shape="round">
+                    <ion-button color="buttonUadyConfirm" [ngClass]="{'button-disabled': updateData.invalid}" type="submit" expand="block" shape="round">
                         Aceptar
                     </ion-button>
                 </ion-col>
                 <ion-col size="6">
-                    <ion-button routerLink="/inicio-perfil-basico" color="danger" expand="block" shape="round">
+                    <ion-button routerLink="/inicio-perfil-basico" color="buttonUadyCancel" expand="block" shape="round">
                         Cancelar
                     </ion-button>
                 </ion-col>

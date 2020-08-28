@@ -8,6 +8,8 @@ import { CountryService } from '../../services/country.service';
 import { CityService } from '../../services/city.service';
 import { StateService } from '../../services/state.service';
 import { OrganizationUnitService } from 'src/app/services/organization-unit.service';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../../components/popover/popover.component';
 @Component({
   selector: 'app-editar-perfil-basico',
   templateUrl: './editar-perfil-basico.page.html',
@@ -15,6 +17,7 @@ import { OrganizationUnitService } from 'src/app/services/organization-unit.serv
 })
 export class EditarPerfilBasicoPage implements OnInit {
    // Datos necesarios
+
    candidate: Candidate = {};
    user: User;
    countries: Country;
@@ -27,10 +30,14 @@ export class EditarPerfilBasicoPage implements OnInit {
    // --------------------
    updateData: FormGroup;
    // ----------------------
+  
+   // ----- Variables para los errores
+    userNameminlength = false;
+    userNamePattern = false;
 
   constructor(private storage: Storage, private countryService: CountryService, private cityService: CityService, private stateService: StateService,
               private organizationUnitService: OrganizationUnitService, private userService: UsersService,
-              private candidateService: CandidateService ) {
+              private candidateService: CandidateService, private popoverCtrl: PopoverController ) {
      this.initForm();
 
   }
@@ -101,6 +108,8 @@ export class EditarPerfilBasicoPage implements OnInit {
         Validators.required, this.passwordid.bind(this.updateData)
       ]);
     });
+
+    console.log(this.updateData.controls.email, 'email');
   }
 
   // *********************************************
@@ -130,7 +139,7 @@ export class EditarPerfilBasicoPage implements OnInit {
       this.candidate = candidate;
       this.userService.guardarCandidato(this.candidate);
     }, (err) => {
-      console.log(err);
+      console.log(err, 'hola');
     });
 
   }
@@ -166,22 +175,46 @@ export class EditarPerfilBasicoPage implements OnInit {
   onChangeCountry($event) {
     this.countryId =  $event.target.value;
     this.updateData.controls.country_id.setValue( this.countryId);
-    console.log('country',  this.countryId);
+
     this.stateService.getStateByCountry($event.target.value).subscribe(states => {
       this.states = states[0];
-      console.log(states);
     });
     this.cities = null;
   }
   onChangeState($event) {
-    console.log('state', $event.target.value);
     this.stateId =  $event.target.value;
     this.updateData.controls.state_id.setValue(this.stateId);
     this.cityService.getCitiesByState($event.target.value).subscribe(cities => {
       this.cities = cities[0];
     });
   }
-  onChangeCity($event) {
-    console.log('city', $event.target.value);
+
+
+  // Para mostrar dialogos de error en alguna validacion
+  advertenciaUserData() {
+    if  (this.updateData.controls.userData.get('username').getError('minlength')) {
+         this.userNameminlength = true;
+    } else {
+      this.userNameminlength = false;
+    }
+    if (this.updateData.controls.userData.get('username').getError('pattern')) {
+      this.userNamePattern = true;
+    } else {
+      this.userNamePattern = false;
+    }
   }
+  changePassword() {
+    this.updateData.controls.userData.get('password_confirm').setValue('');
+    this.updateData.controls.userData.get('password_confirm').updateValueAndValidity();
+  }
+  // async mostrarPop(evento) {
+  //   const   popover = await this.popoverCtrl.create({
+  //     component: PopoverComponent,
+  //     event: evento,
+  //     mode: 'ios',
+  //     showBackdrop: false
+  //   });
+
+  //   await popover.present();
+  // }
 }

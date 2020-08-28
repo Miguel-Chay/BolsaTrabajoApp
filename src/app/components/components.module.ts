@@ -5,15 +5,18 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { PopfilterComponent } from './popfilter/popfilter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PopoverComponent } from './popover/popover.component';
 
 @NgModule({
   declarations: [
     FabComponent,
-    PopfilterComponent
+    PopfilterComponent,
+    PopoverComponent
   ],
   exports: [
     FabComponent,
-    PopfilterComponent
+    PopfilterComponent,
+    PopoverComponent
   ],
   imports: [
     CommonModule,

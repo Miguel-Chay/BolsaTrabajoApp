@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EditarPerfilBasicoPage } from './editar-perfil-basico.page';
+import { ComponentsModule } from '../../components/components.module';
+import { PopoverComponent } from '../../components/popover/popover.component';
 
 const routes: Routes = [
   {
@@ -14,10 +16,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [
+    PopoverComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule
   ],
