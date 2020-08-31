@@ -10,6 +10,7 @@ import { StateService } from '../../services/state.service';
 import { OrganizationUnitService } from 'src/app/services/organization-unit.service';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../../components/popover/popover.component';
+import * as moment from 'moment';
 @Component({
   selector: 'app-editar-perfil-basico',
   templateUrl: './editar-perfil-basico.page.html',
@@ -34,6 +35,8 @@ export class EditarPerfilBasicoPage implements OnInit {
    // ----- Variables para los errores
     userNameminlength = false;
     userNamePattern = false;
+    first = false;
+    firstSate = false;
 
   constructor(private storage: Storage, private countryService: CountryService, private cityService: CityService, private stateService: StateService,
               private organizationUnitService: OrganizationUnitService, private userService: UsersService,
@@ -72,44 +75,14 @@ export class EditarPerfilBasicoPage implements OnInit {
             this.cityService.getCitiesByState(this.stateId).subscribe(cities => {
               this.cities = cities[0];
             });
+            this.storage.get('user').then( user => {
+              this.user = JSON.parse(user);
+              this.dataEdit();
+            });
         });
       });
     });
 
-    // ------- inicializa el objeto user
-    this.storage.get('user').then( user => {
-      this.user = JSON.parse(user);
-
-      // ---- llena el formulario con los datos
-      this.updateData = new FormGroup(  {
-        userData: new FormGroup({
-          username: new FormControl(this.user.username, [Validators.required, Validators.minLength(4), Validators.maxLength(128), Validators.pattern('^(?![-_.])(?!.*[-_.]{2})[a-zA-Z0-9._-]+(?![-_.])$')] ),
-          email: new FormControl(this.user.email, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$') ]),
-          password: new FormControl('', [Validators.required, Validators.minLength(6),
-                                        Validators.pattern('^(?=^.{7,30}$)((?=.*)(?=.*[A-Z])(?=.*[a-z])|(?=.*)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*$')]),
-          password_confirm:  new FormControl(),
-        }),
-
-        firstname: new FormControl(this.candidate.firstname, Validators.required),
-        lastname: new FormControl(this.candidate.lastname, Validators.required),
-        sex: new FormControl( this.candidate.sex, Validators.required),
-        birth_date: new FormControl( this.candidate.birth_date, Validators.required),
-        marital_status: new FormControl(this.candidate.marital_status, Validators.required),
-        phone: new FormControl(this.candidate.phone),
-        cellphone: new FormControl(this.candidate.cellphone),
-        city_id: new FormControl(this.candidate.city_id, Validators.required),
-        curp: new FormControl(this.candidate.curp),
-        student_id_number: new FormControl( this.candidate.student_id_number),
-        organization_unit_id: new FormControl( this.candidate.organization_unit_id, Validators.required),
-        country_id: new FormControl(''),
-        state_id: new FormControl(''),
-      });
-      this.updateData.controls.userData.get('password_confirm').setValidators([
-        Validators.required, this.passwordid.bind(this.updateData)
-      ]);
-    });
-
-    console.log(this.updateData.controls.email, 'email');
   }
 
   // *********************************************
@@ -127,7 +100,8 @@ export class EditarPerfilBasicoPage implements OnInit {
 
   //  esta funcion se usa para hacer los cambios en la bd
   update() {
-
+    const dat =  moment(this.updateData.controls.birth_date.value).format('YYYY-MM-DD');
+    this.updateData.controls.birth_date.setValue(dat);
     this.userService.updateUser(this.user.id, this.updateData.controls.userData.value).then((user) => {
       this.user = user;
       this.userService.guardarUsuario(this.user);
@@ -143,7 +117,35 @@ export class EditarPerfilBasicoPage implements OnInit {
     });
 
   }
+  // dataEdi
+  dataEdit() {
+    this.updateData = new FormGroup(  {
+      userData: new FormGroup({
+        username: new FormControl(this.user.username, [Validators.required, Validators.minLength(4), Validators.maxLength(128), Validators.pattern('^(?![-_.])(?!.*[-_.]{2})[a-zA-Z0-9._-]+(?![-_.])$')] ),
+        email: new FormControl(this.user.email, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$') ]),
+        password: new FormControl('', [Validators.required, Validators.minLength(6),
+                                      Validators.pattern('^(?=^.{7,30}$)((?=.*)(?=.*[A-Z])(?=.*[a-z])|(?=.*)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*$')]),
+        password_confirm:  new FormControl(),
+      }),
 
+      firstname: new FormControl(this.candidate.firstname, Validators.required),
+      lastname: new FormControl(this.candidate.lastname, Validators.required),
+      sex: new FormControl( this.candidate.sex, Validators.required),
+      birth_date: new FormControl( this.candidate.birth_date, Validators.required),
+      marital_status: new FormControl(this.candidate.marital_status, Validators.required),
+      phone: new FormControl(this.candidate.phone),
+      cellphone: new FormControl(this.candidate.cellphone),
+      city_id: new FormControl(this.candidate.city_id, Validators.required),
+      curp: new FormControl(this.candidate.curp),
+      student_id_number: new FormControl( this.candidate.student_id_number),
+      organization_unit_id: new FormControl( this.candidate.organization_unit_id, Validators.required),
+      country_id: new FormControl(this.countryId),
+      state_id: new FormControl(this.stateId),
+    });
+    this.updateData.controls.userData.get('password_confirm').setValidators([
+      Validators.required, this.passwordid.bind(this.updateData)
+    ]);
+  }
   // iniciliza el formGroup
   initForm() {
     this.updateData = new FormGroup(  {
@@ -173,17 +175,27 @@ export class EditarPerfilBasicoPage implements OnInit {
   // *********************************************
     // Funciones que se lanzan cuando hay un cambio en el ion-select
   onChangeCountry($event) {
-    this.countryId =  $event.target.value;
-    this.updateData.controls.country_id.setValue( this.countryId);
-
+    if (this.first === false) {
+      this.first = true;
+      this.updateData.updateValueAndValidity();
+    } else {
+      this.updateData.controls.state_id.setValue('');
+      this.updateData.controls.city_id.setValue('');
+      this.updateData.updateValueAndValidity();
+    }
     this.stateService.getStateByCountry($event.target.value).subscribe(states => {
       this.states = states[0];
     });
     this.cities = null;
   }
   onChangeState($event) {
-    this.stateId =  $event.target.value;
-    this.updateData.controls.state_id.setValue(this.stateId);
+    if (this.firstSate === false) {
+      this.firstSate = true;
+      this.updateData.updateValueAndValidity();
+    } else {
+      this.updateData.controls.city_id.setValue('');
+      this.updateData.updateValueAndValidity();
+    }
     this.cityService.getCitiesByState($event.target.value).subscribe(cities => {
       this.cities = cities[0];
     });
