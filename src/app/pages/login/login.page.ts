@@ -32,7 +32,10 @@ export class LoginPage implements OnInit {
     if (form.invalid) {return; }
 
     const valido = await this.userService.login(this.loginUser.username, this.loginUser.password);
-
+    if (valido.toString().match('no es candidato'))  {
+      this.uiService.alertaInformativa('No es un candidato');
+      return;
+    }
     if (valido) {
       this.navCtrl.navigateRoot('/inicio-perfil-basico');
     } else {

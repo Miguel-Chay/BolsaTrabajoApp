@@ -31,6 +31,10 @@ export class UsersService {
         console.log(resp);
 
         if (resp['login'] ) {
+          if (!resp['user'].match('candidate')) {
+            resolve('no es candidato');
+            return ;
+          }
           this.getUser(resp['id']).subscribe( user => {
             this.guardarUsuario(user);
             resolve(true);
