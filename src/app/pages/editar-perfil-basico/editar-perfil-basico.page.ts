@@ -30,7 +30,7 @@ export class EditarPerfilBasicoPage implements OnInit {
    // --------------------
    updateData: FormGroup;
    // ----------------------
-  
+
    // ----- Variables para los errores
     userNameminlength = false;
     userNamePattern = false;

@@ -48,7 +48,7 @@ export class AgregarCertificacionPage implements OnInit {
   }
 
   async add() {
-    const confirm = await this.uiService.alertaConfirmar('¿Desea guardar la nueva certificacion?', '/agregar-certificacion');
+    const confirm = await this.uiService.alertaConfirmar('¿Añadir nueva certificación?', '/agregar-certificacion');
     if (confirm) {
       this.certificationService.createCertification(this.createCertication.value).subscribe(() => {});
       this.navCtrl.navigateForward('/mi-perfil/mp-certificaciones');

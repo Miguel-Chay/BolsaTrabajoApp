@@ -45,7 +45,7 @@ export class EditarCertificacionPage implements OnInit {
   }
 
   async update() {
-    const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/mi-perfil/mp-certificaciones');
+    const confirm = await this.uiService.alertaConfirmar('¿Guardar los cambios?', '/mi-perfil/mp-certificaciones');
     if (confirm) {
       this.certificationService.updateCertification(this.idParam, this.createCertication.value).subscribe(() => {});
     }
