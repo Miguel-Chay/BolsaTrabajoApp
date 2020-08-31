@@ -30,8 +30,21 @@ export class CvSkillService {
       return this.http.post<CvSkillComplete>(`${this.URL}/api/cv-skills`, data)
     }
 
-    //elimina un lenguaje  http://localhost:8080/api/cv-skill/del-cvskill/?c=86&s=352
+    //elimina un skill  http://localhost:8080/api/cv-skill/del-cvskill/?c=86&s=352
     deleteCvSkill(cv_id : string, skill_list_id:string){
       return this.http.get<CvSkillComplete>(`${this.URL}/api/cv-skill/del-cvskill/?c=${cv_id}&s=${skill_list_id}`);
     }  
+
+
+    // prueba(id: string ) {
+    //   return new Promise((resolve, reject) => {
+    //     this.http.get<CvSkillComplete>(`${this.URL}/api/cv-skill/cv-skill-complete/?id=${id}`).subscribe(res => {
+    //     resolve(res);
+    //   }, (err) => {
+    //     reject(err);});         
+    //   });
+  // }
+
+
+
 }

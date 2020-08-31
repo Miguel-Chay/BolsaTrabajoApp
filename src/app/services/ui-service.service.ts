@@ -135,6 +135,9 @@ export class UiServiceService {
 
     const alert = await this.alertController.create({
       message,
+      mode:'ios',
+      // cssClass: 'alertCancel',
+
       buttons: [{
           text: 'Aceptar',
           // cssClass: 'secondary',
@@ -151,9 +154,71 @@ export class UiServiceService {
   }
 
 
+ // sirve para MOSTRAR ERROR DE CONECCION y al presionar aceptar envia a otra pagina
+  async HttpErrorResponse(message: string, aceptar: string): Promise<boolean> {
+    let resolveFunction: (confirm: boolean) => void;
+    const promise = new Promise<boolean>(resolve => {
+    resolveFunction = resolve;
+  });
+
+    const alert = await this.alertController.create({
+      message,
+      mode:'ios',
+      cssClass: 'alertCancel',
+
+      buttons: [{
+          text: 'Aceptar',
+          // cssClass: 'secondary',
+          cssClass: 'alertButton',
+          handler: () => {
+            this.navCtrl.navigateForward(aceptar);
+            console.log('Confirm aceptar');
+            resolveFunction(true);
+          }
+        }]
+    });
+
+    await alert.present();
+    return promise;
+  }
 
 
 
+
+async edit_avatar(){
+    let alert = await this.alertController.create({
+      header: 'Alerta',
+      subHeader: 'error de conección',
+      message: 'A ocurrido un error al cargar la pagina',
+          // cssClass:'avatar_alert_camera_btn',
+      mode:'md',
+      buttons: [
+        {
+          text: '                               ',
+          cssClass:'avatar_alert_camera_btn',
+          role: 'ok',
+          handler: () => {
+          }
+        },{
+          text: ' ',
+          cssClass:'disabled',
+          role: 'ok',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Aceptar',
+          // cssClass:'avatar_alert_gallery_btn',
+          role: 'ok',
+          handler: () => {
+          }
+        }
+      ]
+
+            // message:"mensaje"
+    });
+    await alert.present();
+    }
 
 
 

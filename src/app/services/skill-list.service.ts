@@ -13,9 +13,9 @@ export class SkillListService {
 	URL = environment.url;
   	constructor(private http: HttpClient) { }
 
-  //returna una lista de todos los giros de negocio
+  //returna una lista de todos los skills
   	getSkillListComplete(){
-	    return this.http.get<Skill>(`${this.URL}/api/skill-list/view-list-complete`);
+	    return this.http.get<Skill[]>(`${this.URL}/api/skill-list/view-list-complete`);
   	}
   	getSkillExist(skill:string){
 	    return this.http.get<Skill>(`${this.URL}/api/skill-list/skill-exist/?t=${skill}`);

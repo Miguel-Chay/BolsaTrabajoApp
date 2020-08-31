@@ -14,7 +14,7 @@ export class FiltroPipe implements PipeTransform {
   	}
 
   	text=text.toLowerCase()
-  	console.log(text)
+  	// console.log(text)
 
   	 // console.log(array.filter(item=>{return item[column].toLowerCase().includes(text)  }), array.filter(item=>{return item[column].toLowerCase().includes(text)  }).length )
   	return array.filter(item=>{return item[column].toLowerCase().includes(text)	})

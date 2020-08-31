@@ -104,3 +104,48 @@ ion-tab-button {
     --min-width: 320px !important;
     /*--min-height: 500px !important;*/
 }
+
+.alertCancel{
+  --background: white;
+    button.alertButton{
+      color: red;
+    }
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//desactivar un boton
+ .disabled{
+  cursor:default;
+  pointer-events:none;
+  text-decoration:none;
+  color:black;
+}
+//icono de advertencia
+.avatar_alert_camera_btn{
+    background-image: url(./assets/alerts/alert.png);
+    cursor:default;
+    pointer-events:none;
+    text-decoration:none;
+    // margin-left: 20px;
+    // margin-top: -4px;
+    --height : 30px;
+    --width: 30px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.avatar_alert_gallery_btn {
+    background-image: url(./assets/alerts/gallery.png);
+} 
