@@ -161,10 +161,14 @@ export class AgregarExpLaboralPage implements OnInit {
         this.updateData.get('wexperienceData').get('month_end').value ,
         this.updateData.get('wexperienceData').get('year_end').value , 
         this.updateData.get('wexperienceData').get('description').value,
-        this.is_current_job ).subscribe( workExperience=>{});
+        this.is_current_job ).subscribe( workExperience=>{
+          this.navCtrl.navigateForward("/mi-perfil");
+        });
     }
-    this.uiService.loading("Guardando",3000);
+    else{
+    // this.uiService.loading("Guardando",3000);
     this.navCtrl.navigateForward("/mi-perfil");
+    }
 
   }
 

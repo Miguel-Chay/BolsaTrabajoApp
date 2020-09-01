@@ -75,12 +75,7 @@
         	</ion-datetime>
 	    </ion-item>    
 	    
-	    <ion-row>
-    		<ion-col width-50 style="text-align: center">
-	    		<ion-button  [ngClass]="{'button-disabled': addData.invalid}" color="boton" type="submit" 
-	    	 		(click)= "addCourse()" size="large">Actualizar</ion-button>		
-			</ion-col>
-		</ion-row>
+	    
 		
 	</form>
 	<!-- <ion-button (click)= "imprimir()">
@@ -88,3 +83,9 @@
     </ion-button> -->
 
 </ion-content>
+	<ion-row>
+    		<ion-col width-50 style="text-align: center">
+	    		<ion-button  [ngClass]="{'button-disabled': addData.invalid}" color="boton" type="submit"  expand="block"
+	    	 		(click)= "addCourse()" size="large">Guardar</ion-button>		
+			</ion-col>
+		</ion-row>

@@ -11,12 +11,15 @@
 <ion-content>
   <form [formGroup]="updateData" (ngSubmit)="imprimir()">
     <div class="ion-padding" >
-	   <ion-item>
+	   <!-- <ion-item> -->
       <ion-list formGroupName="wexperienceData" ><!-- formGroupName="wexperienceData" -->
         <ion-label  position="stacked"><font size=5>Empleador</font><ion-text color="danger">*<br></ion-text></ion-label>
+
         <ion-input inputmode="text" placeholder="Ingrese el nombre de la empresa" formControlName="company"></ion-input>
+        <!-- <ion-textarea></ion-textarea> -->
+          <!-- <ion-input formControlName="company"></ion-input> -->
         </ion-list>
-      </ion-item>
+      <!-- </ion-item> -->
       <ion-item *ngIf="updateData.get('wexperienceData').get('company').errors && updateData.get('wexperienceData').get('company').dirty">
           <p color="danger" ion-text *ngIf="updateData.get('wexperienceData').get('company').hasError('required')">campo requerido</p>
           <p color="danger" ion-text *ngIf="updateData.get('wexperienceData').get('company').hasError('maxlength')">el maximo de caracteres es de 175</p>
@@ -100,13 +103,14 @@
   </div> -->
 
   
-  <ion-row>
-    <ion-col width-50 style="text-align: center">
-           <ion-button [ngClass]="{'button-disabled': updateData.invalid}" color="boton" type="submit" (click)= "updateWorkExperience()"  size="large" > Actualizar </ion-button>
-    </ion-col>
-  </ion-row>
+  
    <!-- <ion-button routerLink="/mi-perfil/mp-exp-laboral" >prueba</ion-button> -->
 
 </form>
 </ion-content>
 
+<ion-row>
+    <ion-col width-50 style="text-align: center">
+           <ion-button [ngClass]="{'button-disabled': updateData.invalid}" color="boton" type="submit" (click)= "updateWorkExperience()"  size="large" expand="block"> Guardar </ion-button>
+    </ion-col>
+  </ion-row>
