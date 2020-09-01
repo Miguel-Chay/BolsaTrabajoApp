@@ -43,7 +43,7 @@ export class AgregarAptitudPage implements OnInit {
       // console.error(error);
       console.log("error de coneccion")
       // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-      this.uiService.edit_avatar()
+      this.uiService.error("error de conexión")
     })
   }
 
@@ -138,7 +138,7 @@ export class AgregarAptitudPage implements OnInit {
         // console.error(error);
         console.log("error de coneccion")
         // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-        this.uiService.edit_avatar()
+        this.uiService.error("error de conexión")
       })
  
     }
@@ -189,10 +189,15 @@ addedSkill(text){
         // console.error(error);
         console.log("error de coneccion")
         // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-        this.uiService.edit_avatar()
+        this.uiService.error("error de conexión")
       })
- 
-    
+  }
+
+  boton(){
+    console.log("boton")
+    // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
+        this.uiService.error("error de conexión")
+
   }
 
 

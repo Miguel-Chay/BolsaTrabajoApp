@@ -20,9 +20,11 @@ import { Language, LanguageList,LevelList,LanguageComplete } from '../../interfa
 })
 export class EditarIdiomaPage implements OnInit {
 	id : string;
-  	list : 	LanguageList
+  list : 	LanguageList
 	level : LevelList
 	language : Language
+  levelstart = "1"
+  languagestart="1"
     // ----- formato para almacenar la informacion a actualizar------
   	addData: FormGroup;
    	// --------------------------------------------------------------
@@ -43,6 +45,8 @@ export class EditarIdiomaPage implements OnInit {
   		language_list_id: new FormControl(this.language.language_list_id,Validators.required),
   		level_list_id: new FormControl(this.language.level_list_id,Validators.required),
     	});
+      this.levelstart=this.language.level_list_id
+      this.languagestart=this.language.language_list_id
     })
 
   	this.languageListService.getListComplete().subscribe( list=>{this.list=list
@@ -67,26 +71,50 @@ export class EditarIdiomaPage implements OnInit {
 
   	}
 
-  	imprimir(){console.log(this.addData.value)}
+  	imprimir(){console.log(this.addData.value)
+      console.log("lenguaje= "+this.languagestart+" nivel= "+this.levelstart)
+    }
 
   	addLanguage(){
 
   		this.languageService.getLanguageExist(this.addData.get('cv_id').value,this.addData.get('language_list_id').value).subscribe( exist=>{
-    	
-    		if (exist==1)
-    			{
-    				this.uiService.alertaInformativa("Este idioma ya ha sido registrado en su cuenta")
-    			}
-    		else
-    			{
-    				this.languageService.updateLanguage(
-    					this.addData.get('id').value,
-    					this.addData.get('language_list_id').value,
-    					this.addData.get('level_list_id').value,
-    					).subscribe( lenguage=>{});
+    	  
+        if (this.languagestart==this.addData.get('language_list_id').value) { 
+          // console.log("mismo lenguaje")
+          if (this.levelstart==this.addData.get('level_list_id').value) { 
+            // console.log("mismo nivel")
+            this.navCtrl.navigateRoot('/mi-perfil/mp-idiomas');
+          } else {
+            this.languageService.updateLanguage(
+                this.addData.get('id').value,
+                this.languagestart,
+                this.addData.get('level_list_id').value,
+                ).subscribe( lenguage=>{
+                  this.navCtrl.navigateRoot('/mi-perfil/mp-idiomas');
+                });
+            // console.log("se actualiza")
+          }
+        } else {
+          // console.log("pregunta si existe el idioma")
+      		if (exist==1)
+      			{
+      				this.uiService.alertaInformativa("Este idioma ya ha sido registrado en su cuenta")
+      			}
+      		else
+      			{
+      				this.languageService.updateLanguage(
+      					this.addData.get('id').value,
+      					this.addData.get('language_list_id').value,
+      					this.addData.get('level_list_id').value,
+      					).subscribe( lenguage=>{
+                  this.navCtrl.navigateRoot('/mi-perfil/mp-idiomas');
+                });
 
-    				this.navCtrl.navigateRoot('/mi-perfil/mp-idiomas');
-    			}
+      				
+      			}
+        }
+
+
     	})
   		
 

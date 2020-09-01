@@ -185,36 +185,23 @@ export class UiServiceService {
 
 
 
-async edit_avatar(){
+async error(text){
     let alert = await this.alertController.create({
       header: 'Alerta',
-      subHeader: 'error de conección',
-      message: 'A ocurrido un error al cargar la pagina',
-          // cssClass:'avatar_alert_camera_btn',
-      mode:'md',
+      subHeader: text,
+      message: '<img src="./assets/alerts/alert.png" class="card-alert-img">  ',
+      mode:"ios",
+      // message: 'A ocurrido un error al cargar la pagina',
+          cssClass:'alertCancel',
       buttons: [
         {
-          text: '                               ',
-          cssClass:'avatar_alert_camera_btn',
-          role: 'ok',
-          handler: () => {
-          }
-        },{
-          text: ' ',
-          cssClass:'disabled',
-          role: 'ok',
-          handler: () => {
-          }
-        },
-        {
           text: 'Aceptar',
-          // cssClass:'avatar_alert_gallery_btn',
+          cssClass:'alertButton',
           role: 'ok',
           handler: () => {
           }
         }
       ]
-
             // message:"mensaje"
     });
     await alert.present();
@@ -223,7 +210,51 @@ async edit_avatar(){
 
 
 
+async warning(text){
+    let alert = await this.alertController.create({
+      header: 'Alerta',
+      subHeader: text,
+      message: '<img src="./assets/alerts/war.png" class="card-alert-img">  ',
+      mode:"ios",
+      // message: 'A ocurrido un error al cargar la pagina',
+          cssClass:'alertCancel',
+      buttons: [
+        {
+          text: 'Aceptar',
+          cssClass:'alertButton',
+          role: 'ok',
+          handler: () => {
+          }
+        }
+      ]
+            // message:"mensaje"
+    });
+  await alert.present();
+}
 
+
+
+async information(text){
+  let alert = await this.alertController.create({
+    header: 'Alerta',
+    subHeader: text,
+    message: '<img src="./assets/alerts/info.png" class="card-alert-img">  ',
+    mode:"ios",
+    // message: 'A ocurrido un error al cargar la pagina',
+        cssClass:'alertCancel',
+    buttons: [
+      {
+        text: 'Aceptar',
+        cssClass:'alertButton',
+        role: 'ok',
+        handler: () => {
+        }
+      }
+    ]
+          // message:"mensaje"
+  });
+  await alert.present();
+}
 
 
 

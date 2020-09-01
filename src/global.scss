@@ -105,25 +105,41 @@ ion-tab-button {
     /*--min-height: 500px !important;*/
 }
 
+//color del alert (error, warnin,info)
 .alertCancel{
   --background: white;
     button.alertButton{
-      color: red;
+      color: blue;
     }
  }
 
 
+ 
 
 
 
 
 
+//color del boton de alert aceptar
+.boton{
+      --color: red;
+}
 
+.alertDanger{
+    background-color: white;
+    color: red;
+    button{
+        color: red;
+    }
+}
 
-
-
-
-
+.card-alert-img{
+    width: 50px;
+    height: 50px;
+    display:block;
+    margin:auto;
+    // justify-text: center;
+}
 
 //desactivar un boton
  .disabled{
@@ -131,21 +147,4 @@ ion-tab-button {
   pointer-events:none;
   text-decoration:none;
   color:black;
-}
-//icono de advertencia
-.avatar_alert_camera_btn{
-    background-image: url(./assets/alerts/alert.png);
-    cursor:default;
-    pointer-events:none;
-    text-decoration:none;
-    // margin-left: 20px;
-    // margin-top: -4px;
-    --height : 30px;
-    --width: 30px;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-.avatar_alert_gallery_btn {
-    background-image: url(./assets/alerts/gallery.png);
 } 

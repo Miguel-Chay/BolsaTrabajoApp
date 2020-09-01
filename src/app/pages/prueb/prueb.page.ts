@@ -4,6 +4,7 @@ import {FormGroup, FormControl, Validators  } from '@angular/forms';
 
 import { WorkExperienceService } from '../../services/work-experience.service';
 import { LineBusinessService } from '../../services/line-business.service';
+import { UiServiceService } from '../../services/ui-service.service';
 
 import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
 
@@ -18,34 +19,35 @@ import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
 export class PruebPage implements OnInit {
 
   addData: FormGroup;
-  constructor(){ 
+  constructor(
+          private uiService: UiServiceService){ 
  }
 
   ngOnInit() {
     
-    this.addData = new FormGroup({
-      id1 : new FormControl(''),
-      id2 : new FormControl(''),
-      id3 : new FormControl(''),
-      id4 : new FormControl(''),
-      id5 : new FormControl(''),
-      id6 : new FormControl(''),
-      id7: new FormControl(''),
-      id8 : new FormControl(''),
-      id9 : new FormControl(''),
-      id10 : new FormControl(''),
-      id11 : new FormControl(''),
-      id12 : new FormControl(''),
-      id13 : new FormControl(''),
-      id14 : new FormControl(''),
-      id15 : new FormControl(''),
       
-    });
-
 
 
   }
  
+ boton0(){
+    console.log("boton")
+    // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
+        this.uiService.error("esto es un error")
+
+  }
+  boton1(){
+    console.log("boton")
+    // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
+        this.uiService.warning("esto es una advertencia")
+
+  }
+  boton2(){
+    console.log("boton")
+    // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
+        this.uiService.information("esto es una informacion")
+
+  }
 
    
  imprimir() {
