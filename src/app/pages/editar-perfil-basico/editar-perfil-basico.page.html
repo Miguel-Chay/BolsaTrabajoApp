@@ -151,7 +151,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-datetime formControlName="birth_date" placeholder="yyyy-mm-dd" display-format="YYYY MMMM DD" month-names="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiempre, Octubre, Noviembre, Diciembre" min="1950-01-01" max="2015-12-31"></ion-datetime>
+                                    <ion-datetime formControlName="birth_date" placeholder="yyyy-mm-dd" display-format="YYYY MMMM DD" month-names="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiempre, Octubre, Noviembre, Diciembre" min="1950-01-01" max="2015-12-31"> </ion-datetime>
                                 </ion-item>
                                 <ion-item>
                                     <ion-label position="stacked">
@@ -174,7 +174,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-input placeholder="p. ej. (999) 999 9999"></ion-input>
+                                    <ion-input formControlName="phone" placeholder="p. ej. (999) 999 9999"></ion-input>
                                 </ion-item>
 
                                 <ion-item>
@@ -184,7 +184,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-input placeholder="p. ej. (+52) 999 999 99 99"></ion-input>
+                                    <ion-input formControlName="cellphone" placeholder="p. ej. (+52) 999 999 99 99"></ion-input>
                                 </ion-item>
 
                                 <ion-item lines="none">
@@ -195,7 +195,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-select [value]="countryId" (ionChange)=" onChangeCountry($event)" interface="action-sheet" placeholder="seleccionar Pais">
+                                    <ion-select formControlName="country_id" (ionChange)=" onChangeCountry($event)" interface="action-sheet" placeholder="seleccionar Pais">
 
                                         <ion-select-option *ngFor="let country of countries" [value]="country.id"> {{country.name}} </ion-select-option>
                                     </ion-select>
@@ -209,7 +209,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-select [value]="stateId" interface="action-sheet" (ionChange)=" onChangeState($event)" placeholder="seleccionar Estado">
+                                    <ion-select  formControlName="state_id" interface="action-sheet" (ionChange)=" onChangeState($event)" placeholder="seleccionar Estado">
 
                                         <ion-select-option *ngFor="let state of states" [value]="state.id"> {{state.name}} </ion-select-option>
                                     </ion-select>
@@ -223,7 +223,7 @@
                                             </h1>
                                         </ion-text>
                                     </ion-label>
-                                    <ion-select formControlName="city_id" interface="action-sheet" placeholder="seleccionar la ciudad">
+                                    <ion-select formControlName="city_id"   interface="action-sheet" placeholder="seleccionar la ciudad">
                                         <ion-select-option *ngFor="let city of cities" [value]="city.id"> {{city.name}} </ion-select-option>
                                     </ion-select>
                                 </ion-item>
@@ -269,8 +269,8 @@
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col  style="text-align: center" size="12">
-                    <ion-button  expand="block"  color="buttonUadyConfirm" [ngClass]="{'button-disabled': updateData.invalid}" type="submit" shape="round">
+                <ion-col size="12">
+                    <ion-button routerLink="/inicio-perfil-basico" color="buttonUadyConfirm" [ngClass]="{'button-disabled': updateData.invalid}" type="submit" expand="block" shape="round">
                         Guardar
                     </ion-button>
                 </ion-col>

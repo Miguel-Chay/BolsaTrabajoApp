@@ -16,27 +16,14 @@
   		<ion-item >
     		<ion-label>Idioma</ion-label>
     		<ion-select placeholder="Seleccione su idioma" formControlName="language_list_id" [value]="languagestart">
+
       		<ion-select-option *ngFor="let i of list" color="light" [value]="i.id">{{i.language}} </ion-select-option>
     		</ion-select>
   		</ion-item>
 
-  		<!-- <ion-item lines="none">
-                                    <ion-label position="stacked">
-                                        <ion-text color="Dark">
-                                            <h1> País
-                                                <ion-text color="danger">*</ion-text>
-                                            </h1>
-                                        </ion-text>
-                                    </ion-label>
-                                    <ion-select [value]="countryId" (ionChange)=" onChangeCountry($event)" interface="action-sheet" placeholder="seleccionar Pais">
-
-                                        <ion-select-option *ngFor="let country of countries" [value]="country.id"> {{country.name}} </ion-select-option>
-                                    </ion-select>
-                                </ion-item> -->
-
   		<ion-item >
     		<ion-label>Nivel</ion-label>
-    		<ion-select placeholder="Seleccione el nivel" formControlName="level_list_id" [value]="languagestart"  >
+    		<ion-select placeholder="Seleccione el nivel" formControlName="level_list_id" [value]="levelstart"  >
       		<ion-select-option *ngFor="let x of level" color="light" [value]="x.id">{{x.level}}</ion-select-option>
     		</ion-select>
   		</ion-item>
