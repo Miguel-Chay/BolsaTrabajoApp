@@ -8,9 +8,14 @@ import { UiServiceService } from '../../services/ui-service.service';
 
 import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
 
+import {AppComponent}from '../../app.component' ;
+import {MpExpLaboralPage}from '../mp-exp-laboral/mp-exp-laboral.page' ;
+
 
 
 @Component({
+  providers:[MpExpLaboralPage],
+
   selector: 'app-prueb',
   templateUrl: './prueb.page.html',
   styleUrls: ['./prueb.page.scss'],
@@ -19,8 +24,10 @@ import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
 export class PruebPage implements OnInit {
 
   addData: FormGroup;
-  constructor(
-          private uiService: UiServiceService){ 
+  constructor(  private appComponent:AppComponent ,
+                private uiService: UiServiceService,
+                private mpExpLaboralPage: MpExpLaboralPage,
+                ){ 
  }
 
   ngOnInit() {
@@ -29,6 +36,8 @@ export class PruebPage implements OnInit {
 
 
   }
+
+ // imprimir(){}
  
  boton0(){
     console.log("boton")
@@ -51,7 +60,10 @@ export class PruebPage implements OnInit {
 
    
  imprimir() {
-   console.log(this.addData.value)
+console.log('appComponent')
+   this.appComponent.imprimir();
+   this.mpExpLaboralPage.imprimir();
+
 	}	
 
 

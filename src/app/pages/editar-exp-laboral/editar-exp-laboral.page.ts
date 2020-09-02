@@ -8,9 +8,11 @@ import { LineBusinessService } from '../../services/line-business.service';
 import { UiServiceService } from '../../services/ui-service.service';
 
 import { WorkExperience, LineBusiness } from '../../interfaces/interfaces';
+import {MpExpLaboralPage}from '../mp-exp-laboral/mp-exp-laboral.page' ;
 
 
 @Component({
+  providers:[MpExpLaboralPage],
   selector: 'app-editar-exp-laboral',
   templateUrl: './editar-exp-laboral.page.html',
   styleUrls: ['./editar-exp-laboral.page.scss'],
@@ -36,9 +38,12 @@ export class EditarExpLaboralPage implements OnInit {
 
 
 
-  constructor( private storage: Storage, private workExperienceService: WorkExperienceService,  
-    private lineBusinessService: LineBusinessService ,private route: ActivatedRoute, 
-    private uiService: UiServiceService ) { 
+  constructor(  private storage: Storage, 
+                private route: ActivatedRoute, 
+                private uiService: UiServiceService,
+                private mpExpLaboralPage: MpExpLaboralPage,
+                private lineBusinessService: LineBusinessService,
+                private workExperienceService: WorkExperienceService) { 
 
     this.initForm();
     
@@ -159,6 +164,8 @@ export class EditarExpLaboralPage implements OnInit {
 
   async updateWorkExperience(){
     
+
+    
     const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/mi-perfil/mp-exp-laboral')
     if(confirm){
       this.workExperienceService.updateWorkExperience(
@@ -172,7 +179,9 @@ export class EditarExpLaboralPage implements OnInit {
         this.updateData.get('wexperienceData').get('year_end').value , 
         this.updateData.get('wexperienceData').get('description').value,
         this.updateData.get('wexperienceData').get('is_current_job').value 
-        ).subscribe( workExperience=>{});
+        ).subscribe( workExperience=>{
+          // this.mpExpLaboralPage.ionViewWillEnter();
+        });
     }
   }
 

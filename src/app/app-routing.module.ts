@@ -35,7 +35,9 @@ const routes: Routes = [
   { path: 'mensajes', loadChildren: './pages/mensajes/mensajes.module#MensajesPageModule' },
   { path: 'chats', loadChildren: './pages/chats/chats.module#ChatsPageModule' },
   { path: 'chat/:id', loadChildren: './pages/chat/chat.module#ChatPageModule' },
-  { path: 'editar-certificacion/:id', loadChildren: './pages/editar-certificacion/editar-certificacion.module#EditarCertificacionPageModule' }
+  { path: 'editar-certificacion/:id', loadChildren: './pages/editar-certificacion/editar-certificacion.module#EditarCertificacionPageModule' },
+  { path: 'editar-aptitud/:id', loadChildren: './pages/editar-aptitud/editar-aptitud.module#EditarAptitudPageModule' }
+
 
 
 

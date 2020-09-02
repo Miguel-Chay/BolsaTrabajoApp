@@ -29,11 +29,23 @@ export class MpExpLaboralPage implements OnInit {
     private storage: Storage,private uiService: UiServiceService,public platform : Platform, public loadingController :LoadingController) {}
 
   ngOnInit() {
-
-
+      // console.log("ngOnInit")
+  }
+  // ionViewDidEnter() {
+  //   console.log("ionViewDidEnter")
+  // }
+  // ionViewDidLoad() {
+  //   console.log("ionViewDidLoad")
+  // }
+  prueba(){
+    this.ionViewWillEnter();
   }
 
+
+  
    ionViewWillEnter() { 
+    // console.log("ionViewWillEnter")
+
    	//this.saving()
     this.storage.get('id').then((val) => { 
       this.workexperienceService.getWorkExComplete (val).subscribe( workexperience=>{this.workexperience=workexperience
@@ -42,6 +54,9 @@ export class MpExpLaboralPage implements OnInit {
     })
    }
 
+   imprimir(){
+     console.log(this.workexperience)
+   }
 
 
   async opcionesExpLab(id: string) {

@@ -63,7 +63,9 @@ export class AppComponent {
 
 
 // ionViewWillEnter  para mostrar foto y nombre
-
+  imprimir(){
+    console.log("estoy en el AppComponent")
+  }
 
   loadInformation() {
     this.storage.get('candidate').then((candidate) => {

@@ -12,6 +12,10 @@ export class SkillListService {
    	id: string = null;
 	URL = environment.url;
   	constructor(private http: HttpClient) { }
+  //retorna un skill
+    getSkill(id:string){
+      return this.http.get<Skill>(`${this.URL}/api/skill-lists/${id}`);
+    }
 
   //returna una lista de todos los skills
   	getSkillListComplete(){

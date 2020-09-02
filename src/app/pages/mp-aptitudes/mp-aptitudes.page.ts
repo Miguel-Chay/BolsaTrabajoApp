@@ -48,7 +48,7 @@ this.storage.get('id').then((val) => {
   // }
 
   async opcionesAptitud(id: string,skill_list_id: string) {
-    this.confirm = await this.uiService.opcionesMiperfilAptitud('/editar-idioma/'+id)//manda la ruta mas el parametro id 
+    this.confirm = await this.uiService.opcionesMiperfil('/editar-aptitud/'+skill_list_id)//manda la ruta mas el parametro id 
     if(this.confirm == "delete"){
        this.cvSkillService.deleteCvSkill(id,skill_list_id).subscribe(Response => {this.ionViewWillEnter()});
     }
