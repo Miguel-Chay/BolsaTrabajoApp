@@ -8,20 +8,9 @@
 </ion-header>
 
 <ion-content color="goldlow"  >
-	<!-- <p  *ngFor="let i of cvSkill">
-		<ion-chip   color={{i.color}} outline>
-          	<ion-label >
-	        	    <font size=auto >
-            	  	{{i.skill}}  
-
-            		</font>
-	    	    </ion-label>
-        	<ion-icon name="close-circle" (click)=EliminarAptitud()> </ion-icon>
-	    </ion-chip>
-	</p>
-    
- -->
-
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="60" class="refresherMP">
+        <ion-refresher-content ></ion-refresher-content>
+      </ion-refresher>
  
 
  	<ion-item *ngFor="let i of cvSkill" (click)=opcionesAptitud(i.cv_id,i.skill_list_id)>

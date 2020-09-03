@@ -92,34 +92,6 @@ export class UiServiceService {
     return promise;
   }
 
-  //funcion especial para opciones de aptitudes
-  async opcionesMiperfilAptitud(page: string): Promise<string> {
-
-    let resolveFunction: (confirm: string) => void;
-    const promise = new Promise<string>(resolve => {resolveFunction = resolve; });
-
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Opciones',
-      buttons: [
-       {
-        text: 'Eliminar',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          resolveFunction('delete');
-        }
-      }, {
-        text: 'Cancelar',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          resolveFunction('cancel');
-        }
-      }]
-    });
-    await actionSheet.present();
-    return promise;
-  }
 
   // sirve para informar y al presionar aceptar envia a otra pagina
   async alertaLeave(message: string, aceptar: string): Promise<boolean> {
@@ -178,14 +150,15 @@ export class UiServiceService {
   }
 
 //==================================================
-//alerta con un solo boton ok
+//alerta con un solo boton ok ||sheader=mensaje || type = alert,war,info||
 //==================================================
 
-async error(text){
+async AlertaOK(sheader:string,type:string, page:string){
+  
     let alert = await this.alertController.create({
       header: 'Alerta',
-      subHeader: text,
-      message: '<img src="./assets/alerts/alert.png" class="card-alert-img">  ',
+      subHeader: sheader,
+      message: `<img src="./assets/alerts/${type}.png" class="card-alert-img">  `,
       mode:"ios",
       // message: 'A ocurrido un error al cargar la pagina',
           cssClass:'alertCancel',
@@ -195,6 +168,9 @@ async error(text){
           cssClass:'alertButton',
           role: 'ok',
           handler: () => {
+            if (page!="") { 
+              this.navCtrl.navigateRoot(page);
+            }
           }
         }
       ]
@@ -203,51 +179,6 @@ async error(text){
     await alert.present();
     }
 
-async warning(text){
-    let alert = await this.alertController.create({
-      header: 'Alerta',
-      subHeader: text,
-      message: '<img src="./assets/alerts/war.png" class="card-alert-img">  ',
-      mode:"ios",
-      // message: 'A ocurrido un error al cargar la pagina',
-          cssClass:'alertCancel',
-      buttons: [
-        {
-          text: 'Aceptar',
-          cssClass:'alertButton',
-          role: 'ok',
-          handler: () => {
-          }
-        }
-      ]
-            // message:"mensaje"
-    });
-  await alert.present();
-}
-
-async information(text){
-  let alert = await this.alertController.create({
-    header: 'Alerta',
-    subHeader: text,
-    message: '<img src="./assets/alerts/info.png" class="card-alert-img">  ',
-    mode:"ios",
-    // message: 'A ocurrido un error al cargar la pagina',
-        cssClass:'alertCancel',
-    buttons: [
-      {
-        text: 'Aceptar',
-        cssClass:'alertButton',
-        role: 'ok',
-        handler: () => {
-        }
-      }
-    ]
-          // message:"mensaje"
-  });
-  await alert.present();
-}
-
-
 
 //==================================================
 //alerta con DOS botones ok-cancel
@@ -255,7 +186,7 @@ async information(text){
 
 
 // sirve para confirmar el abandonar o no una ventana
-  async warningSALIR(mensaje: string, aceptar: string): Promise<boolean> {
+  async AlertLeaveOKCANCEL(mensaje: string,type:String, aceptar: string): Promise<boolean> {
     let resolveFunction: (confirm: boolean) => void;
     const promise = new Promise<boolean>(resolve => {
     resolveFunction = resolve;
@@ -263,7 +194,7 @@ async information(text){
 
     const alert = await this.alertController.create({
       subHeader:mensaje,
-      message: '<img src="./assets/alerts/war.png" class="card-alert-img"> ',
+      message: `<img src="./assets/alerts/${type}.png" class="card-alert-img">  `,
       mode:'ios',
       buttons: [{
           text: 'Cancelar',
@@ -292,31 +223,7 @@ async information(text){
 
 
 
-
-
-async presentPrompt() {
-  let alert = await this.alertController.create({
-    message: 'Login',
-     
-    buttons: [
-      {
-        text: 'no',
-        role: 'cancel',
-        handler: data => {
-          console.log('Cancel clicked');
-          return false
-        }
-      },
-      {
-        text: 'ok',
-        handler: data => {
-            return true;
-        }
-      }
-    ]
-  });
-  await alert.present();
-}
+ 
 
   
   async opcionesMiperfilDelete( mensaje:string): Promise<string> {

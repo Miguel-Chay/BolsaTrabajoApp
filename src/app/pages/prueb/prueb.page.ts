@@ -42,19 +42,19 @@ export class PruebPage implements OnInit {
  boton0(){
     console.log("boton")
     // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-        this.uiService.error("esto es un error")
+        this.uiService.AlertLeaveOKCANCEL("esto es un error","war","/mi-perfil/mp-aptitudes")
 
   }
   boton1(){
     console.log("boton")
     // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-        this.uiService.warning("esto es una advertencia")
+        this.uiService.AlertaOK("esto es una advertencia","war","")
 
   }
   boton2(){
     console.log("boton")
     // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-        this.uiService.information("esto es una informacion")
+        this.uiService.AlertaOK("esto es una informacion","info","")
 
   }
 

@@ -9,6 +9,10 @@
 
 <ion-content color="goldlow"  >
 
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="60" class="refresherMP">
+        <ion-refresher-content ></ion-refresher-content>
+      </ion-refresher>
+
     <div *ngIf = "workexperience == null">
       <ion-card *ngFor="let i of [1,1,1,1]" color="light" >
         <ion-card-header>
@@ -38,6 +42,8 @@
     </div>
 
     <div  *ngIf = "workexperience != null">
+     
+
       <ion-card *ngFor="let i of workexperience" color="light" (click)=opcionesExpLab(i.id)>
         <ion-card-header>
           <ion-card-title>
@@ -63,16 +69,16 @@
     </ion-fab>
 
 
-    <ion-fab vertical="top" horizontal="end" slot="fixed" >
+   <!--  <ion-fab vertical="top" horizontal="end" slot="fixed" >
       <ion-fab-button (click)=prueba() color ="gold">
         <ion-icon  name="add" color ="light"></ion-icon>
       </ion-fab-button>
-    </ion-fab>
-    <ion-fab vertical="top" horizontal="start" slot="fixed" >
+    </ion-fab> -->
+    <!-- <ion-fab vertical="top" horizontal="start" slot="fixed" >
       <ion-fab-button (click)=imprimir() color ="danger">
         <ion-icon  name="add" color ="light"></ion-icon>
       </ion-fab-button>
-    </ion-fab>
+    </ion-fab> -->
 
 
 

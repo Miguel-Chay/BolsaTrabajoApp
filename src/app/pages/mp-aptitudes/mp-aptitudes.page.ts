@@ -75,5 +75,10 @@ this.storage.get('id').then((val) => {
 	// return this.colors[Math.floor(Math.random() * (0 - 9)) + 9]
   	}
 	
-
+  doRefresh(event) {
+    setTimeout(() => {
+        this.ionViewWillEnter()
+        event.target.complete();
+    }, 1500);
+  }
 }

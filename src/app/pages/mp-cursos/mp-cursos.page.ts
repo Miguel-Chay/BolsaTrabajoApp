@@ -50,5 +50,12 @@ export class MpCursosPage implements OnInit {
     }
    }
 
+   doRefresh(event) {
+    setTimeout(() => {
+        this.ionViewWillEnter()
+        event.target.complete();
+    }, 1500);
+  }
+
 
 }

@@ -69,6 +69,15 @@ export class MpExpLaboralPage implements OnInit {
     }
    }
 
+  doRefresh(event) {
+    setTimeout(() => {
+        this.ionViewWillEnter()
+        event.target.complete();
+    }, 1500);
+  }
+
+
+
   
    saving(){
     this.platform.ready().then(()=>{

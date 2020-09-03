@@ -60,7 +60,7 @@ export class EditarAptitudPage implements OnInit {
       // console.error(error);
       console.log("error de coneccion")
       // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-      this.uiService.error("error de conexión")
+      this.uiService.AlertaOK("error de conexión","alert","/mi-perfil/mp-aptitudes")
     })
   }
 
@@ -136,8 +136,8 @@ export class EditarAptitudPage implements OnInit {
 	                //verifica si el usuario tiene agregado la skill
 	                if (cvskill==1)  
 	                {
-	                  //si lo tiene lo regresa a la pagina de skills
-	        			this.uiService.warning("esta aptitud ya ha sido registrada en su cuenta")
+	                  //si lo tiene le avisa 
+	        			this.uiService.AlertaOK("Esta aptitud ya ha sido registrada en su cuenta","war","")
 	        			this.botonOn=true
 	                }  
 	                else{
@@ -168,7 +168,7 @@ export class EditarAptitudPage implements OnInit {
 	        // console.error(error);
 	        console.log("error de coneccion")
 	        // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-	        this.uiService.error("error de conexión")
+	        this.uiService.AlertaOK("Error de conexión","alert","/mi-perfil/mp-aptitudes")
 	      })
       }
  
@@ -206,7 +206,7 @@ addedSkill(text){
 	                if (cvskill==1)  
 	                {
 	                  //si lo tiene lo regresa a la pagina de skills
-	        			this.uiService.warning("esta aptitud ya ha sido registrada en su cuenta")
+	        			this.uiService.AlertaOK("esta aptitud ya ha sido registrada en su cuenta","war","")
 	                }  
 	                else{
 	                  //no lo tiene -> se lo agrega
@@ -231,7 +231,7 @@ addedSkill(text){
 	        // console.error(error);
 	        console.log("error de coneccion")
 	        // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-	        this.uiService.error("error de conexión")
+	        this.uiService.AlertaOK("error de conexión","alert","/mi-perfil/mp-aptitudes")
 	      })
       
  
@@ -242,7 +242,7 @@ addedSkill(text){
   boton(){
     console.log("boton")
     // this.uiService.HttpErrorResponse("ocurrio un error al intentar cargar la pagina",'/mi-perfil/mp-aptitudes')
-        this.uiService.error("error de conexión")
+        // this.uiService.error("error de conexión")
 
   }
 

@@ -85,4 +85,11 @@ async opcionesIdioma(id: string) {
     }
    }
 
+ doRefresh(event) {
+    setTimeout(() => {
+        this.ionViewWillEnter()
+        event.target.complete();
+    }, 1500);
+  }
+
 }

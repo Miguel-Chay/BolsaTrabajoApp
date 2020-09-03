@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content color="goldlow" >
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="60" class="refresherMP">
+        <ion-refresher-content ></ion-refresher-content>
+      </ion-refresher>
 
     <div  *ngIf = "course==null">
       <ion-card *ngFor="let i of [1,1,1,1]" color="light" >
