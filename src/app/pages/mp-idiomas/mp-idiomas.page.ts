@@ -78,7 +78,10 @@ export class MpIdiomasPage implements OnInit {
 async opcionesIdioma(id: string) {
     this.confirm = await this.uiService.opcionesMiperfil('/editar-idioma/'+id)//manda la ruta mas el parametro id 
     if(this.confirm == "delete"){
-      this.languageService.deleteLanguage(id).subscribe(Response => {this.ionViewWillEnter()});
+      let reconfirm = await this.uiService.opcionesMiperfilDelete("¿Desea eliminar este idioma de forma permanente?" )//manda la ruta mas el parametro id 
+      if (reconfirm=="delete") {       
+        this.languageService.deleteLanguage(id).subscribe(Response => {this.ionViewWillEnter()});        
+      }   
     }
    }
 

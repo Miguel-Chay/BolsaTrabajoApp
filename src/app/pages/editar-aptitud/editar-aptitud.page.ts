@@ -24,6 +24,7 @@ export class EditarAptitudPage implements OnInit {
 	id:string;
 	skillold:Skill;
 	skills: Skill[];
+	botonOn:boolean;
 	// ----- formato para almacenar la informacion a actualizar------
   	addData: FormGroup;
    	// --------------------------------------------------------------
@@ -42,6 +43,7 @@ export class EditarAptitudPage implements OnInit {
   	this.skillListService.getSkill(this.id).subscribe(skill=>{ 
 		this.skillold=skill
 		this.textFinder=this.skillold.skill
+		this.botonOn=true
 		// this.addData = new FormGroup({
   //   	// id : new FormControl(''),//no se usa
   // 		cv_id: new FormControl(''),
@@ -102,14 +104,15 @@ export class EditarAptitudPage implements OnInit {
   }
 
   add(text : string ) {
-
-
+  	this.botonOn=false
     if (text.trim()=="") { 
       //verifica que el campo no sea solo espacios
       this.uiService.alertaInformativa("el campo no debe de estar vacio")
       this.textFinder=""
+      this.botonOn=true
     } else {
-      //si hay texto 
+      //si hay texto ... deshabilita el boton
+	  this.botonOn=false
       text=text.toLowerCase().trim()
       if (text==this.skillold.skill.toLowerCase().trim()) { 
       	console.log("no cambio nada no se actualiza")
@@ -135,6 +138,7 @@ export class EditarAptitudPage implements OnInit {
 	                {
 	                  //si lo tiene lo regresa a la pagina de skills
 	        			this.uiService.warning("esta aptitud ya ha sido registrada en su cuenta")
+	        			this.botonOn=true
 	                }  
 	                else{
 	                  //no lo tiene -> se lo agrega

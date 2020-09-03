@@ -50,7 +50,10 @@ this.storage.get('id').then((val) => {
   async opcionesAptitud(id: string,skill_list_id: string) {
     this.confirm = await this.uiService.opcionesMiperfil('/editar-aptitud/'+skill_list_id)//manda la ruta mas el parametro id 
     if(this.confirm == "delete"){
+      let reconfirm = await this.uiService.opcionesMiperfilDelete("¿Desea eliminar esta aptitud de forma permanente?" )//manda la ruta mas el parametro id 
+      if (reconfirm=="delete") {       
        this.cvSkillService.deleteCvSkill(id,skill_list_id).subscribe(Response => {this.ionViewWillEnter()});
+      } 
     }
    }
 

@@ -36,9 +36,9 @@
   	</ion-item>
   </ion-list>
 
-  <ion-row  class="ion-align-items-end" fixed=true>
+  <ion-row  class="ion-align-items-end" fixed=true >
       <ion-col width-50 style="text-align: center">
-        <ion-button  [ngClass]="{'button-disabled': addData.invalid}" color="blue" type="submit" 
+        <ion-button  [ngClass]="{'button-disabled': addData.invalid}" disabled=botonOn color="blue" type="submit" 
           (click)= "add(textFinder)" size="large">Aceptar</ion-button>    
     </ion-col>
   </ion-row>
@@ -55,7 +55,7 @@
   <ion-row  class="ion-align-items-end" fixed=true>
       <ion-col width-50 style="text-align: center">
         <ion-button    color="gold" type="submit"
-          (click)= "imprimir()" size="large">Aceptar</ion-button>    
+          (click)= "imprimir()" size="large" disabled=true>Aceptar</ion-button>    
     </ion-col>
   </ion-row>
 

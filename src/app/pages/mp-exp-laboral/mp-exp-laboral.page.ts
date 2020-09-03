@@ -62,10 +62,14 @@ export class MpExpLaboralPage implements OnInit {
   async opcionesExpLab(id: string) {
     this.confirm = await this.uiService.opcionesMiperfil('/editar-exp-laboral/'+id)//manda la ruta mas el parametro id 
     if(this.confirm== "delete"){
-      this.workexperienceService.deleteWorkExperience(id).subscribe(Response => {this.ionViewWillEnter()});
+      let reconfirm = await this.uiService.opcionesMiperfilDelete("¿Desea eliminar esta experiencia de trabajo de forma permanente?" )//manda la ruta mas el parametro id 
+      if (reconfirm=="delete") {       
+        this.workexperienceService.deleteWorkExperience(id).subscribe(Response => {this.ionViewWillEnter()});
+      } 
     }
    }
 
+  
    saving(){
     this.platform.ready().then(()=>{
       this.loadingController.create({

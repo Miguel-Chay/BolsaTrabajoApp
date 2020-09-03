@@ -41,9 +41,13 @@ export class MpCertificacionesPage implements OnInit {
   async opcionesCertifications(id: string) {
     this.confirm = await this.uiService.opcionesMiperfil(`/editar-certificacion/${id}`); // manda la ruta mas el parametro id
     if (this.confirm === 'delete') {
-      this.certificationService.DeleteCertification(id).subscribe( resp => {
-        this.ionViewWillEnter();
-      });
+
+      let reconfirm = await this.uiService.opcionesMiperfilDelete("¿Desea eliminar esta certificación de forma permanente?" )//manda la ruta mas el parametro id 
+      if (reconfirm=="delete") {       
+        this.certificationService.DeleteCertification(id).subscribe( resp => {
+          this.ionViewWillEnter();
+        });        
+      } 
     }
   }
   doRefresh(event) {

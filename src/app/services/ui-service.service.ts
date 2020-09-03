@@ -121,11 +121,6 @@ export class UiServiceService {
     return promise;
   }
 
-
-
-
-
-
   // sirve para informar y al presionar aceptar envia a otra pagina
   async alertaLeave(message: string, aceptar: string): Promise<boolean> {
     let resolveFunction: (confirm: boolean) => void;
@@ -171,7 +166,7 @@ export class UiServiceService {
           // cssClass: 'secondary',
           cssClass: 'alertButton',
           handler: () => {
-            this.navCtrl.navigateForward(aceptar);
+            // this.navCtrl.navigateForward(aceptar);
             console.log('Confirm aceptar');
             resolveFunction(true);
           }
@@ -182,8 +177,9 @@ export class UiServiceService {
     return promise;
   }
 
-
-
+//==================================================
+//alerta con un solo boton ok
+//==================================================
 
 async error(text){
     let alert = await this.alertController.create({
@@ -207,9 +203,6 @@ async error(text){
     await alert.present();
     }
 
-
-
-
 async warning(text){
     let alert = await this.alertController.create({
       header: 'Alerta',
@@ -231,8 +224,6 @@ async warning(text){
     });
   await alert.present();
 }
-
-
 
 async information(text){
   let alert = await this.alertController.create({
@@ -258,11 +249,103 @@ async information(text){
 
 
 
+//==================================================
+//alerta con DOS botones ok-cancel
+//==================================================
+
+
+// sirve para confirmar el abandonar o no una ventana
+  async warningSALIR(mensaje: string, aceptar: string): Promise<boolean> {
+    let resolveFunction: (confirm: boolean) => void;
+    const promise = new Promise<boolean>(resolve => {
+    resolveFunction = resolve;
+  });
+
+    const alert = await this.alertController.create({
+      subHeader:mensaje,
+      message: '<img src="./assets/alerts/war.png" class="card-alert-img"> ',
+      mode:'ios',
+      buttons: [{
+          text: 'Cancelar',
+          role: 'cancel',
+          // cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+            resolveFunction(false);
+          }
+        }, {
+          text: 'Aceptar',
+          // cssClass: 'secondary',
+          handler: () => {
+            if (aceptar!="") { 
+              this.navCtrl.navigateRoot(aceptar);
+            }
+            console.log('Confirm aceptar');
+            resolveFunction(true);
+          }
+        }]
+    });
+
+    await alert.present();
+    return promise;
+  }
 
 
 
 
 
+async presentPrompt() {
+  let alert = await this.alertController.create({
+    message: 'Login',
+     
+    buttons: [
+      {
+        text: 'no',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+          return false
+        }
+      },
+      {
+        text: 'ok',
+        handler: data => {
+            return true;
+        }
+      }
+    ]
+  });
+  await alert.present();
+}
+
+  
+  async opcionesMiperfilDelete( mensaje:string): Promise<string> {
+
+    let resolveFunction: (confirm: string) => void;
+    const promise = new Promise<string>(resolve => {resolveFunction = resolve; });
+
+    const actionSheet = await this.actionSheetController.create({
+      header:  mensaje,
+      buttons: [
+       {
+        text: 'Aceptar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          resolveFunction('delete');
+        }
+      }, {
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          resolveFunction('cancel');
+        }
+      }]
+    });
+    await actionSheet.present();
+    return promise;
+  }
 
 
 

@@ -44,10 +44,13 @@ export class MpFormAcademicaPage implements OnInit {
 
   async opcionesformAcademic(id: string) {
     this.confirm = await this.uiService.opcionesMiperfil(`/mi-perfil/mp-form-academica/form-academica/${id}/editar`); // manda la ruta mas el parametro id
-    if (this.confirm === 'delete') {
-      this.educationService.DeleteEducation(id).subscribe( resp => {
-        this.ionViewWillEnter();
-      });
+    if (this.confirm === 'delete') {     
+      let reconfirm = await this.uiService.opcionesMiperfilDelete("¿Desea eliminar esta formación académica de forma permanente?" )//manda la ruta mas el parametro id 
+      if (reconfirm=="delete") {       
+        this.educationService.DeleteEducation(id).subscribe( resp => {
+          this.ionViewWillEnter();
+        });  
+      }
     }
   }
   doRefresh(event) {

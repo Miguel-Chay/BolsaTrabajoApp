@@ -42,9 +42,11 @@ export class MpCursosPage implements OnInit {
   async opcionesCursos(id: string) {
     this.confirm = await this.uiService.opcionesMiperfil('/editar-curso/'+id)//manda la ruta mas el parametro id 
     if(this.confirm== "delete"){
-      console.log("se elimino el curso "+id )
-      this.courseService.deleteCourse(id).subscribe(Response => {this.ionViewWillEnter()})
-
+      // console.log("se elimino el curso "+id )
+      let reconfirm = await this.uiService.opcionesMiperfilDelete("¿Desea eliminar este curso de forma permanente?" )//manda la ruta mas el parametro id 
+      if (reconfirm=="delete") {       
+        this.courseService.deleteCourse(id).subscribe(Response => {this.ionViewWillEnter()})
+      } 
     }
    }
 
