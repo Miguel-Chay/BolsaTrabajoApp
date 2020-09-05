@@ -13,47 +13,47 @@ export class UiServiceService {
               public actionSheetController: ActionSheetController, public platform: Platform,
               public loadingController: LoadingController) { }
 
-  async alertaInformativa(message: string) {
-    const alert = await this.alertController.create({
-      message,
-      buttons: ['OK']
-    });
+  // async alertaInformativa(message: string) {
+  //   const alert = await this.alertController.create({
+  //     message,
+  //     buttons: ['OK']
+  //   });
 
-    await alert.present();
-  }
+  //   await alert.present();
+  // }
 
 
   // sirve para confirmar el abandonar una ventana
-  async alertaConfirmar(message: string, aceptar: string): Promise<boolean> {
-    let resolveFunction: (confirm: boolean) => void;
-    const promise = new Promise<boolean>(resolve => {
-    resolveFunction = resolve;
-  });
+  // async alertaConfirmar(message: string, aceptar: string): Promise<boolean> {
+  //   let resolveFunction: (confirm: boolean) => void;
+  //   const promise = new Promise<boolean>(resolve => {
+  //   resolveFunction = resolve;
+  // });
 
-    const alert = await this.alertController.create({
-      message,
-      buttons: [{
-          text: 'Cancelar',
-          role: 'cancel',
-          // cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-            resolveFunction(false);
-          }
-        }, {
-          text: 'Aceptar',
-          // cssClass: 'secondary',
-          handler: () => {
-            this.navCtrl.navigateRoot(aceptar);
-            console.log('Confirm aceptar');
-            resolveFunction(true);
-          }
-        }]
-    });
+  //   const alert = await this.alertController.create({
+  //     message,
+  //     buttons: [{
+  //         text: 'Cancelar',
+  //         role: 'cancel',
+  //         // cssClass: 'secondary',
+  //         handler: () => {
+  //           console.log('Confirm Cancel');
+  //           resolveFunction(false);
+  //         }
+  //       }, {
+  //         text: 'Aceptar',
+  //         // cssClass: 'secondary',
+  //         handler: () => {
+  //           this.navCtrl.navigateRoot(aceptar);
+  //           console.log('Confirm aceptar');
+  //           resolveFunction(true);
+  //         }
+  //       }]
+  //   });
 
-    await alert.present();
-    return promise;
-  }
+  //   await alert.present();
+  //   return promise;
+  // }
 
   // opciones de de editar o eliminar una ___________
   async opcionesMiperfil(page: string): Promise<string> {

@@ -164,24 +164,35 @@ export class EditarExpLaboralPage implements OnInit {
 
   async updateWorkExperience(){
     
+    if(this.updateData.get('wexperienceData').get('company').value.trim()=="" || this.updateData.get('wexperienceData').get('job_title').value.trim()==""){ 
+      if (this.updateData.get('wexperienceData').get('company').value.trim()=="") { 
+        this.updateData.get('wexperienceData').get('company').setValue("")
+        this.uiService.AlertaOK("El campo Empleador no puede estar vacio","war","")
+      } else {
+        this.updateData.get('wexperienceData').get('job_title').setValue("")
+        this.uiService.AlertaOK("El campo Puesto no puede estar vacio","war","")
+      }
+
+    } else {
 
     
-    const confirm = await this.uiService.alertaConfirmar('Desea guardar los cambios','/mi-perfil/mp-exp-laboral')
-    if(confirm){
-      this.workExperienceService.updateWorkExperience(
-        this.id, 
-        this.updateData.get('wexperienceData').get('company').value,
-        this.updateData.get('wexperienceData').get('line_business_id').value , 
-        this.updateData.get('wexperienceData').get('job_title').value ,
-        this.updateData.get('wexperienceData').get('month_start').value ,
-        this.updateData.get('wexperienceData').get('year_start').value ,
-        this.updateData.get('wexperienceData').get('month_end').value ,
-        this.updateData.get('wexperienceData').get('year_end').value , 
-        this.updateData.get('wexperienceData').get('description').value,
-        this.updateData.get('wexperienceData').get('is_current_job').value 
-        ).subscribe( workExperience=>{
-          // this.mpExpLaboralPage.ionViewWillEnter();
-        });
+      const confirm = await this.uiService.AlertLeaveOKCANCEL('Desea guardar los cambios',"war",'/mi-perfil/mp-exp-laboral')
+      if(confirm){
+        this.workExperienceService.updateWorkExperience(
+          this.id, 
+          this.updateData.get('wexperienceData').get('company').value,
+          this.updateData.get('wexperienceData').get('line_business_id').value , 
+          this.updateData.get('wexperienceData').get('job_title').value ,
+          this.updateData.get('wexperienceData').get('month_start').value ,
+          this.updateData.get('wexperienceData').get('year_start').value ,
+          this.updateData.get('wexperienceData').get('month_end').value ,
+          this.updateData.get('wexperienceData').get('year_end').value , 
+          this.updateData.get('wexperienceData').get('description').value,
+          this.updateData.get('wexperienceData').get('is_current_job').value 
+          ).subscribe( workExperience=>{
+            // this.mpExpLaboralPage.ionViewWillEnter();
+          });
+      }
     }
   }
 

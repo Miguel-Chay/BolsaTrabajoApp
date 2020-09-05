@@ -179,50 +179,52 @@ export class VacantePage implements OnInit {
 
 
   	send(){
+            
+      if ( this.addMessage.get('text').value.trim()=="") { 
+        this.uiServiceService.AlertaOK("El mensaje no puede estar vacio","info","")
+        this.addMessage.get('text').setValue("") 
+      } else {
+    		this.addMessage.get('date_sent').setValue(this.getNowDate())
+    		this.jobOpeningService.getIsOpen(this.id).subscribe(val=>{
+    			if (val==1)
+    			{
+    				console.log("1")
+    				this.messageService.addMessage(
+    					this.addMessage.get('from_user_id').value,
+    					this.addMessage.get('to_user_id').value,
+    					this.addMessage.get('text').value,
+    					this.addMessage.get('html_text').value,
+    					this.addMessage.get('date_sent').value).subscribe(message=>{
+    						this.message=message
+  						console.log(this.addMessage.get('from_user_id').value,
+    							this.id,
+    							this.message.id,
+    							this.addMessage.get('date_sent').value,
+    							'application')
 
-  		// this.jobOpeningStatusService.getJobOpeningStatus(this.job_opening.status_id).subscribe( status=>{
-  		// 	this.jobStatus = status
-  		// })
-  		this.addMessage.get('date_sent').setValue(this.getNowDate())
-  		this.jobOpeningService.getIsOpen(this.id).subscribe(val=>{
-  			if (val==1)
-  			{
-  				console.log("1")
-  				this.messageService.addMessage(
-  					this.addMessage.get('from_user_id').value,
-  					this.addMessage.get('to_user_id').value,
-  					this.addMessage.get('text').value,
-  					this.addMessage.get('html_text').value,
-  					this.addMessage.get('date_sent').value).subscribe(message=>{
-  						this.message=message
-						console.log(this.addMessage.get('from_user_id').value,
-  							this.id,
-  							this.message.id,
-  							this.addMessage.get('date_sent').value,
-  							'application')
+    						this.jobApplicationStatusLogService.addJobASL(
+    							this.addMessage.get('from_user_id').value,
+    							this.id,
+    							this.message.id,
+    							this.addMessage.get('date_sent').value,
+    							'application',
+    							this.addMessage.get('text').value
+    							).subscribe(jASL=>{
+    								console.log(jASL)
+    								// this.VacantesPage.ngOnInit();
+    								
+    								this.navCtrl.navigateRoot("/vacantes");
+    							})
+    						
+    					})
 
-  						this.jobApplicationStatusLogService.addJobASL(
-  							this.addMessage.get('from_user_id').value,
-  							this.id,
-  							this.message.id,
-  							this.addMessage.get('date_sent').value,
-  							'application',
-  							this.addMessage.get('text').value
-  							).subscribe(jASL=>{
-  								console.log(jASL)
-  								// this.VacantesPage.ngOnInit();
-  								
-  								this.navCtrl.navigateRoot("/vacantes");
-  							})
-  						
-  					})
-
-  			}
-  			else{
-  				// this.vacantesPage.ngOnInit();
-  				this.uiServiceService.alertaLeave("Lo sentimos, esta vacante ha sido cerrada","/vacantes")
-  			}
-  		})
+    			}
+    			else{
+    				// this.vacantesPage.ngOnInit();
+    				this.uiServiceService.alertaLeave("Lo sentimos, esta vacante ha sido cerrada","/vacantes")
+    			}
+    		})
+      }
 
 
   	}

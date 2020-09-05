@@ -98,7 +98,7 @@ export class EditarIdiomaPage implements OnInit {
           // console.log("pregunta si existe el idioma")
       		if (exist==1)
       			{
-      				this.uiService.alertaInformativa("Este idioma ya ha sido registrado en su cuenta")
+      				this.uiService.AlertaOK("Este idioma ya ha sido registrado en su cuenta","war","")
       			}
       		else
       			{

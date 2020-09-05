@@ -112,17 +112,22 @@ export class EditarCursoPage implements OnInit {
 
 
 	async addCourse(){
-    const confirm = await this.uiService.alertaConfirmar('¿Desea guardar los cambios de este curso?','/mi-perfil/mp-cursos')
-    if(confirm){
-      this.courseService.updateCourse(
-          this.addData.get('id').value,
-          this.addData.get('name').value,
-          this.addData.get('hours').value,
-          this.addData.get('institution').value,
-          this.addData.get('mode').value,
-          this.addData.get('start').value,
-          this.addData.get('end').value,
-        ).subscribe( course=>{});
+    if (this.addData.get('name').value.trim()=="") { 
+       this.addData.get('name').setValue("")
+       this.uiService.AlertaOK('el campo "Nombre del curso" no puede estar vacio',"war","")
+    } else {
+      const confirm = await this.uiService.AlertLeaveOKCANCEL('¿Desea guardar los cambios de este curso?',"info",'/mi-perfil/mp-cursos')
+      if(confirm){
+        this.courseService.updateCourse(
+            this.addData.get('id').value,
+            this.addData.get('name').value,
+            this.addData.get('hours').value,
+            this.addData.get('institution').value,
+            this.addData.get('mode').value,
+            this.addData.get('start').value,
+            this.addData.get('end').value,
+          ).subscribe( course=>{});
+      }
     }
 	}
 

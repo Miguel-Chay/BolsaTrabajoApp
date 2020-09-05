@@ -107,7 +107,7 @@ export class EditarAptitudPage implements OnInit {
   	this.botonOn=false
     if (text.trim()=="") { 
       //verifica que el campo no sea solo espacios
-      this.uiService.alertaInformativa("el campo no debe de estar vacio")
+      this.uiService.AlertaOK("El campo no debe de estar vacio","war","")
       this.textFinder=""
       this.botonOn=true
     } else {

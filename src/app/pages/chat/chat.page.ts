@@ -66,13 +66,15 @@ export class ChatPage implements OnInit {
   	}
 
   	sendMessage(){
-
-  		this.messageService.addMessage(this.cv_id,this.contact_id,this.newMessage,"",this.getNowDate()).subscribe(message=>{
-  			this.ngOnInit()
-  		})
-  		console.log(this.cv_id,this.contact_id,this.newMessage,this.getNowDate())
-  		this.newMessage=""
-  		
+      if (this.newMessage.trim()=="") { 
+        this.newMessage==""
+      } else {
+    		this.messageService.addMessage(this.cv_id,this.contact_id,this.newMessage.trim(),"",this.getNowDate()).subscribe(message=>{
+    			this.ngOnInit()
+    		})
+    		console.log(this.cv_id,this.contact_id,this.newMessage.trim(),this.getNowDate())
+    		this.newMessage=""
+      }
   	}
 
   	seeMessage(){

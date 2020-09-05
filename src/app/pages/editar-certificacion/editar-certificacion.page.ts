@@ -45,9 +45,14 @@ export class EditarCertificacionPage implements OnInit {
   }
 
   async update() {
-    const confirm = await this.uiService.alertaConfirmar('¿Guardar los cambios?', '/mi-perfil/mp-certificaciones');
-    if (confirm) {
-      this.certificationService.updateCertification(this.idParam, this.createCertication.value).subscribe(() => {});
+    if (this.createCertication.get('name').value.trim()=="") { 
+      this.createCertication.get('name').setValue("")
+      this.uiService.AlertaOK('El campo "Nombre de la certificación" no puede estar vacio',"war","")
+    } else {
+      const confirm = await this.uiService.AlertLeaveOKCANCEL('¿Guardar los cambios?', "info",'/mi-perfil/mp-certificaciones');
+      if (confirm) {
+        this.certificationService.updateCertification(this.idParam, this.createCertication.value).subscribe(() => {});
+      }
     }
   }
 

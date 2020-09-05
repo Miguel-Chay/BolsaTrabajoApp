@@ -33,13 +33,13 @@ export class LoginPage implements OnInit {
 
     const valido = await this.userService.login(this.loginUser.username, this.loginUser.password);
     if (valido.toString().match('no es candidato'))  {
-      this.uiService.alertaInformativa('No es un candidato');
+      this.uiService.AlertaOK('No es un candidato',"war","");
       return;
     }
     if (valido) {
       this.navCtrl.navigateRoot('/inicio-perfil-basico');
     } else {
-      this.uiService.alertaInformativa('usuario o contraseña incorrecta');
+      this.uiService.AlertaOK('usuario o contraseña incorrecta',"war","");
     }
   }
 

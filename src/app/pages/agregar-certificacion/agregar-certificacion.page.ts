@@ -48,12 +48,19 @@ export class AgregarCertificacionPage implements OnInit {
   }
 
   async add() {
-    const confirm = await this.uiService.alertaConfirmar('¿Añadir nueva certificación?', '/agregar-certificacion');
-    if (confirm) {
-      this.certificationService.createCertification(this.createCertication.value).subscribe(() => {});
-      this.navCtrl.navigateForward('/mi-perfil/mp-certificaciones');
-      // console.log(this.createCertication.value);
+    if (this.createCertication.get('name').value.trim()=="") { 
+      this.createCertication.get('name').setValue("")
+      this.uiService.AlertaOK('El campo "Nombre de la certificación" no puede estar vacio',"war","")
+    } else {
+      const confirm = await this.uiService.AlertLeaveOKCANCEL('¿Añadir nueva certificación?', "info",'/agregar-certificacion');
+      if (confirm) {
+        this.certificationService.createCertification(this.createCertication.value).subscribe(() => {});
+        this.navCtrl.navigateForward('/mi-perfil/mp-certificaciones');
+        // console.log(this.createCertication.value);
     }
+    }
+
+
   }
   initForm() {
     this.createCertication = new FormGroup(  {

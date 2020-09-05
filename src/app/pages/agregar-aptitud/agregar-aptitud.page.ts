@@ -89,7 +89,8 @@ export class AgregarAptitudPage implements OnInit {
 
     if (text.trim()=="") { 
       //verifica que el campo no sea solo espacios
-      this.uiService.alertaInformativa("el campo no debe de estar vacio")
+      this.uiService.AlertaOK("El campo no debe de estar vacio","war","")
+      // this.uiService.alertaInformativa("el campo no debe de estar vacio")
       this.textFinder=""
     } else {
       //si hay texto 

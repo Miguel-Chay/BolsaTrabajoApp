@@ -86,17 +86,23 @@ export class AgregarCursoPage implements OnInit {
 
 
 	async addCourse(){
-    const confirm = await this.uiService.alertaConfirmar('¿Desea agregrar el nuevo curso?','/mi-perfil/mp-cursos')
-    if(confirm){
-      this.courseService.addCourse(
-          this.addData.get('cv_id').value,
-          this.addData.get('name').value,
-          this.addData.get('hours').value,
-          this.addData.get('institution').value,
-          this.addData.get('mode').value,
-          this.addData.get('start').value,
-          this.addData.get('end').value,
-        ).subscribe( course=>{});
+
+    if (this.addData.get('name').value.trim()=="") { 
+       this.addData.get('name').setValue("")
+       this.uiService.AlertaOK('el campo "Nombre del curso" no puede estar vacio',"war","")
+    } else {
+      const confirm = await this.uiService.AlertLeaveOKCANCEL('¿Desea agregrar el nuevo curso?',"info",'/mi-perfil/mp-cursos')
+      if(confirm){
+        this.courseService.addCourse(
+            this.addData.get('cv_id').value,
+            this.addData.get('name').value,
+            this.addData.get('hours').value,
+            this.addData.get('institution').value,
+            this.addData.get('mode').value,
+            this.addData.get('start').value,
+            this.addData.get('end').value,
+          ).subscribe( course=>{});
+      }
     }
 	}
 
