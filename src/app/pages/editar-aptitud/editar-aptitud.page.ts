@@ -206,7 +206,7 @@ addedSkill(text){
 	                if (cvskill==1)  
 	                {
 	                  //si lo tiene lo regresa a la pagina de skills
-	        			this.uiService.AlertaOK("esta aptitud ya ha sido registrada en su cuenta","war","")
+	        			this.uiService.AlertaOK("Esta aptitud ya ha sido registrada en su cuenta","war","")
 	                }  
 	                else{
 	                  //no lo tiene -> se lo agrega
@@ -222,7 +222,7 @@ addedSkill(text){
 	              })
 	          }else {
 	            //no existe->sale de la pagina
-	            this.uiService.alertaLeave("Lo sentimos, no se puede agregar esta skill","/mi-perfil/mp-aptitudes")            
+	            this.uiService.AlertaOK("Lo sentimos, no se puede agregar esta skill","alert","/mi-perfil/mp-aptitudes")            
 	          }
 
 

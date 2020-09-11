@@ -12,48 +12,7 @@ export class UiServiceService {
   constructor(private alertController: AlertController, private navCtrl: NavController,
               public actionSheetController: ActionSheetController, public platform: Platform,
               public loadingController: LoadingController) { }
-
-  // async alertaInformativa(message: string) {
-  //   const alert = await this.alertController.create({
-  //     message,
-  //     buttons: ['OK']
-  //   });
-
-  //   await alert.present();
-  // }
-
-
-  // sirve para confirmar el abandonar una ventana
-  // async alertaConfirmar(message: string, aceptar: string): Promise<boolean> {
-  //   let resolveFunction: (confirm: boolean) => void;
-  //   const promise = new Promise<boolean>(resolve => {
-  //   resolveFunction = resolve;
-  // });
-
-  //   const alert = await this.alertController.create({
-  //     message,
-  //     buttons: [{
-  //         text: 'Cancelar',
-  //         role: 'cancel',
-  //         // cssClass: 'secondary',
-  //         handler: () => {
-  //           console.log('Confirm Cancel');
-  //           resolveFunction(false);
-  //         }
-  //       }, {
-  //         text: 'Aceptar',
-  //         // cssClass: 'secondary',
-  //         handler: () => {
-  //           this.navCtrl.navigateRoot(aceptar);
-  //           console.log('Confirm aceptar');
-  //           resolveFunction(true);
-  //         }
-  //       }]
-  //   });
-
-  //   await alert.present();
-  //   return promise;
-  // }
+ 
 
   // opciones de de editar o eliminar una ___________
   async opcionesMiperfil(page: string): Promise<string> {
@@ -91,63 +50,7 @@ export class UiServiceService {
     await actionSheet.present();
     return promise;
   }
-
-
-  // sirve para informar y al presionar aceptar envia a otra pagina
-  async alertaLeave(message: string, aceptar: string): Promise<boolean> {
-    let resolveFunction: (confirm: boolean) => void;
-    const promise = new Promise<boolean>(resolve => {
-    resolveFunction = resolve;
-  });
-
-    const alert = await this.alertController.create({
-      message,
-      mode:'ios',
-      // cssClass: 'alertCancel',
-
-      buttons: [{
-          text: 'Aceptar',
-          // cssClass: 'secondary',
-          handler: () => {
-            this.navCtrl.navigateForward(aceptar);
-            console.log('Confirm aceptar');
-            resolveFunction(true);
-          }
-        }]
-    });
-
-    await alert.present();
-    return promise;
-  }
-
-
- // sirve para MOSTRAR ERROR DE CONECCION y al presionar aceptar envia a otra pagina
-  async HttpErrorResponse(message: string, aceptar: string): Promise<boolean> {
-    let resolveFunction: (confirm: boolean) => void;
-    const promise = new Promise<boolean>(resolve => {
-    resolveFunction = resolve;
-  });
-
-    const alert = await this.alertController.create({
-      message,
-      mode:'ios',
-      cssClass: 'alertCancel',
-
-      buttons: [{
-          text: 'Aceptar',
-          // cssClass: 'secondary',
-          cssClass: 'alertButton',
-          handler: () => {
-            // this.navCtrl.navigateForward(aceptar);
-            console.log('Confirm aceptar');
-            resolveFunction(true);
-          }
-        }]
-    });
-
-    await alert.present();
-    return promise;
-  }
+ 
 
 //==================================================
 //alerta con un solo boton ok ||sheader=mensaje || type = alert,war,info||
@@ -225,7 +128,7 @@ async AlertaOK(sheader:string,type:string, page:string){
 
  
 
-  
+//opcion para confirmar eliminar en mi perfil basico  
   async opcionesMiperfilDelete( mensaje:string): Promise<string> {
 
     let resolveFunction: (confirm: string) => void;

@@ -1,7 +1,9 @@
 <ion-header slot="top">
   <ion-toolbar color="blue">
         <ion-buttons slot="start" color="light">
-            <ion-back-button color="light"></ion-back-button>
+          <ion-button (click)="back()" >
+            <ion-icon slot="icon-only" name="arrow-back" color="light"></ion-icon>
+          </ion-button>
         </ion-buttons>
         <ion-title color="light"> <strong> Vacante</strong></ion-title>
     </ion-toolbar>

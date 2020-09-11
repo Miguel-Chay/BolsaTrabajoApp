@@ -129,7 +129,7 @@ export class VacantesPage implements OnInit {
 
     goSeeVacant(id:string){
       // console.log(id)
-      this.navCtrl.navigateForward('/vacante/'+id);
+      this.navCtrl.navigateForward('/vacante/v/'+id);
 
     }
 

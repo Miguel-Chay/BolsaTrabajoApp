@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'editar-idioma/:id', loadChildren: './pages/editar-idioma/editar-idioma.module#EditarIdiomaPageModule' },
 
   { path: 'vacantes', loadChildren: './pages/vacantes/vacantes.module#VacantesPageModule' },
-  { path: 'vacante/:id', loadChildren: './pages/vacante/vacante.module#VacantePageModule' },
+  { path: 'vacante/:from/:id', loadChildren: './pages/vacante/vacante.module#VacantePageModule' },
   
   { path: 'mi-perfil', loadChildren: './pages/mi-perfil/mi-perfil.module#MiPerfilPageModule' },
   { path: 'loading', loadChildren: './pages/loading/loading.module#LoadingPageModule' },

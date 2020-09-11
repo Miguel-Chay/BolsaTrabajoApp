@@ -5,7 +5,7 @@ import { MessageService } from '../../services/message.service';
 import { OrganizationService } from '../../services/organization.service';
 import { environment } from 'src/environments/environment';
 
-import { IonContent } from '@ionic/angular';
+import { IonContent,NavController } from '@ionic/angular';
 
 import { Message, Organization } from '../../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
@@ -33,11 +33,15 @@ export class ChatPage implements OnInit {
 
   	constructor(private storage: Storage,
   				private route: ActivatedRoute,
+          private navCtrl: NavController,
   				private messageService : MessageService,
   				private organizationService : OrganizationService
   				) { }
 
-  	ngOnInit() {
+  	ngOnInit(){}
+
+    ionViewWillEnter(){
+
   		this.contact_id = this.route.snapshot.paramMap.get('id');
   		
   		this.storage.get('id').then((id) => {
@@ -67,7 +71,7 @@ export class ChatPage implements OnInit {
 
   	sendMessage(){
       if (this.newMessage.trim()=="") { 
-        this.newMessage==""
+        this.newMessage=""
       } else {
     		this.messageService.addMessage(this.cv_id,this.contact_id,this.newMessage.trim(),"",this.getNowDate()).subscribe(message=>{
     			this.ngOnInit()
@@ -97,6 +101,14 @@ export class ChatPage implements OnInit {
   		// console.log("se ejecuta baja")
   	}
 
+    goLinkVacant(id: string){
+              this.navCtrl.navigateRoot("/vacante/c/"+id);
+              console.log(id+" = vacante")
+    }
+    goLinkUser(id: string){
+              this.navCtrl.navigateRoot("/inicio-perfil-basico");
+              console.log(id +" = vacante")
+    }
 
   getNowDate(){
   	var date = new Date(); //Fecha actual

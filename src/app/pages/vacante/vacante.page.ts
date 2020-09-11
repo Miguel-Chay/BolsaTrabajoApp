@@ -32,6 +32,7 @@ import { environment } from 'src/environments/environment';
 export class VacantePage implements OnInit {
 
   	id :string; //id de la vacante a visualizar
+  	from :string; //desde que pagina proviene
   	job_opening: JobsOpening;
   	organization:Organization;
   	job_type:JobType;
@@ -84,13 +85,43 @@ export class VacantePage implements OnInit {
   	ionViewWillEnter() {
 
   		this.id = this.route.snapshot.paramMap.get('id');
-
+  		this.from = this.route.snapshot.paramMap.get('from');
   		this.jobOpeningService.getJobOpening(this.id).subscribe (job=>{
   			this.job_opening=job;
 
   			this.initForm()
   			this.getData()
   		})
+  	}
+
+  	back(){
+  		switch (this.from) {
+  			case "c":
+  				console.warn(this.from)
+  				if (this.organization!="" && this.organization!=null) { 
+	            	this.navCtrl.navigateRoot("/chat/"+this.organization.contact_id);
+  				} else {
+	            	this.navCtrl.navigateRoot("/chats");
+  				}
+  				break;
+  			case "v":
+  				console.warn(this.from)
+            	this.navCtrl.navigateRoot("/vacantes");
+  				break;
+  			case "o":
+  				console.warn(this.from)
+            	this.navCtrl.navigateRoot("/oportunidades");
+  				break;
+  			case "p":
+  				console.warn(this.from)
+            	this.navCtrl.navigateRoot("/postulaciones");
+  				break;
+  			
+  			default:
+            	this.navCtrl.navigateRoot("/vacantes");
+  				break;
+  		}
+
   	}
 
 
@@ -145,7 +176,7 @@ export class VacantePage implements OnInit {
   				if (jab[1]=='1'){
   					this.canApplication=false;
   				}  				
-				console.log(jab[1])  				
+				// console.log(jab[1])  				
 
 
   			})
@@ -221,7 +252,7 @@ export class VacantePage implements OnInit {
     			}
     			else{
     				// this.vacantesPage.ngOnInit();
-    				this.uiServiceService.alertaLeave("Lo sentimos, esta vacante ha sido cerrada","/vacantes")
+    				this.uiServiceService.AlertaOK("Lo sentimos, esta vacante ha sido cerrada","info","/vacantes")
     			}
     		})
       }
@@ -234,12 +265,12 @@ export class VacantePage implements OnInit {
 	console.log(this.addMessage.value)
   	}
 
-  	 
+  	
 
   	initForm() {
   	this.storage.get('candidate').then(candidate => {
   		this.candidate = JSON.parse(candidate);
-  		console.log(this.candidate)
+  		// console.log(this.candidate)
   		this.addMessage.get('html_text').setValue('Ver CV: <a href="'+this.URL+"/candidate/profile?id="+this.candidate.user_id+'">'+this.candidate.firstname+" "+this.candidate.lastname+"</a>")
   		this.addMessage.get('from_user_id').setValue(this.candidate.user_id) 
   	})

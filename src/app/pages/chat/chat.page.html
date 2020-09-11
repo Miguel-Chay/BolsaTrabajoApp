@@ -1,7 +1,9 @@
 <ion-header slot="top">
   <ion-toolbar color="blue">
-        <ion-buttons slot="start" color="light">
-            <ion-back-button color="light"></ion-back-button>
+        <ion-buttons slot="start">
+            <ion-button routerLink="/chats"  >
+                <ion-icon  slot="icon-only" name="arrow-back" color="light"></ion-icon>
+            </ion-button>
         </ion-buttons>
         <ion-buttons  slot="end">
         <ion-avatar slot="end" *ngIf="logo != null ">
@@ -23,7 +25,7 @@
      			<span>{{i.text}} </span>
      			<span *ngIf="i.html_text != null && i.html_text != ''" > <br> 
      			<br>
-     			Ver Vacante: <a [href]=i.html_ref>{{i.html_name}}</a>
+     			Ver Vacante: <a (click)=goLinkVacant(i.html_vacant_id)>{{i.html_name}}</a>
      			</span>
      			<div  class="ion-text-right" class ="time"><br>{{i.date_sent|date:'short'}}</div>
      		</ion-col>
@@ -31,7 +33,7 @@
      		<ion-col offset="3" *ngIf="i.type == 'send'" class="message my-message">
      			<span>{{i.text}} </span>
      				<span *ngIf="i.html_text != null && i.html_text != ''"> <br> 
-     				Ver CV: <a [href]=i.html_ref>{{i.html_name}}</a>
+     				Ver CV: <a  (click)=goLinkUser(i.html_vacant_id)>{{i.html_name}}</a>
      			</span>
      			<div >
      				<span  class="ion-text-left" *ngIf="i.date_read!= null "  > <br><ion-icon name="eye"></ion-icon> </span>
@@ -45,29 +47,11 @@
 
 
 
-	<!-- 	 <ion-item>
-            <ion-input placeholder="Type your message" type="text" (focus)="showOptionsToggle(false)"></ion-input>
-          </ion-item> -->
+ 
 </ion-content>
 
 
-<!-- 
-<ion-footer>
-	<ion-toolbar color="light">
-		<ion-row >
-			<ion-col size="10.5"> -->
-				<!-- <ion-textarea   maxRows="3" autoSize  [(ngModel)]="newMessage" class="message-input ion-no-padding" placeholder="Escribe un mensaje"> </ion-textarea> -->
-        <!-- <ion-textarea auto-grow class="message-input" rows="1" [(ngModel)]="newMessage" placeholder="Escribe un mensaje"></ion-textarea>
-
-			</ion-col>
-			<ion-col size="1.5">
-				<ion-button expand="block"  color = "blue" [disabled]="newMessage == ''" class="msg-btn" (click)="sendMessage()">
-					<ion-icon name="send" slot="icon-only" color ="light"></ion-icon>
-				</ion-button>
-			</ion-col>
-		</ion-row>
-	</ion-toolbar>
-</ion-footer> -->
+ 
 
 <ion-footer>
   <ion-toolbar color="light">

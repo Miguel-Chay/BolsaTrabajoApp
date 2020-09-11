@@ -41,7 +41,7 @@ export class PostulacionesPage implements OnInit {
 
   	goSeeVacant(id:string){
       console.log(id)
-      this.navCtrl.navigateForward('/vacante/'+id);
+      this.navCtrl.navigateForward('/vacante/p/'+id);
 
     }
   //regresa el tamaño del arreglo con el fin de mostrar o no la palabra (Aptitudes)

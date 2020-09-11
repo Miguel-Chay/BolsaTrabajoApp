@@ -51,6 +51,6 @@ export class OportunidadesPage implements OnInit {
 
   goSeeVacant(id: string) {
     // console.log(id)
-    this.navCtrl.navigateForward('/vacante/' + id, { animated: true });
+    this.navCtrl.navigateForward('/vacante/o/' + id, { animated: true });
   }
 }

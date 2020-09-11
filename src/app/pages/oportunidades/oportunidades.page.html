@@ -1,19 +1,18 @@
-<ion-header>
-
-  <ion-toolbar>
-  	<ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>oportunidades</ion-title>
-  </ion-toolbar>
+<ion-header slot="top">
+  <ion-toolbar color="blue">
+        <ion-buttons slot="start" color="light">
+            <ion-menu-button  color="light"></ion-menu-button>
+        </ion-buttons>
+        <ion-title color="light"> <strong> Oportunidades</strong></ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="goldlow" fullscreen>
   <ion-grid >
     <ion-row>
       <ion-col *ngIf=" ismatch"  >
-        <ion-card  class="fade-in" button *ngFor="let Match of Match" (click)=" goSeeVacant(Match.id)"  >
-          <ion-img style="width: 70%;" *ngIf="Match.logo != null" src={{logo}}{{Match.logo}}  ></ion-img>
+        <ion-card  class="fade-in" button *ngFor="let Match of Match" (click)=" goSeeVacant(Match.id)" color="vacant" >
+          <ion-img   *ngIf="Match.logo != null" src={{logo}}{{Match.logo}}  class="img" ></ion-img>
           <ion-card-header>
             <ion-card-subtitle> <strong> Puntuación: {{ Match.score }} </strong> </ion-card-subtitle>
             <ion-card-title>{{Match.job_title}}</ion-card-title>
