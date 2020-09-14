@@ -31,16 +31,22 @@ export class LoginPage implements OnInit {
   async login(form: NgForm) {
     if (form.invalid) {return; }
 
-    const valido = await this.userService.login(this.loginUser.username, this.loginUser.password);
-    if (valido.toString().match('no es candidato'))  {
-      this.uiService.AlertaOK('No es un candidato',"war","");
-      return;
-    }
-    if (valido) {
-      this.navCtrl.navigateRoot('/inicio-perfil-basico');
-    } else {
-      this.uiService.AlertaOK('usuario o contraseña incorrecta',"war","");
-    }
+    this.userService.login(this.loginUser.username, this.loginUser.password).then(res=>{ console.log(res)
+      if (res.toString().match('no es candidato'))  {
+        this.uiService.AlertaOK('No es un candidato',"war","");
+        return;
+      }
+      if (res) {
+        this.navCtrl.navigateRoot('/inicio-perfil-basico');
+      } else {
+        this.uiService.AlertaOK('usuario o contraseña incorrecta',"war","");
+      }
+    })
+
+
+
+    // const valido = await this.userService.login(this.loginUser.username, this.loginUser.password);
+
   }
 
 }

@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UiServiceService } from './services/ui-service.service';
 import { environment } from 'src/environments/environment';
+import {  NavController} from '@ionic/angular';
+
 
 @Component({
   selector: 'app-root',
@@ -51,6 +53,7 @@ export class AppComponent {
   ];
 
   constructor(
+    private navCtrl: NavController,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -101,17 +104,15 @@ export class AppComponent {
   }
 
   async clear() {
-    this.confirm = await this.uiService.AlertLeaveOKCANCEL('¿Desea cerrar su sesión?',"info",'/login');// manda la ruta mas el parametro id
+    this.confirm = await this.uiService.AlertLeaveOKCANCEL('¿Desea cerrar su sesión?',"info",'');// manda la ruta mas el parametro id
     // console.log(this.confirm)
     if (this.confirm) {
       this.storage.clear();
       this.candidate.firstname = '';
       this.candidate.lastname = '';
       this.candidate.photo = '';
-      this.photoRout = '';
-
-
-
+      this.photoRout = '';      
+      this.navCtrl.navigateRoot('/login');
     }
   }
 }

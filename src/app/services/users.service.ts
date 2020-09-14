@@ -35,18 +35,22 @@ export class UsersService {
             resolve('no es candidato');
             return ;
           }
+
           this.getUser(resp['id']).subscribe( user => {
             this.guardarUsuario(user);
-            resolve(true);
+            this.candidateService.getCandidate(resp['id']).subscribe(candidate => {
+                this.guardarCandidato(candidate);
+
+                this.guardarToken(resp['token']);
+                // resolve(true);
+                this.guardarId(resp['id']);
+                resolve(true);
+                // resolve(true);
+            });            
+            // resolve(true);
            });
-          this.candidateService.getCandidate(resp['id']).subscribe(candidate => {
-              this.guardarCandidato(candidate);
-              resolve(true);
-           });
-          this.guardarToken(resp['token']);
-          resolve(true);
-          this.guardarId(resp['id']);
-          resolve(true);
+
+
         } else {
           this.token = null;
           this.storage.clear();
@@ -56,6 +60,7 @@ export class UsersService {
     });
 
   }
+
   updateUser(id: string, data: any) {
     return new Promise((resolve, reject) => {
       this.http.put(`${this.URL}/api/users/${id}`, data).subscribe(res => {
@@ -65,6 +70,7 @@ export class UsersService {
       });
     });
   }
+
   async guardarToken(token: string) {
     this.token = token;
     await this.storage.set('token', token);
@@ -75,10 +81,13 @@ export class UsersService {
     await this.storage.set('id', id);
     console.log(id);
   }
+
   async guardarUsuario(user: User) {
     await this.storage.set('user', JSON.stringify(user));
   }
+
   async guardarCandidato(candidate: Candidate) {
     await this.storage.set('candidate', JSON.stringify(candidate));
   }
+  
 }
