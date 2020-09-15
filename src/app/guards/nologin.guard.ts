@@ -15,7 +15,7 @@ export class NologinGuard implements CanActivate {
     // return true;
 
     return this.storage.length().then(length => {
-	    		if (length == null || length==undefined || length==0) { 
+	    		if (length == null || length==undefined || length<3) { 
 	    			// console.log(length)
 	    			return true
 	    		}else {
