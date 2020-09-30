@@ -142,6 +142,7 @@ export class EditarPerfilBasicoPage implements OnInit {
       country_id: new FormControl(this.countryId),
       state_id: new FormControl(this.stateId),
     });
+    this.updateData.controls.curp.disable();
     this.updateData.controls.userData.get('password_confirm').setValidators([
       Validators.required, this.passwordid.bind(this.updateData)
     ]);
@@ -163,8 +164,8 @@ export class EditarPerfilBasicoPage implements OnInit {
       phone: new FormControl(),
       cellphone: new FormControl(),
       city_id: new FormControl(),
-      curp: new FormControl(),
-      student_id_number: new FormControl(),
+      curp: new FormControl({value: '', disabled: true}),
+      student_id_number: new FormControl({value: '', disabled: true}),
       organization_unit_id: new FormControl(),
       country_id: new FormControl(),
       state_id: new FormControl(),

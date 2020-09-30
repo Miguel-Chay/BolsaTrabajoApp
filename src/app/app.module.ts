@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { PipesModule } from './pipes/pipes.module';
-
+import { Network } from '@ionic-native/network/ngx';
 
 
 @NgModule({
@@ -32,7 +32,8 @@ import { PipesModule } from './pipes/pipes.module';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Network
   ],
   bootstrap: [AppComponent]
 })

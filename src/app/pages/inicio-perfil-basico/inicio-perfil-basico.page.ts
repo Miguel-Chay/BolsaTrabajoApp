@@ -1,8 +1,9 @@
+import { Network } from '@ionic-native/network/ngx';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { AlertController } from '@ionic/angular'; 
-import { ActionSheetController } from '@ionic/angular'; 
+import { AlertController } from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
 
 import { CandidateService } from '../../services/candidate.service';
 import { CityService } from '../../services/city.service';
@@ -15,10 +16,10 @@ import { UiServiceService } from '../../services/ui-service.service';
 
 import { environment } from 'src/environments/environment';
 
-import {AppComponent}from '../../app.component' ;
+import { AppComponent } from '../../app.component';
 
 
-import { Candidate,City,State,Country,User,OrganizationUnit,Cv } from '../../interfaces/interfaces';
+import { Candidate, City, State, Country, User, OrganizationUnit, Cv } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-inicio-perfil-basico',
@@ -29,108 +30,104 @@ export class InicioPerfilBasicoPage implements OnInit {
 
   val: string = null;
   URL = environment.urlPhotos;
-  photoRoutbase: string = this.URL+"/btuady/public_html/files/photo/";
+  photoRoutbase: string = this.URL + '/btuady/public_html/files/photo/';
   edad: string = null;
   ciudad: string = null;
-  estado: string= null;
+  estado: string = null;
   pais: string = null;
-  photoRout: string='';
+  photoRout = '';
 
-  organizationunit: OrganizationUnit={}
-  candidate : Candidate = {}
-	city: City = {}
-  state: State= {}
-  country: Country= {}  
-  user: User={}
-  cv: Cv={}
+  organizationunit: OrganizationUnit = {};
+  candidate: Candidate = {};
+  city: City = {};
+  state: State = {};
+  country: Country = {};
+  user: User = {};
+  cv: Cv = {};
+  isConnected = false;
+  constructor(public menuCtrl: MenuController, private storage: Storage, private candService: CandidateService,
+              private cityService: CityService, private stateService: StateService, private countryService: CountryService,
+              private userService: UsersService, private organizationunitService: OrganizationUnitService, private cvService: CvService,
+              public alertController: AlertController, public actionSheetController: ActionSheetController, private navCtrl: NavController,
+              public uiService: UiServiceService, private appComponent: AppComponent) { }
 
-  constructor( public menuCtrl: MenuController, private storage: Storage, private candService : CandidateService,
-  private cityService : CityService,private stateService : StateService,private countryService : CountryService, 
-  private userService : UsersService, private organizationunitService : OrganizationUnitService,private cvService : CvService,
-  public alertController: AlertController, public actionSheetController: ActionSheetController,private navCtrl: NavController,
-  public uiService: UiServiceService, private appComponent:AppComponent ) {}
-  
-  translateInfo()
-  {
+  translateInfo() {
 
-    if(this.candidate.sex=="male")
-    {
-     this.candidate.sex="Hombre" 
+    if (this.candidate.sex === 'male') {
+      this.candidate.sex = 'Hombre';
+    } else {
+      this.candidate.sex = 'Mujer';
     }
-    else{
-      this.candidate.sex="Mujer" 
-    } 
 
-    if(this.candidate.marital_status=="married")
-    {
-      this.candidate.marital_status="Casado" 
+    if (this.candidate.marital_status === 'married') {
+      this.candidate.marital_status = 'Casado';
+    } else {
+      this.candidate.marital_status = 'Soltero';
     }
-    else{
-      this.candidate.marital_status="Soltero" 
-    } 
- 
-    if(this.candidate.photo == null)
-    {
-      this.photoRout="./assets/image/"+this.candidate.sex+".png";
-    }
-    else
-    {
-      this.photoRout= this.photoRoutbase + this.candidate.photo;
-    }
-    
 
-    this.edad = this.calculateAge(this.candidate.birth_date).toString() ;
-    this.organizationunitService.getOrganizationUnit(this.candidate.organization_unit_id).subscribe(organizationunit=>{this.organizationunit=organizationunit
-    })
-    this.cvService.getCv(this.candidate.user_id).subscribe( cv=>{this.cv=cv
-      console.log(this.cv)
-    })
+    if (this.candidate.photo == null) {
+      this.photoRout = './assets/image/' + this.candidate.sex + '.png';
+    } else {
+      this.photoRout = this.photoRoutbase + this.candidate.photo;
+    }
 
-    this.cityService.getCity(this.candidate.city_id).subscribe( city=>{this.city=city
-      this.stateService.getState(this.city.state_id).subscribe( state=>{this.state=state
-        this.countryService.getCountry(this.state.country_id).subscribe( country=>{this.country=country  
-          //prueba
-              this.appComponent.loadInformation();
+
+    this.edad = this.calculateAge(this.candidate.birth_date).toString();
+    this.organizationunitService.getOrganizationUnit(this.candidate.organization_unit_id).subscribe(organizationunit => {
+      this.organizationunit = organizationunit;
+    });
+    this.cvService.getCv(this.candidate.user_id).subscribe(cv => {
+      this.cv = cv;
+      console.log(this.cv);
+    });
+
+    this.cityService.getCity(this.candidate.city_id).subscribe(city => {
+      this.city = city;
+      this.stateService.getState(this.city.state_id).subscribe(state => {
+        this.state = state;
+        this.countryService.getCountry(this.state.country_id).subscribe(country => {
+          this.country = country;
+          // prueba
+          this.appComponent.loadInformation();
           //
-        })
-      })
-    })
+        });
+      });
+    });
   }
 
 
-  ionViewWillEnter() //carga antes de entrar
-  {
-  
-    
+  ionViewWillEnter() {
+
+
   }
-  
 
 
-  ngOnInit()//carga al entrar 
-  {
-    this.menuCtrl.enable(true);
-    this.storage.get('id').then((val) => { 
-      this.userService.getUser(val).subscribe(user=>{this.user=user
-        this.candService.getCandidate(val).subscribe(candidato=>{this.candidate=candidato
+
+  ngOnInit() {
+    this.storage.get('id').then((val) => {
+      this.userService.getUser(val).subscribe(user => {
+        this.user = user;
+        this.candService.getCandidate(val).subscribe(candidato => {
+          this.candidate = candidato;
           this.translateInfo();
-          
-        })
 
-      })
+        });
 
-    })  
-    //this.uiService.loading("Cargando",2000)
-    
+      });
+
+    });
+    // this.uiService.loading("Cargando",2000)
+
 
   }
 
-  
+
 
   calculateAge(birthday) {
-    var birthday_arr = birthday.split("-");
-    var birthday_date = new Date(birthday_arr[0], birthday_arr[1] - 1, birthday_arr[2]);
-    var ageDifMs = Date.now() - birthday_date.getTime();
-    var ageDate = new Date(ageDifMs);
+    let birthday_arr = birthday.split('-');
+    let birthday_date = new Date(birthday_arr[0], birthday_arr[1] - 1, birthday_arr[2]);
+    let ageDifMs = Date.now() - birthday_date.getTime();
+    let ageDate = new Date(ageDifMs);
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
@@ -154,7 +151,7 @@ export class InicioPerfilBasicoPage implements OnInit {
         handler: () => {
           this.navCtrl.navigateRoot('/editar-cv');
         }
-      },{
+      }, {
         text: 'Cancelar',
         icon: 'close',
         role: 'cancel',
@@ -163,8 +160,7 @@ export class InicioPerfilBasicoPage implements OnInit {
       }]
     });
     await actionSheet.present();
-  } 
+  }
 
 
 }
- 

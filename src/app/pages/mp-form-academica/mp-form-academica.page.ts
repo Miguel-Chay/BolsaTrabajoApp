@@ -16,12 +16,14 @@ export class MpFormAcademicaPage implements OnInit {
   academicTraining: AcademicTraining[];
   confirm: string;
   hidetabs: boolean;
+  prueba: string;
   constructor(private educationService: EducationService, private storage: Storage, private actionSheetCtrl: ActionSheetController,
               private navCtrl: NavController, private uiService: UiServiceService ) {
                 }
   // @ViewChild(MiPerfilPage, {static: false} ) pageForm: MiPerfilPage;
 
   ngOnInit() {
+    this.prueba = 'md refresher-md hydrated refresher-active refresher-refreshing';
     this.storage.get('id').then((id) => {
 
       this.educationService.getEducation(id).subscribe(academicTraining => {
@@ -53,7 +55,8 @@ export class MpFormAcademicaPage implements OnInit {
       }
     }
   }
-  doRefresh(event) {
+  doRefresh(event, refresh) {
+    console.log(refresh);
     setTimeout(() => {
       this.storage.get('id').then((id) => {
 
