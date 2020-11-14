@@ -1,7 +1,7 @@
 <ion-app>
-  <ion-split-pane >
+ 
 
-    <ion-menu > <!-- <ion-menu type="overlay"> -->
+    <ion-menu menuId="first" contentId="principal" > <!-- <ion-menu type="overlay"> -->
       <ion-menu-toggle auto-hide="false" >
       <div class="logo-section" color="gold" routerLink='/inicio-perfil-basico'>
           <div class="logo-section__wrapper">
@@ -36,6 +36,7 @@
     </ion-menu>
     
     
-    <ion-router-outlet main></ion-router-outlet>
-  </ion-split-pane>
+    
+ 
+  <ion-router-outlet id="principal"></ion-router-outlet>
 </ion-app>

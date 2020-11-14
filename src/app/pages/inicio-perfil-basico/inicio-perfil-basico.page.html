@@ -1,22 +1,37 @@
 <ion-header>
-	<ion-toolbar color="blue">
-    <!-- <ion-button>
-      <ion-icon slot="icon-only" name="menu"></ion-icon>
-    </ion-button> -->
+	<ion-toolbar  color="blue">
+			
+			<ion-buttons slot="start">
+				<ion-buttons slot="start">
+					<ion-menu-button menu="first" slot="start" color="light"></ion-menu-button>
+				</ion-buttons>
+			</ion-buttons>
+			<ion-title color="light"  >Resumen</ion-title>
 
-	  	<ion-buttons >
-	      <ion-menu-button slot="start" color="light" ></ion-menu-button>
-	      <ion-title color="light" >Resumen </ion-title>
-	      	 
-	          <ion-button routerLink='/editar-perfil-basico' color="light">
-	            <ion-icon name="create"></ion-icon> Editar
-	          </ion-button>
-	    </ion-buttons>
+			<ion-buttons slot="end">
+				<ion-button style="width: 120%;"  routerLink='/editar-perfil-basico' color="light">
+					<ion-icon mode="md" name="create"></ion-icon> 
+				</ion-button>
+			</ion-buttons>
 	</ion-toolbar>
 </ion-header>
 
+<!-- <ion-header>
+	<ion-toolbar color="blue">
+  
+	  	<ion-buttons >
+	      <ion-menu-button mode="md" slot="start" color="light" ></ion-menu-button>
+	      <ion-title color="light" >Resumen </ion-title>
+	      	 
+	          <ion-button   routerLink='/editar-perfil-basico' color="light">
+	            <ion-icon  name="create"></ion-icon> Editar
+	          </ion-button>
+	    </ion-buttons>
+	</ion-toolbar>
+</ion-header> -->
 
-<ion-content  padding  >
+
+<ion-content  class="ion-padding"  >
 
 
 
@@ -183,7 +198,7 @@
  
  		<ion-card color="light" (click)=opcionesCv()>
 	        <ion-card-header>
-	          <ion-card-title>Currículum Vítae <ion-icon  name="create"></ion-icon></ion-card-title>
+	          <ion-card-title>Currículum Vítae <ion-icon mode="md" name="create"></ion-icon></ion-card-title>
 
 	          <ion-card-subtitle>({{cv.status}})</ion-card-subtitle>
 	        </ion-card-header>

@@ -78,7 +78,7 @@ export class InicioPerfilBasicoPage implements OnInit {
     });
     this.cvService.getCv(this.candidate.user_id).subscribe(cv => {
       this.cv = cv;
-      console.log(this.cv);
+
     });
 
     this.cityService.getCity(this.candidate.city_id).subscribe(city => {
@@ -116,31 +116,20 @@ export class InicioPerfilBasicoPage implements OnInit {
       });
 
     });
-    // this.uiService.loading("Cargando",2000)
-
 
   }
 
 
 
   calculateAge(birthday) {
-    let birthday_arr = birthday.split('-');
-    let birthday_date = new Date(birthday_arr[0], birthday_arr[1] - 1, birthday_arr[2]);
-    let ageDifMs = Date.now() - birthday_date.getTime();
-    let ageDate = new Date(ageDifMs);
+    // tslint:disable-next-line: variable-name
+    const birthday_arr = birthday.split('-');
+    // tslint:disable-next-line: variable-name
+    const birthday_date = new Date(birthday_arr[0], birthday_arr[1] - 1, birthday_arr[2]);
+    const ageDifMs = Date.now() - birthday_date.getTime();
+    const ageDate = new Date(ageDifMs);
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
-
-  // imprime(){
-  //   console.log(this.user)
-  //   console.log(this.candidate)
-  //   console.log(this.country)
-  //   console.log(this.state)
-  //   console.log(this.city)
-  // }
-
-
-
 
   async opcionesCv() {
     const actionSheet = await this.actionSheetController.create({

@@ -11,28 +11,28 @@ import { flush } from '@angular/core/testing';
 // import { AgregarFormAcademicaPageModule } from '../agregar-form-academica/agregar-form-academica.module';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: MpFormAcademicaPage,
-  // }
   {
     path: '',
-    redirectTo: '',
     component: MpFormAcademicaPage,
-    pathMatch: 'full'
-  },
-  {
-    path: 'agregar-form-academica',
-    loadChildren: '../agregar-form-academica/agregar-form-academica.module#AgregarFormAcademicaPageModule' 
-  },
-  {
-    path: 'form-academica/agregar',
-    loadChildren: '../form-academica/form-academica.module#FormAcademicaPageModule'
-  },
-  {
-    path: 'form-academica/:id/editar',
-    loadChildren: '../form-academica/form-academica.module#FormAcademicaPageModule'
   }
+  // {
+  //   path: '',
+  //   redirectTo: '',
+  //   component: MpFormAcademicaPage,
+  //   pathMatch: 'full'
+  // },
+  // {
+  //   path: 'agregar-form-academica',
+  //   loadChildren: '../agregar-form-academica/agregar-form-academica.module#AgregarFormAcademicaPageModule' 
+  // },
+  // {
+  //   path: 'form-academica/agregar',
+  //   loadChildren: '../form-academica/form-academica.module#FormAcademicaPageModule'
+  // },
+  // {
+  //   path: 'form-academica/:id/editar',
+  //   loadChildren: '../form-academica/form-academica.module#FormAcademicaPageModule'
+  // }
 
 ];
 
