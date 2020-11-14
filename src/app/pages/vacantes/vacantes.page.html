@@ -58,7 +58,7 @@
 
 <div  *ngIf = "jobsOpening!=null && showVacants != false ">
 	<ion-card *ngFor="let i of jobsOpening|filtrosVacant : textFinder : findData.get('year_Experience').value : findData.get('job_Type').value :        findData.get('city').value : findData.get('study_Programe').value : findData.get('subject_Area').value : findData.get('sueldo').value|slice:0:end" color="vacant" (click)=goSeeVacant(i.id)>
-        <img *ngIf="i.logo != null" src={{logo}}{{i.logo}} />
+        <img *ngIf="i.logo != null" src={{logo}}{{i.logo}} class="img"   />
         <ion-card-header>
           	<ion-card-title>{{i.job_title}}</ion-card-title>
           	<ion-card-subtitle>en {{i.commercial_name}}</ion-card-subtitle>

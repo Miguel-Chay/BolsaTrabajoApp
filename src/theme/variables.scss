@@ -149,26 +149,60 @@
 
 
 /** color de los cards de vacantes **/
-
+//E9E9E9 gris claro
+//3378b1 azul
 :root {
-    --ion-color-vacant: #3378b1;
-    --ion-color-vacant-rgb: 51, 120, 177;
-    --ion-color-vacant-contrast: #ffffff;
-    --ion-color-vacant-contrast-rgb: 255, 255, 255;
-    --ion-color-vacant-shade: #2d6a9c;
-    --ion-color-vacant-tint: #4786b9;
+  --ion-color-vacant: #E9E9E9;
+  --ion-color-vacant-rgb: 233,233,233;
+  --ion-color-vacant-contrast: #000000;
+  --ion-color-vacant-contrast-rgb: 0,0,0;
+  --ion-color-vacant-shade: #cdcdcd;
+  --ion-color-vacant-tint: #ebebeb;
 }
 
 .ion-color-vacant {
-    --ion-color-base: var(--ion-color-vacant);
-    --ion-color-base-rgb: var(--ion-color-vacant-rgb);
-    --ion-color-contrast: var(--ion-color-vacant-contrast);
-    --ion-color-contrast-rgb: var(--ion-color-vacant-contrast-rgb);
-    --ion-color-shade: var(--ion-color-vacant-shade);
-    --ion-color-tint: var(--ion-color-vacant-tint);
+  --ion-color-base: var(--ion-color-vacant);
+  --ion-color-base-rgb: var(--ion-color-vacant-rgb);
+  --ion-color-contrast: var(--ion-color-vacant-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-vacant-contrast-rgb);
+  --ion-color-shade: var(--ion-color-vacant-shade);
+  --ion-color-tint: var(--ion-color-vacant-tint);
+}
+//colores del menu de las tabs
+:root {
+  --ion-color-menuinf: #d39b04;
+  --ion-color-menuinf-rgb: 211,155,4;
+  --ion-color-menuinf-contrast: #000000;
+  --ion-color-menuinf-contrast-rgb: 0,0,0;
+  --ion-color-menuinf-shade: #ba8804;
+  --ion-color-menuinf-tint: #d7a51d;
 }
 
-
+.ion-color-menuinf {
+  --ion-color-base: var(--ion-color-menuinf);
+  --ion-color-base-rgb: var(--ion-color-menuinf-rgb);
+  --ion-color-contrast: var(--ion-color-menuinf-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-menuinf-contrast-rgb);
+  --ion-color-shade: var(--ion-color-menuinf-shade);
+  --ion-color-tint: var(--ion-color-menuinf-tint);
+}
+//color del menu de tabs seleccionado
+:root {
+  --ion-color-menuinfselect: #f6c84c;
+  --ion-color-menuinfselect-rgb: 246,200,76;
+  --ion-color-menuinfselect-contrast: #000000;
+  --ion-color-menuinfselect-contrast-rgb: 0,0,0;
+  --ion-color-menuinfselect-shade: #d8b043;
+  --ion-color-menuinfselect-tint: #f7ce5e;
+}
+.ion-color-menuinfselect {
+  --ion-color-base: var(--ion-color-menuinfselect);
+  --ion-color-base-rgb: var(--ion-color-menuinfselect-rgb);
+  --ion-color-contrast: var(--ion-color-menuinfselect-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-menuinfselect-contrast-rgb);
+  --ion-color-shade: var(--ion-color-menuinfselect-shade);
+  --ion-color-tint: var(--ion-color-menuinfselect-tint);
+}
 /** colores de los mensajes del chat **/
 
 :root {

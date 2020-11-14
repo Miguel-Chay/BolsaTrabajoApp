@@ -4,10 +4,11 @@
 
 export const environment = {
   production: false,
+  // url: 'http://58be38d35022.ngrok.io',
+  // http://496d1989ebdf.ngrok.io/api
   url: 'http://localhost:8080',
-  // url: 'http://localhost:8080'
-  urlPhotos:'http://localhost'  //miguel
-  // urlPhotos:'https://localhost' //efrain
+  // urlPhotos:'http://2aba4f8aba35.ngrok.io'  //miguel
+  urlPhotos:'http://localhost' //efrain
 
 };
 

@@ -44,8 +44,16 @@ export class EditarCvPage implements OnInit {
       this.uiService.AlertaOK("Resumen no puede estar vacío. Por favor use caracteres [A-z][0-9]","war","")
     } else {
       const confirm = await this.uiService.AlertLeaveOKCANCEL('Desea guardar los cambios',"info",'/inicio-perfil-basico')
-      if(confirm)
-        this.cvService.updateCv(this.cv.candidate_id,this.cv.status, this.cv.summary).subscribe( cv=>{});
+      console.log(confirm)
+      if(confirm){
+        this.cvService.updateCv(this.cv.candidate_id,this.cv.status, this.cv.summary).subscribe( 
+          cv=>{},
+          (error) =>{
+            console.log("error de actualizacion cv")
+            this.uiService.AlertaOK("No se pudo actualizar el currículum","alert","/inicio-perfil-basico")    
+          })
+      }
+      ;
     }
 
   }
