@@ -62,7 +62,7 @@
  	</ion-item>
     
 	<div *ngIf="applications != null && open0 == true">
- 		<ion-card *ngFor="let i of applications | filtro : 'hiring' : 'type'" color="vacant" (click)=goSeeVacant(i.id_vacant) >
+ 		<ion-card *ngFor="let i of applications | filtro : 'hiring' : 'type'" class='ion-card-vacante' (click)=goSeeVacant(i.id_vacant) >
         	<img *ngIf="i.logo != null" src={{logo}}{{i.logo}} class="img" />
         	<ion-card-header>
           		<ion-card-title>{{i.job_title}}</ion-card-title>
@@ -70,7 +70,7 @@
         	</ion-card-header>
         	<ion-card-content >
         		<p *ngIf="fun(i.skills) != 0">
-          			Aptitudes: 
+          			<b>Aptitudes: </b>
           			<ion-text *ngFor="let j of i.skills">
           				<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
 	          			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>
@@ -96,7 +96,7 @@
  	</ion-item>
     
 	<div *ngIf="applications != null && open1 == true">
- 		<ion-card *ngFor="let i of applications | filtro : 'application' : 'type'" color="vacant" (click)=goSeeVacant(i.id_vacant) >
+ 		<ion-card *ngFor="let i of applications | filtro : 'application' : 'type'" class='ion-card-vacante' (click)=goSeeVacant(i.id_vacant) >
         	<img *ngIf="i.logo != null" src={{logo}}{{i.logo}} class="img" />
         	<ion-card-header>
           		<ion-card-title>{{i.job_title}}</ion-card-title>
@@ -104,7 +104,9 @@
         	</ion-card-header>
         	<ion-card-content >
         		<p *ngIf="fun(i.skills) != 0">
+              <b>
           			Aptitudes: 
+              </b>
           			<ion-text *ngFor="let j of i.skills">
           				<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
 	          			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>
@@ -120,7 +122,7 @@
         <ion-label>Mis Invitaciones</ion-label>
  	</ion-item>
     <div *ngIf="applications != null && open2 == true">
- 		<ion-card *ngFor="let i of applications| filtro : 'invitation' : 'type' " color="vacant" (click)=goSeeVacant(i.id_vacant) >
+ 		<ion-card *ngFor="let i of applications| filtro : 'invitation' : 'type' " (click)=goSeeVacant(i.id_vacant) class='ion-card-vacante'>
  			<!-- <span >{{F}}</span> -->
  			<!-- <span *ngIf="i == null"> aqui no hay nada</span> -->
         	<img *ngIf="i.logo != null" src={{logo}}{{i.logo}} class="img" />
@@ -130,7 +132,7 @@
         	</ion-card-header>
         	<ion-card-content >
         		<p *ngIf="fun(i.skills) != 0">
-          			Aptitudes: 
+          			<b>Aptitudes: </b>
           			<ion-text *ngFor="let j of i.skills">
           				<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
 	          			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>

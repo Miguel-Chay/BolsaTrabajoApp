@@ -1,4 +1,21 @@
 ion-tab-bar{
 	overflow-x:scroll;
 	justify-content: left;
+	background:#f6c84c; //fondo de las tabs
+	box-shadow: 0 0 10px 0 #535353;
+}
+.tabs{
+	background: gold;//fondo de cada tab
+}
+.icon{
+  background: transparent;
+}
+//cuando se selecciona el color
+ion-tab-button[aria-selected=true] { //color del fondo seleccionado
+    background-color: #f6c84c;
+ }
+ion-tab-button {
+	--background:#d39b04; // fondo de la pestaña
+	--color-selected: #003A7F;//color cuando se selecciona ICONO
+	--color:#0b284a; //color de los demas ICONO
 }

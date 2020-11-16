@@ -57,15 +57,16 @@
 
 
 <div  *ngIf = "jobsOpening!=null && showVacants != false ">
-	<ion-card *ngFor="let i of jobsOpening|filtrosVacant : textFinder : findData.get('year_Experience').value : findData.get('job_Type').value :        findData.get('city').value : findData.get('study_Programe').value : findData.get('subject_Area').value : findData.get('sueldo').value|slice:0:end" color="vacant" (click)=goSeeVacant(i.id)>
-        <img *ngIf="i.logo != null" src={{logo}}{{i.logo}} class="img"   />
+	<ion-card *ngFor="let i of jobsOpening|filtrosVacant : textFinder : findData.get('year_Experience').value : findData.get('job_Type').value :        findData.get('city').value : findData.get('study_Programe').value : findData.get('subject_Area').value : findData.get('sueldo').value|slice:0:end"  (click)=goSeeVacant(i.id) class='ion-card-vacante'>
+        <img *ngIf="i.logo != null" src={{logo}}{{i.logo}}   />
+            
         <ion-card-header>
           	<ion-card-title>{{i.job_title}}</ion-card-title>
           	<ion-card-subtitle>en {{i.commercial_name}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content >
         	<p *ngIf="fun(i.skills) != 0">
-          		Aptitudes: 
+          		<b>Aptitudes: </b>
           		<ion-text *ngFor="let j of i.skills">
           			<ion-text *ngIf="islast(i.skills,j)==false">{{j.skill}}, </ion-text>
           			<ion-text  *ngIf="islast(i.skills,j)==true">{{j.skill}}. </ion-text>

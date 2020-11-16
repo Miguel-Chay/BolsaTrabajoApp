@@ -74,6 +74,7 @@ export class ChatPage implements OnInit {
         this.newMessage=""
       } else {
     		this.messageService.addMessage(this.cv_id,this.contact_id,this.newMessage.trim(),"",this.getNowDate()).subscribe(message=>{
+          this.ionViewWillEnter()
     			this.ngOnInit()
     		})
     		console.log(this.cv_id,this.contact_id,this.newMessage.trim(),this.getNowDate())

@@ -22,23 +22,8 @@ export class MiPerfilPage implements OnInit {
   // @ViewChild('mp-form-academica', {static: false} ) pageForm: MpFormAcademicaPage;
   ngOnInit() {
   }
-  // ionViewDidLeave(){
-  //   console.log('ionViewDidLeave desde la barra');
-  // }
-  // ionViewWillEnter() { 
-  //   console.log("ionViewWillEnter desde la barra")
-  //   this.mpExpLaboralPage.ionViewWillEnter()
-  // }
-  hidenTabs(myTabs) {
-    // sconsole.log(this.pageForm.hidetabs);
-    // myTabs.tabBar.el.hidden = true;
-  }
-  // gets( ) {
-      // this.router.navigateByUrl("mi-perfil/mp-exp-laboral" );
 
-    // if ("/tabs/" + tab.getSelected() != this.router.url) {
-    //   this.router.navigateByUrl("tabs/" + tab.getSelected());
-    // }
-  // }
+  hidenTabs(myTabs) {
+  }
 
 }

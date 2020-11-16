@@ -11,7 +11,7 @@
   <ion-grid >
     <ion-row>
       <ion-col *ngIf=" ismatch"  >
-        <ion-card  class="fade-in" button *ngFor="let Match of Match" (click)=" goSeeVacant(Match.id)" color="vacant" >
+        <ion-card  class="fade-in ion-card-vacante" button *ngFor="let Match of Match" (click)=" goSeeVacant(Match.id)" >
           <ion-img   *ngIf="Match.logo != null" src={{logo}}{{Match.logo}}  class="img" ></ion-img>
           <ion-card-header>
             <ion-card-subtitle> <strong> Puntuación: {{ Match.score }} </strong> </ion-card-subtitle>
