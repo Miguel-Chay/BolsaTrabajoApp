@@ -1,4 +1,6 @@
 ion-tab-bar{
+	height:60px;
+	// width: 10000px;
 	overflow-x:scroll;
 	justify-content: left;
 	background:#f6c84c; //fondo de las tabs
@@ -11,10 +13,16 @@ ion-tab-bar{
   background: transparent;
 }
 //cuando se selecciona el color
+// $tabs-height:490px ;
+// $tabs-weight:300px ;
 ion-tab-button[aria-selected=true] { //color del fondo seleccionado
     background-color: #f6c84c;
+    // weight:1110px;
  }
 ion-tab-button {
+	height:59px;
+	min-width: 110px;
+
 	--background:#d39b04; // fondo de la pestaña
 	--color-selected: #003A7F;//color cuando se selecciona ICONO
 	--color:#0b284a; //color de los demas ICONO

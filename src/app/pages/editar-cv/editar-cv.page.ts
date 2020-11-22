@@ -38,22 +38,27 @@ export class EditarCvPage implements OnInit {
     await this.uiService.AlertLeaveOKCANCEL('Desea descartar los cambios',"war",'/inicio-perfil-basico')
   }
 
-  async savechanges(form: NgForm) {
+  async savechanges() {
 
     if (this.cv.summary.trim()=="") { 
       this.uiService.AlertaOK("Resumen no puede estar vacío. Por favor use caracteres [A-z][0-9]","war","")
     } else {
-      const confirm = await this.uiService.AlertLeaveOKCANCEL('Desea guardar los cambios',"info",'/inicio-perfil-basico')
+      const confirm = await this.uiService.AlertLeaveOKCANCEL('Desea guardar los cambios',"info",'')
       console.log(confirm)
       if(confirm){
-        this.cvService.updateCv(this.cv.candidate_id,this.cv.status, this.cv.summary).subscribe( 
-          cv=>{},
+        this.cvService.updateCv(this.cv.candidate_id,this.cv.status, this.cv.summary.trim()).subscribe( 
+          cv=>{
+                console.log("se guardo correctamente el CV")
+                this.navCtrl.navigateRoot('/inicio-perfil-basico')
+              }
+              ,
           (error) =>{
-            console.log("error de actualizacion cv")
-            this.uiService.AlertaOK("No se pudo actualizar el currículum","alert","/inicio-perfil-basico")    
-          })
+                console.log("error de actualizacion cv")
+                this.uiService.AlertaOK("No se pudo actualizar el currículum","alert","/inicio-perfil-basico")    
+              }
+              )
       }
-      ;
+
     }
 
   }

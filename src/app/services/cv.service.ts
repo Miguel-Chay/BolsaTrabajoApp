@@ -22,7 +22,7 @@ export class CvService {
 
 
   updateCv(id : string,status: string, summary: string) {
-    const data = {id, status, summary };
+    const data = { status, summary };
 
     return this.http.put<Cv>(`${this.URL}/api/cvs/${id}`, data)
   };

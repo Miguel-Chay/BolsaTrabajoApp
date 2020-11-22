@@ -1,4 +1,10 @@
 <ion-header>
+	<!-- <ion-buttons slot="start">
+				<ion-button slot="start">
+					<ion-menu-button menu="first" slot="start" color="light"></ion-menu-button>
+					 <ion-icon name="menu"></ion-icon>
+				</ion-button>
+			</ion-buttons> -->
 	<ion-toolbar  color="blue">
 			
 			<ion-buttons slot="start">
@@ -16,25 +22,11 @@
 	</ion-toolbar>
 </ion-header>
 
-<!-- <ion-header>
-	<ion-toolbar color="blue">
-  
-	  	<ion-buttons >
-	      <ion-menu-button mode="md" slot="start" color="light" ></ion-menu-button>
-	      <ion-title color="light" >Resumen </ion-title>
-	      	 
-	          <ion-button   routerLink='/editar-perfil-basico' color="light">
-	            <ion-icon  name="create"></ion-icon> Editar
-	          </ion-button>
-	    </ion-buttons>
-	</ion-toolbar>
-</ion-header> -->
 
 
 <ion-content  class="ion-padding"  >
 
-
-
+	<!-- ======================ESKELETON=========================== -->
 	<ion-list  *ngIf="country.name == null">
  
 	
@@ -112,6 +104,7 @@
       </ion-card>
       </ion-list>
 
+<!-- ======================FIN ESKELETON=========================== -->
 
 
 
@@ -127,8 +120,7 @@
 
 
 
-
-
+<!-- ====================== CODIGO =========================== -->
 
 
 	<ion-list  *ngIf="country.name != null">

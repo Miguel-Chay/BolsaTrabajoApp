@@ -76,10 +76,12 @@ export class InicioPerfilBasicoPage implements OnInit {
     this.organizationunitService.getOrganizationUnit(this.candidate.organization_unit_id).subscribe(organizationunit => {
       this.organizationunit = organizationunit;
     });
-    this.cvService.getCv(this.candidate.user_id).subscribe(cv => {
-      this.cv = cv;
+    // //carga del curriculum
+    // this.cvService.getCv(this.candidate.user_id).subscribe(cv => {
+    //   this.cv = cv;
+    //   console.log(this.cv)
 
-    });
+    // });
 
     this.cityService.getCity(this.candidate.city_id).subscribe(city => {
       this.city = city;
@@ -97,8 +99,7 @@ export class InicioPerfilBasicoPage implements OnInit {
 
 
   ionViewWillEnter() {
-
-
+    this.menuCtrl.enable(true);
   }
 
 
@@ -110,7 +111,12 @@ export class InicioPerfilBasicoPage implements OnInit {
         this.candService.getCandidate(val).subscribe(candidato => {
           this.candidate = candidato;
           this.translateInfo();
-
+          //carga del curriculum
+          this.cvService.getCv(this.candidate.user_id).subscribe(cv => {
+            this.cv = cv;
+            console.log(this.cv)
+          });
+          
         });
 
       });
