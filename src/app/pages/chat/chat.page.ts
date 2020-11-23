@@ -83,12 +83,15 @@ export class ChatPage implements OnInit {
   	}
 
   	seeMessage(){
+      console.log("mensajes:", this.messages)
 
   		for(let i in this.messages)
 		{
-			if (this.messages[i].date_read == null){
+			if (this.messages[i].date_read == null && this.messages[i].type=="received"){
 				console.log("mensaje " + i + " =   id:  " + this.messages[i].id+"  date_sent: "+this.messages[i].date_sent );
-				this.messageService.seeMessages(this.messages[i].id,this.getNowDate()).subscribe(message=>{})
+				this.messageService.seeMessages(this.messages[i].id,this.getNowDate()).subscribe(message=>{
+          console.log(message)
+        })
 
 			}
 			// else{

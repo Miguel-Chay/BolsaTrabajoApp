@@ -60,9 +60,18 @@ export class InicioPerfilBasicoPage implements OnInit {
     }
 
     if (this.candidate.marital_status === 'married') {
-      this.candidate.marital_status = 'Casado';
+      if (this.candidate.sex === 'Mujer') {
+        this.candidate.sex = 'Casada';
+      }
+      else{
+      this.candidate.marital_status = 'Casado';}
     } else {
-      this.candidate.marital_status = 'Soltero';
+      if (this.candidate.sex === 'Mujer') {
+        this.candidate.sex = 'Soltera';
+      }
+      else{
+        this.candidate.marital_status = 'Soltero';
+      }
     }
 
     if (this.candidate.photo == null) {
