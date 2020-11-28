@@ -99,17 +99,18 @@ async AlertaOK(sheader:string,type:string, page:string){
       subHeader:mensaje,
       message: `<img src="./assets/alerts/${type}.png" class="card-alert-img">  `,
       mode:'ios',
+      cssClass:'alertCancel',
       buttons: [{
           text: 'Cancelar',
           role: 'cancel',
-          // cssClass: 'secondary',
+          cssClass: 'alertButton',
           handler: () => {
             console.log('Confirm Cancel');
             resolveFunction(false);
           }
         }, {
           text: 'Aceptar',
-          // cssClass: 'secondary',
+          cssClass: 'alertButton',
           handler: () => {
             if (aceptar!="") { 
               this.navCtrl.navigateRoot(aceptar);

@@ -74,15 +74,15 @@ export class PopfilterComponent implements OnInit {
     this.findData.get('study_Programe').setValue('')
     this.findData.get('sueldo').setValue('')
     
-
-    // this.popoverCtrl.dismiss({
-    //   year_Experience:"",
-    //   job_Type:"",
-    //   city:"",
-    //   subject_Area:"",
-    //   study_Programe:"",
-    //   sueldo:""
-    // })
+    this.popoverCtrl.dismiss({
+      // findData:this.findData
+      year_Experience:this.findData.get('year_Experience').value,
+      job_Type:this.findData.get('job_Type').value,
+      city:this.findData.get('city').value,
+      subject_Area:this.findData.get('subject_Area').value,
+      study_Programe:this.findData.get('study_Programe').value,
+      sueldo:this.findData.get('sueldo').value,
+    }) 
   }
 
 

@@ -90,9 +90,7 @@ ion-menu {
     }
 }
 
-// ion-tab-button {
-//     --color-selected: #042b59
-// }
+ 
 
 
 /*ctrl + shift + c  = elegir tabla de colores*/
@@ -108,10 +106,12 @@ ion-menu {
 }
 
 //color del alert (error, warnin,info)
+//color de los botones de alert 
 .alertCancel{
   --background: white;
     button.alertButton{
-      color: black;
+        background-color:#0b284a;
+        color: #FFFFFF;
     }
  }
 
