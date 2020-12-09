@@ -21,6 +21,7 @@ export class MpCertificacionesPage implements OnInit {
 
   ngOnInit() {
     this.subjectAreaService.getSubjectAreas().subscribe(subjectAreas => {
+      console.log('hola', subjectAreas);
       this.subjectAreas = subjectAreas;
     });
     this.storage.get('id').then(cvId => {

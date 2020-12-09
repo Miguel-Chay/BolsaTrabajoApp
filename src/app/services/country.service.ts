@@ -18,6 +18,6 @@ URL = environment.url;
     return this.http.get<Country>(`${this.URL}/api/countries/${id}`);
   }
   getCountries() {
-    return this.http.get<Country>(`${this.URL}/api/country`);
+    return this.http.get<Country>(`${this.URL}/api/countries`);
   }
 }

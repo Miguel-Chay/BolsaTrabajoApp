@@ -11,6 +11,6 @@ export class StatusEducationService {
   constructor(private http: HttpClient) { }
 
   getStatusEducations() {
-    return this.http.get<StatusEducation>(`${this.URL}/api/status-education`);
+    return this.http.get<StatusEducation>(`${this.URL}/api/status-educations`);
   }
 }

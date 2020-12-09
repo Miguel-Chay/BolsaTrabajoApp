@@ -61,13 +61,13 @@ export class InicioPerfilBasicoPage implements OnInit {
 
     if (this.candidate.marital_status === 'married') {
       if (this.candidate.sex === 'Mujer') {
-        this.candidate.sex = 'Casada';
+        this.candidate.marital_status = 'Casada';
       }
       else{
       this.candidate.marital_status = 'Casado';}
     } else {
       if (this.candidate.sex === 'Mujer') {
-        this.candidate.sex = 'Soltera';
+        this.candidate.marital_status = 'Soltera';
       }
       else{
         this.candidate.marital_status = 'Soltero';

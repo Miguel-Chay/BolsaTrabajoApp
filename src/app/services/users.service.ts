@@ -10,7 +10,7 @@ import { CandidateService } from './candidate.service';
   providedIn: 'root'
 })
 export class UsersService {
-  token: string = null;
+  token: string;
   id: string = null;
   user: User;
   URL = environment.url;
@@ -19,6 +19,7 @@ export class UsersService {
 
 
   getUser(id: string) {
+    const tokenn =  localStorage.getItem('token');
     return this.http.get<User>(`${this.URL}/api/users/${id}`);
   }
 
@@ -42,6 +43,7 @@ export class UsersService {
                 this.guardarCandidato(candidate);
 
                 this.guardarToken(resp['token']);
+                localStorage.setItem('token', resp['token'] );
                 // resolve(true);
                 this.guardarId(resp['id']);
                 resolve(true);
@@ -89,5 +91,18 @@ export class UsersService {
   async guardarCandidato(candidate: Candidate) {
     await this.storage.set('candidate', JSON.stringify(candidate));
   }
-  
+
+  compToken() {
+    return new Promise(resolve => {
+      if (this.token) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    });
+  }
+  getToken() {
+    return this.token;
+  }
+
 }

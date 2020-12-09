@@ -7,6 +7,7 @@ import { SubjectAreaService } from 'src/app/services/subject-area.service';
 import { SubjectArea } from '../../interfaces/interfaces';
 import { Storage } from '@ionic/storage';
 import { UiServiceService } from 'src/app/services/ui-service.service';
+import { isDate } from 'util';
 
 @Component({
   selector: 'app-agregar-certificacion',

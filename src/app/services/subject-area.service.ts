@@ -11,7 +11,7 @@ export class SubjectAreaService {
   constructor(private http: HttpClient) { }
 
   getSubjectAreas() {
-    return this.http.get<SubjectArea>(`${this.URL}/api/subject-area`);
+    return this.http.get<SubjectArea>(`${this.URL}/api/subject-areas`);
   }
 
   getSubjectArea(id: string) {

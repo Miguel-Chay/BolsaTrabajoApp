@@ -108,10 +108,11 @@ export class AppComponent {
     // console.log(this.confirm)
     if (this.confirm) {
       this.storage.clear();
+      localStorage.clear();
       this.candidate.firstname = '';
       this.candidate.lastname = '';
       this.candidate.photo = '';
-      this.photoRout = '';      
+      this.photoRout = '';
       this.navCtrl.navigateRoot('/login');
     }
   }
